@@ -1,0 +1,35 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1101" measuredH="441" mockupW="867" mockupH="424">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="234" y="17" w="867" h="424" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Accordion" x="236" y="90" w="187" h="325" measuredW="150" measuredH="348" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>6</selectedIndex>
+        <text>Home%0AData%20Umat%0A-%20Umat%0AAkun%0A-%20Profil%20Akun%0A-%20Ubah%20Password%0AAdministrasi%0A-%20Daerah%0A-%20Dharmasala%0A-%20Cetya%0A-%20Negara%0A-%20Provinsi%0A-%20Kabupaten</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::FieldSet" x="472" y="114" w="579" h="268" measuredW="200" measuredH="170" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Update%20Kartu%20Keluarga</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Button" x="667" y="346" w="-1" h="-1" measuredW="52" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Save</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Button" x="732" y="346" w="-1" h="-1" measuredW="58" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Reset</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::DataGrid" x="501" y="135" w="520" h="196" measuredW="208" measuredH="141" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>No%20%5E%2C%20Nama%20%5Ev%2C%20Hub.%20Keluarga%0A1%2C%20Bapak%20e%2C%20Ayah%0A2%2C%20Mak%20e%2C%20Ibu%0A3%2C%20Anak%20Siji%2C%20Anak%201%0A4%2C%20Anak%20Loro%2C%20Anak%202</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
