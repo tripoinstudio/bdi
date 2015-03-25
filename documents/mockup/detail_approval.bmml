@@ -13,7 +13,7 @@
     </control>
     <control controlID="2" controlTypeID="com.balsamiq.mockups::FieldSet" x="479" y="108" w="579" h="1445" measuredW="200" measuredH="170" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Tambah%20Umat</text>
+        <text>Detail%20Approval%20Data%20Umat</text>
       </controlProperties>
     </control>
     <control controlID="3" controlTypeID="com.balsamiq.mockups::Label" x="541" y="228" w="-1" h="-1" measuredW="312" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
