@@ -1,0 +1,41 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1274" measuredH="441" mockupW="1040" mockupH="424">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="234" y="17" w="1040" h="424" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Accordion" x="236" y="90" w="187" h="325" measuredW="150" measuredH="213" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>1</selectedIndex>
+        <text>Home%0ALog%0AData%20Umat%0A-%20Umat%0AAkun%0A-%20Profil%20Akun%0A-%20Ubah%20Password%0AAdministrasi%0A-%20Daerah%0A-%20Dharmasala%0A-%20Cetya%0A-%20Negara%0A-%20Provinsi%0A-%20Kabupaten</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::FieldSet" x="449" y="108" w="799" h="289" measuredW="200" measuredH="170" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Log</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::DataGrid" x="468" y="160" w="751" h="221" measuredW="971" measuredH="111" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>No%20%5E%2C%20Deskripsi%20%5Ev%2C%20Data%20Pertama%2C%20Modifikasi%20Terakhir%0A1%2C%20Penambahan%20data%20umat%20satu%2C%20IP%3A127.0.0.1%20-%20User%3Adni123%20-%20Waktu%20%3A%202015-03-03%2013%3A00%3A00.000%2C%20IP%3A127.0.0.1%20-%20User%3Adni123%20-%20Waktu%20%3A%202015-03-03%2013%3A00%3A00.000%0A2%2C%20Penambahan%20data%20umat%20dua%2C%20IP%3A127.0.0.1%20-%20User%3Adna123%20-%20Waktu%20%3A%202015-03-03%2013%3A00%3A00.000%2C%20IP%3A127.0.0.1%20-%20User%3Adna123%20-%20Waktu%20%3A%202015-03-03%2013%3A00%3A00.000%0A3%2C%20Penambahan%20data%20umat%20tiga%2C%20IP%3A127.0.0.1%20-%20User%3Adno123%20-%20Waktu%20%3A%202015-03-03%2013%3A00%3A00.000%2C%20IP%3A127.0.0.1%20-%20User%3Adno123%20-%20Waktu%20%3A%202015-03-03%2013%3A00%3A00.000</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::TextInput" x="1078" y="126" w="128" h="-1" measuredW="79" measuredH="26" zOrder="4" locked="false" isInGroup="-1"/>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Label" x="1015" y="129" w="-1" h="-1" measuredW="48" measuredH="21" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Search%20%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::ComboBox" x="540" y="124" w="-1" h="-1" measuredW="135" measuredH="24" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Histori%20Data%20Umat</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Label" x="474" y="126" w="66" h="-1" measuredW="56" measuredH="21" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Pilih%20Log%20%3A</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
