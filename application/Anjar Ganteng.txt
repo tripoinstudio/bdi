@@ -1,2 +1,0 @@
--Sorting audit trail nya masih salah
--Export per page (Parameter2) masih salah, yg di export cmn page itu saja jadi nya
