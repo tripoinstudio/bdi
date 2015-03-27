@@ -7,7 +7,7 @@
     </control>
     <control controlID="1" controlTypeID="com.balsamiq.mockups::Accordion" x="236" y="90" w="187" h="325" measuredW="150" measuredH="213" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
-        <selectedIndex>1</selectedIndex>
+        <selectedIndex>2</selectedIndex>
         <text>Home%0AData%20Umat%0A-%20Umat%0AAkun%0A-%20Profil%20Akun%0A-%20Ubah%20Password%0AAdministrasi%0A-%20Daerah%0A-%20Dharmasala%0A-%20Cetya%0A-%20Negara%0A-%20Provinsi%0A-%20Kabupaten</text>
       </controlProperties>
     </control>
