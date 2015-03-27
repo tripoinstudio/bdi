@@ -43,7 +43,7 @@ if($_GET['manual'] == 'true'){
 
 }
 
-    $lovquery = mysql_query("select * from tb_" . $_GET['lov']);
+    $lovquery = mysql_query($manual);
     echo "<select name='lov" . $_GET['lov'] . "' id='lovs" . $_GET['lov'] . "' class='input-large m-wrap' > <option value='0'>Select ...</option>";
     while ($listlov = mysql_fetch_array($lovquery)) {
         if ($_GET['idLov'] == $listlov['tb_' . $_GET['lov'] . '_id']) {
