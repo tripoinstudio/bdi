@@ -1,0 +1,37 @@
+.table {
+
+    border-collapse: collapse;
+    height: 40px;
+    vertical-align: middle;
+
+}
+.table tr th{
+    font-family: arial;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    border: 1px solid #000;
+    background-color: #777777;
+
+}
+.table tr td{
+    padding-left: 10px;
+    font-size: 12px;
+    border: 1px solid #000;
+}
+.tableno{
+    text-align: center;height: 15px;padding-right: 10px;
+}
+.title{
+    font-size: 20px;
+    font-weight: bold;
+}
+.subtitle{
+    font-size: 14px;
+}
+.page{
+    width: 800px;
+    padding-left: 30px;
+    padding-top: 30px;
+
+}

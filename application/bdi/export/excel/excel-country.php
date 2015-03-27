@@ -12,7 +12,7 @@
 //if($_GET['field'] != '' || $_GET['field'] != null || $_GET['field'] != 'undefined'){
 //    $parentuser = $texts . " like '%" . $_GET['field'] . "%' and status=1";
 //} else {
-    $parentuser = "status=1";
+    $parentuser = "";
 
 
 

@@ -1,7 +1,7 @@
 <?php
 //$item = json_decode($_GET['item']);
 
-$parentuser = "status=1";
+$parentuser = "";
 
 
 $dblist = new Database();

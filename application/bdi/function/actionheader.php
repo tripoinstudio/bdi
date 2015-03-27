@@ -31,8 +31,8 @@ if ($cekaction[0] == '2') {
 if ($cekaction[1] == 2) {
     ?>
     <button class="btn btn-warning" id="create" onclick="showCreate('<?= $cekMenu['menu_function_link']; ?>', 'new');"><i class="icon-plus icon-white"></i> Create</button>
-    <a href="javascript:void(0)" onclick="exportPdf();" class="btn btn-info" id="export-pdf"><span class="icon-file"> PDF</span></a>
-    <a href="javascript:void(0)" onclick="exportExcel();" class="btn btn-info" id="export-excel"><span class="icon-book"> Excel</span></a>
+    <a href="javascript:void(0)" onclick="<?=$exportpdf;?>" class="btn btn-info" id="export-pdf"><span class="icon-file"> PDF</span></a>
+    <a href="javascript:void(0)" onclick="<?=$exportexcel;?>" class="btn btn-info" id="export-excel"><span class="icon-book"> Excel</span></a>
         <?php
 } else {
     
