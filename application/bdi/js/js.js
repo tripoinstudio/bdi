@@ -427,26 +427,55 @@ function showCreate(str, action) {
 
 
 }
-function lovNew(str, action, lovnya) {
+function lovNew(str, action, lovnya,ket) {
 //alert(lovnya);
     var lov = $('#lov' + lovnya + 's').val();
-    selectLov(str, action, lov);
-
-
+    selectLov(str, action, lov,ket);
 
 }
 
-function lovEdit(str, action, lovnya) {
+
+
+function lovEdit(str, action, lovnya,ket) {
     var idLov = $('#idLov' + lovnya).val();
     var lov = $('#lov' + lovnya + 's').val();
 
-    selectLovView(str, action, lov, idLov);
+    selectLovView(str, action, lov, idLov,ket);
 
 
 }
 
+function lovNewManual(str, action, lovnya,parameter,keterangan) {
+    var lov = $('#lov' + lovnya + 's').val();
+$.ajax({
+        type: 'get',
+        url: 'action.php',
+        data: 'content=' + str + '&action=' + action + '&lov=' + lov+ '&manual=true&parameter=' + parameter,
+        success: function (result) {
+
+            $('#lov' + lov).html(result);
+
+        }
+    });
+}
+
+function lovEditManual(str, action, lovnya,parameter,keterangan) {
+    var idLov = $('#idLov' + lovnya).val();
+    var lov = $('#lov' + lovnya + 's').val();
+
+    $.ajax({
+        type: 'get',
+        url: 'action.php',
+        data: 'content=' + str + '&action=' + action + '&lov=' + lov + '&idLov=' + idLov+ '&keterangan=' + keterangan+ '&manual=true&parameter=' + parameter,
+        success: function (result) {
+
+            $('#lov' + lov).html(result);
+
+        }
+    });
 
 
+}
 
 
 function getJavascript(str) {
@@ -706,11 +735,11 @@ function moneyFormat(number) {
     return newPrice;
 }
 
-function selectLovView(str, action, lov, idLov) {
+function selectLovView(str, action, lov, idLov,keterangan) {
     $.ajax({
         type: 'get',
         url: 'action.php',
-        data: 'content=' + str + '&action=' + action + '&lov=' + lov + '&idLov=' + idLov,
+        data: 'content=' + str + '&action=' + action + '&lov=' + lov + '&idLov=' + idLov+ '&keterangan=' + keterangan,
         success: function (result) {
             $('#lov' + lov).html(result);
         }
@@ -719,11 +748,11 @@ function selectLovView(str, action, lov, idLov) {
 
 
 
-function selectLov(str, action, lov) {
+function selectLov(str, action, lov,keterangan) {
     $.ajax({
         type: 'get',
         url: 'action.php',
-        data: 'content=' + str + '&action=' + action + '&lov=' + lov,
+        data: 'content=' + str + '&action=' + action + '&lov=' + lov+ '&keterangan=' + keterangan,
         success: function (result) {
             /*	var frma;
              frma	= '<select name="lov" id="lov" class="input-medium m-wrap">';
@@ -1040,7 +1069,7 @@ function beforeSave(action) {
         return sending;
     }
 }
-function prosesSave(str, action, sending) {
+function prosesSave(str, action, sending,manual) {
     // DEFAULT SAVE or EDIT-- >
     if (action == 'update') {
         var id = $('#idUp').val();
@@ -1066,9 +1095,9 @@ function prosesSave(str, action, sending) {
         }
     }
     if (action == 'save') {
-        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + sending, true);
+        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + sending+manual, true);
     } else {
-        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + "&id=" + id + sending, true);
+        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + "&id=" + id + sending+manual, true);
     }
 
     xmlhttp.send();

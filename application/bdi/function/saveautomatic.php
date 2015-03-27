@@ -27,6 +27,7 @@
 
     $nodata = 0;
     $novalues = 0;
+    $lovs ='';
     foreach ($data->item as $items) {
         $nodata++;
         if ($nodata == $countdata) {
@@ -35,7 +36,16 @@
 
             $comadat = ',';
         }
-        $datas .= '`tb_'.$cekMenu['menu_function_link'].'_'.$items->code . '`' . $comadat;
+     //   $lovs = substr($items->code, 0,3);
+    //    $lovs = substr($items->code, 0,3);
+       
+                   $datas .= '`tb_'.$cekMenu['menu_function_link'].'_'.$items->code . '`' . $comadat;
+ 
+ //       }
+    
+        
+        
+        
     }
     foreach ($value->valuesit as $items) {
         $novalues++;
@@ -51,4 +61,4 @@
     }
     
     
-echo $datas;
+//echo $datas;

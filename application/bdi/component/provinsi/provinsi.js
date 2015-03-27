@@ -5,10 +5,11 @@ $(function () {
     var str = queryString('content', ipconfig);
     var actions = queryString('action', ipconfig);
     if (actions == 'new') {
-        lovNew(str, actions, 'group');
+        lovNew(str, actions, 'country','true');
+        
 
     } else if (actions == 'edit' || actions == 'view') {
-        lovEdit(str, actions, 'group');
+        lovEdit(str, actions, 'country','true');
 
     }
 

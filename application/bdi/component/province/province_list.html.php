@@ -12,7 +12,7 @@
 <?php } ?>								
 <br />
 
-<?php if ($_GET['content'] == 'provinsi') { ?>
+<?php if ($_GET['content'] == 'province') { ?>
     <table id="datatable_example" class="responsive table table-striped table-bordered" style="width:100%;margin-bottom:0; ">
         <thead>
             <tr>
@@ -34,8 +34,8 @@
                     <td style="text-align:center;">
                         <input type="hidden" id="idItem<?= $no; ?>" value="<?=$array_list_query['tb_provinsi_id'];?>"/><input type="checkbox" class="checkboxes" onchange="checkedList('<?= $array_list_query['tb_provinsi_id']; ?>','<?= $no; ?>');" id="checkboxes<?= $no; ?>" value="0" />
                     <td style="text-align:center;"><?= $no; ?></td>
-                    <td><?= $array_list_query['tb_provinsi_code']; ?></td>
-                    <td><?= $array_list_query['tb_provinsi_name']; ?></td>
+                    <td><?= $array_list_query['tb_province_code']; ?></td>
+                    <td><?= $array_list_query['tb_province_name']; ?></td>
         <?php include "../../function/actionlist.php"; ?>
                 </tr>
                     <?php

@@ -19,14 +19,29 @@ foreach ($list_settings as $list_settings2) {
 if ($_GET['content'] == 'group') {
     include 'component/group/group.php';
 } else if ($_GET['action'] == 'new') {
+if($_GET['manual'] == 'true'){
+    $manual = $_GET['parameter'];
 
-    $lovquery = mysql_query("select * from tb_" . $_GET['lov'] . " where " . $parentsta);
+} else {
+    	$manual = "select * from tb_" . $_GET['lov'];
+
+}
+
+    $lovquery = mysql_query($manual);
     echo "<select name='lov" . $_GET['lov'] . "' id='lovs" . $_GET['lov'] . "' class='input-large m-wrap'> <option value='0'>Select ...</option>";
     while ($listlov = mysql_fetch_array($lovquery)) {
         echo "<option value=" . $listlov['tb_' . $_GET['lov'] . '_id'] . ">" . $listlov['tb_' . $_GET['lov'] . '_name'] . "</option>";
     }
     echo "</select>";
+    echo'<span class="help-inline" name="namens[]" id="' . $_GET['lov'] . 'ns"></span>';
 } else if ($_GET['action'] == 'edit') {
+    if($_GET['manual'] == 'true'){
+    $manual = $_GET['parameter'];
+
+} else {
+    	$manual = "select * from tb_" . $_GET['lov'];
+
+}
 
     $lovquery = mysql_query("select * from tb_" . $_GET['lov'] . " where " . $parentsta);
     echo "<select name='lov" . $_GET['lov'] . "' id='lovs" . $_GET['lov'] . "' class='input-large m-wrap' > <option value='0'>Select ...</option>";
@@ -38,6 +53,8 @@ if ($_GET['content'] == 'group') {
         }
     }
     echo "</select>";
+        echo'<span class="help-inline" name="namens[]" id="' . $_GET['lov'] . 'ns"></span>';
+
 } else if ($_GET['action'] == 'view') {
     $lovquery = mysql_query("select * from tb_" . $_GET['lov'] . " where tb_" . $_GET['lov'] . "_id=" . $_GET['idLov']);
     $lov = mysql_fetch_array($lovquery);

@@ -210,10 +210,10 @@ function addItem() {
      frma = frma + '<option value="Category 4">Category 4</option>'; */
     frma = frma + '</td>';
     frma = frma + '<td style="text-align:center;"><span id="spanstatus' + i + '"><a href="javascript:void(0)" onclick="setStatus(' + i + ',1);"><input type="hidden" id="setstatus' + i + '" value="1" /><span class="label label-success">Active</span></a></span></td>';
-    frma = frma + '<td style="text-align:center;"><input onchange="tesclick(' + i + ');" id="viewc' + i + '" type="checkbox" value="1"></td>';
-    frma = frma + '<td style="text-align:center;"><input onchange="tesclick(' + i + ');" id="createc' + i + '" type="checkbox" value="1"></td>';
-    frma = frma + '<td style="text-align:center;"><input onchange="tesclick(' + i + ');" id="editc' + i + '" type="checkbox" value="1"></td>';
-    frma = frma + '<td style="text-align:center;"><input onchange="tesclick(' + i + ');" id="deletec' + i + '" type="checkbox" value="1"></td>';
+//    frma = frma + '<td style="text-align:center;"><input onchange="tesclick(' + i + ');" id="viewc' + i + '" type="checkbox" value="1"></td>';
+//    frma = frma + '<td style="text-align:center;"><input onchange="tesclick(' + i + ');" id="createc' + i + '" type="checkbox" value="1"></td>';
+//    frma = frma + '<td style="text-align:center;"><input onchange="tesclick(' + i + ');" id="editc' + i + '" type="checkbox" value="1"></td>';
+//    frma = frma + '<td style="text-align:center;"><input onchange="tesclick(' + i + ');" id="deletec' + i + '" type="checkbox" value="1"></td>';
     frma = frma + '</tr>';
     // $('#items').show();
     $('#item').append(frma);
