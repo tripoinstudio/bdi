@@ -1,17 +1,6 @@
-<div class="control-group">
-    <label class="control-label">Kode Group</label>
-    <div class="controls">
-        <input type="text" id="code" value="<?= $query1['tb_group_code']; ?>" class="input-small"  />
+<?= inputGeneral($query1['tb_group_code'], 'Kode Group', 'code', 'true', $_GET['action']); ?>
+<?= inputGeneral($query1['tb_group_name'], 'Nama Group', 'name', 'true', $_GET['action']); ?>
 
-    </div>
-</div>
-<div class="control-group">
-    <label class="control-label"> Nama Group</label>
-    <div class="controls">
-        <input type="text" id="name" value="<?= $query1['tb_group_name']; ?>" class="input-medium"  />
-
-    </div>
-</div>
 <button type="button" onclick="addItem();" class="btn"><i class="icon-plus"></i> Add Item</button><br/>
 <table class="table table-striped table-bordered" id="sample_1">
     <thead>
@@ -19,14 +8,14 @@
             <th rowspan="2"style="width:5%;text-align:center;vertical-align: middle;">No</th>
             <th rowspan="2" style="width:30%;text-align:center;vertical-align: middle;" class="hidden-phone">Name</th>
             <th rowspan="2" style="width:30%;text-align:center;vertical-align: middle;" class="hidden-phone">Status</th>
-            <th  colspan="4"  style="width:30%;text-align:center;vertical-align: middle;" class="hidden-phone">Action</th>
+            <!--<th  colspan="4"  style="width:30%;text-align:center;vertical-align: middle;" class="hidden-phone">Action</th>-->
         </tr>
-        <tr>
+<!--        <tr>
             <th style="width:5%;text-align:center;vertical-align: middle;" class="hidden-phone">View</th>
             <th style="width:5%;text-align:center;vertical-align: middle;" class="hidden-phone">Create</th>
             <th style="width:5%;text-align:center;vertical-align: middle;" class="hidden-phone">Edit</th>
             <th style="width:5%;text-align:center;vertical-align: middle;" class="hidden-phone">Delete</th>
-        </tr>
+        </tr>-->
     </thead>
 </table>
 <div class="table" style="height:300px;border-top:none; overflow:scroll">
@@ -101,10 +90,10 @@
                                 $checked4 = "";
                             }
                             ?></th>
-                        <th style="width:5%;text-align:center;vertical-align: middle;" class="hidden-phone"><input type="checkbox" id="viewc<?= $noi; ?>" value="<?= $minsa[0]; ?>" <?=$checked1;?>/></th>
+<!--                        <th style="width:5%;text-align:center;vertical-align: middle;" class="hidden-phone"><input type="checkbox" id="viewc<?= $noi; ?>" value="<?= $minsa[0]; ?>" <?=$checked1;?>/></th>
                         <th style="width:5.5%;text-align:center;vertical-align: middle;" class="hidden-phone"><input type="checkbox" id="createc<?= $noi; ?>" value="<?= $minsa[1]; ?>" <?=$checked2;?>/></th>
                         <th style="width:5%;text-align:center;vertical-align: middle;" class="hidden-phone"><input type="checkbox" id="editc<?= $noi; ?>" value="<?= $minsa[2]; ?>" <?=$checked3;?>/></th>
-                        <th style="width:4.3%;text-align:center;vertical-align: middle;" class="hidden-phone"><input type="checkbox" id="deletec<?= $noi; ?>" value="<?= $minsa[3]; ?>" <?=$checked4;?>/></th>
+                        <th style="width:4.3%;text-align:center;vertical-align: middle;" class="hidden-phone"><input type="checkbox" id="deletec<?= $noi; ?>" value="<?= $minsa[3]; ?>" <?=$checked4;?>/></th>-->
 
                     </tr>
         <?php

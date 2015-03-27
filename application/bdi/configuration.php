@@ -1,4 +1,5 @@
 <?php
+
 $db = new Database();
 
 $query=mysql_connect($db->db_host,$db->db_user,$db->db_pass);

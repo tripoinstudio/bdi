@@ -1,7 +1,7 @@
 <?php
-
-require_once("configuration.php");
 require_once("class/mysql_crud.php");
+
+include("configuration.php");
 session_start();
 
 $whereset = $_SESSION['company_code'];
@@ -13,6 +13,7 @@ foreach ($list_settings as $list_settings2) {
     $idsettings = $list_settings2['tb_settings_id'];
     $parentsta = "company_code=" . $idsettings . " AND status=1";
 }
+ //$parentsta = " status=1";
 //$parentsta = "company_code='".$_SESSION['company_code']."' AND status=1";
 
 if ($_GET['content'] == 'group') {

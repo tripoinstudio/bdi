@@ -12,7 +12,7 @@ if ($resultMenu != null) {
     require_once("../../class/mysql_crud.php");
     require_once("../../configuration.php");
     require_once("../../function/function.php");
-     require_once("../../function/component.php");
+    require_once("../../function/component.php");
 }
 
 $cekMenuQuery = mysql_query("select * from menu_function where menu_function_link='" . $resultMenu . "'");
@@ -50,25 +50,28 @@ if ($_GET['action'] == 'search') {
 } else {
     ?>
 
-<div class="row-fluid">
-        <div class="box ">
-          <div class="title">
-            <h4> <span><?= $cekMenu['menu_function_name']; ?> <small>Bdi</small></span> </h4>
-          </div>
 
-    
 
-        <?php
-        if ($cekMenu['menu_function_link'] == 'group') {
-            include "../" . $cekMenu['menu_function_link'] . "/" . $cekMenu['menu_function_link'] . ".php";
-        } else if ($_SESSION['backend'] == 1) {
+    <div class="row-fluid">
+        <div class="box paint color_26">
+            <div class="title">
+                <h4> <span><?= $cekMenu['menu_function_name']; ?> <small>BDI</small></span> </h4>
+            </div>
 
-            include "../" . $cekMenu['menu_function_link'] . "/" . $cekMenu['menu_function_link'] . ".php";
-        } else if ($_SESSION['backend'] == 2) {
-            include "../" . $cekMenu['menu_function_link'] . "-service/" . $cekMenu['menu_function_link'] . ".php";
-        }
-        ?>
- 
+
+
+            <?php
+            if ($cekMenu['menu_function_link'] == 'group') {
+                include "../" . $cekMenu['menu_function_link'] . "/" . $cekMenu['menu_function_link'] . ".php";
+            } else if ($_SESSION['backend'] == 1) {
+
+                include "../" . $cekMenu['menu_function_link'] . "/" . $cekMenu['menu_function_link'] . ".php";
+            } else if ($_SESSION['backend'] == 2) {
+                include "../" . $cekMenu['menu_function_link'] . "-service/" . $cekMenu['menu_function_link'] . ".php";
+            }
+            ?>
+        </div>
+
     </div>
     <input type="hidden" id="ipConfig" value="<?php echo $_SERVER["REQUEST_URI"]; ?>" />
-<?php } ?>	
+<?php } ?>

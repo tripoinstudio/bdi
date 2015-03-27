@@ -30,6 +30,7 @@ if (!isset($_SESSION['username'])) {
 
     foreach ($hasilSetting as $array_settings) {
         $nameTitle = $array_settings['tb_settings_name'];
+        $favicon = $array_settings['tb_settings_favicon'];
     }
 
     $db->sql("SELECT * FROM `structure_menu` s INNER JOIN `menu_function` m ON s.`menu_function_id`=m.`menu_function_id`  WHERE m.`menu_function_link`='setting'");
@@ -54,7 +55,7 @@ if (!isset($_SESSION['username'])) {
 <html lang="en"> 
     <head>
         <meta charset="utf-8" />
-        <title><?= $nameTitle; ?> :: Application ERP</title>
+        <title><?= $nameTitle; ?> :: Application</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
         <meta content="" name="description" />
         <meta content="" name="author" />
@@ -67,6 +68,7 @@ if (!isset($_SESSION['username'])) {
                <link href="assets/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet" />
                <link href="css/style_default.css" rel="stylesheet" id="style_color" />
         -->
+        <link rel="shortcut icon" href="<?=$favicon;?>">
         <link href="css/twitter/bootstrap.css" rel="stylesheet" />
         <link href="css/base.css" rel="stylesheet" />
         <link href="css/twitter/responsive.css" rel="stylesheet" />
@@ -145,13 +147,18 @@ if (!isset($_SESSION['username'])) {
 
         <script src="js/jquery.js" type="text/javascript"></script> 
         <script src="js/json2.js"></script>
+        
+        
         <!--[if !IE]> -->
         <!--[if !IE]> -->
+        <script src="js/jquery-1.8.3.min.js"></script>
+                        <!--<script src="http://datatables.net/release-datatables/extensions/TableTools/js/dataTables.tableTools.js"></script>-->
+
         <script src="js/plugins/enquire.min.js" type="text/javascript"></script> 
         <script type="text/javascript" src="assets/chosen-bootstrap/chosen/chosen.jquery.min.js"></script>
-<script src="js/bootstrap-tooltip.js" type="text/javascript"></script> 
         <!-- <![endif]-->
         <!-- <![endif]-->
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <!--[if lt IE 7]>
         <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js"></script>
         <![endif]-->
@@ -163,7 +170,6 @@ if (!isset($_SESSION['username'])) {
         <script src="js/bootstrap-dropdown.js" type="text/javascript"></script> 
         <script src="js/bootstrap-scrollspy.js" type="text/javascript"></script> 
         <script src="js/bootstrap-tab.js" type="text/javascript"></script> 
-        <script src="js/bootstrap-tooltip.js" type="text/javascript"></script> 
         <script src="js/bootstrap-popover.js" type="text/javascript"></script> 
         <script src="js/bootstrap-button.js" type="text/javascript"></script> 
         <script src="js/bootstrap-collapse.js" type="text/javascript"></script> 
@@ -196,11 +202,14 @@ if (!isset($_SESSION['username'])) {
         <script type="text/javascript" language="javascript" src="js/plugins/datatables/js/jquery.dataTables.js"></script> 
         <script>
             $(function () {
+              //   $('[rel="tooltip"]').tooltip();
+                
              //   $('#namePage').html('HOME');
             
      //   $('[rel="tooltip"]').tooltip();
 //alert($('[rel="tooltip"]').tooltip());
     });
+    
         </script>
         <!-- END JAVASCRIPTS -->
     </body>

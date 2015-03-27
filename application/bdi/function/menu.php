@@ -28,7 +28,7 @@ $list_usersgr = $dbmenupertama->getResult();
                 ?>
 
                 <li class="accordion-group <?= $menuPertama['menu_function_color']; ?>"> 
-                    <a class="accordion-toggle widgets collapsed" data-toggle="collapse" data-parent="#sidebar_menu" href="<?= $menuPertama['menu_function_link']; ?>"> 
+                    <a class="<?= $menuPertama['menu_function_collapse']; ?>" data-toggle="collapse" data-parent="#sidebar_menu" href="<?= $menuPertama['menu_function_link']; ?>"> 
                         <img src="<?= $menuPertama['menu_function_image']; ?>" />
                         <span><?= $menuPertama['menu_function_name']; ?></span>
                     </a>

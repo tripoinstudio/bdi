@@ -1,3 +1,4 @@
+
 <div id="loading"><img src="img/ajax-loader.gif"></div>
 <div id="responsive_part">
   <div class="logo"> <a href="index.html"><span>MNSBDI</span><span class="icon"></span></a> </div>

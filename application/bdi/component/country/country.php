@@ -26,15 +26,23 @@ if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
 include "../../function/functionaction.php";
 ?>
 <?php
-
-$parentuser = "status=1";
+//if($_GET['action'] == 'searchs'){
+//    if($_GET['searchtype']=='code'){
+//        $texts = 'tb_country_code';
+//    } else if($_GET['searchtype']=='name'){
+//        $texts = 'tb_country_name';
+//    } else {
+//        $texts = '';
+//    }
+//$parentuser = $texts." like '%".$_GET['searchfield']."%' and status=1";
 
 $dblist = new Database();
 $dblist->connect();
-$dblist->select('tb_country', '*', NULL, $parentuser); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+$dblist->select('tb_country', '*', NULL, ''); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
 $list_query = $dblist->getResult();
 
 $length_list = count($list_query);
+
 ?>
 <?php
 

@@ -114,7 +114,8 @@ function saveGroup(str, action) {
             coma = ',';
         }
         // alert("sampe sini3");
-        sending = sending + '{"idItem":"' + idItem + '","idLov":"' + idProduct + '","status":"' + setstatus + '","action":"' + view + ',' + create + ',' + edit + ',' + deletes + '"}' + coma;
+//        sending = sending + '{"idItem":"' + idItem + '","idLov":"' + idProduct + '","status":"' + setstatus + '","action":"' + view + ',' + create + ',' + edit + ',' + deletes + '"}' + coma;
+        sending = sending + '{"idItem":"' + idItem + '","idLov":"' + idProduct + '","status":"' + setstatus + '","action":"2,2,2,2"}' + coma;
 
     }
     sending = sending + ']}';
@@ -252,4 +253,23 @@ function tesclick(i) {
     } else {
         deletes.val(1);
     }
+}
+
+function exportPdf() {
+    var exports = 'pdf';
+    var file = 'pdf-group';
+    var jumlahlist = $("#jumlahlist").val();
+    var searchtype = $("#searchtype").val();
+    var searchfield = $("#searchfield").val();
+
+    var newURL = 'export.php?export=' + exports + '&file=' + file+'&type='+searchtype+'&field='+searchfield;
+    newwindow = window.open(newURL);
+    if (window.focus) {
+        newwindow.focus();
+    }
+
+
+    return false;
+
+
 }

@@ -1,16 +1,32 @@
 $(function () {
-     var ipconfig = $('#ipConfig').val();
+
+
+    var ipconfig = $('#ipConfig').val();
 
     var str = queryString('content', ipconfig);
     var actions = queryString('action', ipconfig);
-    if (actions == null) {
-    $('[rel="tooltip"]').tooltip();
-    } else {
-        
-    }
+
+    $('.btn').tooltip();
+    $(".chzn-select").chosen({
+        disable_search_threshold: 10
+    });
+
+
+
+
+
+    //return false;
+
 
 
 });
+
+
+
+function searchFields() {
+    // alert("tes");
+}
+
 function sampleTable() {
 
     //	  alert("masuksini");
@@ -40,12 +56,13 @@ function sampleTable() {
         }
     });
     $('#datatable_example').dataTable({
-        "sDom": "<'row-fluid table_top_bar'<'span12'<'to_hide_phone' f>>>t<'row-fluid control-group full top' <'span4 to_hide_tablet'l><'span8 pagination'p>>",
+        "sDom": "<'row-fluid table_top_bar'<'span12'<'span4 to_hide_tablet'l><'to_hide_phone' f>>>t<'row-fluid control-group full top'<'span4'><'span8 pagination'p>>",
         "aaSorting": [[1, "asc"]],
         "bPaginate": true,
         "sPaginationType": "full_numbers",
         "bJQueryUI": false,
         "aoColumns": dontSort,
+        
     });
     $.extend($.fn.dataTableExt.oStdClasses, {
         "s`": "dataTables_wrapper form-inline"
@@ -55,6 +72,8 @@ function sampleTable() {
         disable_search_threshold: 10
 
     });
+
+
 
 
 }
@@ -95,54 +114,200 @@ function checkedAll(length) {
         $('#checkDelete').val(0);
         $('#deleteAll').hide();
     }
-
+    alert(sending);
     //	return false;
 }
 
 function checkedList(id, urut) {
+    //  alert(id);
+    //  alert(id);
     var somecek = $('#checkboxes' + urut);
     var jumdel = $('#jumDel').val();
-
-    if (somecek.attr('checked')) {
+    var checked = document.getElementById("checkboxes" + urut).checked;
+    //   var stringId = '';
+//alert(checked);
+    if (checked == false) {
+        $("#tr" + urut).css("background", "#599BC8");
+        document.getElementById('checkboxes' + urut).checked = true;
         jumdel = parseFloat(jumdel) + 1;
         $('#checkedAll').attr('checked', false);
-        //alert("tes" + i);
-        //  somecek.val(1);
+
+        checks(id, jumdel);
+
     } else {
+        document.getElementById('checkboxes' + urut).checked = false;
+        $("#tr" + urut).css("background", "");
 
         jumdel = parseFloat(jumdel) - 1;
         $('#checkedAll').attr('checked', false);
-        //  somecek.val(0);
+        unchecks(id, jumdel);
+
     }
+    /*
+     if (somecek.attr('checked')) {
+     jumdel = parseFloat(jumdel) + 1;
+     $('#checkedAll').attr('checked', false);
+     
+     checks(id, jumdel);
+     } else {
+     
+     jumdel = parseFloat(jumdel) - 1;
+     $('#checkedAll').attr('checked', false);
+     unchecks(id, jumdel);
+     }
+     */
+
+}
+function checks(id, jumdel) {
+    var sending = $('#checkDelete').val();
+
     $('#jumDel').val(jumdel);
     if (jumdel > 0) {
         $('#deleteAll').show();
     } else {
         $('#deleteAll').hide();
     }
-    var sending = '';
+    //   var sending = '';
     if (jumdel == 1) {
+        $('#firstRowField').val(id);
         sending = id;
     } else {
-        for (var n = 0; n < $('#jumDel').val(); n++) {
-            var s = n + 1;
-            var coma;
-            var idItem = $('#idItem' + s).val();
-            if (s == $("#jumDel").val()) {
-                coma = '';
-            } else {
-                coma = ',';
-            }
-
-            sending = sending + idItem + coma;
+        sending = sending + ',' + id;
+        var first = $('#firstRowField').val();
+        if (id == first) {
+            var sendings = $('#checkDelete').val();
+            sending = id + ',' + sendings;
         }
     }
+    // alert(sending);
+
+
 
     $('#checkDelete').val(sending);
 }
+function unchecks(id, jumdel) {
+    var sending = $('#checkDelete').val();
 
+    $('#jumDel').val(jumdel);
+    if (jumdel > 0) {
+        $('#deleteAll').show();
+    } else {
+        $('#deleteAll').hide();
+    }
+    //   var sending = '';
+    var res;
+    if (jumdel == 0) {
+        sending = 0;
+    } else {
+
+        res = sending.replace("," + id, "");
+        if (sending == 1) {
+            $('#firstRowField').val(res);
+        }
+        var first = $('#firstRowField').val();
+        if (id == first) {
+
+            res = sending.replace(id + ",", "");
+            var array = res.split(',', 1);
+            //  alert(array);
+            $('#firstRowField').val(array);
+        }
+    }
+    //  alert(res);
+
+    $('#checkDelete').val(res);
+
+}
+
+function showSearch(str, name) {
+    // str = "search";
+
+//alert(str);
+//alert(name);
+//$('#loading').html('<img src="img/ajax-loader.gif">');
+    var searchfield = $('#searchfield').val();
+    var searchtype = $('#searchtype').val();
+    //  if(sea)
+
+    $('#namePage').html(name);
+
+    if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    }
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else { // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+
+            getJavascript(str);
+
+            sampleTable();
+
+            $('#startdate').datepicker();
+            $('#enddate').datepicker();
+            $('#contentTable').html('');
+            $('#deleteAll').hide();
+            $('#edit').hide();
+            $('#cancel').hide();
+
+
+        }
+    }
+    xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + name + "&searchfield=" + searchfield + "&searchtype=" + searchtype, true);
+    xmlhttp.send();
+
+    return true;
+
+}
 
 function showMenu(str, name) {
+//alert(str);
+//alert(name);
+//$('#loading').html('<img src="img/ajax-loader.gif">');
+
+    $('#namePage').html(name);
+    $('#datatable_example').html('');
+    if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    }
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else { // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+
+            getJavascript(str);
+            sampleTable();
+
+            $('#startdate').datepicker();
+            $('#enddate').datepicker();
+            $('#contentTable').html('');
+            $('#deleteAll').hide();
+            $('#edit').hide();
+            $('#cancel').hide();
+
+
+        }
+    }
+    xmlhttp.open("GET", "component/content/index2.php?content=" + str, true);
+    xmlhttp.send();
+
+    return true;
+
+}
+
+function showProfile(str, name) {
 //alert(str);
 //alert(name);
     $('#namePage').html(name);
@@ -168,6 +333,10 @@ function showMenu(str, name) {
             $('#deleteAll').hide();
             $('#edit').hide();
             $('#cancel').hide();
+            $('#create').hide();
+
+
+            return false;
 
 
         }
@@ -175,7 +344,7 @@ function showMenu(str, name) {
     xmlhttp.open("GET", "component/content/index2.php?content=" + str, true);
     xmlhttp.send();
 
-
+    return false;
 
 }
 
@@ -242,6 +411,8 @@ function showCreate(str, action) {
 
 
             getJavascript(str);
+            $('#export-pdf').hide();
+            $('#export-excel').hide();
             $('#deleteAll').hide();
             $('#create').hide();
             $('#edit').hide();
@@ -287,6 +458,7 @@ function getJavascript(str) {
 //	alert("tes");
         $.getScript("js/js.js", function () {
         });
+
     } else {
         $.getScript("component/" + str + "/" + str + ".js", function () {
         });
@@ -294,6 +466,7 @@ function getJavascript(str) {
         $.getScript("js/js.js", function () {
         });
     }
+
 
     //  $.getScript("js/scripts.js", function () {});
     //   App.init();
@@ -304,6 +477,7 @@ function getJavascript(str) {
 
 
 function viewEdit(str, id, action) {
+    //  $('.btn').tooltip('disable');
 //alert(str);
 //var id = $('#id').val();
 //alert(id);
@@ -328,11 +502,15 @@ function viewEdit(str, id, action) {
             $('#create').hide();
             $('#contentTable').html('');
             if (action == 'view') {
+                $('#export-pdf').hide();
+                $('#export-excel').hide();
                 $('#edit').show();
                 $('#cancel').show();
                 $('#searchSpan').hide();
                 $('#searchButton').hide();
             } else if (action == 'edit') {
+                $('#export-pdf').hide();
+                $('#export-excel').hide();
                 $('#edit').hide();
                 $('#cancel').hide();
                 $('#searchSpan').hide();
@@ -706,7 +884,7 @@ function formatDiscount() {
 }
 
 function validationRequired() {
-var lengthfield = $("[name^=truetitles]").length;
+    var lengthfield = $("[name^=truetitles]").length;
     var required = "";
     for (i = 0; i < lengthfield; i++) {
         var input = $('span[name^=namens]').map(function (idx, elem) {
@@ -727,88 +905,88 @@ var lengthfield = $("[name^=truetitles]").length;
             $('#' + input).html('<label for="cname2" generated="true" class="error" style="display: block;">This field is required.</label>');
             required = "nulls";
         }
-        
+
     }
     return required;
 }
 
 function beforeSave(action) {
-var lengthfield = $("[name^=truetitles]").length;
-var lengthfieldfalse = $("[name^=falsetitles]").length;
-var lengths = parseFloat(lengthfield) + parseFloat(lengthfieldfalse);
-var coma = '';
+    var lengthfield = $("[name^=truetitles]").length;
+    var lengthfieldfalse = $("[name^=falsetitles]").length;
+    var lengths = parseFloat(lengthfield) + parseFloat(lengthfieldfalse);
+    var coma = '';
 
-var sendingedit = '&data={"item":[';
-var sending = '&data={"item":[';
-var values = '';
-    if(lengthfield == 0){
+    var sendingedit = '&data={"item":[';
+    var sending = '&data={"item":[';
+    var values = '';
+    if (lengthfield == 0) {
         sending += "";
     } else {
-    for (i = 0; i < lengthfield; i++) {
-      var jum = parseFloat(i) + 1;
-        var inputval = $('[name^=truetitles]').map(function (idx, elem) {
+        for (i = 0; i < lengthfield; i++) {
+            var jum = parseFloat(i) + 1;
+            var inputval = $('[name^=truetitles]').map(function (idx, elem) {
 
-            return $(elem).val();
-        }).get(i);
-        var inputid = $('[name^=truetitles]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get(i);
+            var inputid = $('[name^=truetitles]').map(function (idx, elem) {
 
-            return $(elem).attr("id");
-        }).get(i);
-        //  alert(inputval);
-        
-        if (jum == lengthfield) {
-            coma = '';
-            if(lengthfieldfalse != 0){
-                coma = ',';
-            } else {
+                return $(elem).attr("id");
+            }).get(i);
+            //  alert(inputval);
+
+            if (jum == lengthfield) {
                 coma = '';
+                if (lengthfieldfalse != 0) {
+                    coma = ',';
+                } else {
+                    coma = '';
+                }
+            } else {
+                coma = ',';
             }
-        } else {
-            coma = ',';
+
+            sending += '{"code":"' + inputid + '"}' + coma;
+            values += '{"values":"' + inputval + '"}' + coma;
+            sendingedit += '{"code":"' + inputid + '","values":"' + inputval + '"}' + coma;
+
+
         }
-        
-        sending += '{"code":"'+inputid+'"}'+coma;
-         values += '{"values":"'+inputval+'"}'+coma;
-         sendingedit += '{"code":"'+inputid+'","values":"'+inputval+'"}'+coma;
-       
-        
+
     }
-    
-    }
-    if( lengthfieldfalse == 0){
-       // sending += "";
+    if (lengthfieldfalse == 0) {
+        // sending += "";
     } else {
         for (i = 0; i < lengthfield; i++) {
-      
-        var inputval = $('[name^=falsetitles]').map(function (idx, elem) {
 
-            return $(elem).val();
-        }).get(i);
-        var inputid = $('[name^=falsetitles]').map(function (idx, elem) {
+            var inputval = $('[name^=falsetitles]').map(function (idx, elem) {
 
-            return $(elem).attr("id");
-        }).get(i);
-        //  alert(inputval);
-        
-         if (jum == lengthfield) {
-            coma = '';
-           
-        } else {
-            coma = ',';
+                return $(elem).val();
+            }).get(i);
+            var inputid = $('[name^=falsetitles]').map(function (idx, elem) {
+
+                return $(elem).attr("id");
+            }).get(i);
+            //  alert(inputval);
+
+            if (jum == lengthfield) {
+                coma = '';
+
+            } else {
+                coma = ',';
+            }
+            sending += '{"code":"' + inputid + '"}' + coma;
+            values += '{"values":"' + inputval + '"}' + coma;
+            sendingedit += '{"code":"' + inputid + '","values":"' + inputval + '"}' + coma;
+
+            //   sending += '{"value":"'+inputval+'"}'+coma;
+
+
+
         }
-        sending += '{"code":"'+inputid+'"}'+coma;
-        values += '{"values":"'+inputval+'"}'+coma;
-        sendingedit += '{"code":"'+inputid+'","values":"'+inputval+'"}'+coma;
-        
-     //   sending += '{"value":"'+inputval+'"}'+coma;
-
-       
-        
-    }
     }
     sending += "]}";
-    sending += '&values={"valuesit":['+values+']}';
-    
+    sending += '&values={"valuesit":[' + values + ']}';
+
     sendingedit += "]}";
 
 //Versi Biasa
@@ -856,46 +1034,46 @@ var values = '';
 //        
 //    }
 //    }
-if(action == 'update'){
-    return sendingedit;
-} else {
-    return sending;
+    if (action == 'update') {
+        return sendingedit;
+    } else {
+        return sending;
+    }
 }
-}
-function prosesSave(str, action,sending){
+function prosesSave(str, action, sending) {
     // DEFAULT SAVE or EDIT-- >
-        if (action == 'update') {
-            var id = $('#idUp').val();
-        }
+    if (action == 'update') {
+        var id = $('#idUp').val();
+    }
 
-        if (str == "") {
-            document.getElementById("txtHint").innerHTML = "";
-            return;
+    if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    }
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else { // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+            sampleTable();
+            $('#deleteAll').hide();
+            $('#edit').hide();
+            //  $('#create').hide();
         }
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else { // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function () {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
-                sampleTable();
-                $('#deleteAll').hide();
-                $('#edit').hide();
-                //  $('#create').hide();
-            }
-        }
-        if (action == 'save') {
-            xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action+sending, true);
-        } else {
-            xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + "&id=" + id + sending, true);
-        }
+    }
+    if (action == 'save') {
+        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + sending, true);
+    } else {
+        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + "&id=" + id + sending, true);
+    }
 
-        xmlhttp.send();
+    xmlhttp.send();
 
-    
+
 }
 
 

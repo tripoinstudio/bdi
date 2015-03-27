@@ -1,4 +1,4 @@
-<form>
+<form class="row-fluid" action="#">
     <?php
     if ($_SESSION['backend'] == 1) {
         if ($action == 'new') {
