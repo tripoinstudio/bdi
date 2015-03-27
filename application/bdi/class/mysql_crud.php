@@ -5,7 +5,7 @@ class Database{
 //	private $db_host = "192.168.254.106";  // Change as required
     public $db_host = "localhost";
 	public $db_user = "root";  // Change as required
-	public $db_pass = "fandrianah";  // Change as required
+	public $db_pass = "root";  // Change as required
 	public $db_name = "db_bdi";	// Change as required
 	
 	/*
