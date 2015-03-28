@@ -1,5 +1,5 @@
 $(function () {
-    //   alert("ipconfig");
+    //  alert("ipconfig");
     var ipconfig = $('#ipConfig').val();
 
     var str = queryString('content', ipconfig);
