@@ -1,6 +1,9 @@
-<?= inputGeneral($query1['tb_country_code'], 'Kode Country', 'code', 'true', $_GET['action']); ?>
-<!-- place holder, Label, idfield,  -->
-<?= inputGeneral($query1['tb_country_name'], 'Nama Country', 'name', 'true', $_GET['action']); ?>
+<?= inputLovEdit('tb_country_id', 'tb_country_name',$query1['tb_country_id'], 'Pilih Negara','country','true', $_GET['action'], 'false', ''); ?>
+<?= inputLovEdit('tb_province_id', 'tb_province_name',$query1['tb_province_id'], 'Pilih Province','province','true', $_GET['action'], 'false', ''); ?>
+
+<?= inputGeneral($query1['tb_city_name'], 'Nama City', 'name', 'true', $_GET['action']); ?>
+<?= inputGeneral($query1['tb_city_remarks'], 'Description', 'remarks', 'true', $_GET['action']); ?>
+
 
 <input type="hidden" id="idUp" value="<?= $_GET['id']; ?>" />
 

@@ -17,7 +17,7 @@ if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
     } else if ($_GET['action'] == 'update') {
         $id = $_GET['id'];
         
-        $db->sql("UPDATE `tb_province` SET ".$datas." `tb_country_id`=".$countryid." WHERE `tb_province` =".$id.";");
+        $db->sql("UPDATE `tb_province` SET ".$datas.",`tb_country_id`=".$countryid." WHERE `tb_province_id` =".$id.";");
    //     $db->update('tb_country', array('tb_country_name' => "" . $name . "", 'tb_country_code' => "" . $code . ""), 'tb_country_id=' . $id . ''); // Table name, column names and values, WHERE conditions
         $res = $db->getResult();
 //	$query1=mysql_query("update tb_".$cekMenu['menu_function_link']." set tb_warehouse_name='$name', tb_warehouse_code='$code' where tb_warehouse_id='$id'");

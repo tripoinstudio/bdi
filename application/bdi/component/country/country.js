@@ -20,7 +20,7 @@ function saveUser(str, action) {
     if (required == "nulls") {
 
     } else {
-        prosesSave(str, action, sending);
+        prosesSave(str, action, sending,'');
     }
 
 }

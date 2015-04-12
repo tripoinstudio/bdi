@@ -10,7 +10,7 @@ if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
     $db->connect();
 
     if ($_GET['action'] == 'save') {
-        $db->sql("INSERT INTO `tb_country` (".$datas.",`status`)VALUES (".$values.",'1');");
+        $db->sql("INSERT INTO `tb_country` (".$datas.")VALUES (".$values.");");
 
                 $res = $db->getResult();
     } else if ($_GET['action'] == 'update') {

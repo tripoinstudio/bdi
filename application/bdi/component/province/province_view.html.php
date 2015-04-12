@@ -1,6 +1,3 @@
-<?= inputGeneral($query1['user_username'], 'Kode User', 'user', 'Some hint here', $_GET['action']); ?>
-
-<?= inputPassword($query1['user_password'], 'Password', 'password', 'Some hint here', $_GET['action']); ?>
-<?= inputGeneral($query1['user_fullname'], 'Nama User', 'name', 'Some hint here', $_GET['action']); ?>
-
- <?= inputLov('Group', 'lovgroup', 'lovgroups', 'group', $_GET['action'],'idLovgroup', $query1['tb_group_id']); ?>
+<?= inputGeneralViewLov($query1['tb_country_id'], 'Pilih Negara', 'country', 'true', $_GET['action']); ?>
+<?= inputGeneralView($query1['tb_province_name'], 'Province Name', 'name', 'true', $_GET['action']); ?>
+<?= inputGeneralView($query1['tb_province_remarks'], 'Description', 'remarks', 'true', $_GET['action']); ?>

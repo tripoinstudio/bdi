@@ -30,9 +30,9 @@
             foreach ($list_query as $array_list_query) {
             //	$array_num_query=mysql_num_rows($list_query);
                 ?>
-                <tr class="odd gradeX">
+                <tr class="odd gradeX"  id="tr<?=$no;?>" onclick="checkedList('<?= $array_list_query['tb_province_id']; ?>','<?= $no; ?>');">
                     <td style="text-align:center;">
-                        <input type="hidden" id="idItem<?= $no; ?>" value="<?=$array_list_query['tb_provinsi_id'];?>"/><input type="checkbox" class="checkboxes" onchange="checkedList('<?= $array_list_query['tb_provinsi_id']; ?>','<?= $no; ?>');" id="checkboxes<?= $no; ?>" value="0" />
+                        <input type="hidden" id="idItem<?= $no; ?>" value="<?=$array_list_query['tb_province_id'];?>"/><input type="checkbox" class="checkboxes" onchange="checkedList('<?= $array_list_query['tb_province_id']; ?>','<?= $no; ?>');"  id="checkboxes<?= $no; ?>" value="0" />
                     <td style="text-align:center;"><?= $no; ?></td>
                     <td><?= $array_list_query['tb_province_code']; ?></td>
                     <td><?= $array_list_query['tb_province_name']; ?></td>
@@ -48,5 +48,8 @@
     </table>
 
 <?php } ?>
+
 <input type="hidden" id="checkDelete" value="0"/>
 <input type="hidden" id="jumDel" value="0" />
+<input type="hidden" id="firstRowField" value="0" />
+<input type="hidden" id="jumlahlist" value="<?=count($list_query);?>" />

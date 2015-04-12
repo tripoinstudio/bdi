@@ -90,5 +90,6 @@ $message = '<label for="cname2" generated="true" class="error" style="display: b
             </form>
         </div>
     </div>
+</div>
 
     <script language="javascript" type="text/javascript" src="component/login/login.js"></script> 

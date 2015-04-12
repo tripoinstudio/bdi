@@ -1,5 +1,7 @@
 <?php
 
+require_once("component/lov.php");
+
 function inputDatePicker($placeholder, $title, $idinput, $keterangan, $action, $style) {
     if ($action == 'new') {
         /*     <div class="">
@@ -52,20 +54,12 @@ function inputGeneralView($placeholder, $title, $idinput, $keterangan, $action, 
              </div>';
 }
 
-
-
 function inputGeneral($placeholder, $title, $idinput, $keterangan, $action, $style) {
     if ($action == 'new') {
-        /*     <div class="">
-          <label class="control-label span3">Kode User<span class="help-block">Type your kode here</span> </label>
-          <div class="controls span9">
-          <input type="text" class="span12" required="" name="code" id="code">
-          </div>
-          </div> */
         echo '<div class="form-row control-group row-fluid">
              <label class="control-label span3">' . $title . ' <span class="help-block">Type your ' . $idinput . ' here</span></label>
              <div class="controls span9">
-             <input type="text" style="' . $style . '"  id="' . $idinput . '" name="'.$keterangan.'titles[]" placeholder="' . $placeholder . '" class="span12" />
+             <input type="text" style="' . $style . '"  id="' . $idinput . '" name="' . $keterangan . 'titles[]" placeholder="' . $placeholder . '" class="span12" />
              <span class="help-inline" name="namens[]" id="' . $idinput . 'ns">
                  
              
@@ -77,10 +71,10 @@ function inputGeneral($placeholder, $title, $idinput, $keterangan, $action, $sty
              <label class="control-label span3">' . $title . ' <span class="help-block">Type your ' . $idinput . ' here</span></label>
              <div class="controls span9">';
         if ($action == 'edit') {
-            
-            echo'<input type="text"  name="'.$keterangan.'titles[]" id="' . $idinput . '"  style="' . $style . '"  value="' . $placeholder . '" class="span12" />';
+
+            echo'<input type="text"  name="' . $keterangan . 'titles[]" id="' . $idinput . '"  style="' . $style . '"  value="' . $placeholder . '" class="span12" />';
         } else if ($action == 'view') {
-            echo'<input type="text"  name="'.$keterangan.'titles[]" id="' . $idinput . '"  style="' . $style . '"  value="' . $placeholder . '" class="span12" disabled/>';
+            echo'<input type="text"  name="' . $keterangan . 'titles[]" id="' . $idinput . '"  style="' . $style . '"  value="' . $placeholder . '" class="span12" disabled/>';
         }
         echo'<span class="help-inline" name="namens[]" id="' . $idinput . 'ns">
                  
@@ -103,7 +97,7 @@ function inputPassword($placeholder, $title, $idinput, $keterangan, $action, $st
         echo '<div class="form-row control-group row-fluid">
              <label class="control-label span3">' . $title . ' <span class="help-block">Type your ' . $idinput . ' here</span></label>
              <div class="controls span9">
-            <input type="password" style="' . $style . '"  id="' . $idinput . '" name="'.$keterangan.'titles[]" placeholder="' . $placeholder . '" class="span12" />
+            <input type="password" style="' . $style . '"  id="' . $idinput . '" name="' . $keterangan . 'titles[]" placeholder="' . $placeholder . '" class="span12" />
              <span class="help-inline" name="namens[]" id="' . $idinput . 'ns">
                  
              
@@ -133,7 +127,7 @@ function inputTextArea($placeholder, $title, $idinput, $keterangan, $action, $st
         echo '<div class="form-row control-group row-fluid">
              <label class="control-label span3">' . $title . ' <span class="help-block">Type your ' . $idinput . ' here</span></label>
              <div class="controls span9">
-             <textarea  style="' . $style . '" name="'.$keterangan.'titles[]"  id="' . $idinput . '" placeholder="' . $placeholder . '" class="span12" ></textarea>
+             <textarea  style="' . $style . '" name="' . $keterangan . 'titles[]"  id="' . $idinput . '" placeholder="' . $placeholder . '" class="span12" ></textarea>
              <span class="help-inline" name="namens[]" id="' . $idinput . 'ns"></span>
              </div>
              </div>';
@@ -142,9 +136,9 @@ function inputTextArea($placeholder, $title, $idinput, $keterangan, $action, $st
              <label class="control-label span3">' . $title . ' <span class="help-block">Type your ' . $idinput . ' here</span></label>
              <div class="controls span9">';
         if ($action == 'edit') {
-            echo'<textarea type="text" id="' . $idinput . '" name="'.$keterangan.'titles[]"   style="' . $style . '"  value="' . $placeholder . '" class="span12" />';
+            echo'<textarea type="text" id="' . $idinput . '" name="' . $keterangan . 'titles[]"   style="' . $style . '"  value="' . $placeholder . '" class="span12" />';
         } else if ($action == 'view') {
-            echo'<textarea type="text" id="' . $idinput . '" name="'.$keterangan.'titles[]"  style="' . $style . '"  value="' . $placeholder . '" class="span12" disabled/>';
+            echo'<textarea type="text" id="' . $idinput . '" name="' . $keterangan . 'titles[]"  style="' . $style . '"  value="' . $placeholder . '" class="span12" disabled/>';
         }
         echo'<span class="help-inline" name="namens[]" id="' . $idinput . 'ns"></span>
              </div>
@@ -157,7 +151,10 @@ function inputLov($title, $idDiv, $idinput, $valueinput, $action, $idLov, $value
         echo '<div class="form-row control-group row-fluid">
              <label class="control-label span3">' . $title . ' <span class="help-block">Type your ' . $idinput . ' here</span></label>
              <div class="controls span9">
-                                        <div id="' . $idDiv . '"></div>
+                                        <div id="' . $idDiv . '">
+                                            
+</div>
+                                            
 										<input type="hidden" value="' . $valueinput . '" id="' . $idinput . '" />
                                     </div>
                                 </div>';
@@ -173,7 +170,6 @@ function inputLov($title, $idDiv, $idinput, $valueinput, $action, $idLov, $value
                                 </div>';
     }
 }
-
 
 function contentSearch($table, $title, $id) {
     $dblist = new Database();
