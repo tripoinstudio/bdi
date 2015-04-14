@@ -62,7 +62,6 @@ function sampleTable() {
         "sPaginationType": "full_numbers",
         "bJQueryUI": false,
         "aoColumns": dontSort,
-        
     });
     $.extend($.fn.dataTableExt.oStdClasses, {
         "s`": "dataTables_wrapper form-inline"
@@ -427,30 +426,30 @@ function showCreate(str, action) {
 
 
 }
-function lovNew(str, action, lovnya,ket) {
+function lovNew(str, action, lovnya, ket) {
 //alert(lovnya);
     var lov = $('#lov' + lovnya + 's').val();
-    selectLov(str, action, lov,ket);
+    selectLov(str, action, lov, ket);
 
 }
 
 
 
-function lovEdit(str, action, lovnya,ket) {
+function lovEdit(str, action, lovnya, ket) {
     var idLov = $('#idLov' + lovnya).val();
     var lov = $('#lov' + lovnya + 's').val();
 
-    selectLovView(str, action, lov, idLov,ket);
+    selectLovView(str, action, lov, idLov, ket);
 
 
 }
 
-function lovNewManual(str, action, lovnya,parameter,keterangan) {
+function lovNewManual(str, action, lovnya, parameter, keterangan) {
     var lov = $('#lov' + lovnya + 's').val();
-$.ajax({
+    $.ajax({
         type: 'get',
         url: 'action.php',
-        data: 'content=' + str + '&action=' + action + '&lov=' + lov+ '&manual=true&parameter=' + parameter,
+        data: 'content=' + str + '&action=' + action + '&lov=' + lov + '&manual=true&parameter=' + parameter,
         success: function (result) {
 
             $('#lov' + lov).html(result);
@@ -459,14 +458,14 @@ $.ajax({
     });
 }
 
-function lovEditManual(str, action, lovnya,parameter,keterangan) {
+function lovEditManual(str, action, lovnya, parameter, keterangan) {
     var idLov = $('#idLov' + lovnya).val();
     var lov = $('#lov' + lovnya + 's').val();
 
     $.ajax({
         type: 'get',
         url: 'action.php',
-        data: 'content=' + str + '&action=' + action + '&lov=' + lov + '&idLov=' + idLov+ '&keterangan=' + keterangan+ '&manual=true&parameter=' + parameter,
+        data: 'content=' + str + '&action=' + action + '&lov=' + lov + '&idLov=' + idLov + '&keterangan=' + keterangan + '&manual=true&parameter=' + parameter,
         success: function (result) {
 
             $('#lov' + lov).html(result);
@@ -735,11 +734,11 @@ function moneyFormat(number) {
     return newPrice;
 }
 
-function selectLovView(str, action, lov, idLov,keterangan) {
+function selectLovView(str, action, lov, idLov, keterangan) {
     $.ajax({
         type: 'get',
         url: 'action.php',
-        data: 'content=' + str + '&action=' + action + '&lov=' + lov + '&idLov=' + idLov+ '&keterangan=' + keterangan,
+        data: 'content=' + str + '&action=' + action + '&lov=' + lov + '&idLov=' + idLov + '&keterangan=' + keterangan,
         success: function (result) {
             $('#lov' + lov).html(result);
         }
@@ -748,11 +747,11 @@ function selectLovView(str, action, lov, idLov,keterangan) {
 
 
 
-function selectLov(str, action, lov,keterangan) {
+function selectLov(str, action, lov, keterangan) {
     $.ajax({
         type: 'get',
         url: 'action.php',
-        data: 'content=' + str + '&action=' + action + '&lov=' + lov+ '&keterangan=' + keterangan,
+        data: 'content=' + str + '&action=' + action + '&lov=' + lov + '&keterangan=' + keterangan,
         success: function (result) {
             /*	var frma;
              frma	= '<select name="lov" id="lov" class="input-medium m-wrap">';
@@ -1069,7 +1068,7 @@ function beforeSave(action) {
         return sending;
     }
 }
-function prosesSave(str, action, sending,manual) {
+function prosesSave(str, action, sending, manual) {
     // DEFAULT SAVE or EDIT-- >
     if (action == 'update') {
         var id = $('#idUp').val();
@@ -1095,9 +1094,9 @@ function prosesSave(str, action, sending,manual) {
         }
     }
     if (action == 'save') {
-        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + sending+manual, true);
+        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + sending + manual, true);
     } else {
-        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + "&id=" + id + sending+manual, true);
+        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + "&id=" + id + sending + manual, true);
     }
 
     xmlhttp.send();
@@ -1106,37 +1105,37 @@ function prosesSave(str, action, sending,manual) {
 }
 
 
-function exportPdf(type,filename,parameter) {
+function exportPdf(type, filename, parameter) {
     var exports = type;
     var file = filename;
     var jumlahlist = $("#jumlahlist").val();
     var searchtype = $("#searchtype").val();
     var searchfield = $("#searchfield").val();
-/*
-    var item = '{"item":[';
-    for (i = 0; i < jumlahlist; i++) {
-        var no = i + 1;
-        var coma;
-        
-        var code = $("#country_code" + no).val();
-        var name = $("#country_name" + no).val();
-        
-        if(no == jumlahlist){
-            coma = '';
-        } else {
-            coma = ',';
-        }
-        
-        item = item + '{';
-        item = item + '"code":"'+code + '",';
-        item = item + '"name":"'+name + '"';
-        item = item + '}'+coma;
+    /*
+     var item = '{"item":[';
+     for (i = 0; i < jumlahlist; i++) {
+     var no = i + 1;
+     var coma;
+     
+     var code = $("#country_code" + no).val();
+     var name = $("#country_name" + no).val();
+     
+     if(no == jumlahlist){
+     coma = '';
+     } else {
+     coma = ',';
+     }
+     
+     item = item + '{';
+     item = item + '"code":"'+code + '",';
+     item = item + '"name":"'+name + '"';
+     item = item + '}'+coma;
+     
+     }
+     item = item + ']}';
+     */
 
-    }
-    item = item + ']}';
-*/
-
-    var newURL = 'export.php?export=' + exports + '&file=' + file+parameter;
+    var newURL = 'export.php?export=' + exports + '&file=' + file + parameter;
     newwindow = window.open(newURL);
     if (window.focus) {
         newwindow.focus();
@@ -1148,14 +1147,14 @@ function exportPdf(type,filename,parameter) {
 
 }
 
-function exportExcel(type,filename,parameter) {
+function exportExcel(type, filename, parameter) {
     var exports = type;
     var file = filename;
-     var jumlahlist = $("#jumlahlist").val();
+    var jumlahlist = $("#jumlahlist").val();
     var searchtype = $("#searchtype").val();
     var searchfield = $("#searchfield").val();
 
-        var newURL = 'export.php?export=' + exports + '&file=' + file+parameter;
+    var newURL = 'export.php?export=' + exports + '&file=' + file + parameter;
 
     newwindow = window.open(newURL);
     if (window.focus) {
@@ -1164,4 +1163,17 @@ function exportExcel(type,filename,parameter) {
 
     return false;
 
+}
+
+function hideAtNew(str) {
+    
+    getJavascript(str);
+    $('#export-pdf').hide();
+    $('#export-excel').hide();
+    $('#deleteAll').hide();
+    $('#create').hide();
+    $('#edit').hide();
+    $('#cancel').hide();
+    $('#searchSpan').hide();
+    $('#searchButton').hide();
 }

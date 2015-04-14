@@ -20,8 +20,9 @@
                     <!--<input type="checkbox" id="checkedAll" class="group-checkable" onchange="checkedAll('<?= $length_list; ?>');" />-->
                 </th>
                 <th style="width:5%;text-align:center;">No</th>
-                <th style="width:20%;" class="hidden-phone" >Code</th>
                 <th style="width:20%;" class="hidden-phone">Name</th>
+                <th style="width:20%;" class="hidden-phone">Sentra</th>
+                <th style="width:20%;" class="hidden-phone">Cetya</th>
                 <th style="width:20%;" class="hidden-phone">Action</th>
             </tr>
         </thead>
@@ -37,10 +38,17 @@
                     <td style="text-align:center;"><?= $no; ?></td>
                     
                     <td>
-                        <?= $array_list_query['tb_dharmasala_code']; ?>
+                        <?= $array_list_query['tb_dharmasala_name']; ?>
                     </td>
                     <td>
-                        <?= $array_list_query['tb_dharmasala_name']; ?>
+                        <?php 
+                        $provinceid = idListViewManual('SELECT s.tb_sentra_province_id FROM tb_cetya p JOIN tb_sentra s ON p.tb_cetya_sentra_id = s.tb_sentra_id where p.tb_cetya_id ='.$array_list_query['tb_dharmasala_cetya_id'], "tb_sentra_province_id");
+                        echo idListViewManual('select * from tb_province where tb_province_id='.$provinceid, "tb_province_name"); 
+                        
+                        ?>
+                    </td>
+                    <td>
+                        <?= idListView($array_list_query['tb_dharmasala_cetya_id'], "cetya"); ?>
                     </td>
                     
                     

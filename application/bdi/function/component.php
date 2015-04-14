@@ -1,6 +1,7 @@
 <?php
 
 require_once("component/lov.php");
+require_once("component/component_template.php");
 
 function inputDatePicker($placeholder, $title, $idinput, $keterangan, $action, $style) {
     if ($action == 'new') {

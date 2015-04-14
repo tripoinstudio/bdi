@@ -1,5 +1,5 @@
 <? // inputLov('Pilih Negara', 'lovcountry', 'lovcountrys','country', $_GET['action'], '', ''); ?>
-<?= inputLovNew('tb_country_id', 'tb_country_name','', 'Pilih Negara','country','true', $_GET['action'], 'false', ''); ?>
+<?= inputLovNew('tb_country_id', 'tb_country_name','', 'Pilih Negara','country','true', $_GET['action'], 'false', '',''); ?>
 <?= inputGeneral('....', 'Nama Provinsi', 'name', 'true', $_GET['action']); ?>
 
 <?= inputTextArea('....', 'Description', 'remarks', 'true', $_GET['action']); ?>

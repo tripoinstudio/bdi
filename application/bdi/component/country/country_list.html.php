@@ -20,7 +20,6 @@
                     <!--<input type="checkbox" id="checkedAll" class="group-checkable" onchange="checkedAll('<?= $length_list; ?>');" />-->
                 </th>
                 <th style="width:5%;text-align:center;">No</th>
-                <th style="width:20%;" class="hidden-phone" >Code</th>
                 <th style="width:20%;" class="hidden-phone">Name</th>
                 <th style="width:20%;" class="hidden-phone">Action</th>
             </tr>
@@ -35,10 +34,6 @@
                     <td style="text-align:center;">
                         <input type="hidden" id="idItem<?= $no; ?>" value="<?=$array_list_query['tb_country_id'];?>"/><input type="checkbox" class="checkboxes" onchange="checkedList('<?= $array_list_query['tb_country_id']; ?>','<?= $no; ?>');" id="checkboxes<?= $no; ?>" value="0" />
                     <td style="text-align:center;"><?= $no; ?></td>
-                    
-                    <td>
-                        <?= $array_list_query['tb_country_code']; ?>
-                    </td>
                     <td>
                         <?= $array_list_query['tb_country_name']; ?>
                     </td>

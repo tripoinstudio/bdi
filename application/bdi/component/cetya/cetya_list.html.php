@@ -20,8 +20,8 @@
                     <!--<input type="checkbox" id="checkedAll" class="group-checkable" onchange="checkedAll('<?= $length_list; ?>');" />-->
                 </th>
                 <th style="width:5%;text-align:center;">No</th>
-                <th style="width:20%;" class="hidden-phone" >Code</th>
                 <th style="width:20%;" class="hidden-phone">Name</th>
+                                <th style="width:20%;" class="hidden-phone">Province</th>
                 <th style="width:20%;" class="hidden-phone">Action</th>
             </tr>
         </thead>
@@ -37,10 +37,10 @@
                     <td style="text-align:center;"><?= $no; ?></td>
                     
                     <td>
-                        <?= $array_list_query['tb_cetya_code']; ?>
+                        <?= $array_list_query['tb_cetya_name']; ?>
                     </td>
                     <td>
-                        <?= $array_list_query['tb_cetya_name']; ?>
+                        <?= idListViewManual('SELECT s.tb_sentra_id, p.tb_province_code, p.tb_province_name tb_sentra_name FROM tb_province p JOIN tb_sentra s ON p.tb_province_id = s.tb_sentra_province_id WHERE s.tb_sentra_id ='.$array_list_query['tb_cetya_sentra_id'], "tb_sentra_name"); ?>
                     </td>
                     
                     

@@ -1,6 +1,5 @@
-
-<?= inputLov('Pilih Daerah', 'lovsentra', 'lovsentras', 'sentra', $_GET['action'], '', ''); ?>
-<?= inputLov('Pilih Cetya', 'lovcetya', 'lovcetyas', 'cetya', $_GET['action'], '', ''); ?>
+<?= inputLovNew('tb_sentra_id', 'tb_sentra_name','', 'Pilih Daerah','sentra','true', $_GET['action'], 'true', '','select s.tb_sentra_id, p.tb_province_code, p.tb_province_name tb_sentra_name from tb_province p join tb_sentra s on p.tb_province_id = s.tb_sentra_province_id','onchange="setCetya();"'); ?>
+<?= inputLovNew('tb_cetya_id', 'tb_cetya_name','', 'Pilih Cetya','cetya','true', $_GET['action'], 'true', '','select * from tb_cetya where tb_cetya_sentra_id='.$_GET['idlov']) ?>
 
 <?= inputGeneral('....', 'Nama Dharmasala', 'name', 'true', $_GET['action']); ?>
 <!-- place holder, Label, idfield,  -->

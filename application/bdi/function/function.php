@@ -78,12 +78,7 @@ function getDATA($url) {
     return $hasil;
 }
 
-function idListView($id, $name) {
-    $lovquery = mysql_query("select * from tb_" . $name . " where tb_" . $name . "_id=" . $id);
-    $lov = mysql_fetch_array($lovquery);
-    $result = $lov['tb_' . $name . '_name'];
-    return $result;
-}
+
 
 function statusNew() {
     $result = "'status'=>'1'";

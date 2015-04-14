@@ -1,5 +1,6 @@
+<?= inputLovNew('tb_sentra_id', 'tb_sentra_name','', 'Pilih Daerah','sentra','true', $_GET['action'], 'true', '','select s.tb_sentra_id, p.tb_province_code, p.tb_province_name tb_sentra_name from tb_province p join tb_sentra s on p.tb_province_id = s.tb_sentra_province_id'); 
 
-<?= inputLov('Pilih Daerah', 'lovsentra', 'lovsentras', 'sentra', $_GET['action'], '', ''); ?>
+?>
 <!-- place holder, Label, idfield,  -->
 <?= inputGeneral('....', 'Nama Cetya', 'name', 'true', $_GET['action']); ?>
 <?= inputTextArea('....', 'Deskripsi', 'remarks', 'true', $_GET['action']); ?>

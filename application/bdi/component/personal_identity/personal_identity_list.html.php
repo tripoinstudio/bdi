@@ -12,7 +12,7 @@
 <?php } ?>								
 <br />
 
-<?php if ($_GET['content'] == 'city') { ?>
+<?php if ($_GET['content'] == 'personal_identity') { ?>
     <table id="datatable_example" class="responsive table table-striped table-bordered" style="width:100%;margin-bottom:0; ">
         <thead>
             <tr>
