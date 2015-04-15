@@ -965,7 +965,7 @@ function beforeSave(action) {
             if (jum == lengthfield) {
                 coma = '';
                 if (lengthfieldfalse != 0) {
-                    coma = ',';
+                    coma = '';
                 } else {
                     coma = '';
                 }
@@ -1002,9 +1002,9 @@ function beforeSave(action) {
             } else {
                 coma = ',';
             }
-            sending += '{"code":"' + inputid + '"}' + coma;
-            values += '{"values":"' + inputval + '"}' + coma;
-            sendingedit += '{"code":"' + inputid + '","values":"' + inputval + '"}' + coma;
+     //       sending += '{"code":"' + inputid + '"}' + coma;
+      //      values += '{"values":"' + inputval + '"}' + coma;
+      //      sendingedit += '{"code":"' + inputid + '","values":"' + inputval + '"}' + coma;
 
             //   sending += '{"value":"'+inputval+'"}'+coma;
 
@@ -1176,4 +1176,41 @@ function hideAtNew(str) {
     $('#cancel').hide();
     $('#searchSpan').hide();
     $('#searchButton').hide();
+}
+
+function formatDates(){
+    var date = new Date();
+    var months;
+    if(date.getMonth() + 1 >= 0 && date.getMonth() + 1 <= 9){
+        var month2 = date.getMonth() + 1;
+        months = '0'+month2;
+    } else {
+         months = date.getMonth() + 1;
+    }
+    var dates = (months) + '/' + date.getDate() + '/' + date.getFullYear();
+    
+    return dates;
+}
+
+function formatDates2(){
+    var date = new Date();
+    var months;
+    if(date.getMonth() + 1 >= 0 && date.getMonth() + 1 <= 9){
+        var month2 = date.getMonth() + 1;
+        months = '0'+month2;
+    } else {
+         months = date.getMonth() + 1;
+    }
+    var dates = date.getFullYear() + '-' + months + '-' + date.getDate();
+    
+    return dates;
+}
+
+function toInsertDate(date){
+    var month = date.substring(0, 2);
+    var day = date.substring(3,5);
+    var years = date.substring(6,10);
+    var hasil = years+'-'+month+'-'+day;
+    
+    return hasil;
 }

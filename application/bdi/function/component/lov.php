@@ -5,7 +5,7 @@ function inputLovNew($placeholderid, $placeholdername,$placeholder, $title, $idi
     if ($manual == 'true') {
             $manual = $parameter;
         } else {
-            $manual = "select * from tb_" . $idinput;
+            $manual = "select * from tb_" . $idinput." order by ".$placeholdername;
         }
 
         $lovquery = mysql_query($manual);
@@ -30,7 +30,7 @@ function inputLovEdit($placeholderid, $placeholdername,$placeholder, $title, $id
         if ($manual == 'true') {
             $manual = $parameter;
         } else {
-            $manual = "select * from tb_" . $idinput;
+            $manual = "select * from tb_" . $idinput." order by ".$placeholdername;
         }
 
         $lovquery = mysql_query($manual);
@@ -78,6 +78,13 @@ function idListView($id, $name) {
     $lovquery = mysql_query("select * from tb_" . $name . " where tb_" . $name . "_id=" . $id);
     $lov = mysql_fetch_array($lovquery);
     $result = $lov['tb_' . $name . '_name'];
+    return $result;
+}
+
+function idListViewTarget($id, $name,$target) {
+    $lovquery = mysql_query("select * from tb_" . $name . " where tb_" . $name . "_id=" . $id);
+    $lov = mysql_fetch_array($lovquery);
+    $result = $lov[$target];
     return $result;
 }
 

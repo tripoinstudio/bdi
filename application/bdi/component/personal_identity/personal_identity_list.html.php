@@ -21,7 +21,10 @@
                 </th>
                 <th style="width:5%;text-align:center;">No</th>
                 <th style="width:20%;" class="hidden-phone" >Name</th>
-                <th style="width:20%;" class="hidden-phone">Province</th>
+                <th style="width:20%;" class="hidden-phone">NIA</th>
+                <th style="width:20%;" class="hidden-phone">No.HP</th>
+                <th style="width:20%;" class="hidden-phone">Jenis</th>
+                <th style="width:20%;" class="hidden-phone">Kabupaten</th>
                 <th style="width:20%;" class="hidden-phone">Action</th>
             </tr>
         </thead>
@@ -31,17 +34,27 @@
 
             foreach ($list_query as $array_list_query) {
                 ?>
-                <tr class="odd gradeX" id="tr<?= $no; ?>" onclick="checkedList('<?= $array_list_query['tb_country_id']; ?>', '<?= $no; ?>');">
+                <tr class="odd gradeX" id="tr<?= $no; ?>" onclick="checkedList('<?= $array_list_query['tb_personal_identity_id']; ?>', '<?= $no; ?>');">
                     <td style="text-align:center;">
-                        <input type="hidden" id="idItem<?= $no; ?>" value="<?= $array_list_query['tb_country_id']; ?>"/><input type="checkbox" class="checkboxes" onchange="checkedList('<?= $array_list_query['tb_country_id']; ?>', '<?= $no; ?>');" id="checkboxes<?= $no; ?>" value="0" />
+                        <input type="hidden" id="idItem<?= $no; ?>" value="<?= $array_list_query['tb_personal_identity_id']; ?>"/><input type="checkbox" class="checkboxes" onchange="checkedList('<?= $array_list_query['tb_personal_identity_id']; ?>', '<?= $no; ?>');" id="checkboxes<?= $no; ?>" value="0" />
                     <td style="text-align:center;"><?= $no; ?></td>
 
                     <td>
-                        <?= $array_list_query['tb_city_name']; ?>
+                        <?= $array_list_query['tb_personal_identity_name']; ?>
                     </td>
-                    <td><?= idListView($array_list_query['tb_province_id'], "province"); ?></td>
-
-
+                    <td><?= idListViewTarget($array_list_query['tb_personal_identity_ktp_address'], "address", "tb_address_ktp"); ?></td>
+                    <td><?= idListViewTarget($array_list_query['tb_personal_identity_ktp_address'], "address", "tb_address_mobile_number"); ?></td>
+                    <td>
+                        <?php
+                        if ($array_list_query['tb_personal_identity_gender'] == 1) {
+                            echo 'Laki - Laki';
+                        } else {
+                            echo 'Perempuan';
+                        }
+                        ?>
+                    </td>
+                    <td>
+                    </td>
 
                     <?php include "../../function/actionlist.php"; ?>
                 </tr>
