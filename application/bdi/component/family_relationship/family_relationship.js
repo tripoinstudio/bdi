@@ -13,7 +13,7 @@ $(function () {
 });
 function saveCetya(str, action) {
     var sendings = '';
-    var personal_identity = $('#personal_identity').val();
+    var personal_identity = $('#lovspersonal_identity').val();
     var counter = $('#counter').val();
     sendings = '{"personal_identity":"' + personal_identity + '","item":[';
     for (var s = 0; s < counter; s++) {

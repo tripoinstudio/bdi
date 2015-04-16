@@ -1,4 +1,6 @@
 <?= inputGeneral($query1['tb_personal_identity_name'], 'Nama Sekarang', 'name', 'true', $_GET['action']); ?>
+<input type="hidden"  id="code" name="truetitles[]" value="<?=$query1['tb_personal_identity_code'];?>" class="span4" />
+
 <div class="form-row control-group row-fluid">
     <label class="control-label span3">Jenis Kelamin</label>
     <div class="controls span9">
@@ -64,7 +66,7 @@
         <span class="help-inline" name="namens[]" id="statusns"></span>
     </div>
 </div>
-<?= inputLovNew('tb_country_id', 'tb_country_name', '', 'Kewarganegaraan', 'country', 'true', $_GET['action'], 'false', '', ''); ?>
+<? //= inputLovNew('tb_country_id', 'tb_country_name', '', 'Kewarganegaraan', 'country', 'true', $_GET['action'], 'false', '', ''); ?>
 
 
 <?= inputGeneral($query1['tb_personal_identity_gojukai_date'], 'Tgl Gozukai', 'gojukai_date', 'true', $_GET['action']); ?>

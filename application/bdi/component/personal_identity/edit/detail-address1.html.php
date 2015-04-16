@@ -5,15 +5,19 @@ $dblist->connect();
 $dblist->select('tb_address', '*', NULL, 'tb_address_id=' . $query1['tb_personal_identity_ktp_address']); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
 $list_query = $dblist->getResult();
 ?>
+<input type="hidden" id="adresseditid1" value="<?=$query1['tb_personal_identity_ktp_address'];?>"/>
+
 <?php
 
 $no = 1;
 
 foreach ($list_query as $array_address) {
     ?>
+
 <?= inputGeneral($array_address['tb_address_street'], 'Jalan', 'jalan1', 'false', $_GET['action']); ?>
 <?= inputGeneral($array_address['tb_address_ktp'], 'No', 'no1', 'false', $_GET['action']); ?>
 <?= inputGeneral($array_address['tb_address_district'], 'Kelurahan', 'kelurahan1', 'false', $_GET['action']); ?>
+<?= inputGeneral($array_address['tb_address_sub_district'], 'Kecamatan', 'kecamatan1', 'false', $_GET['action']); ?>
 <?= inputGeneral($array_address['tb_address_mobile_number'], 'Mobile Number', 'mobile1', 'false', $_GET['action']); ?>
 
 <div class="form-row control-group row-fluid">

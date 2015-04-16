@@ -11,7 +11,7 @@ if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
     $db->connect();
 
     if ($_GET['action'] == 'save') {
-        $db->sql("INSERT INTO `tb_sentra` (".$datas.",`tb_sentra_province_id`)VALUES (".$values.",$ritualid);");
+        $db->sql("INSERT INTO `tb_ritual_activity` (".$datas.",`tb_sentra_province_id`)VALUES (".$values.",$ritualid);");
 
                 $res = $db->getResult();
     } else if ($_GET['action'] == 'update') {
@@ -39,7 +39,7 @@ include "../../function/functionaction.php";
 
 $dblist = new Database();
 $dblist->connect();
-$dblist->sql('select s.tb_sentra_id, s.tb_sentra_remarks, p.tb_province_code, p.tb_province_name from  tb_sentra s join tb_province p on s.tb_sentra_province_id = p.tb_province_id'); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+$dblist->sql('select s.tb_ritual_activity_id, s.tb_ritual_activity_dharmasala_id, p.tb_dharmasala_name from tb_ritual_activity s join tb_dharmasala p on s.tb_ritual_activity_dharmasala_id = p.tb_dharmasala_id'); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
 $list_query = $dblist->getResult();
 
 $length_list = count($list_query);

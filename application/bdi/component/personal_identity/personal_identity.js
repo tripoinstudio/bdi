@@ -47,16 +47,18 @@ function saveDataUmat(str, action) {
     var jalan1 = $('#jalan1').val();
     var no1 = $('#no1').val();
     var kelurahan1 = $('#kelurahan1').val();
-    var city1 = $('#city1').val();
-    var province1 = $('#province1').val();
+    var kecamatan1 = $('#kecamatan1').val();
+    var city1 = $('#lovscity1').val();
+    var province1 = $('#lovsprovince1').val();
     var mobile1 = $('#mobile1').val();
 
     //address2
     var jalan2 = $('#jalan2').val();
     var no2 = $('#no2').val();
     var kelurahan2 = $('#kelurahan2').val();
-    var city2 = $('#city2').val();
-    var province2 = $('#province2').val();
+    var kecamatan2 = $('#kecamatan2').val();
+    var city2 = $('#lovscity2').val();
+    var province2 = $('#lovsprovince2').val();
     var mobile2 = $('#mobile2').val();
 
     var shosu_year = $('#nichiren_shosu_year').val();
@@ -68,10 +70,19 @@ function saveDataUmat(str, action) {
     var required = validationRequired();
     var sending = beforeSave(action);
 
-    var parameter = '&gender=' + gender + '&upacarashosu=' + upacarashosu+ '&mrstatus=' + lovsstatus
+    var addresssend = '';
+
+    if (action == 'update') {
+        var adress1 = $('#adresseditid1').val();
+        var adress2 = $('#adresseditid2').val();
+
+        addresssend = '&adress1=' + adress1 + '&adress2=' + adress2;
+    }
+
+    var parameter = addresssend + '&gender=' + gender + '&upacarashosu=' + upacarashosu + '&mrstatus=' + lovsstatus
             + '&shosu_year=' + toInsertDate(shosu_year) + '&birth_date=' + toInsertDate(birth_date) + '&gojukai_date=' + toInsertDate(gojukai_date) + '&gohozon_accept_date=' + toInsertDate(gohozon_accept_date) + '&kankai_date=' + toInsertDate(kankai_date)
-            + '&mobile1=' + mobile1 + '&jalan1=' + jalan1 + '&no1=' + no1 + '&kelurahan1=' + kelurahan1 + '&city1=' + city1 + '&province1=' + province1
-            + '&mobile2=' + mobile2 + '&jalan2=' + jalan2 + '&no2=' + no2 + '&kelurahan2=' + kelurahan2 + '&city2=' + city2 + '&province2=' + province2
+            + '&mobile1=' + mobile1 + '&jalan1=' + jalan1 + '&no1=' + no1 + '&kelurahan1=' + kelurahan1 + '&kecamatan1=' + kecamatan1 + '&city1=' + city1 + '&province1=' + province1
+            + '&mobile2=' + mobile2 + '&jalan2=' + jalan2 + '&no2=' + no2 + '&kelurahan2=' + kelurahan2 + '&kecamatan2=' + kecamatan2 + '&city2=' + city2 + '&province2=' + province2
             ;
 
 //    alert(upacarashosu+gender);
@@ -81,5 +92,44 @@ function saveDataUmat(str, action) {
     } else {
         prosesSave(str, action, sending, parameter);
     }
+
+}
+
+
+function setCodeUmat() {
+    var province1 = $('#lovsprovince1').val();
+    $.ajax({
+        type: 'get',
+        url: 'actions.php',
+        data: 'content=province&action=lovname&id=' + province1,
+        //	dataType	: 'json',
+        success: function (data) {
+            alert(data);
+            var tambah;
+            var tesa = parseInt(data);
+            if (data == '') {
+                tambah = '00001';
+            } else {
+                tambah = parseFloat(tesa) + 1;
+            }
+
+            var code = '';
+            //   alert(tambah.toString());
+            //   alert(tambah.toString().length);
+            if (tambah.toString().length == 1) {
+                code = '0000' + tambah;
+            } else if (tambah.toString().length == 2) {
+                code = '000' + tambah;
+            } else if (tambah.toString().length == 3) {
+                code = '00' + tambah;
+            } else if (tambah.toString().length == 4) {
+                code = '0' + tambah;
+            } else {
+                code = tambah;
+            }
+            $('#code').val(code);
+        }
+
+    });
 
 }

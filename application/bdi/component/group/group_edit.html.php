@@ -10,12 +10,12 @@
             <th rowspan="2" style="width:30%;text-align:center;vertical-align: middle;" class="hidden-phone">Status</th>
             <!--<th  colspan="4"  style="width:30%;text-align:center;vertical-align: middle;" class="hidden-phone">Action</th>-->
         </tr>
-<!--        <tr>
+        <tr>
             <th style="width:5%;text-align:center;vertical-align: middle;" class="hidden-phone">View</th>
             <th style="width:5%;text-align:center;vertical-align: middle;" class="hidden-phone">Create</th>
             <th style="width:5%;text-align:center;vertical-align: middle;" class="hidden-phone">Edit</th>
             <th style="width:5%;text-align:center;vertical-align: middle;" class="hidden-phone">Delete</th>
-        </tr>-->
+        </tr>
     </thead>
 </table>
 <div class="table" style="height:300px;border-top:none; overflow:scroll">
@@ -90,10 +90,10 @@
                                 $checked4 = "";
                             }
                             ?></th>
-<!--                        <th style="width:5%;text-align:center;vertical-align: middle;" class="hidden-phone"><input type="checkbox" id="viewc<?= $noi; ?>" value="<?= $minsa[0]; ?>" <?=$checked1;?>/></th>
+                        <th style="width:5%;text-align:center;vertical-align: middle;" class="hidden-phone"><input type="checkbox" id="viewc<?= $noi; ?>" value="<?= $minsa[0]; ?>" <?=$checked1;?>/></th>
                         <th style="width:5.5%;text-align:center;vertical-align: middle;" class="hidden-phone"><input type="checkbox" id="createc<?= $noi; ?>" value="<?= $minsa[1]; ?>" <?=$checked2;?>/></th>
                         <th style="width:5%;text-align:center;vertical-align: middle;" class="hidden-phone"><input type="checkbox" id="editc<?= $noi; ?>" value="<?= $minsa[2]; ?>" <?=$checked3;?>/></th>
-                        <th style="width:4.3%;text-align:center;vertical-align: middle;" class="hidden-phone"><input type="checkbox" id="deletec<?= $noi; ?>" value="<?= $minsa[3]; ?>" <?=$checked4;?>/></th>-->
+                        <th style="width:4.3%;text-align:center;vertical-align: middle;" class="hidden-phone"><input type="checkbox" id="deletec<?= $noi; ?>" value="<?= $minsa[3]; ?>" <?=$checked4;?>/></th>
 
                     </tr>
         <?php

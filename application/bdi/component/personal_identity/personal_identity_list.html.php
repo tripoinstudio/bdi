@@ -42,7 +42,12 @@
                     <td>
                         <?= $array_list_query['tb_personal_identity_name']; ?>
                     </td>
-                    <td><?= idListViewTarget($array_list_query['tb_personal_identity_ktp_address'], "address", "tb_address_ktp"); ?></td>
+                    <td><?php
+                        $personalid = idListViewTarget($array_list_query['tb_family_relationship_personal_id'], "personal_identity", "tb_personal_identity_ktp_address");
+                        $personaladdress = idListViewTarget($array_list_query['tb_personal_identity_ktp_address'], "address", "tb_province_id");
+                        $personalprovince = idListViewTarget($personaladdress, "province", "tb_province_code");
+                        echo autoCodeUmat($personalprovince, $array_list_query['tb_personal_identity_name'], $array_list_query['tb_personal_identity_code']);
+                        ?></td>
                     <td><?= idListViewTarget($array_list_query['tb_personal_identity_ktp_address'], "address", "tb_address_mobile_number"); ?></td>
                     <td>
                         <?php
@@ -54,6 +59,7 @@
                         ?>
                     </td>
                     <td>
+                        <?= idListViewTarget($array_list_query['tb_personal_identity_ktp_address'], "address", "tb_address_mobile_number"); ?>
                     </td>
 
                     <?php include "../../function/actionlist.php"; ?>

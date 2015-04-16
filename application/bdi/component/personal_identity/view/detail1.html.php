@@ -24,7 +24,7 @@ inputGeneralView($ms, 'Status Pernikahan', 'marital_status', 'true', $_GET['acti
 ?>
 
 <?php
-echo inputGeneralView('', 'Negara', 'marital_status', 'true', $_GET['action']);
+//echo inputGeneralView('', 'Negara', 'marital_status', 'true', $_GET['action']);
 ?>
 
 <?= inputGeneralView($query1['tb_personal_identity_gojukai_date'], 'Tgl Gozukai', 'name', 'true', $_GET['action']); ?>

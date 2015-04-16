@@ -4,21 +4,28 @@
 
 if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
     // echo "data=".$_GET['data'];
-    include "../../function/saveautomatic.php";
+    //   include "../../function/saveautomatic.php";
+    $data = json_decode($_GET['items']);
 
-    $sentraid = $_GET['sentra'];
+    $personal_identity = $data->personal_identity;
     $db = new Database();
     $db->connect();
 
     if ($_GET['action'] == 'save') {
-        $db->sql("INSERT INTO `tb_cetya` (".$datas.",`tb_cetya_sentra_id`)VALUES (".$values.",$sentraid);");
-
-                $res = $db->getResult();
+        $db->insert('tb_family_relationship', array('tb_family_relationship_personal_id' => $personal_identity));
+        $res2 = $db->getResult();
+        $personal = $res2[0];
+        foreach ($data->item as $items) {
+            $code = $items->code;
+            $name = $items->name;
+            $db->insert('tb_relationship', array('tb_relationship_relation_code' => $code, 'tb_relationship_relationship_id' => $name, 'tb_family_relationship_id' => $personal)); // Table name, column names and values, WHERE conditions
+            $res = $db->getResult();
+        }
     } else if ($_GET['action'] == 'update') {
         $id = $_GET['id'];
-        
-        $db->sql("UPDATE `tb_cetya` SET ".$datas." WHERE `tb_cetya_id` =".$id.";");
-   //     $db->update('tb_cetya', array('tb_cetya_name' => "" . $name . "", 'tb_cetya_code' => "" . $code . ""), 'tb_cetya_id=' . $id . ''); // Table name, column names and values, WHERE conditions
+
+        $db->sql("UPDATE `tb_cetya` SET " . $datas . " WHERE `tb_cetya_id` =" . $id . ";");
+        //     $db->update('tb_cetya', array('tb_cetya_name' => "" . $name . "", 'tb_cetya_code' => "" . $code . ""), 'tb_cetya_id=' . $id . ''); // Table name, column names and values, WHERE conditions
         $res = $db->getResult();
 //	$query1=mysql_query("update tb_".$cekMenu['menu_function_link']." set tb_warehouse_name='$name', tb_warehouse_code='$code' where tb_warehouse_id='$id'");
     }
@@ -27,6 +34,7 @@ if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
 include "../../function/functionaction.php";
 ?>
 <?php
+
 //if($_GET['action'] == 'searchs'){
 //    if($_GET['searchtype']=='code'){
 //        $texts = 'tb_cetya_code';
@@ -43,7 +51,6 @@ $dblist->select('tb_family_relationship', '*', NULL, ''); // Table name, Column 
 $list_query = $dblist->getResult();
 
 $length_list = count($list_query);
-
 ?>
 <?php
 

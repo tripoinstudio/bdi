@@ -75,6 +75,32 @@ $(function () {
 });
 
 
+function delItems2(line, values) {
+    if (confirm('Are you sure you want to remove this?')) {
+
+        var countLine = Object($('#item tr')).length;
+        var counter = $("#counter").val();
+        for (var i = line; i < countLine; i++) {
+            var no = parseFloat(i) + 1;
+            var desc = $("#description" + no).val();
+            var idDesc = $("#idDesc" + no).val();
+            var units = $("#unit" + no).val();
+            var price = $("#price" + no).val();
+            var qty = $("#qty" + no).val();
+            var disc = $("#disc" + no).val();
+            var amount = $("#amount" + no).val();
+            $("#description" + i).val(desc);
+            $("#idDesc" + i).val(idDesc);
+            $("#price" + i).val(price);
+            $("#qty" + i).val(qty);
+            $("#disc" + i).val(disc);
+            $("#amount" + i).val(amount);
+        }
+        $("#it" + countLine).remove();
+        $("#counter").val(parseFloat(counter) - 1);
+        //	subTotal();
+    }
+}
 
 function setStatus(urut, id) {
     //   var statushref = $('#spanstatus'+urut).html();
@@ -114,8 +140,8 @@ function saveGroup(str, action) {
             coma = ',';
         }
         // alert("sampe sini3");
-//        sending = sending + '{"idItem":"' + idItem + '","idLov":"' + idProduct + '","status":"' + setstatus + '","action":"' + view + ',' + create + ',' + edit + ',' + deletes + '"}' + coma;
-        sending = sending + '{"idItem":"' + idItem + '","idLov":"' + idProduct + '","status":"' + setstatus + '","action":"2,2,2,2"}' + coma;
+        sending = sending + '{"idItem":"' + idItem + '","idLov":"' + idProduct + '","status":"' + setstatus + '","action":"' + view + ',' + create + ',' + edit + ',' + deletes + '"}' + coma;
+     //   sending = sending + '{"idItem":"' + idItem + '","idLov":"' + idProduct + '","status":"' + setstatus + '","action":"2,2,2,2"}' + coma;
 
     }
     sending = sending + ']}';
@@ -200,7 +226,7 @@ function addItem() {
 //var urut = parseFloat(i) - 1;
     frma = '<tr id="it' + i + '">';
 
-    frma = frma + '<td style="text-align:center;"><input id="idItem' + i + '" type="hidden" value="0"><button class="btn btn-danger" onclick="delItem(' + i + ')"><i class="icon-remove icon-white"></i></button></td>';
+    frma = frma + '<td style="text-align:center;"><input id="idItem' + i + '" type="hidden" value="0"><button class="btn btn-danger" onclick="return delItems2(' + i + ',0)"><i class="icon-remove icon-white"></i></button></td>';
 
     frma = frma + '<td style="text-align:left;" id="lovName' + i + '">';
     /*   frma = frma + '<option value=""></option>';
@@ -210,10 +236,10 @@ function addItem() {
      frma = frma + '<option value="Category 4">Category 4</option>'; */
     frma = frma + '</td>';
     frma = frma + '<td style="text-align:center;"><span id="spanstatus' + i + '"><a href="javascript:void(0)" onclick="setStatus(' + i + ',1);"><input type="hidden" id="setstatus' + i + '" value="1" /><span class="label label-success">Active</span></a></span></td>';
-//    frma = frma + '<td style="text-align:center;"><input onchange="tesclick(' + i + ');" id="viewc' + i + '" type="checkbox" value="1"></td>';
-//    frma = frma + '<td style="text-align:center;"><input onchange="tesclick(' + i + ');" id="createc' + i + '" type="checkbox" value="1"></td>';
-//    frma = frma + '<td style="text-align:center;"><input onchange="tesclick(' + i + ');" id="editc' + i + '" type="checkbox" value="1"></td>';
-//    frma = frma + '<td style="text-align:center;"><input onchange="tesclick(' + i + ');" id="deletec' + i + '" type="checkbox" value="1"></td>';
+    frma = frma + '<td style="text-align:center;"><input onchange="tesclick(' + i + ');" id="viewc' + i + '" type="checkbox" value="1"></td>';
+    frma = frma + '<td style="text-align:center;"><input onchange="tesclick(' + i + ');" id="createc' + i + '" type="checkbox" value="1"></td>';
+    frma = frma + '<td style="text-align:center;"><input onchange="tesclick(' + i + ');" id="editc' + i + '" type="checkbox" value="1"></td>';
+    frma = frma + '<td style="text-align:center;"><input onchange="tesclick(' + i + ');" id="deletec' + i + '" type="checkbox" value="1"></td>';
     frma = frma + '</tr>';
     // $('#items').show();
     $('#item').append(frma);

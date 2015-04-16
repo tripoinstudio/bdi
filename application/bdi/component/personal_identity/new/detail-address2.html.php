@@ -1,6 +1,7 @@
 <?= inputGeneral('....', 'Jalan', 'jalan2', 'false', $_GET['action']); ?>
 <?= inputGeneral('....', 'No', 'no2', 'false', $_GET['action']); ?>
 <?= inputGeneral('....', 'Kelurahan', 'kelurahan2', 'false', $_GET['action']); ?>
+<?= inputGeneral('....', 'Kecamatan', 'kecamatan2', 'false', $_GET['action']); ?>
 <?= inputGeneral('....', 'Mobile Number', 'mobile2', 'false', $_GET['action']); ?>
 
 <div class="form-row control-group row-fluid">

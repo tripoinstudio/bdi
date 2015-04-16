@@ -2,6 +2,8 @@
 <?= inputGeneral('....', 'Jalan', 'jalan1', 'false', $_GET['action']); ?>
 <?= inputGeneral('....', 'No', 'no1', 'false', $_GET['action']); ?>
 <?= inputGeneral('....', 'Kelurahan', 'kelurahan1', 'false', $_GET['action']); ?>
+<?= inputGeneral('....', 'Kecamatan', 'kecamatan1', 'false', $_GET['action']); ?>
+
 <?= inputGeneral('....', 'Mobile Number', 'mobile1', 'false', $_GET['action']); ?>
 
 <div class="form-row control-group row-fluid">
@@ -27,7 +29,7 @@
     <label class="control-label span3">Pilih Province</label>
     <div class="controls span9">
 
-        <select id='lovsprovince1' class='input-large m-wrap'> <option value='0'>Select ...</option>
+        <select id='lovsprovince1' class='input-large m-wrap' onchange="setCodeUmat();"> <option value='0'>Select ...</option>
 
             <?php
             $manuals = "select * from tb_province order by tb_province_name";
