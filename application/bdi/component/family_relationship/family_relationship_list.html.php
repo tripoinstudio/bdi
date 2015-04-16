@@ -39,7 +39,8 @@
                     <td style="text-align:center;">
                         <input type="hidden" id="idItem<?= $no; ?>" value="<?= $array_list_query['tb_cetya_id']; ?>"/><input type="checkbox" class="checkboxes" onchange="checkedList('<?= $array_list_query['tb_cetya_id']; ?>', '<?= $no; ?>');" id="checkboxes<?= $no; ?>" value="0" />
                     <td style="text-align:center;"><?= $no; ?></td>
-                    <td><?php
+                    <td>
+                        <?php
                         $personalidentity = idListViewTarget($array_list_query['tb_family_relationship_personal_id'], "personal_identity", "tb_personal_identity_ktp_address");
 
                         $adressid = idListViewTarget($personalidentity, "address", "tb_address_street");

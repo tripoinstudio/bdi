@@ -11,7 +11,7 @@ $(function () {
     }
 
 });
-function saveCetya(str, action) {
+function saveFamily(str, action) {
     var sendings = '';
     var personal_identity = $('#lovspersonal_identity').val();
     var counter = $('#counter').val();
@@ -21,12 +21,13 @@ function saveCetya(str, action) {
         var coma;
         var code = $('#code' + i).val();
         var name = $('#lovNameTr' + i).val();
+        var idItem = $('#idItem' + i).val();
         if (i == $("#counter").val()) {
             coma = '';
         } else {
             coma = ',';
         }
-        sendings = sendings + '{"code":"' + code + '","name":"' + name + '"}' + coma;
+        sendings = sendings + '{"idItem":"' + idItem + '","code":"' + code + '","name":"' + name + '"}' + coma;
 
     }
     sendings = sendings + ']}';

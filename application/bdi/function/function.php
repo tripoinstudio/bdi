@@ -78,13 +78,10 @@ function getDATA($url) {
     return $hasil;
 }
 
-
-
 function statusNew() {
     $result = "'status'=>'1'";
     return $result;
 }
-
 
 function amountToStr($amount) {
     return ($amount == "-") ? $amount : number_format($amount, 0, ".", ",");
@@ -98,13 +95,12 @@ function strToAmount($amount) {
     return $money;
 }
 
-
-function dateToString($date){
+function dateToString($date) {
     $dates = date_create($date);
     return date_format($dates, "d-m-Y");
 }
 
-function StringToDate($date){
+function StringToDate($date) {
     $dates = date_create($date);
     return date_format($dates, "Y-m-d");
 }
@@ -263,6 +259,33 @@ function listName($value, $name, $id) {
     $listName = '<input type="hidden" value="' . $value . '" id="' . $name . $id . '" />';
 
     return $listName;
+}
+
+function get_client_ip() {
+    $ipaddress = '';
+    if (getenv('HTTP_CLIENT_IP'))
+        $ipaddress = getenv('HTTP_CLIENT_IP');
+    else if (getenv('HTTP_X_FORWARDED_FOR'))
+        $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+    else if (getenv('HTTP_X_FORWARDED'))
+        $ipaddress = getenv('HTTP_X_FORWARDED');
+    else if (getenv('HTTP_FORWARDED_FOR'))
+        $ipaddress = getenv('HTTP_FORWARDED_FOR');
+    else if (getenv('HTTP_FORWARDED'))
+        $ipaddress = getenv('HTTP_FORWARDED');
+    else if (getenv('REMOTE_ADDR'))
+        $ipaddress = getenv('REMOTE_ADDR');
+    else
+        $ipaddress = 'UNKNOWN';
+    return $ipaddress;
+}
+
+function saveToLog($content,$action,$user) {
+    $description = $content.' = '.$action;
+    $db = new Database();
+    $db->connect();
+    $db->insert('tb_log_activity', array('tb_log_activity_description' => $description,'tb_log_activity_created_by' => $user,'tb_log_activity_created_date' => date('Y-m-d h:m:s'),'tb_log_activity_created_ip' => get_client_ip()));
+    $res = $db->getResult();
 }
 ?>
 

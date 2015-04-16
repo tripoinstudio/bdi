@@ -1,14 +1,14 @@
-<?= inputGeneralTemplate('Pilih Daerah', idListViewManual('SELECT s.tb_sentra_id, p.tb_province_code, p.tb_province_name tb_sentra_name FROM tb_province p JOIN tb_sentra s ON p.tb_province_id = s.tb_sentra_province_id WHERE s.tb_sentra_id =' . $query1['tb_cetya_sentra_id'], "tb_sentra_name")); ?>
-<?= inputGeneralView($query1['tb_cetya_name'], 'Nama cetya', 'name', 'Some hint here', $_GET['action']); ?>
-<!-- place holder, Label, idfield,  -->
-<?= inputGeneralView($query1['tb_cetya_remarks'], 'Remarks', 'remarks', 'Some hint here', $_GET['action']); ?>
+<?= inputGeneralViewLov($query1['tb_family_relationship_personal_id'], 'Nama Keluarga', 'personal_identity', 'true', $_GET['action']); ?>
 
 
 <table class="table table-striped table-bordered" id="sample_1">
     <thead>
         <tr>
             <th style="width:5%;text-align:center;vertical-align: middle;">No</th>
-            <th style="width:30%;text-align:center;vertical-align: middle;" class="hidden-phone">Dharmasala</th>
+            <th style="width:30%;text-align:center;vertical-align: middle;">Code</th>
+
+            <th style="width:30%;text-align:center;vertical-align: middle;" class="hidden-phone">Nama</th>
+
         </tr>
     </thead>
     <tbody id="item">
@@ -17,8 +17,8 @@
         $dbs = new Database();
         $dbs->connect();
 
-        $groupa = $query1['tb_cetya_id'];
-        $dbs->select('tb_dharmasala', '*', NULL, 'tb_dharmasala_cetya_id=' . $groupa);
+        $groupa = $query1['tb_family_relationship_id'];
+        $dbs->select('tb_relationship', '*', NULL, 'tb_family_relationship_id=' . $groupa);
         $list_users = $dbs->getResult();
         foreach ($list_users as $usera) {
             $noi += 1;
@@ -29,7 +29,11 @@
                     <?= $noi; ?>
                 </th>
                 <th class="hidden-phone" style="width:30%;" >
-                    <?= $usera['tb_dharmasala_name']; ?>
+                    <?= $usera['tb_relationship_relation_code']; ?>
+                </th>
+                <th class="hidden-phone" style="width:30%;" >
+                   <?=idListViewTarget($usera['tb_relationship_relationship_id'], "personal_identity", "tb_personal_identity_name");?>
+
                 </th>
 
 

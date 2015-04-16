@@ -62,3 +62,5 @@
     
     
 //echo $datas;
+    
+    saveToLog($cekMenu['menu_function_name'], $_GET['action'], $_SESSION['username']);

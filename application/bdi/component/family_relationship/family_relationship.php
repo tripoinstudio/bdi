@@ -23,10 +23,25 @@ if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
         }
     } else if ($_GET['action'] == 'update') {
         $id = $_GET['id'];
+        
 
-        $db->sql("UPDATE `tb_cetya` SET " . $datas . " WHERE `tb_cetya_id` =" . $id . ";");
-        //     $db->update('tb_cetya', array('tb_cetya_name' => "" . $name . "", 'tb_cetya_code' => "" . $code . ""), 'tb_cetya_id=' . $id . ''); // Table name, column names and values, WHERE conditions
+        // $db->sql("UPDATE `tb_family_relationship` SET " . $datas . " WHERE `tb_cetya_id` =" . $id . ";");
+        $db->update('tb_family_relationship', array('tb_family_relationship_personal_id' => $personal_identity), 'tb_family_relationship=' . $id . ''); // Table name, column names and values, WHERE conditions
         $res = $db->getResult();
+        foreach ($data->item as $items) {
+            $idItem = $items->idItem;
+            $code = $items->code;
+            $name = $items->name;
+
+            if ($idItem == 0) {
+                $db->insert('tb_relationship', array('tb_relationship_relation_code' => $code, 'tb_relationship_relationship_id' => $name, 'tb_family_relationship_id' => $id)); // Table name, column names and values, WHERE conditions
+                $res = $db->getResult();
+                echo 'MASUK SINI';
+            } else {
+                $db->update('tb_relationship', array('tb_relationship_relation_code' => "" . $code . "", 'tb_relationship_relationship_id' => "" . $name . "", 'tb_family_relationship_id' => "" . $id . ""), 'tb_relationship_id=' . $idItem . ''); // Table name, column names and values, WHERE conditions
+                $res = $db->getResult();
+            }
+        }
 //	$query1=mysql_query("update tb_".$cekMenu['menu_function_link']." set tb_warehouse_name='$name', tb_warehouse_code='$code' where tb_warehouse_id='$id'");
     }
 }
