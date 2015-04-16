@@ -1,3 +1,5 @@
+
+
 <?= inputGeneralViewLov($query1['tb_family_relationship_personal_id'], 'Nama Keluarga', 'personal_identity', 'true', $_GET['action']); ?>
 
 
@@ -32,7 +34,7 @@
                     <?= $usera['tb_relationship_relation_code']; ?>
                 </th>
                 <th class="hidden-phone" style="width:30%;" >
-                   <?=idListViewTarget($usera['tb_relationship_relationship_id'], "personal_identity", "tb_personal_identity_name");?>
+                    <?= idListViewTarget($usera['tb_relationship_relationship_id'], "personal_identity", "tb_personal_identity_name"); ?>
 
                 </th>
 
@@ -44,4 +46,4 @@
 
     </tbody>
 </table>
-</div>
+<a href="javascript:void(0)" onclick="exportPdfUmat('pdf','pdf-relationship',<?=$query1['tb_family_relationship_id'];?>);" class="btn btn-danger" id="export-pdf-id"><span class="icon-file"> EXPORT PDF</span></a>

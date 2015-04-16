@@ -9,7 +9,7 @@ $content = ob_get_clean();
 
  try
     {
-        $html2pdf = new HTML2PDF('P', 'A4', 'fr');
+        $html2pdf = new HTML2PDF($_GET['pages'], 'A4', 'fr');
         $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
         $html2pdf->Output($_GET['file'].'.pdf');
     }

@@ -151,3 +151,20 @@ function addItem() {
     // formatPrice(i);
     // formatTotalPrice(i);
 }
+
+function exportPdfUmat(type, filename,id) {
+    var exports = type;
+    var file = filename;
+    var pages = 'L';
+   // var lovsaddress = $("#lovsaddress").val();
+    var newURL = 'export.php?export=' + exports + '&file=' + file+ '&pages=' + pages + '&id=' + id;
+    newwindow = window.open(newURL);
+    if (window.focus) {
+        newwindow.focus();
+    }
+
+
+    return false;
+
+
+}
