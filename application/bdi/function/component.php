@@ -58,10 +58,12 @@ function inputGeneralView($placeholder=null, $title=null, $idinput=null, $ketera
 function inputGeneral($placeholder=null, $title=null, $idinput=null, $keterangan=null, $action=null, $style=null) {
     
     if ($action == 'new') {
-        echo '<div class="form-row control-group row-fluid">
-             <label class="control-label span3">' . $title . ' <span class="help-block">Type your ' . $idinput . ' here</span></label>
-             <div class="controls span9">
-             <input type="text" style="' . $style . '"  id="' . $idinput . '" name="' . $keterangan . 'titles[]" placeholder="' . $placeholder . '" class="span12" />
+        echo '<div class="form-row control-group row-fluid">';
+    echo '<label class="control-label span3">' . $title . ' ';
+         //    <span class="help-block">Type your ' . $idinput . ' here</span>
+      echo' </label>';
+      echo'          <div class="controls span9">
+          <input type="text" style="' . $style . '"  id="' . $idinput . '" name="' . $keterangan . 'titles[]" placeholder="' . $placeholder . '" class="span12" />
              <span class="help-inline" name="namens[]" id="' . $idinput . 'ns">
                  
              
@@ -69,9 +71,12 @@ function inputGeneral($placeholder=null, $title=null, $idinput=null, $keterangan
 </div>
              </div>';
     } else {
-        echo '<div class="form-row control-group row-fluid">
-             <label class="control-label span3">' . $title . ' <span class="help-block">Type your ' . $idinput . ' here</span></label>
-             <div class="controls span9">';
+        echo '<div class="form-row control-group row-fluid">';
+       echo'      <label class="control-label span3">' . $title . '';
+//                 <span class="help-block">Type your ' . $idinput . ' here</span>
+echo'</label>';
+                 
+echo'            <div class="controls span9">';
         if ($action == 'edit') {
 
             echo'<input type="text"  name="' . $keterangan . 'titles[]" id="' . $idinput . '"  style="' . $style . '"  value="' . $placeholder . '" class="span12" />';

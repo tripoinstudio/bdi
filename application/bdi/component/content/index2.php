@@ -13,6 +13,7 @@ if ($resultMenu != null) {
     require_once("../../configuration.php");
     require_once("../../function/function.php");
     require_once("../../function/component.php");
+    require_once("../../properties/ind_personal_identity.php");
 }
 
 $cekMenuQuery = mysql_query("select * from menu_function where menu_function_link='" . $resultMenu . "'");
