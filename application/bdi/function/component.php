@@ -3,7 +3,7 @@
 require_once("component/lov.php");
 require_once("component/component_template.php");
 
-function inputDatePicker($placeholder, $title, $idinput, $keterangan, $action, $style) {
+function inputDatePicker($placeholder=null, $title=null, $idinput=null, $keterangan=null, $action=null, $style=null) {
     if ($action == 'new') {
         /*     <div class="">
           <label class="control-label span3">Kode User<span class="help-block">Type your kode here</span> </label>
@@ -40,7 +40,7 @@ function inputDatePicker($placeholder, $title, $idinput, $keterangan, $action, $
     }
 }
 
-function inputGeneralView($placeholder, $title, $idinput, $keterangan, $action, $style) {
+function inputGeneralView($placeholder=null, $title=null, $idinput=null, $keterangan=null, $action=null, $style=null) {
 
     echo '<div class="form-row control-group row-fluid">
              <label class="control-label span3">' . $title . '</label>
@@ -55,7 +55,8 @@ function inputGeneralView($placeholder, $title, $idinput, $keterangan, $action, 
              </div>';
 }
 
-function inputGeneral($placeholder, $title, $idinput, $keterangan, $action, $style) {
+function inputGeneral($placeholder=null, $title=null, $idinput=null, $keterangan=null, $action=null, $style=null) {
+    
     if ($action == 'new') {
         echo '<div class="form-row control-group row-fluid">
              <label class="control-label span3">' . $title . ' <span class="help-block">Type your ' . $idinput . ' here</span></label>
@@ -87,7 +88,7 @@ function inputGeneral($placeholder, $title, $idinput, $keterangan, $action, $sty
     }
 }
 
-function inputPassword($placeholder, $title, $idinput, $keterangan, $action, $style) {
+function inputPassword($placeholder=null, $title=null, $idinput=null, $keterangan=null, $action=null, $style=null) {
     if ($action == 'new') {
         /*     <div class="">
           <label class="control-label span3">Kode User<span class="help-block">Type your kode here</span> </label>
@@ -123,7 +124,7 @@ function inputPassword($placeholder, $title, $idinput, $keterangan, $action, $st
     }
 }
 
-function inputTextArea($placeholder, $title, $idinput, $keterangan, $action, $style) {
+function inputTextArea($placeholder=null, $title=null, $idinput=null, $keterangan=null, $action=null, $style=null) {
     if ($action == 'new') {
         echo '<div class="form-row control-group row-fluid">
              <label class="control-label span3">' . $title . ' <span class="help-block">Type your ' . $idinput . ' here</span></label>
@@ -147,7 +148,7 @@ function inputTextArea($placeholder, $title, $idinput, $keterangan, $action, $st
     }
 }
 
-function inputLov($title, $idDiv, $idinput, $valueinput, $action, $idLov, $valueLovInput) {
+function inputLov($title=null, $idDiv=null, $idinput=null, $valueinput=null, $action=null, $idLov=null, $valueLovInput=null) {
     if ($action == 'new') {
         echo '<div class="form-row control-group row-fluid">
              <label class="control-label span3">' . $title . ' <span class="help-block">Type your ' . $idinput . ' here</span></label>
@@ -172,7 +173,7 @@ function inputLov($title, $idDiv, $idinput, $valueinput, $action, $idLov, $value
     }
 }
 
-function contentSearch($table, $title, $id) {
+function contentSearch($table=null, $title=null, $id=null) {
     $dblist = new Database();
     $dblist->connect();
     $dblist->select($table, '*', NULL, 'status=1'); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions

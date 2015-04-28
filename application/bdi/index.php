@@ -1,8 +1,10 @@
 <?php
+
+session_start();
 include("function/function.php");
 //	require_once("configuration.php");
 require_once("class/mysql_crud.php");
-session_start();
+
 if (!isset($_SESSION['username'])) {
 //	header('location:index.php');
     $cekSession = 1;

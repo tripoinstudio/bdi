@@ -15,7 +15,7 @@
 
             $comadat = ',';
         }
-        $datas .= "`tb_".$cekMenu['menu_function_link']."_".$items->code . "`='".$items->values . "'" . $comadat;
+        $datas .= "`tb_".$cekMenu['menu_function_link']."_".$items->code . "`='".$db->escapeString($items->values) . "'" . $comadat;
     }
     } else {
         $data = json_decode($_GET['data']);
@@ -55,7 +55,7 @@
 
             $comaval = ',';
         }
-        $values .= "'".$items->values . "'" . $comaval;
+        $values .= "'".$db->escapeString($items->values) . "'" . $comaval;
         // echo $value[0]->item;
     }
     }

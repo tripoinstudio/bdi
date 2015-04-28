@@ -1,6 +1,6 @@
 <?php
 
-function inputLovNew($placeholderid, $placeholdername,$placeholder, $title, $idinput, $keterangan, $action, $manual, $style,$parameter,$onclick) {
+function inputLovNew($placeholderid=null, $placeholdername=null,$placeholder=null, $title=null, $idinput=null, $keterangan=null, $action=null, $manual=null, $style=null,$parameter=null,$onclick=null) {
         
     if ($manual == 'true') {
             $manual = $parameter;
@@ -26,7 +26,7 @@ function inputLovNew($placeholderid, $placeholdername,$placeholder, $title, $idi
         echo '</div>
                                 </div>';
 }
-function inputLovEdit($placeholderid, $placeholdername,$placeholder, $title, $idinput, $keterangan, $action, $manual, $style,$parameter,$onclick) {
+function inputLovEdit($placeholderid=null, $placeholdername=null,$placeholder=null, $title=null, $idinput=null, $keterangan=null, $action=null, $manual=null, $style=null,$parameter=null,$onclick=null) {
         if ($manual == 'true') {
             $manual = $parameter;
         } else {
@@ -60,7 +60,7 @@ function inputLovEdit($placeholderid, $placeholdername,$placeholder, $title, $id
                                 </div>';
 }
 
-function inputGeneralViewLov($placeholder, $title, $idinput, $keterangan, $action, $style) {
+function inputGeneralViewLov($placeholder=null, $title=null, $idinput=null, $keterangan=null, $action=null, $style=null) {
  $lovquery = mysql_query("select * from tb_" . $idinput . " where tb_" . $idinput . "_id=" . $placeholder);
     $lov = mysql_fetch_array($lovquery);
     echo '<div class="form-row control-group row-fluid">
