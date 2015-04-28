@@ -21,6 +21,7 @@
                 </th>
                 <th style="width:5%;text-align:center;">No</th>
                 <th style="width:20%;" class="hidden-phone">Name</th>
+                <th style="width:20%;" class="hidden-phone">Sentra</th>
                 <th style="width:20%;" class="hidden-phone">Action</th>
             </tr>
         </thead>
@@ -36,8 +37,11 @@
                     <td style="text-align:center;"><?= $no; ?></td>
                     
                     <td>
-                        <?= $array_list_query['tb_province_name']; ?>
-                    </td>                     
+                        <?= $array_list_query['tb_sentra_name']; ?>
+                    </td> 
+                    <td>
+                        <?= idListViewManual('select tb_province_name from tb_province where tb_province_id='.$array_list_query['tb_sentra_province_id'],'tb_province_name'); ?>
+                    </td> 
                     
         <?php include "../../function/actionlist.php"; ?>
                 </tr>

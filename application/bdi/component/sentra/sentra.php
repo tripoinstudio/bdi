@@ -39,7 +39,8 @@ include "../../function/functionaction.php";
 
 $dblist = new Database();
 $dblist->connect();
-$dblist->sql('select s.tb_sentra_id, s.tb_sentra_remarks, p.tb_province_code, p.tb_province_name from  tb_sentra s join tb_province p on s.tb_sentra_province_id = p.tb_province_id'); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+//$dblist->sql('select s.tb_sentra_id, s.tb_sentra_remarks, p.tb_province_code, p.tb_province_name from  tb_sentra s join tb_province p on s.tb_sentra_province_id = p.tb_province_id'); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+$dblist->select('tb_sentra', '*', NULL, '');
 $list_query = $dblist->getResult();
 
 $length_list = count($list_query);

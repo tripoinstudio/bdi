@@ -1,4 +1,33 @@
+<div class="form-row control-group row-fluid">
+    <label class="control-label span3"><?=DTNG_KE;?></label>
+    <div class="controls span9">
+        <label class="radio ">
+            <input type="radio" id="gender"  value="1" name="radio1" />
+            <span style="padding-left: 10px;">Ya </span>
+        </label>
+        <label class="radio ">
+            <input type="radio" id="gender" value="2" name="radio1" checked="CHECKED"/>
+            <span style="padding-left: 10px;">Tidak </span>
+        </label>
+        <span class="help-inline" name="namens[]" id="kelaminns">
+        </span>
 
-<?= inputGeneral('....', 'Tahun', 'nichiren_shosu_year', 'true', $_GET['action']); ?>
-<?= inputGeneral('....', 'Tempat', 'nichiren_shosu_place', 'true', $_GET['action']); ?>
-<?= inputGeneral('....', 'Pemimpin Upacara', 'nichiren_shosu_leader', 'true', $_GET['action']); ?>
+    </div>
+</div>
+<div class="form-row control-group row-fluid">
+    <label class="control-label span3"><?=DANAPRMT;?></label>
+    <div class="controls span9">
+        <label class="radio ">
+            <input type="radio" id="gender"  value="1" name="radio1" />
+            <span style="padding-left: 10px;">Ya </span>
+        </label>
+        <label class="radio ">
+            <input type="radio" id="gender" value="2" name="radio1" checked="CHECKED"/>
+            <span style="padding-left: 10px;">Tidak </span>
+        </label>
+        <span class="help-inline" name="namens[]" id="kelaminns">
+        </span>
+
+    </div>
+</div>
+<?= inputGeneral('....', TNGJWB, 'tngjwb', 'true', $_GET['action']); ?>

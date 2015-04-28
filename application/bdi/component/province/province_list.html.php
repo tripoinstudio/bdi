@@ -19,7 +19,7 @@
                 <th style="width:5%;text-align:center;"><input type="checkbox" id="checkedAll" class="group-checkable" onchange="checkedAll('<?= $length_list; ?>');" /></th>
                 <th style="width:5%;text-align:center;">No</th>
                 <th style="width:20%;" class="hidden-phone">Name</th>
-                <th style="width:20%;" class="hidden-phone" >Province</th>
+                <th style="width:20%;" class="hidden-phone" >Country</th>
                 <th style="width:20%;" class="hidden-phone">Action</th>
             </tr>
         </thead>
