@@ -87,6 +87,16 @@ $(function () {
 
 
 });
+
+function marriageStatus(){
+	var status = $('input[id="lovsstatus"]:checked').val();
+//	alert(status);
+	if(status == 1 || status == 3){
+		$('#group_marriage_status').show();
+	} else {
+		$('#group_marriage_status').hide();
+	}
+}
 function saveDataUmat(str, action) {
     var gender = $('#gender').val();
     var upacarashosu = $('#upacarashosu').val();
