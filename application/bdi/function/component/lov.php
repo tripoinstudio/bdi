@@ -60,13 +60,19 @@ function inputLovEdit($placeholderid=null, $placeholdername=null,$placeholder=nu
                                 </div>';
 }
 
-function inputGeneralViewLov($placeholder=null, $title=null, $idinput=null, $keterangan=null, $action=null, $style=null) {
+function inputGeneralViewLov($placeholder=null, $title=null, $idinput=null, $keterangan=null, $action=null, $style=null,$manual=null) {
  $lovquery = mysql_query("select * from tb_" . $idinput . " where tb_" . $idinput . "_id=" . $placeholder);
     $lov = mysql_fetch_array($lovquery);
     echo '<div class="form-row control-group row-fluid">
              <label class="control-label span3">' . $title . '</label>
              <div class="controls span9">';
-    echo $lov['tb_' . $idinput . '_name'];
+			 if($manual == null){
+				 echo $lov['tb_' . $idinput . '_name'];
+			 } else {
+			//	 echo $placeholder;
+				 echo $lov[$manual];
+			 }
+    
     echo'<span class="help-inline" name="namens[]" id="' . $idinput . 'ns">
 </span>
          

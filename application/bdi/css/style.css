@@ -6,6 +6,13 @@ Website: http://thevectorlab.net/
 */
 
 /* body styles */
+
+
+.self-border-white{
+border: 1px solid white;
+padding-left:10px;
+padding-top:10px;
+}
 body {
     color: #000;
     font-family: 'Arial';

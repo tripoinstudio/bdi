@@ -16,18 +16,29 @@ if ($array_keumatan['tb_data_keumatan_marriage_status'] == 1) {
 }
 inputGeneralView($mariage, STATUS_MARRIAGE, 'marriage_status', 'true', $_GET['action']);
 ?>
+<?=inputGeneralView($array_keumatan['tb_data_keumatan_nichiren_upacara'], U_N_S, 'nichiren_upacara', 'true', $_GET['action']);?>
+<?=inputGeneralView($array_keumatan['tb_data_keumatan_nichiren_tahun'], TAHUN, 'nichiren_tahun', 'true', $_GET['action']);?>
+<?=inputGeneralView($array_keumatan['tb_data_keumatan_nichiren_tempat'], TEMPAT, 'nichiren_tempat', 'true', $_GET['action']);?>
+<?=inputGeneralView($array_keumatan['tb_data_keumatan_nichiren_pemimpin'], PEMIMPIN, 'nichiren_pemimpin', 'true', $_GET['action']);?>
+<?=inputGeneralView($array_keumatan['tb_data_keumatan_gojukai'], TAHUN_GOJUKAI, 'gojukai', 'true', $_GET['action']);?>
+
+
+<?= inputGeneralTemplate('<b>'.T_R_G.'</b>', ''); ?>
+<?= inputGeneralView($array_keumatan['tb_data_keumatan_gohonzon_okataki'], T_T_OK_GO, 'okataki_gohozon', 'true', $_GET['action']); ?>
+<?= inputGeneralView($array_keumatan['tb_data_keumatan_gohonzon_omamori'], T_T_OM_GO, 'omamori_gohozon', 'true', $_GET['action']); ?>
+<?= inputGeneralView($array_keumatan['tb_data_keumatan_gohonzon_tokubetsu'], T_T_TO_GO, 'tokubetsu_gohozon', 'true', $_GET['action']); ?>
+
 <?=inputGeneralView($array_keumatan['tb_data_keumatan_kankai'], TAHUN_KANKAI, 'kankai', 'true', $_GET['action']);?>
 
 <?php
-
-    ?>
-<?= inputGeneralView($array_address['tb_address_street'], 'Jalan', 'jalan', 'true', $_GET['action']); ?>
-<?= inputGeneralView($array_address['tb_address_ktp'], 'No', 'ktp', 'true', $_GET['action']); ?>
-<?= inputGeneralView($array_address['tb_address_district'], 'Kelurahan', 'disctrict', 'true', $_GET['action']); ?>
-<?= inputGeneralView($array_address['tb_address_sub_district'], 'Kecamatan', 'sub_disctrict', 'true', $_GET['action']); ?>
-<?= inputGeneralView($array_address['tb_address_mobile_number'], 'Mobile Number', 'mobile_number', 'true', $_GET['action']); ?>
-<?= inputGeneralViewLov($array_address['tb_city_id'], 'Kabupaten', 'city', 'true', $_GET['action']); ?>
-<?= inputGeneralViewLov($array_address['tb_province_id'], 'Provinsi', 'province', 'true', $_GET['action']); ?>
-
+$gohifu_stat;
+if ($array_keumatan['tb_data_keumatan_gohifu'] == 1) {
+    $gohifu_stat = 'Pernah';
+} else {
+    $gohifu_stat = 'Tidak';
+} 
+inputGeneralView($gohifu_stat, ME_GOHIFU, 'gohifu', 'true', $_GET['action']);
+echo inputGeneralTemplate(TDP, $array_keumatan['tb_data_keumatan_gohifu_tahun'] . ' - ' . $array_keumatan['tb_data_keumatan_penyakit'] . '');
+?>
 
 <?php } ?>

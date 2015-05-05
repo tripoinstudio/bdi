@@ -75,6 +75,7 @@ if (!isset($_SESSION['username'])) {
         <link href="css/base.css" rel="stylesheet" />
         <link href="css/twitter/responsive.css" rel="stylesheet" />
         <link href="assets/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+		<link href="css/style_self.css" rel="stylesheet" />
         
         <link href="css/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
         <script src="js/plugins/modernizr.custom.32549.js"></script>

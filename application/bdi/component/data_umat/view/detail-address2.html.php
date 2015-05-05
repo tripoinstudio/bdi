@@ -1,21 +1,21 @@
 <?php
 
-$dblist->select('tb_address', '*', NULL, 'tb_address_id=' . $query1['tb_personal_identity_current_address']); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
-$list_query = $dblist->getResult();
+$dbumat->select('tb_data_umat_pembagian', '*', NULL, 'tb_data_umat_id=' . $query1['tb_data_umat_id']); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+$list_keumatan_pembagian = $dbumat->getResult();
 ?>
 <?php
 
 $no = 1;
 
-foreach ($list_query as $array_address) {
+foreach ($list_keumatan_pembagian as $array_pembagian) {
     ?>
-<?= inputGeneralView($array_address['tb_address_street'], 'Jalan', 'jalan', 'true', $_GET['action']); ?>
-<?= inputGeneralView($array_address['tb_address_ktp'], 'No', 'ktp', 'true', $_GET['action']); ?>
-<?= inputGeneralView($array_address['tb_address_district'], 'Kelurahan', 'disctrict', 'true', $_GET['action']); ?>
-<?= inputGeneralView($array_address['tb_address_sub_district'], 'Kecamatan', 'sub_disctrict', 'true', $_GET['action']); ?>
-<?= inputGeneralView($array_address['tb_address_mobile_number'], 'Mobile Number', 'mobile_number', 'true', $_GET['action']); ?>
-<?= inputGeneralViewLov($array_address['tb_city_id'], 'Kabupaten', 'city', 'true', $_GET['action']); ?>
-<?= inputGeneralViewLov($array_address['tb_province_id'], 'Provinsi', 'province', 'true', $_GET['action']); ?>
+	
+	<?= inputGeneralViewLov($array_pembagian['tb_province_id'], 'Provinsi', 'province', 'true', $_GET['action']); ?>
+	<?= inputGeneralViewLov($array_pembagian['tb_sentra_id'], 'Sentra', 'sentra', 'true', $_GET['action']); ?>
+	<?= inputGeneralViewLov($array_pembagian['tb_distrik_id'], 'Distrik', 'distrik', 'true', $_GET['action']); ?>
+	<?= inputGeneralViewLov($array_pembagian['tb_cetya_id'], 'Cetya', 'cetya', 'true', $_GET['action']); ?>
+	<?= inputGeneralViewLov($array_pembagian['tb_dharmasala_id'], 'Provinsi', 'dharmasala', 'true', $_GET['action']); ?>
+
 
 
 <?php } ?>
