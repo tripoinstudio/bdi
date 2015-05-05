@@ -5,23 +5,25 @@ class Database{
 //	private $db_host = "192.168.254.106";  // Change as required
     public $db_host = "localhost";
 	public $db_user = "root";  // Change as required
-	public $db_pass = "root";  // Change as required
+	public $db_pass = "fandrianah";  // Change as required
 	public $db_name = "db_bdi";	// Change as required
 	
 	/*
 	 * Extra variables that are required by other function such as boolean con variable
 	 */
-	private $con = false; // Check to see if the connection is active
-	private $result = array(); // Any results from a query will be stored here
-    private $myQuery = "";// used for debugging process with SQL return
-    private $numResults = "";// used for returning the number of rows
+	public $con = false; // Check to see if the connection is active
+	public $result = array(); // Any results from a query will be stored here
+    public $myQuery = "";// used for debugging process with SQL return
+    public $numResults = "";// used for returning the number of rows
 	
 	// Function to make connection to database
 	public function connect(){
 		if(!$this->con){
-			$myconn = @mysql_connect($this->db_host,$this->db_user,$this->db_pass);  // mysql_connect() with variables defined at the start of Database class
-            if($myconn){
-            	$seldb = @mysql_select_db($this->db_name,$myconn); // Credentials have been pass through mysql_connect() now select the database
+//			$myconn = @mysql_connect($this->db_host,$this->db_user,$this->db_pass);  // mysql_connect() with variables defined at the start of Database class
+            $myconn =  mysql_connect($this->db_host,$this->db_user,$this->db_pass);
+                    if($myconn){
+//            	$seldb = @mysql_select_db($this->db_name,$myconn); // Credentials have been pass through mysql_connect() now select the database
+              $seldb = mysql_select_db($this->db_name,$myconn);
                 if($seldb){
                 	$this->con = true;
                     return true;  // Connection has been made return TRUE
@@ -43,7 +45,8 @@ class Database{
     	// If there is a connection to the database
     	if($this->con){
     		// We have found a connection, try to close it
-    		if(@mysql_close()){
+    //		if(@mysql_close()){
+    				if(mysql_close()){
     			// We have successfully closed the connection, set the connection variable to false
     			$this->con = false;
 				// Return true tjat we have closed the connection
@@ -56,7 +59,8 @@ class Database{
     }
 	
 	public function sql($sql){
-		$query = @mysql_query($sql);
+	//	$query = @mysql_query($sql);
+            $query = mysql_query($sql)or die(mysql_error());
         $this->myQuery = $sql; // Pass back the SQL
 		if($query){
 			// If the query returns >= 1 assign the number of rows to numResults
@@ -81,6 +85,7 @@ class Database{
 			array_push($this->result,mysql_error());
 			return false; // No rows where returned
 		}
+           //     return false;
 	}
 	
 	// Function to SELECT from the database

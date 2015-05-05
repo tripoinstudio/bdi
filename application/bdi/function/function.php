@@ -106,9 +106,12 @@ function StringToDate($date) {
 }
 
 function subMonth($tgl) {
-    $date = substr($tgl, 0, 2);
-    $month = getMonth(substr($tgl, 3, 2));
-    $year = substr($tgl, 6, 4);
+//    $date = substr($tgl, 0, 2);
+//    $month = getMonth(substr($tgl, 3, 2));
+//    $year = substr($tgl, 6, 4);
+     $date = substr($tgl, 8, 9);
+    $month = getMonth(substr($tgl, 5, 6));
+    $year = substr($tgl, 0, 4);
     return $date . ' ' . $month . ' ' . $year;
 }
 

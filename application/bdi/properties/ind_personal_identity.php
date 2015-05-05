@@ -6,6 +6,7 @@ define('TAB1','Data Umat');
 define('TAB2','Data Keumatan');
 define('TAB3','Data Pembagian Daerah');
 define('TAB4','Data Keaktifan');
+define('TAB5','Data Keluarga');
 
 //DATA PRIBADI
 define('NAMA_SEKARANG','Nama Sekarang');
@@ -23,7 +24,9 @@ define('EMAIL','Alamat Email');
 define('TTL','Tempat / Tanggal Lahir');
 define('GENDER','Jenis Kelamin');
 define('KEWARGANEGARAAN','Kewarganegaraan');
-define('PEKERJAAN','Telp Rumah');
+define('PEKERJAAN','Pekerjaan');
+define('NO_IDEN','No Identitas');
+define('NAMA_PANGGILAN','Nama Panggilan');
 
 //DATA KEUMATAN
 define('STATUS_MARRIAGE','Status Pernikahan');
@@ -34,9 +37,14 @@ define('PEMIMPIN','Pemimpin Upacara');
 define('TAHUN_GOJUKAI','Tahun Gojukai');
 define('TAHUN_KANKAI','Tahun Kankai');
 define('T_R_G','Tahun Terima Gohonzon');
-define('T_T_OK_GO','Tahun Terima Okatagi Gohonzon');
-define('T_T_OM_GO','Tahun Terima Omamori Gohonzon');
-define('T_T_TO_GO','Tahun Terima Tokubetsu Gohonzon');
+//define('T_T_OK_GO','Tahun Terima Okatagi Gohonzon');
+//define('T_T_OM_GO','Tahun Terima Omamori Gohonzon');
+//define('T_T_TO_GO','Tahun Terima Tokubetsu Gohonzon');
+define('T_T_OK_GO','Okatagi Gohonzon');
+define('T_T_OM_GO','Omamori Gohonzon');
+define('T_T_TO_GO','Tokubetsu Gohonzon');
+define('ME_GOHIFU','Menerima Gohifu');
+define('TDP','Tahun dan Penyakit');
 
 //DATA PEMBAGIAN DAERAH
 define('DAERAH','Daerah');
@@ -49,5 +57,11 @@ define('DHARMASALA','Dharmasala');
 define('DTNG_KE','DATANG KE VIHARA / CETYA / DHARMASALA');
 define('DANAPRMT','DANAPARAMITA / GOKUYO');
 define('TNGJWB','TANGGUNG JAWAB DALAM SUSUNAN');
+
+//DATA KELUARGA
+	
+define('TITLE_KELUARGA','KELUARGA UMAT BDI YG TINGGAL SERUMAH');	
+define('TITLE_KELUARGA2','KELUARGA TERDEKAT YG UMAT BDI');	
+
 
 

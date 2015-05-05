@@ -31,14 +31,14 @@
         //    $dbs->sql("SELECT * FROM `structure_menu` s INNER JOIN `menu_function` m ON s.`menu_function_id`=m.`menu_function_id`  WHERE s.`tb_group_id`=" . $groupa . " and s.`status` =1 order by s.`structure_menu_id` asc ");
             $list_users = $dbs->getResult();
             foreach ($list_users as $usera) {
-                $noi += 1;
                 $menuid = $usera['menu_function_id'];
 //echo count($usera);
                 $dbs->select('menu_function', '*', NULL, 'menu_function_id=' . $menuid);
                 $list_menu = $dbs->getResult();
                 foreach ($list_menu as $menua) {
 
-                    //    $no = 1;
+                 $noi += 1;
+    //    $no = 1;
             /*        if ($menua['menu_function_level'] == 1) {
                         $idatas = $menua['menu_function_id'];
                     }

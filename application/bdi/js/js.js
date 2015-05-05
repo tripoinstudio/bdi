@@ -270,6 +270,7 @@ function showMenu(str, name) {
 //alert(name);
 //$('#loading').html('<img src="img/ajax-loader.gif">');
 
+
     $('#namePage').html(name);
     $('#datatable_example').html('');
     if (str == "") {
@@ -299,7 +300,15 @@ function showMenu(str, name) {
 
         }
     }
-    xmlhttp.open("GET", "component/content/index2.php?content=" + str, true);
+    if(name == 'Data Umat'){
+       xmlhttp.open("GET", "component/content/index2.php?content=data_umat&action=new", true);
+ } else if(name == 'List Umat'){
+       xmlhttp.open("GET", "component/content/index2.php?content=data_umat", true);
+ } else {
+       xmlhttp.open("GET", "component/content/index2.php?content=" + str, true);
+     
+    }
+   
     xmlhttp.send();
 
     return true;
@@ -1213,4 +1222,45 @@ function toInsertDate(date){
     var hasil = years+'-'+month+'-'+day;
     
     return hasil;
+}
+
+function showMenuManual(str, name,manual) {
+//alert(str);
+//alert(name);
+//$('#loading').html('<img src="img/ajax-loader.gif">');
+
+    $('#namePage').html(name);
+    $('#datatable_example').html('');
+    if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    }
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else { // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+
+            getJavascript(str);
+            sampleTable();
+
+            $('#startdate').datepicker();
+            $('#enddate').datepicker();
+            $('#contentTable').html('');
+            $('#deleteAll').hide();
+            $('#edit').hide();
+            $('#cancel').hide();
+
+
+        }
+    }
+    xmlhttp.open("GET", "component/content/index2.php?content=" + str+manual, true);
+    xmlhttp.send();
+
+    return true;
+
 }

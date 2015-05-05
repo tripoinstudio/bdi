@@ -55,7 +55,7 @@ $list_usersgr = $dbmenupertama->getResult();
                                 foreach ($queryParentMenu2 as $menuKedua) {
                                     //    if ($menuKedua['menu_function_id'] == $funcst) {
                                     ?>
-                                    <li><a href="javascript:void(0);" onclick="showMenu('<?= $menuKedua['menu_function_link']; ?>', '<?= $menuPertama['menu_function_name']; ?>');"><?= $menuKedua['menu_function_name']; ?></a></li>
+                                    <li><a href="javascript:void(0);" onclick="showMenu('<?= $menuKedua['menu_function_link']; ?>', '<?= $menuKedua['menu_function_name']; ?>');"><?= $menuKedua['menu_function_name']; ?></a></li>
                                     <?php
                                 }
                             }

@@ -87,7 +87,7 @@ if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
         $res = $db->getResult();
 //	$query1=mysql_query("update tb_".$cekMenu['menu_function_link']." set tb_warehouse_name='$name', tb_warehouse_code='$code' where tb_warehouse_id='$id'");
     }
-}
+} else {
 
 include "../../function/functionaction.php";
 ?>
@@ -105,7 +105,7 @@ include "../../function/functionaction.php";
 
 $dblist = new Database();
 $dblist->connect();
-$dblist->select('tb_personal_identity', '*', NULL, ''); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+$dblist->select('tb_data_umat', '*', NULL, ''); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
 $list_query = $dblist->getResult();
 
 $length_list = count($list_query);
@@ -116,5 +116,8 @@ $exportpdf = "exportPdf('pdf','pdf-country','');"; //TYPE EXPORT, FILE NAME EXPO
 $exportexcel = "exportExcel('excel','excel-country','');";
 
 include "../../function/contentmodul.html.php";
+
+} 
+
 ?>
 

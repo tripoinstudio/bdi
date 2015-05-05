@@ -4,6 +4,7 @@
         <li><a data-toggle="tab" href="#alamat1"><?=TAB2;?></a></li>
         <li><a data-toggle="tab" href="#alamat2"><?=TAB3;?></a></li>
         <li><a data-toggle="tab" href="#nichiren"><?=TAB4;?></a></li>
+        <li><a data-toggle="tab" href="#data-keluarga"><?=TAB5;?></a></li>
     </ul>
     <div class="tab-content">
         <div id="home1" class="tab-pane fade in active">
@@ -21,6 +22,11 @@
             <?php include 'new/nichiren.html.php'; ?>
 
         </div>
+        <div id="data-keluarga" class="tab-pane fade">
+            <?php include 'new/data-keluarga.html.php'; ?>
+
+        </div>
+        
 
     </div>
 </div>

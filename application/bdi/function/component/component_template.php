@@ -13,9 +13,24 @@ function inputGeneralTemplate($title, $placeholder) {
              </div>';
 }
 
+function abjadToNumber($dest) {
+    if ($dest)
+        return ord(strtolower($dest)) - 96;
+    else
+        return 0;
+}
+
 function autoCodeUmat($daerah, $nama, $id) {
-    $subname = substr($nama, 0, 2);
-    $hasil = $daerah . '.' . $subname . '.' . $id;
+    $subname = strtoupper(substr($nama, 0, 1));
+    $subcenter = '';
+
+    $number = abjadToNumber($subname);
+    if($number <=10){
+        $subcenter = '0'.$number;
+    } else {
+        $subcenter = $number;
+    }
+    $hasil = $daerah . '.' . $subcenter . '.' . $id;
     return $hasil;
 }
 
@@ -27,9 +42,8 @@ function saveAutoCode() {
         $address = idListViewTarget($listlov['tb_personal_identity_ktp_address'], "address", "tb_province_id");
         $provincecode = idListViewTarget($address, "province", "tb_province_code");
         $daerahcode = $listlov['tb_'];
-        
     }
     $hasil = $code;
-    
+
     return $hasil;
 }

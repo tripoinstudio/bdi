@@ -30,13 +30,13 @@
             $dbs->select('structure_menu', '*', NULL, 'tb_group_id=' . $groupa);
             $list_users = $dbs->getResult();
             foreach ($list_users as $usera) {
-                $noi += 1;
+               
                 $menuid = $usera['menu_function_id'];
 //echo count($usera);
                 $dbs->select('menu_function', '*', NULL, 'menu_function_id=' . $menuid);
                 $list_menu = $dbs->getResult();
                 foreach ($list_menu as $menua) {
-
+ $noi += 1;
                     //    $no = 1;
                     ?>
                     <tr>

@@ -1,13 +1,25 @@
 <?php
 
-$dblist = new Database();
-$dblist->connect();
-$dblist->select('tb_address', '*', NULL, 'tb_address_id=' . $query1['tb_personal_identity_ktp_address']); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
-$list_query = $dblist->getResult();
+$dbumat->select('tb_data_keumatan', '*', NULL, 'tb_data_umat_id=' . $query1['tb_data_umat_id']); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+$list_keumatan = $dbumat->getResult();
 ?>
 <?php
 $no = 1;
-foreach ($list_query as $array_address) {
+foreach ($list_keumatan as $array_keumatan) {
+$mariage;
+if ($array_keumatan['tb_data_keumatan_marriage_status'] == 1) {
+    $mariage = 'Kawin';
+} else if ($array_keumatan['tb_data_keumatan_marriage_status'] == 2) {
+    $mariage = 'Belum Kawin';
+} else {
+    $mariage = 'Cerai';
+}
+inputGeneralView($mariage, STATUS_MARRIAGE, 'marriage_status', 'true', $_GET['action']);
+?>
+<?=inputGeneralView($array_keumatan['tb_data_keumatan_kankai'], TAHUN_KANKAI, 'kankai', 'true', $_GET['action']);?>
+
+<?php
+
     ?>
 <?= inputGeneralView($array_address['tb_address_street'], 'Jalan', 'jalan', 'true', $_GET['action']); ?>
 <?= inputGeneralView($array_address['tb_address_ktp'], 'No', 'ktp', 'true', $_GET['action']); ?>

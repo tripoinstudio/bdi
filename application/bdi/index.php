@@ -74,6 +74,8 @@ if (!isset($_SESSION['username'])) {
         <link href="css/twitter/bootstrap.css" rel="stylesheet" />
         <link href="css/base.css" rel="stylesheet" />
         <link href="css/twitter/responsive.css" rel="stylesheet" />
+        <link href="assets/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+        
         <link href="css/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
         <script src="js/plugins/modernizr.custom.32549.js"></script>
         <link rel="stylesheet" type="text/css" href="assets/chosen-bootstrap/chosen/chosen.css" />
@@ -147,7 +149,7 @@ if (!isset($_SESSION['username'])) {
 
         <script type="text/javascript" src="js/js.js"></script> -->
 
-        <script src="js/jquery.js" type="text/javascript"></script> 
+<!--        <script src="js/jquery.js" type="text/javascript"></script> -->
         <script src="js/json2.js"></script>
         
         

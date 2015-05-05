@@ -141,7 +141,7 @@ function saveGroup(str, action) {
         }
         // alert("sampe sini3");
         sending = sending + '{"idItem":"' + idItem + '","idLov":"' + idProduct + '","status":"' + setstatus + '","action":"' + view + ',' + create + ',' + edit + ',' + deletes + '"}' + coma;
-     //   sending = sending + '{"idItem":"' + idItem + '","idLov":"' + idProduct + '","status":"' + setstatus + '","action":"2,2,2,2"}' + coma;
+        //   sending = sending + '{"idItem":"' + idItem + '","idLov":"' + idProduct + '","status":"' + setstatus + '","action":"2,2,2,2"}' + coma;
 
     }
     sending = sending + ']}';
@@ -168,11 +168,16 @@ function saveGroup(str, action) {
             //  $('#create').hide();
         }
     }
+    var sendingawal = "";
     if (action == 'save') {
-        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + "&sending=" + sending, true);
+        sendingawal = "?content=" + str + "&action=" + action + "&sending=" + sending;
+        xmlhttp.open("GET", "component/content/index2.php" + sendingawal, true);
     } else {
-        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + "&id=" + id + "&sending=" + sending, true);
+        sendingawal = "?content=" + str + "&action=" + action + "&id=" + id + "&sending=" + sending;
+        xmlhttp.open("GET", "component/content/index2.php" + sendingawal, true);
     }
+ //   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+ //   xmlhttp.setRequestHeader("Content-length", sendingawal.length);
     xmlhttp.send();
 
 
@@ -215,13 +220,13 @@ function selectName(i, idGroup) {
 function addItem() {
     var idGroup = $("#idGroupNow").val();
     var i = $("#counter").val();
-   // alert(i);
-    if(i == '' || i == null){
+    // alert(i);
+    if (i == '' || i == null) {
         $("#counter").val(0);
         i = 0;
-     //   alert(i);
+        //   alert(i);
     }
-    
+
     i = parseFloat(i) + 1;
 //var urut = parseFloat(i) - 1;
     frma = '<tr id="it' + i + '">';
@@ -251,7 +256,7 @@ function addItem() {
     // formatTotalPrice(i);
 }
 function tesclick(i) {
-  //  alert(i);
+    //  alert(i);
     var view = $('#viewc' + i);
     var create = $('#createc' + i);
     var edit = $('#editc' + i);
@@ -288,7 +293,7 @@ function exportPdf() {
     var searchtype = $("#searchtype").val();
     var searchfield = $("#searchfield").val();
 
-    var newURL = 'export.php?export=' + exports + '&file=' + file+'&type='+searchtype+'&field='+searchfield;
+    var newURL = 'export.php?export=' + exports + '&file=' + file + '&type=' + searchtype + '&field=' + searchfield;
     newwindow = window.open(newURL);
     if (window.focus) {
         newwindow.focus();
