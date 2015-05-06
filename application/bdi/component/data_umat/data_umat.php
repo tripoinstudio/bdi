@@ -4,6 +4,12 @@
 
 if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
     // echo "data=".$_GET['data'];
+    // 
+    
+    //DATA KEUMATAN
+    $nama_sekarang = $_GET['nama_sekarang'];
+   // $nama_
+     
 //ADDRESS 1
     $no1 = $_GET['no1'];
     $jalan1 = $_GET['jalan1'];
@@ -41,9 +47,15 @@ if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
     $db->connect();
 
     if ($_GET['action'] == 'save') {
+        
+        $db->insert('tb_data_umat', array('tb_data_umat_nama_ktp' => $nama_sekarang, 'tb_address_street' => $jalan1, 'tb_address_mobile_number' => $mobile1, 'tb_address_district' => $kelurahan1, 'tb_address_sub_district' => $kecamatan1, 'tb_city_id' => $city1, 'tb_province_id' => $province1));  // Table name, column names and respective values
+        $res = $db->getResult();
+        $idaddress1 = $res[0];
+        
         $db->insert('tb_address', array('tb_address_ktp' => $no1, 'tb_address_street' => $jalan1, 'tb_address_mobile_number' => $mobile1, 'tb_address_district' => $kelurahan1, 'tb_address_sub_district' => $kecamatan1, 'tb_city_id' => $city1, 'tb_province_id' => $province1));  // Table name, column names and respective values
         $res = $db->getResult();
         $idaddress1 = $res[0];
+        
         $db->insert('tb_address', array('tb_address_ktp' => $no2, 'tb_address_street' => $jalan2, 'tb_address_mobile_number' => $mobile2, 'tb_address_district' => $kelurahan2, 'tb_address_sub_district' => $kecamatan2, 'tb_city_id' => $city2, 'tb_province_id' => $province2));  // Table name, column names and respective values
         $res2 = $db->getResult();
         $idaddress2 = $res2[0];

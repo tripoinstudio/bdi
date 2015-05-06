@@ -20,11 +20,11 @@
 <div class="form-row control-group row-fluid">
     <label class="control-label span1">Nama 
     </label>
-    <input type="text"  id="nameKel" name="name" placeholder="" class="span3" />
+    <input type="text"  id="nameKels" name="name" placeholder="" class="span3" />
 
     <label class="control-label span2">Hubungan 
     </label>
-    <input type="text"  id="nameHub" name="name" placeholder="" class="span3" />
+    <input type="text"  id="nameHubs" name="name" placeholder="" class="span3" />
 
 </div>
 <input type="hidden" id="countername" value="0" />

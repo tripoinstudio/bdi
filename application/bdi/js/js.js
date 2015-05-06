@@ -22,7 +22,50 @@ $(function () {
 });
 
 
+function maxFourNumber(evt, obj) {
 
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    var value = obj.value;
+    var dotcontains = value.indexOf(".") != -1;
+    if (dotcontains)
+        if (charCode == 46)
+            return false;
+    if (charCode == 46)
+        return true;
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+
+    var subvalue = obj.value;
+    var res = subvalue.substring(0, 3);
+    if (obj.value.length > 3) {
+        obj.value = res;
+    } else {
+        obj.value = subvalue;
+    }
+    return true;
+}
+function maxEightNumber(evt, obj) {
+
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    var value = obj.value;
+    var dotcontains = value.indexOf(".") != -1;
+    if (dotcontains)
+        if (charCode == 46)
+            return false;
+    if (charCode == 46)
+        return true;
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+
+    var subvalue = obj.value;
+    var res = subvalue.substring(0, 8);
+    if (obj.value.length > 8) {
+        obj.value = res;
+    } else {
+        obj.value = subvalue;
+    }
+    return true;
+}
 function searchFields() {
     // alert("tes");
 }
@@ -300,15 +343,15 @@ function showMenu(str, name) {
 
         }
     }
-    if(name == 'Data Umat'){
-       xmlhttp.open("GET", "component/content/index2.php?content=data_umat&action=new", true);
- } else if(name == 'List Umat'){
-       xmlhttp.open("GET", "component/content/index2.php?content=data_umat", true);
- } else {
-       xmlhttp.open("GET", "component/content/index2.php?content=" + str, true);
-     
+    if (name == 'Data Umat') {
+        xmlhttp.open("GET", "component/content/index2.php?content=data_umat&action=new", true);
+    } else if (name == 'List Umat') {
+        xmlhttp.open("GET", "component/content/index2.php?content=data_umat", true);
+    } else {
+        xmlhttp.open("GET", "component/content/index2.php?content=" + str, true);
+
     }
-   
+
     xmlhttp.send();
 
     return true;
@@ -1011,9 +1054,9 @@ function beforeSave(action) {
             } else {
                 coma = ',';
             }
-     //       sending += '{"code":"' + inputid + '"}' + coma;
-      //      values += '{"values":"' + inputval + '"}' + coma;
-      //      sendingedit += '{"code":"' + inputid + '","values":"' + inputval + '"}' + coma;
+            //       sending += '{"code":"' + inputid + '"}' + coma;
+            //      values += '{"values":"' + inputval + '"}' + coma;
+            //      sendingedit += '{"code":"' + inputid + '","values":"' + inputval + '"}' + coma;
 
             //   sending += '{"value":"'+inputval+'"}'+coma;
 
@@ -1175,7 +1218,7 @@ function exportExcel(type, filename, parameter) {
 }
 
 function hideAtNew(str) {
-    
+
     getJavascript(str);
     $('#export-pdf').hide();
     $('#export-excel').hide();
@@ -1187,44 +1230,44 @@ function hideAtNew(str) {
     $('#searchButton').hide();
 }
 
-function formatDates(){
+function formatDates() {
     var date = new Date();
     var months;
-    if(date.getMonth() + 1 >= 0 && date.getMonth() + 1 <= 9){
+    if (date.getMonth() + 1 >= 0 && date.getMonth() + 1 <= 9) {
         var month2 = date.getMonth() + 1;
-        months = '0'+month2;
+        months = '0' + month2;
     } else {
-         months = date.getMonth() + 1;
+        months = date.getMonth() + 1;
     }
     var dates = (months) + '/' + date.getDate() + '/' + date.getFullYear();
-    
+
     return dates;
 }
 
-function formatDates2(){
+function formatDates2() {
     var date = new Date();
     var months;
-    if(date.getMonth() + 1 >= 0 && date.getMonth() + 1 <= 9){
+    if (date.getMonth() + 1 >= 0 && date.getMonth() + 1 <= 9) {
         var month2 = date.getMonth() + 1;
-        months = '0'+month2;
+        months = '0' + month2;
     } else {
-         months = date.getMonth() + 1;
+        months = date.getMonth() + 1;
     }
     var dates = date.getFullYear() + '-' + months + '-' + date.getDate();
-    
+
     return dates;
 }
 
-function toInsertDate(date){
+function toInsertDate(date) {
     var month = date.substring(0, 2);
-    var day = date.substring(3,5);
-    var years = date.substring(6,10);
-    var hasil = years+'-'+month+'-'+day;
-    
+    var day = date.substring(3, 5);
+    var years = date.substring(6, 10);
+    var hasil = years + '-' + month + '-' + day;
+
     return hasil;
 }
 
-function showMenuManual(str, name,manual) {
+function showMenuManual(str, name, manual) {
 //alert(str);
 //alert(name);
 //$('#loading').html('<img src="img/ajax-loader.gif">');
@@ -1258,7 +1301,7 @@ function showMenuManual(str, name,manual) {
 
         }
     }
-    xmlhttp.open("GET", "component/content/index2.php?content=" + str+manual, true);
+    xmlhttp.open("GET", "component/content/index2.php?content=" + str + manual, true);
     xmlhttp.send();
 
     return true;
