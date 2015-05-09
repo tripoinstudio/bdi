@@ -1,7 +1,11 @@
-
-<?= inputLov('Pilih Provinsi', 'lovprovince', 'lovprovinces', 'province', $_GET['action'], '', ''); ?>
-<!-- place holder, Label, idfield,  -->
-<?= inputTextArea('....', 'Deskripsi', 'remarks', 'true', $_GET['action']); ?>
+<?= inputLovNew('tb_province_id', 'tb_province_name','', 'Pilih Daerah','province','true', $_GET['action'], 'false', '',''); ?>
+<?= inputGeneral('....', 'Nama Sentra', 'name', 'true', $_GET['action']); ?>
+<?= inputGeneral('....', 'Description', 'remarks', 'true', $_GET['action']); ?>
+<?= inputGeneralTemplate('Daerah', '<div class="control-group" id="lovDaerahs"></div>'); ?>
+<button onclick="return addName();" id="create" class="btn btn-primary" data-original-title="" title=""><i class="gicon-plus "></i> Tambah Sentra</button>
+<br/>
+<br/>
+<div class="control-group" id="frmItem"></div>
 
 
 <div class="form-horizontal">

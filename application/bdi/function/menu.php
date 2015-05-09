@@ -25,11 +25,24 @@ $list_usersgr = $dbmenupertama->getResult();
             foreach ($queryParentMenu1 as $menuPertama) {
 
                 $parents = $menuPertama['menu_function_id'];
+				
+					$menulink = '';
+				
                 ?>
 
                 <li class="accordion-group <?= $menuPertama['menu_function_color']; ?>"> 
-                    <a class="<?= $menuPertama['menu_function_collapse']; ?>" data-toggle="collapse" data-parent="#sidebar_menu" href="<?= $menuPertama['menu_function_link']; ?>"> 
-                        <img src="<?= $menuPertama['menu_function_image']; ?>" />
+				<?php
+				if($parents == 1){
+				?>
+                     <a class="<?= $menuPertama['menu_function_collapse']; ?>" href="<?= $menulink; ?>">
+                  <?php } else {
+					$menulink = $menuPertama['menu_function_link'];
+					?>
+					<a class="<?= $menuPertama['menu_function_collapse']; ?>" data-toggle="collapse" data-parent="#sidebar_menu" href="<?= $menulink; ?>">
+					<?php
+				}
+?>				
+				   <img src="<?= $menuPertama['menu_function_image']; ?>" />
                         <span><?= $menuPertama['menu_function_name']; ?></span>
                     </a>
 

@@ -53,7 +53,7 @@ if ($_GET['action'] == 'search') {
 
 
 
-    <div class="row-fluid">
+    <div class="row-fluid" >
         <div class="box paint color_26">
             <div class="title">
                 <h4> <span><?= $cekMenu['menu_function_name']; ?> <small>BDI</small></span> </h4>

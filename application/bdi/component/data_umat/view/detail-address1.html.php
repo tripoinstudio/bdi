@@ -16,10 +16,15 @@ if ($array_keumatan['tb_data_keumatan_marriage_status'] == 1) {
 }
 inputGeneralView($mariage, STATUS_MARRIAGE, 'marriage_status', 'true', $_GET['action']);
 ?>
+<?php if ($array_keumatan['tb_data_keumatan_marriage_status'] == 1 || $array_keumatan['tb_data_keumatan_marriage_status'] == 3) { ?>
 <?=inputGeneralView($array_keumatan['tb_data_keumatan_nichiren_upacara'], U_N_S, 'nichiren_upacara', 'true', $_GET['action']);?>
 <?=inputGeneralView($array_keumatan['tb_data_keumatan_nichiren_tahun'], TAHUN, 'nichiren_tahun', 'true', $_GET['action']);?>
 <?=inputGeneralView($array_keumatan['tb_data_keumatan_nichiren_tempat'], TEMPAT, 'nichiren_tempat', 'true', $_GET['action']);?>
 <?=inputGeneralView($array_keumatan['tb_data_keumatan_nichiren_pemimpin'], PEMIMPIN, 'nichiren_pemimpin', 'true', $_GET['action']);?>
+<?php } else {
+	
+} ?>
+
 <?=inputGeneralView($array_keumatan['tb_data_keumatan_gojukai'], TAHUN_GOJUKAI, 'gojukai', 'true', $_GET['action']);?>
 
 
@@ -38,7 +43,11 @@ if ($array_keumatan['tb_data_keumatan_gohifu'] == 1) {
     $gohifu_stat = 'Tidak';
 } 
 inputGeneralView($gohifu_stat, ME_GOHIFU, 'gohifu', 'true', $_GET['action']);
+if ($array_keumatan['tb_data_keumatan_gohifu'] == 1) {
 echo inputGeneralTemplate(TDP, $array_keumatan['tb_data_keumatan_gohifu_tahun'] . ' - ' . $array_keumatan['tb_data_keumatan_penyakit'] . '');
+} else {
+	
+}
 ?>
 
 <?php } ?>

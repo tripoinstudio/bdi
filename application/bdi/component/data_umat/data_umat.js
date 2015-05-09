@@ -1,18 +1,56 @@
 $(function () {
-    //   alert("ipconfig");
-//    http://localhost:811/bdi/component/content/
-    // showMenuManual('personal_identity','Data Umat','&action=new');
 
-//    window.location.replace("component/content/index2.php?content=personal_identity&action=new");
-
+//alert('masuk');
     var ipconfig = $('#ipConfig').val();
     var str = queryString('content', ipconfig);
     var actions = queryString('action', ipconfig);
     $('#create').hide();
+	
+if (actions == 'edit') {
+	var marriage_status = $('input[id="lovsstatus"]:checked').val();
+	
+    if (marriage_status == 1 || marriage_status == 3) {
+		
+        $('#group_marriage_status').show();
+    } else {
+        $('#group_marriage_status').hide();
+        document.getElementById("upacarashosu").checked = true;
+    }
+	var me_gohifu = $('input[id="me_gohifu"]:checked').val();
+//	alert(status);
+    if (me_gohifu == 1 || me_gohifu == 3) {
+        $('#group-tdp').show();
+       
+    } else {
+        $('#group-tdp').hide();
+        $('#t_tahun').val('-');
+        $('#t_penyakit').val('-');
+    }
+	
+	var idProvinsi = document.getElementById("idProvinsi");
+	var idSentra = document.getElementById("idSentra");
+	var idDistrik = document.getElementById("idDistrik");
+	var idCetya = document.getElementById("idCetya");
+	var idDharmasala = document.getElementById("idDharmasala");
+	getSentraLov(idProvinsi,idSentra);
+	getDistrikLov(idSentra,idDistrik);
+	getCetyaLov(idDistrik,idCetya);
+	getDharmasalaLov(idCetya,idDharmasala);
+			
+	var idname1 = document.getElementById("idname1").value;
+	var idname2 = document.getElementById("idname2").value;
+	selectName(idname1);
+    selectNames2(idname2);
+} else if (actions == 'new') {
+	addName();
+	selectName(0);
+    selectNames2(0);
+	optionHubungan(null);
+}
+    
+    
+    
 
-    addName();
-    selectName();
-    selectNames2();
     $('#birth_date').datepicker({
         format: 'yyyy-mm-dd'
                 //   startDate: '-3d'
@@ -90,11 +128,16 @@ $(function () {
 
 function marriageStatus() {
     var status = $('input[id="lovsstatus"]:checked').val();
-//	alert(status);
+	//alert(status);
     if (status == 1 || status == 3) {
+		
         $('#group_marriage_status').show();
     } else {
         $('#group_marriage_status').hide();
+		$('#nichiren_shosu_year').val('-');
+        $('#nichiren_shosu_place').val('-');
+        $('#nichiren_shosu_leader').val('-');
+        document.getElementById("upacarashosu").checked = true;
     }
 }
 
@@ -103,8 +146,12 @@ function tdpStatus() {
 //	alert(status);
     if (status == 1 || status == 3) {
         $('#group-tdp').show();
+       
     } else {
         $('#group-tdp').hide();
+		$('#t_tahun').val('-');
+        $('#t_penyakit').val('-');
+        
     }
 }
 function saveDataUmat(str, action) {
@@ -113,6 +160,25 @@ function saveDataUmat(str, action) {
 //    var lovsstatus = $('#lovsstatus').val();
 
     //DATA UMAT
+	//prosesLoading();
+	var umat_code = '';
+	var umat_code_id = '';
+	var id_name1 = '';
+	var id_name2 = '';
+	if(action == 'update'){
+		umat_code = $('#code_umat').val();
+		umat_code_id = $('#code_umat_id').val();
+		id_name1 = $('#id_name1').val();
+		id_name2 = $('#id_name1').val();
+	} else {
+		umat_code = '';
+		umat_code_id = '';
+		id_name1 = '';
+		id_name2 = '';
+	}
+	
+	var umat_code_data = '&umat_code_id=' + umat_code_id + '&umat_code=' + umat_code+ '&id_name1=' + id_name1+ '&id_name2=' + id_name2;
+	
     var nama_sekarang = $('#nama_sekarang').val();
     var nama_panggilan = $('#nama_panggilan').val();
     var place_of_birth = $('#place_of_birth').val();
@@ -124,48 +190,70 @@ function saveDataUmat(str, action) {
     var alamat_ktp = $('#alamat_ktp').val();
 
     var alamat_tinggal = $('#alamat_tinggal').val();
-    var telp_rumah = $('#first_telp_rumah').val()+'-'+$('#last_telp_rumah').val();
+    var telp_rumah = $('#first_telp_rumah').val() + '-' + $('#last_telp_rumah').val();
 
     var alamat_tinggal1 = $('#alamat_tinggal1').val();
-    var telp_rumah1 = $('#first_telp_rumah1').val()+'-'+$('#last_telp_rumah1').val();
+    var telp_rumah1 = $('#first_telp_rumah1').val() + '-' + $('#last_telp_rumah1').val();
     var tgl_prbh_almt1 = $('#tgl_prbh_almt1').val();
 
     var alamat_tinggal2 = $('#alamat_tinggal2').val();
-    var telp_rumah2 = $('#first_telp_rumah2').val()+'-'+$('#last_telp_rumah2').val();
+    var telp_rumah2 = $('#first_telp_rumah2').val() + '-' + $('#last_telp_rumah2').val();
     var tgl_prbh_almt2 = $('#tgl_prbh_almt2').val();
 
     var no_handphone = $('#no_handphone').val();
     var email = $('#email').val();
-    
-    var dataUmat = '&nama_sekarang=' + nama_sekarang + '&nama_panggilan=' + nama_panggilan+ '&place_of_birth=' + place_of_birth
-    + '&birth_date=' + birth_date+ '&gender=' + gender+ '&country=' + country
-    + '&job=' + job+ '&no_iden=' + no_iden+ '&alamat_ktp=' + alamat_ktp
-    + '&alamat_tinggal=' + alamat_tinggal+ '&telp_rumah=' + telp_rumah+ '&alamat_tinggal1=' + alamat_tinggal1
-    + '&telp_rumah1=' + telp_rumah1+ '&tgl_prbh_almt1=' + tgl_prbh_almt1+ '&alamat_tinggal2=' + alamat_tinggal2
-    + '&telp_rumah2=' + telp_rumah2+ '&tgl_prbh_almt2=' + tgl_prbh_almt2
-    + '&no_handphone=' + no_handphone+ '&email=' + email;
+
+    var dataUmat = '&nama_sekarang=' + nama_sekarang + '&nama_panggilan=' + nama_panggilan + '&place_of_birth=' + place_of_birth
+            + '&birth_date=' + birth_date + '&gender=' + gender + '&country=' + country
+            + '&job=' + job + '&no_iden=' + no_iden + '&alamat_ktp=' + alamat_ktp
+            + '&alamat_tinggal=' + alamat_tinggal + '&telp_rumah=' + telp_rumah 
+			//+ '&alamat_tinggal1=' + alamat_tinggal1
+            //+ '&telp_rumah1=' + telp_rumah1 + '&tgl_prbh_almt1=' + tgl_prbh_almt1 + '&alamat_tinggal2=' + alamat_tinggal2
+        //    + '&telp_rumah2=' + telp_rumah2 + '&tgl_prbh_almt2=' + tgl_prbh_almt2
+            + '&no_handphone=' + no_handphone + '&email=' + email;
 
 
     //DATA KEUMATAN
-    var marriage_status = $('#lovsstatus').val();
-    var upacarashosu = $('#upacarashosu').val();
-    var nichiren_shosu_year = $('#nichiren_shosu_year').val();
-    var nichiren_shosu_place = $('#nichiren_shosu_place').val();
-    var nichiren_shosu_leader = $('#nichiren_shosu_leader').val();
+    var marriage_status = $('input[id="lovsstatus"]:checked').val();
+
+    var upacarashosu = '';
+    var nichiren_shosu_year = '';
+    var nichiren_shosu_place = '';
+    var nichiren_shosu_leader = '';
+    if (marriage_status == 1 || marriage_status == 3) {
+        upacarashosu =$('input[id="upacarashosu"]:checked').val();
+        nichiren_shosu_year = $('#nichiren_shosu_year').val();
+        nichiren_shosu_place = $('#nichiren_shosu_place').val();
+        nichiren_shosu_leader = $('#nichiren_shosu_leader').val();
+    } else {
+      //  upacarashosu = $('input[id="upacarashosu"]:checked').val('-');
+        nichiren_shosu_year = $('#nichiren_shosu_year').val('-');
+        nichiren_shosu_place = $('#nichiren_shosu_place').val('-');
+        nichiren_shosu_leader = $('#nichiren_shosu_leader').val('-');
+    }
+
     var gojukai_date = $('#gojukai_date').val();
     var okataki_gohozon = $('#okataki_gohozon').val();
     var omamori_gohozon = $('#omamori_gohozon').val();
     var tokubetsu_gohozon = $('#tokubetsu_gohozon').val();
     var kankai_date = $('#kankai_date').val();
-    var me_gohifu = $('#me_gohifu').val();
-    var t_tahun = $('#t_tahun').val();
-    var t_penyakit = $('#t_penyakit').val();
-    
+    var me_gohifu = $('input[id="me_gohifu"]:checked').val();
+    var t_tahun = '';
+    var t_penyakit = '';
+    if (me_gohifu == 1) {
+        t_tahun = $('#t_tahun').val();
+        t_penyakit = $('#t_penyakit').val();
+    } else {
+        t_tahun = $('#t_tahun').val('-');
+        t_penyakit = $('#t_penyakit').val('-');
+    }
+
+
     var dataKeumatan = '&marriage_status=' + marriage_status + '&upacarashosu=' + upacarashosu
-    + '&nichiren_shosu_year=' + nichiren_shosu_year+ '&nichiren_shosu_place=' + nichiren_shosu_place+ '&nichiren_shosu_leader=' + nichiren_shosu_leader
-    + '&gojukai_date=' + gojukai_date+ '&okataki_gohozon=' + okataki_gohozon+ '&omamori_gohozon=' + omamori_gohozon
-    + '&tokubetsu_gohozon=' + tokubetsu_gohozon+ '&kankai_date=' + kankai_date+ '&me_gohifu=' + me_gohifu
-    + '&t_tahun=' + t_tahun+ '&t_penyakit=' + t_penyakit;
+            + '&nichiren_shosu_year=' + nichiren_shosu_year + '&nichiren_shosu_place=' + nichiren_shosu_place + '&nichiren_shosu_leader=' + nichiren_shosu_leader
+            + '&gojukai_date=' + gojukai_date + '&okataki_gohozon=' + okataki_gohozon + '&omamori_gohozon=' + omamori_gohozon
+            + '&tokubetsu_gohozon=' + tokubetsu_gohozon + '&kankai_date=' + kankai_date + '&me_gohifu=' + me_gohifu
+            + '&t_tahun=' + t_tahun + '&t_penyakit=' + t_penyakit;
 
     //DATA PEMBAGIAN DAERAH
     var lovsprovince = $('#lovsprovince').val();
@@ -173,44 +261,47 @@ function saveDataUmat(str, action) {
     var lovsdistrik = $('#lovsdistrik').val();
     var lovscetya = $('#lovscetya').val();
     var lovsdharmasala = $('#lovsdharmasala').val();
-    
+
     var dataPembagianDaerah = '&lovsprovince=' + lovsprovince + '&lovssentra=' + lovssentra
-    + '&lovsdistrik=' + lovsdistrik+ '&lovscetya=' + lovscetya+ '&lovsdharmasala=' + lovsdharmasala;
-    
+            + '&lovsdistrik=' + lovsdistrik + '&lovscetya=' + lovscetya + '&lovsdharmasala=' + lovsdharmasala;
+
 
     //DATA KEAKTIFAN
     var dtng_ke = $('input[id="dtng_ke"]:checked').val();
     var danaprmt = $('input[id="danaprmt"]:checked').val();
     var tngjwb = $('#tngjwb').val();
 
-    var dataAktif = '&dtng_ke=' + dtng_ke + '&danaprmt=' + danaprmt+ '&tngjwb=' + tngjwb;
+    var dataAktif = '&dtng_ke=' + dtng_ke + '&danaprmt=' + danaprmt + '&tngjwb=' + tngjwb;
     //DATA KELUARGA
     var lovNameTr = $('#lovNameTr').val();
-    
+
 
     var countername = $('#countername').val();
-    var sendingKeluarga = '{"item":[';
+    var sendingKeluarga = '{"listitemkel":[';
 //    sending = '{"code":"' + code + '","name":"' + name + '","item":[';
     for (var i = 0; i < countername; i++) {
-        var nameKel = $('#nameKel' + i).val();
-        var nameHub = $('#nameHub' + i).val();
-        var coma;
         var s = parseFloat(i) + 1;
+        var nameKel = $('#nameKel' + s).val();
+        var nameHub = $('#nameHub' + s).val();
+		var nameIdKel = $('#nameIdKel' + s).val();
+        var coma;
+        
         if (s == $("#countername").val()) {
             coma = '';
         } else {
             coma = ',';
         }
-        sendingKeluarga = sendingKeluarga + '{"nameKel":"' + nameKel + '","nameHub":"' + nameHub + '"}' + coma;
+        sendingKeluarga = sendingKeluarga + '{"nameIdKel":"' + nameIdKel + '","nameKel":"' + nameKel + '","nameHub":"' + nameHub + '"}' + coma;
 //    sendingKeluarga = '&nameKel=' + nameKel + '&lovNameTr2=' + lovNameTr2;
     }
     sendingKeluarga = sendingKeluarga + ']}';
     var lovNameTr2 = $('#lovNameTr2').val();
     var nameKels = $('#nameKels').val();
+	var nameIdKels = $('#nameIdKels').val();
     var nameHubs = $('#nameHubs').val();
-var dataKel = '&lovNameTr=' + lovNameTr + '&lovNameTr2=' + lovNameTr2
-        + '&nameKels=' + nameKels+ '&nameHubs=' + nameHubs+ '&sendingKeluarga=' + sendingKeluarga;
-    
+    var dataKel = '&lovNameTr=' + lovNameTr + '&lovNameTr2=' + lovNameTr2
+            + '&nameIdKels=' + nameIdKels + '&nameKels=' + nameKels + '&nameHubs=' + nameHubs + '&sendingKeluarga=' + sendingKeluarga;
+
 
     var required = validationRequired();
     var sending = beforeSave(action);
@@ -223,7 +314,7 @@ var dataKel = '&lovNameTr=' + lovNameTr + '&lovNameTr2=' + lovNameTr2
 
         addresssend = '&adress1=' + adress1 + '&adress2=' + adress2;
     }
-    var parameter = dataUmat+dataKeumatan+dataPembagianDaerah+dataAktif+dataKel;
+    var parameter = umat_code_data+dataUmat + dataKeumatan + dataPembagianDaerah + dataAktif + dataKel;
 
 //    var parameter = addresssend + '&gender=' + gender + '&upacarashosu=' + upacarashosu + '&mrstatus=' + lovsstatus
 //            + '&shosu_year=' + toInsertDate(shosu_year) + '&birth_date=' + toInsertDate(birth_date) + '&gojukai_date=' + toInsertDate(gojukai_date) + '&gohozon_accept_date=' + toInsertDate(gohozon_accept_date) + '&kankai_date=' + toInsertDate(kankai_date)
@@ -233,11 +324,11 @@ var dataKel = '&lovNameTr=' + lovNameTr + '&lovNameTr2=' + lovNameTr2
 
 //    alert(upacarashosu+gender);
     //  alert(toInsertDate(birth_date));
-    alert(parameter);
+  //  alert(parameter);
     if (required == "nulls") {
-
+alert("Mohon Isi Field yg Kosong");
     } else {
-       // prosesSave(str, action, sending, parameter);
+         prosesSave(str, action, sending, parameter);
     }
 
 }
@@ -282,7 +373,8 @@ function setCodeUmat() {
 }
 
 
-function selectName() {
+function selectName(id) {
+//	alert(id);
     var str = 'data_umat';
     var frma = '<select id="lovNameTr" class="span6 chosen" data-placeholder="Choose a Name" tabindex="1">';
     $.ajax({
@@ -295,8 +387,11 @@ function selectName() {
             var jsons = JSON.parse(result);
             for (var n = 0; n < jsons.length; n++) {
                 var items = jsons[n];
+				if(id == items.tb_data_umat_id){
+				frma = frma + '<option value="' + items.tb_data_umat_id + '" selected="selected"><b>' + items.tb_data_umat_nama_ktp + '</b></option>';	
+				} else {
                 frma = frma + '<option value="' + items.tb_data_umat_id + '"><b>' + items.tb_data_umat_nama_ktp + '</b></option>';
-
+				}
             }
             frma = frma + '</select>';
             $('#lovName').html(frma);
@@ -307,21 +402,28 @@ function selectName() {
     });
 }
 
-function selectNames2() {
+function selectNames2(id) {
+	//alert(id);
     var str = 'data_umat';
     var frma = '<select id="lovNameTr2" class="span6 chosen" data-placeholder="Choose a Name" tabindex="1">';
-    $.ajax({
+    
+	$.ajax({
         type: 'get',
         url: 'controller.php',
         data: 'content=' + str + '&action=lovname',
         success: function (result) {
-
+//alert(result)
 //alert(result);
             var jsons = JSON.parse(result);
+			
             for (var n = 0; n < jsons.length; n++) {
                 var items = jsons[n];
+              //  frma = frma + '<option value="' + items.tb_data_umat_id + '"><b>' + items.tb_data_umat_nama_ktp + '</b></option>';
+if(id == items.tb_data_umat_id){
+				frma = frma + '<option value="' + items.tb_data_umat_id + '" selected="selected"><b>' + items.tb_data_umat_nama_ktp + '</b></option>';	
+				} else {
                 frma = frma + '<option value="' + items.tb_data_umat_id + '"><b>' + items.tb_data_umat_nama_ktp + '</b></option>';
-
+				}
             }
             frma = frma + '</select>';
             $('#lovNames').html(frma);
@@ -348,17 +450,220 @@ function addName() {
     frma = frma + '<div class="form-row control-group row-fluid">';
     frma = frma + '<label class="control-label span1">Nama ';
     frma = frma + ' </label>';
+	
 
-    frma = frma + '<input type="text"  id="nameKel' + i + '" name="name" placeholder="" class="span3" />';
+    frma = frma + '<input type="hidden"  id="nameIdKel' + i + '" value="0" name="name" placeholder="" class="span3" /><input type="text"  id="nameKel' + i + '" name="name" placeholder="" class="span3" />';
 
     frma = frma + '<label class="control-label span2">Hubungan ';
     frma = frma + ' </label>';
-    frma = frma + '<input type="text"  id="nameHub' + i + '" name="name" placeholder="" class="span3" />';
+    //  frma = frma + '<input type="text"  id="nameHub' + i + '" name="name" placeholder="" class="span3" />';
+    frma = frma + '<select id="nameHub' + i + '" class="input-large m-wrap" data-placeholder="Choose a Name" tabindex="1">';
+    frma = frma + '</select>';
 
     frma = frma + '</div>';
 
     $('#frmItem').append(frma);
-$("#countername").val(i);
+    $("#countername").val(i);
+    optionHubungan(i);
     return false;
 
+}
+function optionHubungan(i) {
+    var frma = '';
+    frma = frma + '<option value="AYAH">AYAH</option>';
+    frma = frma + '<option value="IBU">IBU</option>';
+    frma = frma + '<option value="ANAK">ANAK</option>';
+    frma = frma + '<option value="KAKAK">KAKAK</option>';
+    frma = frma + '<option value="ADIK">ADIK</option>';
+    frma = frma + '<option value="KAKEK">KAKEK</option>';
+    frma = frma + '<option value="NENEK">NENEK</option>';
+    frma = frma + '<option value="CUCU">CUCU</option>';
+    frma = frma + '<option value="MERTUA">MERTUA</option>';
+    frma = frma + '<option value="MENANTU">MENANTU</option>';
+    frma = frma + '<option value="PAMAN">PAMAN</option>';
+    frma = frma + '<option value="TANTE">TANTE</option>';
+    frma = frma + '<option value="KEPONAKAN">KEPONAKAN</option>';
+    frma = frma + '<option value="SEPUPU">SEPUPU</option>';
+    if (i == null) {
+        $("#nameHubs").html(frma);
+
+    } else {
+        $("#nameHub" + i).html(frma);
+    }
+
+
+}
+
+function hideDatepicker(event,obj){
+	var keycode = (event.keyCode ? event.keyCode : event.which);
+	//alert(keycode);
+	if(keycode == '9'){
+	//	alert(obj);
+	//	alert('You pressed a "TAB" key in textbox');
+		$(obj).datepicker('hide');
+	}
+	//
+}
+
+function getSentraLov(obj,idR) {
+    //alert(obj);
+    var id;
+  if(obj == null){
+	  id = obj;
+  } else {
+	  id = obj.value;
+  }
+    var str = 'data_umat';
+    var frma = '<select id="lovssentra" class="input-large m-wrap" onchange="getDistrikLov(this,0);">';
+    frma = frma + '<option value="0">Select ...</option>';
+    $.ajax({
+        type: 'get',
+        url: 'controller.php',
+        data: 'content=' + str + '&action=sentralov&id=' + id,
+        success: function (result) {
+
+//alert(result);
+            var jsons = JSON.parse(result);
+            for (var n = 0; n < jsons.length; n++) {
+                var items = jsons[n];
+				
+				if(idR.value == items.tb_sentra_id){
+					frma = frma + '<option value="' + items.tb_sentra_id + '" selected="selected"><b>' + items.tb_sentra_name + '</b></option>';
+				} else {
+                frma = frma + '<option value="' + items.tb_sentra_id + '"><b>' + items.tb_sentra_name + '</b></option>';
+				}
+            }
+            frma = frma + '</select>';
+            $('#sentraLov').html(frma);
+            //  $('#lovNameTr2').chosen();
+			if(idR == 0){
+			getDistrikLov(null);
+			getCetyaLov(null);
+			getDharmasalaLov(null);
+			}
+			
+        }
+
+
+    });
+}
+
+function getDistrikLov(obj,idR) {
+  //  alert(obj);
+  var id;
+  if(obj == null){
+	  id = obj;
+  } else {
+	  id = obj.value;
+  }
+   // alert(id);
+	
+    var str = 'data_umat';
+    var frma = '<select id="lovsdistrik" class="input-large m-wrap" onchange="getCetyaLov(this,0);">';
+    frma = frma + '<option value="0">Select ...</option>';
+    $.ajax({
+        type: 'get',
+        url: 'controller.php',
+        data: 'content=' + str + '&action=distriklov&id=' + id,
+        success: function (result) {
+
+//alert(result);
+            var jsons = JSON.parse(result);
+            for (var n = 0; n < jsons.length; n++) {
+                var items = jsons[n];
+				
+				if(idR.value == items.tb_distrik_id){
+					 frma = frma + '<option value="' + items.tb_distrik_id + '" selected="selected"><b>' + items.tb_distrik_name + '</b></option>';
+				} else {
+                frma = frma + '<option value="' + items.tb_distrik_id + '"><b>' + items.tb_distrik_name + '</b></option>';
+				}
+            }
+            frma = frma + '</select>';
+            $('#distrikLov').html(frma);
+            //  $('#lovNameTr2').chosen();
+			var lovsdistrik = $("#lovDistrikId").val();
+			if(idR == 0){
+			getCetyaLov(null);
+			getDharmasalaLov(null);
+			}
+        }
+
+
+    });
+}
+
+function getCetyaLov(obj,idR) {
+//    alert(obj.value);
+    var id;
+  if(obj == null){
+	  id = obj;
+  } else {
+	  id = obj.value;
+  }
+    var str = 'data_umat';
+    var frma = '<select id="lovscetya" class="input-large m-wrap" onchange="getDharmasalaLov(this,0);">';
+    frma = frma + '<option value="0">Select ...</option>';
+    $.ajax({
+        type: 'get',
+        url: 'controller.php',
+        data: 'content=' + str + '&action=cetyalov&id=' + id,
+        success: function (result) {
+
+//alert(result);
+            var jsons = JSON.parse(result);
+            for (var n = 0; n < jsons.length; n++) {
+                var items = jsons[n];
+				
+				if(idR.value == items.tb_cetya_id){
+				 frma = frma + '<option value="' + items.tb_cetya_id + '" selected="selected"><b>' + items.tb_cetya_name + '</b></option>';
+				} else {
+                frma = frma + '<option value="' + items.tb_cetya_id + '"><b>' + items.tb_cetya_name + '</b></option>';
+				}
+            }
+            frma = frma + '</select>';
+            $('#cetyaLov').html(frma);
+            //  $('#lovNameTr2').chosen();
+			if(idR == 0){
+			getDharmasalaLov(null);
+			}
+        }
+
+
+    });
+}
+
+function getDharmasalaLov(obj,idR) {
+//    alert(obj.value);
+    var id;
+  if(obj == null){
+	  id = obj;
+  } else {
+	  id = obj.value;
+  }
+    var str = 'data_umat';
+    var frma = '<select id="lovsdharmasala" class="input-large m-wrap">';
+    frma = frma + '<option value="0">Select ...</option>';
+    $.ajax({
+        type: 'get',
+        url: 'controller.php',
+        data: 'content=' + str + '&action=dharmasalalov&id=' + id,
+        success: function (result) {
+
+//alert(result);
+            var jsons = JSON.parse(result);
+            for (var n = 0; n < jsons.length; n++) {
+                var items = jsons[n];
+				if(idR.value == items.tb_dharmasala_id){
+				 frma = frma + '<option value="' + items.tb_dharmasala_id + '" selected="selected"><b>' + items.tb_dharmasala_name + '</b></option>';
+				} else {
+                frma = frma + '<option value="' + items.tb_dharmasala_id + '"><b>' + items.tb_dharmasala_name + '</b></option>';
+				}
+            }
+            frma = frma + '</select>';
+            $('#dharmasalaLov').html(frma);
+            //  $('#lovNameTr2').chosen();
+        }
+
+
+    });
 }

@@ -2,47 +2,51 @@
 
 <?php
 
-if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
+if ($_GET['action'] == 'save' || $_GET['action'] == 'update' || $_GET['action'] == 'delitem'  ) {
     // echo "data=".$_GET['data'];
-    include "../../function/saveautomatic.php";
-
-    $countryid = $_GET['country'];
+    $daerah = $_GET['daerah'];
+	$sending= json_decode($_GET['sending']);
     $db = new Database();
     $db->connect();
 
     if ($_GET['action'] == 'save') {
-        $db->sql("INSERT INTO `tb_province` (".$datas.",`tb_country_id`)VALUES (".$values.",$countryid);");
-
-                $res = $db->getResult();
-    } else if ($_GET['action'] == 'update') {
-        $id = $_GET['id'];
-        
-        $db->sql("UPDATE `tb_province` SET ".$datas.",`tb_country_id`=".$countryid." WHERE `tb_province_id` =".$id.";");
-   //     $db->update('tb_country', array('tb_country_name' => "" . $name . "", 'tb_country_code' => "" . $code . ""), 'tb_country_id=' . $id . ''); // Table name, column names and values, WHERE conditions
-        $res = $db->getResult();
-//	$query1=mysql_query("update tb_".$cekMenu['menu_function_link']." set tb_warehouse_name='$name', tb_warehouse_code='$code' where tb_warehouse_id='$id'");
-    }
+		foreach ($sending->listitem as $items) {
+			$id = $items->id;
+            $name = $items->name;
+			if($id == 0){
+				 $db->insert('tb_distrik', array('created_date' => date('Y-m-d'),'created_by' => $_SESSION['user_id'],'tb_distrik_name' => $name, 'tb_sentra_id' => $daerah));  // Table name, column names and \
+        	saveToLog($cekMenu['menu_function_name'], $_GET['action'], $_SESSION['username']);
+			} else {
+			$db->update('tb_distrik', array('update_date' => date('Y-m-d'),'update_by' => $_SESSION['user_id'],'tb_distrik_name' => $name, 'tb_sentra_id' => $daerah),'tb_distrik_id=' . $id . '');
+			saveToLog($cekMenu['menu_function_name'], $_GET['action'], $_SESSION['username']);
+			}
+			$results = $db->getResult();
+           
+        }
+	} else if ($_GET['action'] == 'delitem') {
+		$idl = $_GET['id'];
+		
+		$dblistdata = new Database();
+$dblistdata->connect();
+$dblistdata->select('tb_cetya', '*', NULL, 'tb_distrik_id='.$idl); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+$list_data_qu = $dblistdata->getResult();
+ foreach ($list_data_qu as $array_list_qu) {
+	 $id_cetya = $array_list_qu['tb_cetya_id'];
+	 $query3 = mysql_query("delete from tb_dharmasala where tb_dharmasala_cetya_id='$id_cetya'");
+	// $data_umat_hub2 = $array_list_qu['tb_data_umat_hub2'];
+ }
+		 
+		  
+		 
+		 $query1 = mysql_query("delete from tb_distrik where tb_distrik_id='$idl'");
+		  $query2 = mysql_query("delete from tb_cetya where tb_distrik_id='$idl'");
+		 saveToLog($cekMenu['menu_function_name'], $_GET['action'], $_SESSION['username']);
+	}
 }
 
 include "../../function/functionaction.php";
 ?>
 <?php
-//if($_GET['action'] == 'searchs'){
-//    if($_GET['searchtype']=='code'){
-//        $texts = 'tb_country_code';
-//    } else if($_GET['searchtype']=='name'){
-//        $texts = 'tb_country_name';
-//    } else {
-//        $texts = '';
-//    }
-//$parentuser = $texts." like '%".$_GET['searchfield']."%' and status=1";
-
-$dblist = new Database();
-$dblist->connect();
-$dblist->select('tb_distrik', '*', NULL, ''); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
-$list_query = $dblist->getResult();
-
-$length_list = count($list_query);
 
 ?>
 <?php

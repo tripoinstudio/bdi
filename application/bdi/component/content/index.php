@@ -17,7 +17,7 @@
       </div>
     </div>
   </div>
-  <div class="viewport ">
+  <div class="viewport " style="height:800px;">
     <div class="overview collapse">
       <div class="search row-fluid container">        
         <div class="span5"> <img src="img/spacer70.png" /> </div>

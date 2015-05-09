@@ -4,18 +4,23 @@ $(function () {
    
     var str = queryString('content', ipconfig);
     var actions = queryString('action', ipconfig);
-  
+  $('#create').hide();
+	$('#buttonsaveitem').hide();
+	$('#createitem').hide();
+	$('#table-item').hide();
+	selectDaerah(0);
 
 });
-function saveProvince(str, action) {
-    var country = $('#lovscountry').val();
+function saveDistrik(str, action) {
+    var daerah = $('#lovDaerahTr').val();
+	var sendings = sendingsaveADM();
+	var parameter = '&daerah='+daerah+'&sending='+sendings;
+	var required = validationRequired();
+	beforeSave(action);
+	if (required == "nulls") {
+	} else {
+		prosesSaveADM(str, action,daerah,parameter);
 
-    var required = validationRequired();
-    var sending = beforeSave(action);
-    if (required == "nulls") {
-
-    } else {
-        prosesSave(str, action, sending,'&country='+country);
-    }
+	}
 
 }

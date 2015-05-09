@@ -11,14 +11,6 @@ $(function () {
         disable_search_threshold: 10
     });
 
-
-
-
-
-    //return false;
-
-
-
 });
 
 
@@ -156,7 +148,7 @@ function checkedAll(length) {
         $('#checkDelete').val(0);
         $('#deleteAll').hide();
     }
-    alert(sending);
+ //   alert(sending);
     //	return false;
 }
 
@@ -313,9 +305,10 @@ function showMenu(str, name) {
 //alert(name);
 //$('#loading').html('<img src="img/ajax-loader.gif">');
 
-
+prosesLoading();
     $('#namePage').html(name);
     $('#datatable_example').html('');
+	//$('#txtHint').html('proses...');
     if (str == "") {
         document.getElementById("txtHint").innerHTML = "";
         return;
@@ -343,7 +336,7 @@ function showMenu(str, name) {
 
         }
     }
-    if (name == 'Data Umat') {
+    if (name == 'Tambah Data Umat') {
         xmlhttp.open("GET", "component/content/index2.php?content=data_umat&action=new", true);
     } else if (name == 'List Umat') {
         xmlhttp.open("GET", "component/content/index2.php?content=data_umat", true);
@@ -361,6 +354,7 @@ function showMenu(str, name) {
 function showProfile(str, name) {
 //alert(str);
 //alert(name);
+prosesLoading();
     $('#namePage').html(name);
 
     if (str == "") {
@@ -444,7 +438,7 @@ function saveBack(str, name) {
 
 function showCreate(str, action) {
 
-
+prosesLoading();
     if (str == "") {
         document.getElementById("txtHint").innerHTML = "";
         return;
@@ -563,6 +557,8 @@ function viewEdit(str, id, action) {
 //alert(id);
 //alert(action);
 //
+prosesLoading();
+//$("#loading").show();
     if (str == "") {
         document.getElementById("txtHint").innerHTML = "";
         return;
@@ -607,6 +603,9 @@ function viewEdit(str, id, action) {
 
 }
 
+function prosesLoading(){
+	$('#txtHint').html('<div style="vertical-align: middle;padding-left: 500px;padding-top: 200px;padding-bottom: 200px;"><img src="img/ajax-loader.gif" style="width:75px;height:75px;"><br/><br/><p style="padding-right:50px;">Please Wait ... </p></div>');
+}
 
 function viewEditService(str, id, action, desc) {
 //alert(str);
@@ -682,9 +681,11 @@ function setJsonEdit() {
 function deletes(str, id, action) {
 //alert(str);
 //var id = $('#id').val();
+
     if (!confirm('Are you sure delete this data?')) {
         return false;
     } else {
+		prosesLoading();
         if (str == "") {
             document.getElementById("txtHint").innerHTML = "";
             return;
@@ -718,10 +719,12 @@ function deletes(str, id, action) {
 
 function deleteAllfun(str, action) {
 //alert(str);
+
     var idList = $('#checkDelete').val();
     if (!confirm('Are you sure delete this data?')) {
         return false;
     } else {
+		prosesLoading();
         if (str == "") {
             document.getElementById("txtHint").innerHTML = "";
             return;
@@ -1125,7 +1128,8 @@ function prosesSave(str, action, sending, manual) {
     if (action == 'update') {
         var id = $('#idUp').val();
     }
-
+	
+prosesLoading();
     if (str == "") {
         document.getElementById("txtHint").innerHTML = "";
         return;
@@ -1149,6 +1153,47 @@ function prosesSave(str, action, sending, manual) {
         xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + sending + manual, true);
     } else {
         xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + "&id=" + id + sending + manual, true);
+    }
+
+    xmlhttp.send();
+
+
+}
+
+function prosesSaveADM(str, action,idP, manual) {
+    // DEFAULT SAVE or EDIT-- >
+    if (action == 'update') {
+        var id = $('#idUp').val();
+    }
+prosesLoading();
+    if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    }
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else { // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+            sampleTable();
+            $('#deleteAll').hide();
+            $('#edit').hide();
+            $('#create').hide();
+			$('#cancel').hide();
+			selectDaerah(idP);
+			addSentra(idP,1);
+        }
+    }
+    if (action == 'save') {
+        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action  + manual, true);
+    } else if (action == 'delitem') {
+        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + "&id=" + manual);
+    } else {
+        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + "&id=" + id  + manual, true);
     }
 
     xmlhttp.send();

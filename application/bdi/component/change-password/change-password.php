@@ -2,8 +2,8 @@
 <?php
 
 
-$code = mysql_real_escape_string($_GET['code']);
-$name = mysql_real_escape_string($_GET['name']);
+$password_lama = mysql_real_escape_string($_GET['password_lama']);
+$password_baru = mysql_real_escape_string($_GET['password_baru']);
 
 $dbproduct = new Database();
 $dbproduct->connect();
@@ -11,36 +11,24 @@ $dbproduct->connect();
 
 
 if($_GET['action'] == 'update'){
-//	$id = $_GET['id'];
-	$dbproduct->update('tb_settings',array('tb_settings_code'=>"".$code."",'tb_settings_name'=>"".$name.""),'user_username="'.$_SESSION['username'].'"'); // Table name, column names and values, WHERE conditions
+	$id = $_GET['id'];
+	$dbproduct->update('tb_user',array('user_password'=>"".$password_baru.""),'user_id="'.$id.'"'); // Table name, column names and values, WHERE conditions
 	$res = $dbproduct->getResult();
-//	$query1=mysql_query("update tb_".$cekMenu['menu_function_link']." set tb_warehouse_name='$name', tb_warehouse_code='$code' where tb_warehouse_id='$id'");
+
 }
 
-//$dbproduct->select('tb_settings', '*', NULL, 'tb_settings_code="'.$_SESSION['company_code'].'"');
-//$list_product = $dbproduct->getResult();
-//
-//foreach ($list_product as $array_list_product) {
-//    $code = $array_list_product['tb_settings_code'];
-//    $name = $array_list_product['tb_settings_name'];
-//}
 
-$dbproduct->select('tb_user', '*', NULL, 'user_username="'.$_SESSION['username'].'"');
+$dbproduct->select('tb_user', '*', NULL, 'user_id="'.$_SESSION['user_id'].'"');
 $list_users = $dbproduct->getResult();
 
 foreach ($list_users as $array_list_product) {
     $code = $array_list_product['user_password'];
+	$user_id = $array_list_product['user_id'];
   //  $name = $array_list_product['user_password'];
 }
 
 include "../../function/contentmodul.html.php";
 
-
-
-
-//$list_query=mysql_query("select * from tb_".$cekMenu['menu_function_link']." where status=1");
-
-//$length_list = count($list_query);
 ?>
 
 

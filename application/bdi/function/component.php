@@ -55,7 +55,7 @@ function inputGeneralView($placeholder=null, $title=null, $idinput=null, $ketera
              </div>';
 }
 
-function inputGeneral($placeholder=null, $title=null, $idinput=null, $keterangan=null, $action=null, $style=null) {
+function inputGeneral($placeholder=null, $title=null, $idinput=null, $keterangan=null, $action=null, $style=null,$onclick=null) {
     
     if ($action == 'new') {
         echo '<div class="form-row control-group row-fluid">';
@@ -63,7 +63,7 @@ function inputGeneral($placeholder=null, $title=null, $idinput=null, $keterangan
          //    <span class="help-block">Type your ' . $idinput . ' here</span>
       echo' </label>';
       echo'          <div class="controls span9">
-          <input type="text" style="' . $style . '"  id="' . $idinput . '" name="' . $keterangan . 'titles[]" placeholder="' . $placeholder . '" class="span12" />
+          <input type="text" '.$onclick.' style="' . $style . '"  id="' . $idinput . '" name="' . $keterangan . 'titles[]" placeholder="' . $placeholder . '" class="span12" />
              <span class="help-inline" name="namens[]" id="' . $idinput . 'ns">
                  
              
@@ -104,7 +104,7 @@ function inputPassword($placeholder=null, $title=null, $idinput=null, $keteranga
         echo '<div class="form-row control-group row-fluid">
              <label class="control-label span3">' . $title . ' <span class="help-block">Type your ' . $idinput . ' here</span></label>
              <div class="controls span9">
-            <input type="password" style="' . $style . '"  id="' . $idinput . '" name="' . $keterangan . 'titles[]" placeholder="' . $placeholder . '" class="span12" />
+            <input type="password" ' . $style . '  id="' . $idinput . '" name="' . $keterangan . 'titles[]" placeholder="' . $placeholder . '" class="span12" />
              <span class="help-inline" name="namens[]" id="' . $idinput . 'ns">
                  
              
@@ -116,9 +116,9 @@ function inputPassword($placeholder=null, $title=null, $idinput=null, $keteranga
              <label class="control-label span3">' . $title . ' <span class="help-block">Type your ' . $idinput . ' here</span></label>
              <div class="controls span9">';
         if ($action == 'edit') {
-            echo'<input type="password" id="' . $idinput . '"  style="' . $style . '"  value="' . $placeholder . '" class="span12" />';
+            echo'<input type="password" id="' . $idinput . '"  ' . $style . '  value="' . $placeholder . '" class="span12" />';
         } else if ($action == 'view') {
-            echo'<input type="password" id="' . $idinput . '"  style="' . $style . '"  value="' . $placeholder . '" class="span12" disabled/>';
+            echo'<input type="password" id="' . $idinput . '"  ' . $style . '  value="' . $placeholder . '" class="span12" disabled/>';
         }
         echo'<span class="help-inline" name="namens[]" id="' . $idinput . 'ns">
                  

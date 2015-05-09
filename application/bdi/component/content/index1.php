@@ -20,7 +20,7 @@ $db->select('tb_group', '*', NULL, 'tb_group_id= ' . $groupas . ''); // Table na
                             <span class="icon"><img src="img/user/default.png" width="73" height="68"></span></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             <li><a href="javascript:void(0);" onclick="showProfile('profile', 'Profile');"><i class=" icon-user"></i> Profil Akun</a></li>
-                            <li><a href="#"><i class=" icon-cog"></i>Ubah Password</a></li>
+                            <li><a href="javascript:void(0);" onclick="showMenu('change-password', 'Change Password');"><i class=" icon-cog"></i>Ubah Password</a></li>
                             <li><a href="index.php?action=logout"><i class=" icon-unlock"></i>Log Out</a></li>
                             <li><a href="#"><i class=" icon-flag"></i>Bantuan</a></li>
                         </ul>

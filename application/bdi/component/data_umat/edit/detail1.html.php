@@ -1,117 +1,84 @@
-<?= inputGeneral($query1['tb_personal_identity_name'], 'Nama Sekarang', 'name', 'true', $_GET['action']); ?>
-<input type="hidden"  id="code" name="truetitles[]" value="<?=$query1['tb_personal_identity_code'];?>" class="span4" />
+<?php
+$dbumat = new Database();
+$dbumat->connect();
+?>
+
+<?= inputGeneral($query1['tb_data_umat_nama_ktp'], NAMA_SEKARANG, 'nama_sekarang', 'true', $_GET['action']); ?>
+<?= inputGeneral($query1['tb_data_umat_nama_panggilan'], NAMA_PANGGILAN, 'nama_panggilan', 'true', $_GET['action']); ?>
+<?= inputGeneralTemplate(TTL, '
+                    <input type="text"  id="place_of_birth" name="truetitles[]" value="'.$query1['tb_data_umat_tempat'].'" placeholder="Tempat" class="span4" />
+                    <input type="text"  id="birth_date" name="truetitles[]" value="' . date('Y-m-d') . '" class="span4" onkeydown="hideDatepicker(event,this);"/>
+                    ');
+?>
+
 
 <div class="form-row control-group row-fluid">
     <label class="control-label span3">Jenis Kelamin</label>
     <div class="controls span9">
         <?php
-        if ($query1['tb_personal_identity_gender'] == 1) {
+        if ($query1['tb_data_umat_gender'] == 1) {
             ?>
-            <label class="radio ">
-                <input type="radio" id="gender"  value="1" name="radio1"  checked="CHECKED" />
+            <label class="radio inline">
+                <input type="radio" id="gender"  value="1" name="gender"  checked="CHECKED" />
                 <span style="padding-left: 10px;">Laki-laki </span>
             </label>
-            <label class="radio ">
-                <input type="radio" id="gender" value="2" name="radio1"/>
+            <label class="radio inline">
+                <input type="radio" id="gender" value="2" name="gender"/>
                 <span style="padding-left: 10px;">Perempuan </span>
             </label>
             <?php
         } else {
             ?>
-            <label class="radio ">
-                <input type="radio" id="gender"  value="1" name="radio1" />
+            <label class="radio inline">
+                <input type="radio" id="gender"  value="1" name="gender" />
                 <span style="padding-left: 10px;">Laki-laki </span>
             </label>
-            <label class="radio ">
-                <input type="radio" id="gender" value="2" name="radio1"   checked="CHECKED"/>
+            <label class="radio inline">
+                <input type="radio" id="gender" value="2" name="gender"   checked="CHECKED"/>
                 <span style="padding-left: 10px;">Perempuan </span>
             </label>
             <?php
         }
         ?>
 
-        <span class="help-inline" name="namens[]" id="kelaminns">
-        </span>
-
     </div>
 </div>
-<?= inputGeneralTemplate('Tempat/Tanggal Lahir', '
-                    <input type="text"  id="place_of_birth" name="truetitles[]" placeholder="Tempat" value="' . $query1['tb_personal_identity_place_of_birth'] . '" class="span4" />
-                    <input type="text"  id="birth_date" name="truetitles[]" value="' . $query1['tb_personal_identity_birth_date'] . '" class="span4" />
+<?php
+if ($query1['tb_data_umat_kewarganegaraan'] == 1) {
+	$select = '<option value="0">Select ...</option>
+            <option value="1" selected="selected">WNI</option>
+            <option value="2">WNA</option>';
+} else if ($query1['tb_data_umat_kewarganegaraan'] == 2){
+	$select = '<option value="0">Select ...</option>
+            <option value="1" >WNI</option>
+            <option value="2" selected="selected">WNA</option>';
+} else {
+	$select = '<option value="0" selected="selected">Select ...</option>
+            <option value="1" >WNI</option>
+            <option value="2">WNA</option>';
+}
+?>
+
+
+<?= inputGeneralTemplate(KEWARGANEGARAAN, '<select id="lovsstatuscountry">'.$select.'</select>');?>
+<?= inputGeneral($query1['tb_data_umat_pekerjaan'], 'Pekerjaan', 'job', 'true', $_GET['action']); ?>
+<?= inputGeneral($query1['tb_data_umat_no_id'], NO_IDEN, 'no_iden', 'true', $_GET['action']); ?>
+<?= inputGeneral($query1['tb_data_umat_alamat_ktp'], ALAMAT_KTP, 'alamat_ktp', 'true', $_GET['action']); ?>
+<?= inputGeneral($query1['tb_data_umat_alamat_tinggal'], ALAMAT_TINGGAL, 'alamat_tinggal', 'true', $_GET['action']); ?>
+<?php
+$arr = explode("-", $query1['tb_data_umat_no_tlp'], 2);
+$first_telp_rumah = $arr[0];
+$last_telp_rumah = $arr[1];
+?>
+<?= inputGeneralTemplate(TELP_RUMAH, '
+                    <input type="text"  id="first_telp_rumah" name="truetitles[]" value="'.$first_telp_rumah.'" onkeypress="return maxFourNumber(event,this)" placeholder="021" class="span2" /> - 
+                    <input type="text"  id="last_telp_rumah" name="truetitles[]" value="'.$last_telp_rumah.'" onkeyup="return maxEightNumber(event,this);" placeholder="12345678" class="span6" />
                     ');
 ?>
-<?= inputGeneral($query1['tb_personal_identity_job'], 'Pekerjaan', 'job', 'true', $_GET['action']); ?>
-<div class="form-row control-group row-fluid">
-    <label class="control-label span3">Status Perkawinan</label>
-    <div class="controls span9">
+<?= inputGeneral($query1['tb_data_umat_no_hp'], NO_HANDPHONE, 'no_handphone', 'true', $_GET['action']); ?>
+<?= inputGeneral($query1['tb_data_umat_email'], EMAIL, 'email', 'true', $_GET['action']); ?>
 
-        <select id='lovsstatus'  class='input-large m-wrap'>
-            <?php
-            $ms;
-            if ($query1['tb_personal_identity_marital_status'] == 1) {
-                ?>
-                <option value="1" selected="selected">Kawin</option>
-                <option value="2">Belum Kawin</option>
-                <?php
-            } else {
-                ?>   
-                <option value="1">Kawin</option>
-                <option value="2" selected="selected">Belum Kawin</option>
-                <?php
-                $ms = 'Belum Menikah';
-            }
-            ?>
-
-        </select>
-        <span class="help-inline" name="namens[]" id="statusns"></span>
-    </div>
-</div>
-<? //= inputLovNew('tb_country_id', 'tb_country_name', '', 'Kewarganegaraan', 'country', 'true', $_GET['action'], 'false', '', ''); ?>
-
-
-<?= inputGeneral($query1['tb_personal_identity_gojukai_date'], 'Tgl Gozukai', 'gojukai_date', 'true', $_GET['action']); ?>
-<?= inputGeneral($query1['tb_personal_identity_gohozon_accept_date'], 'Tgl Terima Gohonzon', 'gohozon_accept_date', 'true', $_GET['action']); ?>
-<?= inputGeneral($query1['tb_personal_identity_okataki_gohozon'], 'Otakagi Gohonzon', 'okataki_gohozon', 'true', $_GET['action']); ?>
-<?= inputGeneral($query1['tb_personal_identity_omamori_gohozon'], 'Omamari Gohonzon', 'omamori_gohozon', 'true', $_GET['action']); ?>
-<?= inputGeneral($query1['tb_personal_identity_tokubetsu_gohozon'], 'Tokubetsu Gohonzon', 'tokubetsu_gohozon', 'true', $_GET['action']); ?>
-<?= inputGeneral($query1['tb_personal_identity_kankai_date'], 'Tgl Kankai', 'kankai_date', 'true', $_GET['action']); ?>
-<div class="form-row control-group row-fluid">
-    <label class="control-label span3">Upacara Nichiren Shosu</label>
-    <div class="controls span9">
-        <?php
-        $ms;
-        if ($query1['tb_personal_identity_is_nichiren_shosu'] == 1) {
-            ?>
-            <label class="radio ">
-                <input type="radio" id="upacarashosu" value="1" name="radio2" checked="CHECKED">
-                <span style="padding-left: 10px;">Ya </span>
-
-            </label>
-            <label class="radio ">
-                <input type="radio" id="upacarashosu"  value="2" name="radio2">
-                <span style="padding-left: 10px;">Tidak </span>
-
-            </label>
-            <?php
-        } else {
-            ?>   
-            <label class="radio ">
-                <input type="radio" id="upacarashosu" value="1" name="radio2" >
-                <span style="padding-left: 10px;">Ya </span>
-
-            </label>
-            <label class="radio ">
-                <input type="radio" id="upacarashosu"  value="2" name="radio2" checked="CHECKED">
-                <span style="padding-left: 10px;">Tidak </span>
-
-            </label>
-            <?php
-            $ms = 'Belum Menikah';
-        }
-        ?>
-
-        <span class="help-inline" name="namens[]" id="kelaminns">
-        </span>
-
-    </div>
-</div>
+<input type="hidden" id="code_umat" value="<?=$query1['tb_data_umat_code'];?>" />
+<input type="hidden" id="code_umat_id" value="<?=$query1['tb_data_umat_id'];?>" />
+<input type="hidden" id="id_name1" value="<?=$query1['tb_data_umat_hub1'];?>" />
+<input type="hidden" id="id_name2" value="<?=$query1['tb_data_umat_hub2'];?>" />

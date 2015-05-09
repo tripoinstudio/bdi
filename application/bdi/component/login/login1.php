@@ -44,6 +44,7 @@ if ($jumlah == 0) {
         //   header('location:.');
     } else {
         $_SESSION['username'] = $hasil['user_username'];
+		$_SESSION['user_id'] = $hasil['user_id'];
         $_SESSION['company_code'] = $company;
         $_SESSION['id_group'] = $hasil['tb_group_id'];
         $_SESSION['backend'] = $typebackend;

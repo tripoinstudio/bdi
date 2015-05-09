@@ -204,6 +204,7 @@ if (!isset($_SESSION['username'])) {
         <!-- Custom made scripts for this template --> 
         <script src="js/scripts.js" type="text/javascript"></script> 
         <script type="text/javascript" src="js/js.js"></script>
+		<script type="text/javascript" src="js/controller.js"></script>
         <script type="text/javascript" language="javascript" src="js/plugins/datatables/js/jquery.dataTables.js"></script> 
         <script>
             $(function () {

@@ -76,7 +76,7 @@
 
                             <?php } ?>
                             <?php if ($cekaction[3] == 2) { ?>
-                                <a href="javascript:void(0)" onclick="deletes('<?= $cekMenu['menu_function_link']; ?>', '<?= $array_list_query['tb_data_umat_id']; ?>', 'delete');" data-original-title="Remove" data-placement="bottom" rel="tooltip" class="btn  btn-small"><i class="gicon-remove "></i></a> 
+                                <a href="javascript:void(0)" onclick="deletes('<?= $cekMenu['menu_function_link']; ?>', '<?= $array_list_query['tb_data_umat_id']; ?>', 'deletemanual');" data-original-title="Remove" data-placement="bottom" rel="tooltip" class="btn  btn-small"><i class="gicon-remove "></i></a> 
 
                             <?php } ?>
                         </div>

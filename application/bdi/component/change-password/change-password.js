@@ -5,23 +5,15 @@ $(function () {
 });
 
 
-$('#username').editable({
-    type: 'text',
-    pk: 1,
-    name: 'username',
-    url: '#',
-    title: 'Enter username'
-});
-
-function savesetting(str, action) {
+function saveChangePass(str, action) {
 //alert(str);
-    var code = $('#code').val();
-    var name = $('#name').val();
+    var passwordlama = $('#password-lama').val();
+	var repasswordbaru = $('#repassword-baru').val();
+    var passwordbaru = $('#password-baru').val();
 
     if (action == 'update') {
         var id = $('#idUp').val();
     }
-
     if (str == "") {
         document.getElementById("txtHint").innerHTML = "";
         return;
@@ -43,11 +35,16 @@ function savesetting(str, action) {
             $('#successf').show();
         }
     }
-    if (action == 'save') {
-        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + "&name=" + name + "&code=" + code, true);
-    } else {
-        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + "&id=" + id + "&name=" + name + "&code=" + code, true);
-    }
+	if (repasswordbaru == '' || passwordbaru == ''){
+        
+    alert("Field Password Baru Kosong");
+	}else if (repasswordbaru == passwordbaru){
+        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + "&id=" + id + "&password-lama=" + passwordlama + "&password_baru=" + passwordbaru, true);
+    
+	} else {
+		alert("Password Baru Tidak sama");
+	}
+    
     xmlhttp.send();
 
 
