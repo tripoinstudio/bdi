@@ -1,5 +1,6 @@
 function addSentra(id,type) {
 	//alert(id);
+	
 	$('#buttonsaveitem').show();
 	$('#createitem').show();
 	$('#table-item').show();
@@ -13,12 +14,14 @@ function addSentra(id,type) {
 		//   alert(i);
 	}
 	i = parseFloat(i) + 1;
+	$('#proses_loading_item').html('<img src="img/ajax-loader.gif" style="width:30px;height:30px;">');
 	$.ajax( {
 		type: 'get',
 		        url: 'controller.php',
 		        data: 'content=' + str + '&action=lovsearchdaerah&id='+id+'&type='+tableup,
 		        success: function (result) {
 			//		alert(result);
+			$('#proses_loading_item').html('');
 			var jsons = JSON.parse(result);
 			
 			var frma = '';
@@ -126,6 +129,7 @@ function sendingsaveADM(){
 function selectDaerah(id) {
 	//	alert(id);
 	var str = $("#filename").val();
+	
 	var frma = '<select id="lovDaerahTr" class="span6 chosen" onchange="searchListData(this);" data-placeholder="Choose a Name" tabindex="1">';
 	frma = frma + '<option value="0"><b>Select ... </b></option>';
 	$.ajax( {
@@ -134,6 +138,7 @@ function selectDaerah(id) {
 		        data: 'content=' + str + '&action=lovdaerah',
 		        success: function (result) {
 		//	alert(result);
+		
 			var jsons = JSON.parse(result);
 			for (var n = 0; n < jsons.length; n++) {
 				var items = jsons[n];

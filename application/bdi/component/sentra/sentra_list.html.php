@@ -1,7 +1,8 @@
 <?php if ($_GET['content'] == 'sentra') { ?>
 
 <?= inputGeneralTemplate('Daerah', '<div class="control-group" id="lovDaerahs"></div>'); ?>
-<button onclick="return addSentra(0,2);" id="createitem" class="btn btn-primary" data-original-title="" title=""><i class="gicon-plus"></i> Tambah Sentra</button>
+<div class="inline"><button onclick="return addSentra(0,2);" id="createitem" class="btn btn-primary" data-original-title="" title=""><i class="gicon-plus"></i> Tambah Sentra</button>
+</div><div class="inline" id="proses_loading_item"></div>
 <br/>
 <br/>
     <table id="table-item" class="responsive table table-striped table-bordered" style="width:100%;margin-bottom:0; ">
