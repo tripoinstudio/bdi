@@ -44,7 +44,7 @@ foreach ($list_keluarga as $array_keluarga) {
 </div>
 <br/>
 
-<b><?= TITLE_KELUARGA; ?></b>
+<b><?= TITLE_KELUARGA2; ?></b>
 <br/>
 <br/>
 <br/>

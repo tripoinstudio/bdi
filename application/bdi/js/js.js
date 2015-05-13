@@ -338,8 +338,8 @@ prosesLoading();
     }
     if (name == 'Tambah Data Umat') {
         xmlhttp.open("GET", "component/content/index2.php?content=data_umat&action=new", true);
-    } else if (name == 'List Umat') {
-        xmlhttp.open("GET", "component/content/index2.php?content=data_umat", true);
+    } else if (name == 'List Data Umat') {
+        xmlhttp.open("GET", "component/content/index2.php?content=data_umat&namemenu=List Data Umat", true);
     } else {
         xmlhttp.open("GET", "component/content/index2.php?content=" + str, true);
 

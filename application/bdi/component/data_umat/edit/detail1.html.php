@@ -7,7 +7,7 @@ $dbumat->connect();
 <?= inputGeneral($query1['tb_data_umat_nama_panggilan'], NAMA_PANGGILAN, 'nama_panggilan', 'true', $_GET['action']); ?>
 <?= inputGeneralTemplate(TTL, '
                     <input type="text"  id="place_of_birth" name="truetitles[]" value="'.$query1['tb_data_umat_tempat'].'" placeholder="Tempat" class="span4" />
-                    <input type="text"  id="birth_date" name="truetitles[]" value="' . date('Y-m-d') . '" class="span4" onkeydown="hideDatepicker(event,this);"/>
+                    <input type="text"  id="birth_date" name="truetitles[]" value="' . date("d-m-Y", strtotime($query1['tb_data_umat_tgl_lahir'])) . '" class="span4" onkeydown="hideDatepicker(event,this);"/>
                     ');
 ?>
 
@@ -69,13 +69,22 @@ if ($query1['tb_data_umat_kewarganegaraan'] == 1) {
 $arr = explode("-", $query1['tb_data_umat_no_tlp'], 2);
 $first_telp_rumah = $arr[0];
 $last_telp_rumah = $arr[1];
+
+$arrs = explode("-", $query1['tb_data_umat_no_hp'], 2);
+$first_no_handphone = $arrs[0];
+$last_no_handphone = $arrs[1];
 ?>
 <?= inputGeneralTemplate(TELP_RUMAH, '
                     <input type="text"  id="first_telp_rumah" name="truetitles[]" value="'.$first_telp_rumah.'" onkeypress="return maxFourNumber(event,this)" placeholder="021" class="span2" /> - 
                     <input type="text"  id="last_telp_rumah" name="truetitles[]" value="'.$last_telp_rumah.'" onkeyup="return maxEightNumber(event,this);" placeholder="12345678" class="span6" />
                     ');
 ?>
-<?= inputGeneral($query1['tb_data_umat_no_hp'], NO_HANDPHONE, 'no_handphone', 'true', $_GET['action']); ?>
+<?//= inputGeneral($query1['tb_data_umat_no_hp'], NO_HANDPHONE, 'no_handphone', 'true', $_GET['action']); ?>
+<?= inputGeneralTemplate(NO_HANDPHONE, '
+                    <input type="text"  id="first_no_handphone" name="truetitles[]" value="'.$first_no_handphone.'" onkeypress="return maxFourNumber(event,this)" placeholder="021" class="span2" /> - 
+                    <input type="text"  id="last_no_handphone" name="truetitles[]" value="'.$last_no_handphone.'" onkeyup="return maxEightNumber(event,this);" placeholder="12345678" class="span6" />
+                    ');
+?>
 <?= inputGeneral($query1['tb_data_umat_email'], EMAIL, 'email', 'true', $_GET['action']); ?>
 
 <input type="hidden" id="code_umat" value="<?=$query1['tb_data_umat_code'];?>" />

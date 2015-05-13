@@ -6,7 +6,7 @@ class Database{
     public $db_host = "localhost";
 	public $db_user = "root";  // Change as required
 	public $db_pass = "";  // Change as required
-	public $db_name = "db_bdi";	// Change as required
+	public $db_name = "appsmn01_db_bdi";	// Change as required
 	
 	/*
 	 * Extra variables that are required by other function such as boolean con variable

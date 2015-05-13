@@ -49,7 +49,7 @@ $list_usersgr = $dbmenupertama->getResult();
 
 
                     <?php
-                    $dbmenukedua->select('structure_menu', '*', NULL, 'tb_group_id=' . $groupas);
+                    $dbmenukedua->select('structure_menu', '*', NULL, 'tb_group_id=' . $groupas,'structure_menu_order asc');
                     $list_usersgrs = $dbmenukedua->getResult();
                     ?>
 

@@ -2,7 +2,8 @@
 <?php
 session_start();
 if (isset($_SESSION['username']) && isset($_SESSION['user_id'])) {
-    header('location:index.php');
+    header('location:.');
+	die();
 }
 require_once("configuration.php");
 ?>

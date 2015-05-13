@@ -20,7 +20,10 @@ function cekLogin() {
     $('#password-label').html(sendingpass);
     if(username != '' && password != ''){
  //       alert("tes");
+
+
     } else {
+	//	alert("masuk2");
             return false;
 
     }

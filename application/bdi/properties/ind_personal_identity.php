@@ -9,7 +9,7 @@ define('TAB4','Data Keaktifan');
 define('TAB5','Data Keluarga');
 
 //DATA PRIBADI
-define('NAMA_SEKARANG','Nama Sekarang');
+define('NAMA_SEKARANG','Nama Sesuai KTP');
 define('ALAMAT_KTP','Alamat Sesuai KTP');
 define('ALAMAT_TINGGAL','Alamat Tinggal Sekarang');
 define('TELP_RUMAH','Telp Rumah');
@@ -30,7 +30,7 @@ define('NAMA_PANGGILAN','Nama Panggilan');
 
 //DATA KEUMATAN
 define('STATUS_MARRIAGE','Status Pernikahan');
-define('U_N_S','Upacara Nichiren Shosu');
+define('U_N_S','Upacara Nichiren Shoshu');
 define('TAHUN','Tahun');
 define('TEMPAT','Tempat');
 define('PEMIMPIN','Pemimpin Upacara');
@@ -54,14 +54,14 @@ define('CETYA','Cetya');
 define('DHARMASALA','Dharmasala');
 
 //DATA KEAKTIFAN
-define('DTNG_KE','DATANG KE VIHARA / CETYA / DHARMASALA');
-define('DANAPRMT','DANAPARAMITA / GOKUYO');
-define('TNGJWB','TANGGUNG JAWAB DALAM SUSUNAN');
+define('DTNG_KE','Datang ke Vihara / Cetya / Dharmasala');
+define('DANAPRMT','Danaparamita / Gokuyo');
+define('TNGJWB','Tanggung Jawab Dalam Susunan');
 
 //DATA KELUARGA
 	
 define('TITLE_KELUARGA','KELUARGA UMAT BDI YG TINGGAL SERUMAH');	
-define('TITLE_KELUARGA2','KELUARGA TERDEKAT YG UMAT BDI');	
+define('TITLE_KELUARGA2','KELUARGA TERDEKAT YG UMAT BDI (diisi apabila tdk ada keluarga yg umat dan tinggal satu rumah)');	
 
 
 

@@ -22,6 +22,15 @@ if ($cekMenuQuery === FALSE) {
 }
 
 $cekMenu = mysql_fetch_array($cekMenuQuery);
+$menuListUmat = '';
+
+	if($_GET['namemenu'] == null){
+		
+		$menuListUmat = $cekMenu['menu_function_name'];
+	}  else {
+		$menuListUmat = 'List Data Umat';
+	}
+
 $contenty = $_GET['content'];
 
 $ipconfigs = 'http://10.10.130.222:8080';
@@ -39,10 +48,12 @@ foreach ($list_settings as $list_settings2) {
 //$dbgrou->select('structure_menu', '*', NULL, 'tb_group_id=' . $groupa);
 $dbgrou->sql("SELECT * FROM `structure_menu` s INNER JOIN `menu_function` m ON s.`menu_function_id`=m.`menu_function_id`  WHERE s.`tb_group_id`='" . $_SESSION['id_group'] . "' and m.`menu_function_link`='" . $contenty . "'");
 $cekmen = $dbgrou->getResult();
+
 foreach ($cekmen as $cekmens) {
     // $noi += 1;
     // $menuid = $cekmens['menu_function_id'];
     $cekaction = explode(',', $cekmens['structure_menu_action']);
+	
 }
 
 
@@ -56,7 +67,7 @@ if ($_GET['action'] == 'search') {
     <div class="row-fluid" >
         <div class="box paint color_26">
             <div class="title">
-                <h4> <span><?= $cekMenu['menu_function_name']; ?> <small>BDI</small></span> </h4>
+                <h4> <span><?= $menuListUmat; ?> <small>BDI</small></span> </h4>
             </div>
 
 

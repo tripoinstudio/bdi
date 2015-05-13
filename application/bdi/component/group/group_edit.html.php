@@ -8,6 +8,7 @@
             <th rowspan="2"style="width:5%;text-align:center;vertical-align: middle;">No</th>
             <th rowspan="2" style="width:30%;text-align:center;vertical-align: middle;" class="hidden-phone">Name</th>
             <th rowspan="2" style="width:30%;text-align:center;vertical-align: middle;" class="hidden-phone">Status</th>
+			<th rowspan="2" style="width:10%;text-align:center;vertical-align: middle;" class="hidden-phone">Order</th>
             <!--<th  colspan="4"  style="width:30%;text-align:center;vertical-align: middle;" class="hidden-phone">Action</th>-->
         </tr>
         <tr>
@@ -90,6 +91,9 @@
                                 $checked4 = "";
                             }
                             ?></th>
+							<th  style="text-align:center;width:10%;vertical-align: middle;" class="hidden-phone">
+						<input type="text" value="<?= $usera['structure_menu_order']; ?>" style="width:30px;" id="structureOrder<?= $noi; ?>" />
+						</th>
                         <th style="width:5%;text-align:center;vertical-align: middle;" class="hidden-phone"><input type="checkbox" id="viewc<?= $noi; ?>" value="<?= $minsa[0]; ?>" <?=$checked1;?>/></th>
                         <th style="width:5.5%;text-align:center;vertical-align: middle;" class="hidden-phone"><input type="checkbox" id="createc<?= $noi; ?>" value="<?= $minsa[1]; ?>" <?=$checked2;?>/></th>
                         <th style="width:5%;text-align:center;vertical-align: middle;" class="hidden-phone"><input type="checkbox" id="editc<?= $noi; ?>" value="<?= $minsa[2]; ?>" <?=$checked3;?>/></th>

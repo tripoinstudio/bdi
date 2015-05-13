@@ -1,7 +1,10 @@
 <?php
 	function logout(){
 //	session_start();
+
+echo "<script>setTimeout(\"location.href = '.';\",0);</script>";
 		unset($_SESSION['username']);
-	//	header('location:index.php');
+		echo "<script>setTimeout(\"location.href = '.';\",0);</script>";
+		//header('location:.');
 	}
 ?>

@@ -129,7 +129,8 @@ function saveGroup(str, action) {
         var view = $('#viewc' + i).val();
         var create = $('#createc' + i).val();
         var edit = $('#editc' + i).val();
-
+		var structureOrder = $('#structureOrder' + i).val();
+		
         var deletes = $('#deletec' + i).val();
         var setstatus = $('#setstatus' + i).val();
 
@@ -140,7 +141,7 @@ function saveGroup(str, action) {
             coma = ',';
         }
         // alert("sampe sini3");
-        sending = sending + '{"idItem":"' + idItem + '","idLov":"' + idProduct + '","status":"' + setstatus + '","action":"' + view + ',' + create + ',' + edit + ',' + deletes + '"}' + coma;
+        sending = sending + '{"idItem":"' + idItem + '","idLov":"' + idProduct + '","status":"' + setstatus + '","structureOrder":"' + structureOrder + '","action":"' + view + ',' + create + ',' + edit + ',' + deletes + '"}' + coma;
         //   sending = sending + '{"idItem":"' + idItem + '","idLov":"' + idProduct + '","status":"' + setstatus + '","action":"2,2,2,2"}' + coma;
 
     }

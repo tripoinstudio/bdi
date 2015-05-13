@@ -43,10 +43,17 @@ if (!isset($_SESSION['username'])) {
         $cekactionsetting = explode(',', $cekmensettings['structure_menu_action']);
     }
 
-
+	if ($_SESSION['timeout'] + (30*60)< time()) {
+		 logout();
+		echo "<script>setTimeout(\"location.href = '.';\",0);</script>";
+     // session timed out
+  } else {
+     // session ok
+  }
 
     if (isset($_GET['action']) == 'logout') {
         logout();
+		echo "<script>setTimeout(\"location.href = '.';\",0);</script>";
     } else {
         
     }

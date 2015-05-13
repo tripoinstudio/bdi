@@ -19,6 +19,7 @@
             <th rowspan="2"style="width:5%;text-align:center;vertical-align: middle;">No</th>
             <th rowspan="2" style="width:30%;text-align:center;vertical-align: middle;" class="hidden-phone">Name</th>
             <th rowspan="2" style="width:30%;text-align:center;vertical-align: middle;" class="hidden-phone">Status</th>
+			 
             <th  colspan="4"  style="width:30%;text-align:center;vertical-align: middle;" class="hidden-phone">Action</th>
         </tr>
         <tr>
@@ -64,7 +65,9 @@
                             ?>
 
                         </th>
-
+						<th>
+						<input type="text" value="<?= $usera['structure_menu_order']; ?>" id="structureOrder" />
+						</th>
                         <th style="text-align:center;width:30%;vertical-align: middle;" class="hidden-phone">
                             <?php
                             if ($usera['status'] == 1) {

@@ -2,7 +2,7 @@
 <?= inputGeneral('....', NAMA_PANGGILAN, 'nama_panggilan', 'true', $_GET['action']); ?>
 <?= inputGeneralTemplate(TTL, '
                     <input type="text"  id="place_of_birth" name="truetitles[]" placeholder="Tempat" class="span4" />
-                    <input type="text"  id="birth_date" name="truetitles[]" value="' . date('Y-m-d') . '" class="span4" onkeydown="hideDatepicker(event,this);"/>
+                    <input type="text"  id="birth_date" name="truetitles[]" value="' . date('d-m-Y') . '" class="span4" onkeydown="hideDatepicker(event,this);"/>
                     ');
 ?>
 <div class="form-row control-group row-fluid">

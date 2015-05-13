@@ -48,7 +48,10 @@ if ($jumlah == 0) {
         $_SESSION['company_code'] = $company;
         $_SESSION['id_group'] = $hasil['tb_group_id'];
         $_SESSION['backend'] = $typebackend;
-        header('location:.');
+		$_SESSION['timeout'] = time();
+		echo "<script>setTimeout(\"location.href = '.';\",0);</script>";
+    //    header('location:.');
+	//	die();
     }
 }
 

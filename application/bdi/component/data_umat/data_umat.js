@@ -52,7 +52,8 @@ if (actions == 'edit') {
     
 
     $('#birth_date').datepicker({
-        format: 'yyyy-mm-dd'
+    //    format: 'yyyy-mm-dd'
+	    format: 'dd-mm-yyyy'
                 //   startDate: '-3d'
     });
 
@@ -182,7 +183,8 @@ function saveDataUmat(str, action) {
     var nama_sekarang = $('#nama_sekarang').val();
     var nama_panggilan = $('#nama_panggilan').val();
     var place_of_birth = $('#place_of_birth').val();
-    var birth_date = $('#birth_date').val();
+    var birth_dates = $('#birth_date').val();
+	var birth_date = birth_dates.split("/").reverse().join("-");
     var gender = $('input[id="gender"]:checked').val();
     var country = $('#lovsstatuscountry').val();
     var job = $('#job').val();
