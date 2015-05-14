@@ -44,7 +44,8 @@ if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
                 $db->insert('structure_menu', array('menu_function_id' => $idProduct, 'tb_group_id' => $id, 'structure_menu_action' => '' . $action . '', 'status' => $status)); // Table name, column names and values, WHERE conditions
                 $res = $db->getResult();
             } else {
-                $db->update('structure_menu', array('menu_function_id' => $idProduct, 'tb_group_id' => $id, 'structure_menu_action' => "" . $action . "", 'status' => $status), 'structure_menu_id=' . $idItem . ''); // Table name, column names and values, WHERE conditions
+				 $structureOrder = $items->structureOrder;
+                $db->update('structure_menu', array('menu_function_id' => $idProduct,'structure_menu_order' => $structureOrder, 'tb_group_id' => $id, 'structure_menu_action' => "" . $action . "", 'status' => $status), 'structure_menu_id=' . $idItem . ''); // Table name, column names and values, WHERE conditions
                 $res = $db->getResult();
             }
         }

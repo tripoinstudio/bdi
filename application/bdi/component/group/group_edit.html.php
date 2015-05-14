@@ -92,7 +92,7 @@
                             }
                             ?></th>
 							<th  style="text-align:center;width:10%;vertical-align: middle;" class="hidden-phone">
-						<input type="text" value="<?= $usera['structure_menu_order']; ?>" style="width:30px;" id="structureOrder<?= $noi; ?>" />
+						<input type="text" value="<?= $usera['structure_menu_order']; ?>" style="width:30px;" id="structure_order<?= $noi; ?>" />
 						</th>
                         <th style="width:5%;text-align:center;vertical-align: middle;" class="hidden-phone"><input type="checkbox" id="viewc<?= $noi; ?>" value="<?= $minsa[0]; ?>" <?=$checked1;?>/></th>
                         <th style="width:5.5%;text-align:center;vertical-align: middle;" class="hidden-phone"><input type="checkbox" id="createc<?= $noi; ?>" value="<?= $minsa[1]; ?>" <?=$checked2;?>/></th>

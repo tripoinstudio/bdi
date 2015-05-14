@@ -30,6 +30,14 @@ $menuListUmat = '';
 	}  else {
 		$menuListUmat = 'List Data Umat';
 	}
+if ($_SESSION['timeout'] + (30*60)< time()) {
+		 logout();
+		echo "<script>setTimeout(\"location.href = '.';\",0);</script>";
+     // session timed out
+  } else {
+	  $_SESSION['timeout'] = time();
+     // session ok
+  }
 
 $contenty = $_GET['content'];
 
@@ -44,6 +52,7 @@ foreach ($list_settings as $list_settings2) {
     $idsettings = $list_settings2['tb_settings_id'];
     $parentsta = "company_code=" . $idsettings . " AND status=1";
 }
+
 
 //$dbgrou->select('structure_menu', '*', NULL, 'tb_group_id=' . $groupa);
 $dbgrou->sql("SELECT * FROM `structure_menu` s INNER JOIN `menu_function` m ON s.`menu_function_id`=m.`menu_function_id`  WHERE s.`tb_group_id`='" . $_SESSION['id_group'] . "' and m.`menu_function_link`='" . $contenty . "'");

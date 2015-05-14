@@ -48,6 +48,7 @@ if (!isset($_SESSION['username'])) {
 		echo "<script>setTimeout(\"location.href = '.';\",0);</script>";
      // session timed out
   } else {
+	  $_SESSION['timeout'] = time();
      // session ok
   }
 

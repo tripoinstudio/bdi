@@ -129,12 +129,12 @@ function saveGroup(str, action) {
         var view = $('#viewc' + i).val();
         var create = $('#createc' + i).val();
         var edit = $('#editc' + i).val();
-		var structureOrder = $('#structureOrder' + i).val();
+		var structureOrder = $('#structure_order' + i).val();
 		
         var deletes = $('#deletec' + i).val();
         var setstatus = $('#setstatus' + i).val();
 
-        var i = parseFloat(s) + 1;
+     //   var i = parseFloat(s) + 1;
         if (i == $("#counter").val()) {
             coma = '';
         } else {

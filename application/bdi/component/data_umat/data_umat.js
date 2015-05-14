@@ -43,9 +43,9 @@ if (actions == 'edit') {
     selectNames2(idname2);
 } else if (actions == 'new') {
 	addName();
-	selectName(0);
-    selectNames2(0);
-	optionHubungan(null);
+	addNames();
+	
+	//optionHubungan(null);
 }
     
     
@@ -297,14 +297,35 @@ function saveDataUmat(str, action) {
 //    sendingKeluarga = '&nameKel=' + nameKel + '&lovNameTr2=' + lovNameTr2;
     }
     sendingKeluarga = sendingKeluarga + ']}';
+	
+	var countername = $('#countername').val();
+	var sendingKeluargas = '{"listitemkel":[';
+//    sending = '{"code":"' + code + '","name":"' + name + '","item":[';
+    for (var i = 0; i < counternames; i++) {
+        var s = parseFloat(i) + 1;
+        var nameKels = $('#nameKels' + s).val();
+        var nameHubs = $('#nameHubs' + s).val();
+		var nameIdKels = $('#nameIdKels' + s).val();
+        var coma;
+        
+        if (s == $("#countername").val()) {
+            coma = '';
+        } else {
+            coma = ',';
+        }
+        sendingKeluargas = sendingKeluargas + '{"nameIdKels":"' + nameIdKels + '","nameKels":"' + nameKels + '","nameHubs":"' + nameHubs + '"}' + coma;
+//    sendingKeluarga = '&nameKel=' + nameKel + '&lovNameTr2=' + lovNameTr2;
+    }
+    sendingKeluargas = sendingKeluargas + ']}';
     var lovNameTr2 = $('#lovNameTr2').val();
-    var nameKels = $('#nameKels').val();
-	var nameIdKels = $('#nameIdKels').val();
-    var nameHubs = $('#nameHubs').val();
-    var dataKel = '&lovNameTr=' + lovNameTr + '&lovNameTr2=' + lovNameTr2
-            + '&nameIdKels=' + nameIdKels + '&nameKels=' + nameKels + '&nameHubs=' + nameHubs + '&sendingKeluarga=' + sendingKeluarga;
+//    var nameKels = $('#nameKels').val();
+//	var nameIdKels = $('#nameIdKels').val();
+ //   var nameHubs = $('#nameHubs').val();
+  //  var dataKel = '&lovNameTr=' + lovNameTr + '&lovNameTr2=' + lovNameTr2
+ //           + '&nameIdKels=' + nameIdKels + '&nameKels=' + nameKels + '&nameHubs=' + nameHubs + '&sendingKeluarga=' + sendingKeluarga;
 
-
+  var dataKel = '&lovNameTr=' + lovNameTr + '&lovNameTr2=' + lovNameTr2
+            + '&sendingKeluargas=' + sendingKeluargas+ '&sendingKeluarga=' + sendingKeluarga;
     var required = validationRequired();
     var sending = beforeSave(action);
 
@@ -375,10 +396,10 @@ function setCodeUmat() {
 }
 
 
-function selectName(id) {
+function selectName(i,id) {
 //	alert(id);
     var str = 'data_umat';
-    var frma = '<select id="lovNameTr" class="span6 chosen" data-placeholder="Choose a Name" tabindex="1">';
+    var frma = '<select id="nameKel'+i+'" class="span3 chosen" data-placeholder="Choose a Name" tabindex="1">';
     $.ajax({
         type: 'get',
         url: 'controller.php',
@@ -396,18 +417,18 @@ function selectName(id) {
 				}
             }
             frma = frma + '</select>';
-            $('#lovName').html(frma);
-            $('.chosen').chosen();
+            $('#lovName'+i).html(frma);
+            $('#nameKel'+i).chosen();
         }
 
 
     });
 }
 
-function selectNames2(id) {
+function selectNames2(i,id) {
 	//alert(id);
     var str = 'data_umat';
-    var frma = '<select id="lovNameTr2" class="span6 chosen" data-placeholder="Choose a Name" tabindex="1">';
+    var frma = '<select id="nameKels'+i+'" class="span3 chosen" data-placeholder="Choose a Name" tabindex="1">';
     
 	$.ajax({
         type: 'get',
@@ -428,8 +449,8 @@ if(id == items.tb_data_umat_id){
 				}
             }
             frma = frma + '</select>';
-            $('#lovNames').html(frma);
-            $('#lovNameTr2').chosen();
+            $('#lovNames'+i).html(frma);
+            $('#nameKels'+i).chosen();
         }
 
 
@@ -454,7 +475,7 @@ function addName() {
     frma = frma + ' </label>';
 	
 
-    frma = frma + '<input type="hidden"  id="nameIdKel' + i + '" value="0" name="name" placeholder="" class="span3" /><input type="text"  id="nameKel' + i + '" name="name" placeholder="" class="span3" />';
+    frma = frma + '<input type="hidden"  id="nameIdKel' + i + '" value="0" name="name" placeholder="" class="span3" /><div class="control-group span3"  id="lovName'+i+'"></div>';
 
     frma = frma + '<label class="control-label span2">Hubungan ';
     frma = frma + ' </label>';
@@ -466,11 +487,49 @@ function addName() {
 
     $('#frmItem').append(frma);
     $("#countername").val(i);
-    optionHubungan(i);
+    optionHubungan(i,1);
+	selectName(i,0);
+   
     return false;
 
 }
-function optionHubungan(i) {
+
+function addNames() {
+    var i = $("#counternames").val();
+    // alert(i);
+    if (i == '' || i == null) {
+        $("#counternames").val(0);
+        i = 0;
+        //   alert(i);
+    }
+
+    i = parseFloat(i) + 1;
+
+    var frma = '';
+
+    frma = frma + '<div class="form-row control-group row-fluid">';
+    frma = frma + '<label class="control-label span1">Nama ';
+    frma = frma + ' </label>';
+	
+
+    frma = frma + '<input type="hidden"  id="nameIdKels' + i + '" value="0" name="name" placeholder="" class="span3" /><div class="control-group span3" id="lovNames'+i+'"></div>';
+
+    frma = frma + '<label class="control-label span2">Hubungan ';
+    frma = frma + ' </label>';
+    //  frma = frma + '<input type="text"  id="nameHub' + i + '" name="name" placeholder="" class="span3" />';
+    frma = frma + '<select id="nameHubs' + i + '" class="input-large m-wrap" data-placeholder="Choose a Name" tabindex="1">';
+    frma = frma + '</select>';
+
+    frma = frma + '</div>';
+
+    $('#frmItems').append(frma);
+    $("#counternames").val(i);
+    optionHubungan(i,2);
+	 selectNames2(i,0);
+    return false;
+
+}
+function optionHubungan(i,type) {
     var frma = '';
     frma = frma + '<option value="AYAH">AYAH</option>';
     frma = frma + '<option value="IBU">IBU</option>';
@@ -486,8 +545,8 @@ function optionHubungan(i) {
     frma = frma + '<option value="TANTE">TANTE</option>';
     frma = frma + '<option value="KEPONAKAN">KEPONAKAN</option>';
     frma = frma + '<option value="SEPUPU">SEPUPU</option>';
-    if (i == null) {
-        $("#nameHubs").html(frma);
+    if (type == 2) {
+        $("#nameHubs"+i).html(frma);
 
     } else {
         $("#nameHub" + i).html(frma);
