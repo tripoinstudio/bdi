@@ -51,7 +51,7 @@ include "../../function/functionaction.php";
 ?>
 <?php
 
-$exportpdf = "exportPdf('pdf','pdf-country','');"; //TYPE EXPORT, FILE NAME EXPORT, PARAMETER ex  : 'pdf','pdf-country','&id=id'
+$exportpdf = "exportPdf('pdf','pdf-umat-by-alamat','');"; //TYPE EXPORT, FILE NAME EXPORT, PARAMETER ex  : 'pdf','pdf-country','&id=id'
 $exportexcel = "exportExcel('excel','excel-country','');";
 
 include "../../function/contentmodul.html.php";
