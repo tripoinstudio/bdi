@@ -1,86 +1,58 @@
 <?php
-//
-//if ($_GET['type'] == 'code') {
-//    $texts = 'tb_country_code';
-//} else if ($_GET['type'] == 'name') {
-//    $texts = 'tb_country_name';
-//} else {
-//    $texts = '';
-//}
-//
-//if($_GET['field'] != '' || $_GET['field'] != null || $_GET['field'] != 'undefined'){
-//    $parentuser = $texts . " like '%" . $_GET['field'] . "%' and status=1";
-//} else {
-$parentuser = "";
-
-
-
 $dblist = new Database();
 $dblist->connect();
 
-$alamat = $_GET['alamat'];
-$notlp = $_GET['notlp'];
+$alamat = $_GET['cari_alamat'];
+$notlp = $_GET['cari_tlp'];
 $dblist->select('tb_data_umat', '*', NULL, "`tb_data_umat_alamat_tinggal` like '%" . $alamat . "%' and `tb_data_umat_no_tlp` like '%" . $notlp . "%'");
-//$dblist->select('tb_country', '*', NULL, $parentuser); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
 $list_query = $dblist->getResult();
 
 $length_list = count($list_query);
 ?>
 <div class="title"><?= $namePage; ?> </div>
-<div class="subtitle">LIST DATA UMAT</div>
-<table>
+<strong>DATA UMAT DENGAN ALAMAT</strong>
+<br/>
+<?= $list_query[0]['tb_data_umat_alamat_tinggal'] ?>
+<br/>
+<strong>NO TELP RUMAH</strong>
+<br/>
+<?= $list_query[0]['tb_data_umat_no_tlp']; ?>
+<br/><br/>
+<table class="table" border=1 >
     <thead>
         <tr>
-            <td>No</td>
-            <td>ID Umat</td>
-            <td>Nama Lengkap</td>
-            <td>Tempat Tanggal Lahir</td>
-            <td>Jenis Kelamin</td>
-            <td>Alamat KTP</td>
-            <td>No HP</td>
-            <td>Email</td>
-            <td>Alamat Sekarang</td>
-            <td>No Telp</td>
-            <td>Hubungan Keluarga 1</td>
-            <td>Hubungan Keluarga 1</td>
-            <td>Kewarganegaraan</td>
-            <td>Pekerjaan</td>
-            <td>Keaktifan</td>
-            <td>Dana Goku</td>
-            <td>Tanggung Jawab</td>
+            <td style="border: black; padding: 10px; width: 40px">NO</td>
+            <td style="border: black; padding: 10px; width: 100px">NIK UMAT</td>
+            <td style="border: black; padding: 10px; width: 200px">NAMA SESUAI KTP</td>
+            <td style="border: black; padding: 10px; width: 50px">L/P</td>
+            <td style="border: black; padding: 10px; width: 200px">TEMPAT TANGGAL LAHIR</td>
+            <td style="border: black; padding: 10px; width: 100px">TAHUN GUJOKAI</td>
+            <td style="border: black; padding: 10px; width: 100px">TAHUN KANKAI</td>
+            <td style="border: black; padding: 10px; width: 200px">KETERANGAN</td>
         </tr>
     </thead>
     <tbody id="listdata">
-
         <?php
         $no = 0;
         foreach ($list_query as $array_list_query) {
             $no++;
-            $genderUmat = 'Laki - laki';
+            $genderUmat = 'L';
             if ($array_list_query['tb_data_umat_gender'] == 2)
-                $genderUmat = 'Perempuan';
+                $genderUmat = 'P';
             ?>
             <tr>
-                <td><?= $no; ?></td>
-                <td><?= $array_list_query['tb_data_umat_no_id']; ?></td>
-                <td><?= $array_list_query['tb_data_umat_nama_ktp']; ?></td>
-                <td><?= $array_list_query['tb_data_umat_tempat']; ?>, <?= $array_list_query['tb_data_umat_tgl_lahir']; ?></td>
-                <td><?= $genderUmat; ?></td>
-                <td><?= $array_list_query['tb_data_umat_alamat_ktp']; ?></td>
-                <td><?= $array_list_query['tb_data_umat_no_hp']; ?></td>
-                <td><?= $array_list_query['tb_data_umat_email']; ?></td>
-                <td><?= $array_list_query['tb_data_umat_alamat_tinggal']; ?></td>
-                <td><?= $array_list_query['tb_data_umat_no_tlp']; ?></td>
-                <td><?= $array_list_query['tb_data_umat_hub1']; ?></td>
-                <td><?= $array_list_query['tb_data_umat_hub2']; ?></td>
-                <td><?= $array_list_query['tb_data_umat_kewarganegaraan']; ?></td>
-                <td><?= $array_list_query['tb_data_umat_pekerjaan']; ?></td>
-                <td><?= $array_list_query['tb_data_umat_keaktifan']; ?></td>
-                <td><?= $array_list_query['tb_data_umat_dana_goku']; ?></td>
-                <td><?= $array_list_query['tb_data_umat_tanggung_jawab']; ?></td>
+                <td style="border: black; padding: 10px; text-align: center" ><?= $no; ?></td>
+                <td style="border: black; padding: 10px; text-align: center" ><?= $array_list_query['tb_data_umat_no_id']; ?></td>
+                <td style="border: black; padding: 10px;"><?= $array_list_query['tb_data_umat_nama_ktp']; ?></td>
+                <td style="border: black; padding: 10px; text-align: center" ><?= $genderUmat; ?></td>
+                <td style="border: black; padding: 10px" ><?= $array_list_query['tb_data_umat_tempat']; ?>, <?= $array_list_query['tb_data_umat_tgl_lahir']; ?></td>
+                <td style="border: black; padding: 10px; text-align: center" ></td>
+                <td style="border: black; padding: 10px; text-align: center" ></td>
+                <td style="border: black; padding: 10px" ></td>
             </tr>
         <?php } ?>
     </tbody>
-
-
 </table>
+<br/>
+<strong>Tanggal Cetak&nbsp;:</strong><?php print_r(date("d/M/Y")); ?><br/>
+<strong>Dicetak Oleh&nbsp;&nbsp;&nbsp;:</strong> Pak RT

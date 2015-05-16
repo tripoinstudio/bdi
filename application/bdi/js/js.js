@@ -1208,40 +1208,17 @@ function exportPdf(type, filename, parameter) {
     var jumlahlist = $("#jumlahlist").val();
     var searchtype = $("#searchtype").val();
     var searchfield = $("#searchfield").val();
-    /*
-     var item = '{"item":[';
-     for (i = 0; i < jumlahlist; i++) {
-     var no = i + 1;
-     var coma;
-     
-     var code = $("#country_code" + no).val();
-     var name = $("#country_name" + no).val();
-     
-     if(no == jumlahlist){
-     coma = '';
-     } else {
-     coma = ',';
-     }
-     
-     item = item + '{';
-     item = item + '"code":"'+code + '",';
-     item = item + '"name":"'+name + '"';
-     item = item + '}'+coma;
-     
-     }
-     item = item + ']}';
-     */
+    
+    var cari_alamat = $("#cari_alamat").val();
+    var cari_tlp = $("#cari_tlp").val();
 
-    var newURL = 'export.php?export=' + exports + '&file=' + file + parameter;
+    var newURL = 'export.php?export=' + exports + '&file=' + file + '&cari_alamat=' + cari_alamat + '&cari_tlp=' + cari_tlp;
+
     newwindow = window.open(newURL);
     if (window.focus) {
         newwindow.focus();
     }
-
-
     return false;
-
-
 }
 
 function exportExcel(type, filename, parameter) {
@@ -1252,7 +1229,7 @@ function exportExcel(type, filename, parameter) {
     var searchfield = $("#searchfield").val();
     
     var cari_alamat = $("#cari_alamat").val();
-    var cari_tlp = $("#cari_alamat").val();
+    var cari_tlp = $("#cari_tlp").val();
 
     var newURL = 'export.php?export=' + exports + '&file=' + file + '&cari_alamat=' + cari_alamat + '&cari_tlp=' + cari_tlp;
 
@@ -1260,9 +1237,7 @@ function exportExcel(type, filename, parameter) {
     if (window.focus) {
         newwindow.focus();
     }
-
     return false;
-
 }
 
 function hideAtNew(str) {
