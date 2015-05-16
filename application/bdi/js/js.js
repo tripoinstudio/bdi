@@ -1254,7 +1254,7 @@ function exportExcel(type, filename, parameter) {
     var cari_alamat = $("#cari_alamat").val();
     var cari_tlp = $("#cari_alamat").val();
 
-    var newURL = 'export.php?export=' + exports + '&file=' + file + '&cari_alamat=' + cari_alamat + '&cari_tlp=' + cari_tlpt;
+    var newURL = 'export.php?export=' + exports + '&file=' + file + '&cari_alamat=' + cari_alamat + '&cari_tlp=' + cari_tlp;
 
     newwindow = window.open(newURL);
     if (window.focus) {
