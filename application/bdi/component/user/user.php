@@ -24,8 +24,6 @@ if($_GET['action'] == 'save'){
 	if ($namesekdas[0]['tb_group_name'] == 'sekda'){
 		$db->select('tb_user', '*', NULL, "user_username='".$code."'");
 		$user_id = $db->getResult()[0]['user_id']; 
-		echo 'group : '.$group;
-		echo 'province : '.$daerah;
         
 		$db->insert('tb_user_province',array('user_id'=>''.$user_id.'','tb_province_id'=>''.$daerah.''));
 		$res = $db->getResult();
