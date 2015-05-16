@@ -6,7 +6,17 @@ $(function () {
     var actions = queryString('action', ipconfig);
     if (actions == 'new') {
         lovNew(str, actions, 'group');
-
+		$('#lovwithlabelprovince').hide();
+		var group = "";
+		$( "#lovsgroup" ).change(function () {
+			$( "#lovsgroup option:selected" ).each(function() {
+				group = $( this ).text();
+			});
+			if(group == 'sekda')
+				$('#lovwithlabelprovince').show();
+			else
+				$('#lovwithlabelprovince').hide();
+		}).change();		
     } else if (actions == 'edit' || actions == 'view') {
         lovEdit(str, actions, 'group');
 
@@ -18,7 +28,12 @@ function saveUser(str, action) {
     var code = $('#user').val();
     var name = $('#name').val();
     var password = $('#password').val();
-var group = $('#lovsgroup').val();
+	var group = $('#lovsgroup').val();
+	var grouptext = "";
+	$( "#lovsgroup option:selected" ).each(function() {
+		grouptext = $( this ).text();
+	});
+	var province = $('#lovsprovince').val();
     if (action == 'update') {
         var id = $('#idUp').val();
     }
@@ -42,7 +57,9 @@ var group = $('#lovsgroup').val();
             //  $('#create').hide();
         }
     }
-    if (action == 'save') {
+    if (action == 'save' && grouptext == 'sekda') {
+        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action+ "&group=" + group + "&province=" + province + "&password=" + password + "&name=" + name + "&code=" + code, true);
+    } else if (action == 'save' && grouptext != 'sekda') {
         xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action+ "&group=" + group + "&password=" + password + "&name=" + name + "&code=" + code, true);
     } else {
         xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action+ "&group=" + group + "&password=" + password + "&id=" + id + "&name=" + name + "&code=" + code, true);

@@ -4,7 +4,9 @@
 <?= inputPassword('....', 'Password', 'password', 'Some hint here', $_GET['action']); ?>
 <?= inputGeneral('....', 'Nama User', 'name', 'Some hint here', $_GET['action']); ?>
 
-<?= inputLovEdit('tb_group_id', 'tb_group_name',$query1['tb_group_id'], 'Pilih Group','group','true', $_GET['action'], 'true', '',"SELECT * FROM tb_group WHERE tb_group_name != 'sekda'"); ?>
+<?= inputLovEdit('tb_group_id', 'tb_group_name',$query1['tb_group_id'], 'Pilih Group','group','true', $_GET['action'], 'true', '',"SELECT * FROM tb_group"); ?>
+
+<?= inputLovEdit('tb_province_id', 'tb_province_name',$query1['tb_province_id'], 'Pilih Daerah','province','true', $_GET['action'], 'true', '',"SELECT * FROM tb_province"); ?>
 
 <div class="form-actions row-fluid">
 <div class="span7 offset3">

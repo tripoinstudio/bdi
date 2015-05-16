@@ -9,14 +9,27 @@ $code = mysql_real_escape_string($_GET['code']);
 $name = mysql_real_escape_string($_GET['name']);
 $password = mysql_real_escape_string($_GET['password']);
 $group = $_GET['group'];
+$daerah = $_GET['province'];
 
 $db = new Database();
 $db->connect();
 
 if($_GET['action'] == 'save'){
 	
+	$db->select('tb_group', 'tb_group_name', null, 'tb_group_id='.$group );
+	$namesekdas = $db->getResult();
+	
 	$db->insert('tb_user',array('user_username'=>''.$code.'','user_password'=>''.$password.'','user_fullname'=>$name,'tb_group_id'=>$group,'user_status'=>1,'company_code'=>''.$_SESSION['company_code'].'')); 
-	$res = $db->getResult();  
+	$res = $db->getResult();
+	if ($namesekdas[0]['tb_group_name'] == 'sekda'){
+		$db->select('tb_user', '*', NULL, "user_username='".$code."'");
+		$user_id = $db->getResult()[0]['user_id']; 
+		echo 'group : '.$group;
+		echo 'province : '.$daerah;
+        
+		$db->insert('tb_user_province',array('user_id'=>''.$user_id.'','tb_province_id'=>''.$daerah.''));
+		$res = $db->getResult();
+	}
 //	print_r($res);
 //	$query1=mysql_query("insert into tb_".$cekMenu['menu_function_link']." values('','$code','$name','1')");
 } else if($_GET['action'] == 'update'){
@@ -31,7 +44,7 @@ if($_GET['action'] == 'save'){
 include "../../function/functionaction.php";
 ?>
 <?php
-$parentuser = "tb_user.company_code='".$_SESSION['company_code']."' AND tb_user.user_status=1 AND tb_group.tb_group_name != 'sekda' AND tb_group.tb_group_id = tb_user.tb_group_id";
+$parentuser = "tb_user.company_code='".$_SESSION['company_code']."' AND tb_user.user_status=1 AND tb_group.tb_group_id = tb_user.tb_group_id";
 
 $dblist = new Database();
 $dblist->connect();
