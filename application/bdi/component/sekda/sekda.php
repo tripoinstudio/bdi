@@ -43,7 +43,7 @@ $parentuser = "tb_user.company_code='".$_SESSION['company_code']."' AND tb_user.
 
 $dblist = new Database();
 $dblist->connect();
-$dblist->select('tb_user','tb_user.user_username,tb_user.user_password,tb_user.user_fullname,tb_province.tb_province_name','tb_user_province,tb_province',$parentuser); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+$dblist->select('tb_user','tb_user.user_id,tb_user.user_username,tb_user.user_password,tb_user.user_fullname,tb_province.tb_province_name','tb_user_province,tb_province',$parentuser); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
 $list_query = $dblist->getResult();
 //$list_query=mysql_query("select * from tb_".$cekMenu['menu_function_link']." where status=1");
 
