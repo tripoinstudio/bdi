@@ -14,7 +14,7 @@
 <?php } ?>								
 <br />
 
-<?php if ($_GET['content'] == 'user') { ?>
+<?php if ($_GET['content'] == 'sekda') { ?>
     <table id="datatable_example" class="responsive table table-striped table-bordered" style="width:100%;margin-bottom:0; ">
         <thead>
             <tr>

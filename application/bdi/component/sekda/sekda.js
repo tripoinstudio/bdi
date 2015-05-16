@@ -5,10 +5,10 @@ $(function () {
     var str = queryString('content', ipconfig);
     var actions = queryString('action', ipconfig);
     if (actions == 'new') {
-        lovNew(str, actions, 'group');
+        lovNew(str, actions, 'province');
 
     } else if (actions == 'edit' || actions == 'view') {
-        lovEdit(str, actions, 'group');
+        lovEdit(str, actions, 'province');
 
     }
 
@@ -18,7 +18,7 @@ function saveUser(str, action) {
     var code = $('#user').val();
     var name = $('#name').val();
     var password = $('#password').val();
-var group = $('#lovsgroup').val();
+var province = $('#lovsprovince').val();
     if (action == 'update') {
         var id = $('#idUp').val();
     }
@@ -43,9 +43,9 @@ var group = $('#lovsgroup').val();
         }
     }
     if (action == 'save') {
-        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action+ "&group=" + group + "&password=" + password + "&name=" + name + "&code=" + code, true);
+        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action+ "&province=" + province + "&password=" + password + "&name=" + name + "&code=" + code, true);
     } else {
-        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action+ "&group=" + group + "&password=" + password + "&id=" + id + "&name=" + name + "&code=" + code, true);
+        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action+ "&province=" + province + "&password=" + password + "&id=" + id + "&name=" + name + "&code=" + code, true);
     }
     xmlhttp.send();
 

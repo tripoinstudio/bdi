@@ -4,7 +4,7 @@
 <?= inputPassword('....', 'Password', 'password', 'Some hint here', $_GET['action']); ?>
 <?= inputGeneral('....', 'Nama User', 'name', 'Some hint here', $_GET['action']); ?>
 
- <?= inputLov('Group', 'lovgroup', 'lovgroups', 'group', $_GET['action'], '', ''); ?>
+ <?= inputLov('Daerah', 'lovprovince', 'lovprovinces', 'province', $_GET['action'], '', ''); ?>
 
 <div class="form-actions row-fluid">
 <div class="span7 offset3">
