@@ -34,19 +34,15 @@
             <?php
             $no = 1;
 
-            foreach ($list_query as $array_list_query) {
-                ?>
-
-                <?php
-                $dblist->select('tb_data_umat_pembagian', '*', NULL, 'tb_data_umat_id=' . $array_list_query['tb_data_umat_id']); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
-                $list_umatbg = $dblist->getResult();
-                foreach ($list_umatbg as $array_list_umatbg) {
-                    $daerahid = $array_list_umatbg['tb_province_id'];
-                    $sentraid = $array_list_umatbg['tb_sentra_id'];
-                    $distrikid = $array_list_umatbg['tb_distrik_id'];
-                    $cetyaid = $array_list_umatbg['tb_cetya_id'];
-                    $dharmasalaid = $array_list_umatbg['tb_dharmasala_id'];
-                }
+                foreach ($list_query as $array_list_query) {
+                
+                
+                    $daerahid = $array_list_query['tb_province_id'];
+                    $sentraid = $array_list_query['tb_sentra_id'];
+                    $distrikid = $array_list_query['tb_distrik_id'];
+                    $cetyaid = $array_list_query['tb_cetya_id'];
+                    $dharmasalaid = $array_list_query['tb_dharmasala_id'];
+                    
                 $provinceid = idListViewTarget($daerahid, "province", "tb_province_code");
                 $NIK = autoCodeUmat($provinceid, $array_list_query['tb_data_umat_nama_ktp'], $array_list_query['tb_data_umat_code']);
                 $province = idListViewTarget($daerahid, "province", "tb_province_name");
@@ -86,6 +82,7 @@
                 <?php
                 $no++;
             }
+            
             ?>	
         </tbody>
     </table>

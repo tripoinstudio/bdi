@@ -246,9 +246,17 @@ include "../../function/functionaction.php";
 
 $dblist = new Database();
 $dblist->connect();
-$dblist->select('tb_data_umat', '*', NULL, ''); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
-$list_query = $dblist->getResult();
 
+$user_id_sekda = $_SESSION['user_id'];
+$dblist->select('tb_user_province', 'tb_province_id', null, 'user_id='.$user_id_sekda );
+$provincesekdas = $dblist->getResult();
+if ($_SESSION['id_group'] == 4){
+    $dblist->select('tb_data_umat_pembagian', '*', 'tb_data_umat', 'tb_data_umat_pembagian.tb_data_umat_id=tb_data_umat.tb_data_umat_id AND tb_data_umat_pembagian.tb_province_id='.$provincesekdas[0]['tb_province_id']);
+    $list_query = $dblist->getResult();
+}else{
+    $dblist->select('tb_data_umat', '*', 'tb_data_umat_pembagian', 'tb_data_umat_pembagian.tb_data_umat_id=tb_data_umat.tb_data_umat_id'); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+    $list_query = $dblist->getResult();    
+}
 $length_list = count($list_query);
 ?>
 <?php
