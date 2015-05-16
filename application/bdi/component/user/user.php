@@ -31,11 +31,11 @@ if($_GET['action'] == 'save'){
 include "../../function/functionaction.php";
 ?>
 <?php
-$parentuser = "company_code='".$_SESSION['company_code']."' AND user_status=1";
+$parentuser = "tb_user.company_code='".$_SESSION['company_code']."' AND tb_user.user_status=1 AND tb_group.tb_group_name != 'sekda' AND tb_group.tb_group_id = tb_user.tb_group_id";
 
 $dblist = new Database();
 $dblist->connect();
-$dblist->select('tb_user','*',NULL,$parentuser); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+$dblist->select('tb_user','*','tb_group',$parentuser); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
 $list_query = $dblist->getResult();
 //$list_query=mysql_query("select * from tb_".$cekMenu['menu_function_link']." where status=1");
 

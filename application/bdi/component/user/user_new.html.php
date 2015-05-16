@@ -4,7 +4,7 @@
 <?= inputPassword('....', 'Password', 'password', 'Some hint here', $_GET['action']); ?>
 <?= inputGeneral('....', 'Nama User', 'name', 'Some hint here', $_GET['action']); ?>
 
- <?= inputLov('Group', 'lovgroup', 'lovgroups', 'group', $_GET['action'], '', ''); ?>
+<?= inputLovEdit('tb_group_id', 'tb_group_name',$query1['tb_group_id'], 'Pilih Group','group','true', $_GET['action'], 'true', '',"SELECT * FROM tb_group WHERE tb_group_name != 'sekda'"); ?>
 
 <div class="form-actions row-fluid">
 <div class="span7 offset3">
