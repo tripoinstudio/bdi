@@ -22,7 +22,7 @@
                 <th style="width:5%;text-align:center;">No</th>
                 <th style="width:20%;" class="hidden-phone" >Code</th>
                 <th style="width:20%;" class="hidden-phone">Name</th>
-                <th style="width:20%;" class="hidden-phone">Group</th>
+                <th style="width:20%;" class="hidden-phone">Daerah</th>
                 <th style="width:20%;" class="hidden-phone">Action</th>
             </tr>
         </thead>
@@ -39,7 +39,7 @@
                     <td style="text-align:center;"><?= $no; ?></td>
                     <td><?= $array_list_query['user_username']; ?></td>
                     <td><?= $array_list_query['user_fullname']; ?></td>
-                     <td><?= idListView($array_list_query['tb_group_id'], "group"); ?></td>
+                    <td><?= $array_list_query['tb_province_name']; ?></td>
         <?php include "../../function/actionlist.php"; ?>
                 </tr>
                     <?php

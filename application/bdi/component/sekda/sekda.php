@@ -28,6 +28,9 @@ if($_GET['action'] == 'save'){
 	$id = $_GET['id'];
 	$db->update('tb_user',array('user_username'=>"".$code."",'user_password'=>"".$password."",'tb_group_id'=>4,'user_fullname'=>"".$name.""),'user_id='.$id.''); // Table name, column names and values, WHERE conditions
 	$res = $db->getResult();
+        
+        $db->update('tb_user_province',array('tb_province_id'=>''.$daerah.''),'user_id='.$id.'');
+        $res = $db->getResult();
 //	$query1=mysql_query("update tb_".$cekMenu['menu_function_link']." set tb_warehouse_name='$name', tb_warehouse_code='$code' where tb_warehouse_id='$id'");
 }
 
@@ -36,11 +39,11 @@ if($_GET['action'] == 'save'){
 include "../../function/functionaction.php";
 ?>
 <?php
-$parentuser = "tb_user.company_code='".$_SESSION['company_code']."' AND tb_user.user_status=1 AND tb_group.tb_group_name = 'sekda' AND tb_group.tb_group_id = tb_user.tb_group_id";
+$parentuser = "tb_user.company_code='".$_SESSION['company_code']."' AND tb_user.user_status=1 AND tb_user_province.user_id = tb_user.user_id AND tb_province.tb_province_id = tb_user_province.tb_province_id";
 
 $dblist = new Database();
 $dblist->connect();
-$dblist->select('tb_user','*','tb_group',$parentuser); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+$dblist->select('tb_user','tb_user.user_username,tb_user.user_password,tb_user.user_fullname,tb_province.tb_province_name','tb_user_province,tb_province',$parentuser); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
 $list_query = $dblist->getResult();
 //$list_query=mysql_query("select * from tb_".$cekMenu['menu_function_link']." where status=1");
 
