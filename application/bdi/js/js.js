@@ -1250,8 +1250,11 @@ function exportExcel(type, filename, parameter) {
     var jumlahlist = $("#jumlahlist").val();
     var searchtype = $("#searchtype").val();
     var searchfield = $("#searchfield").val();
+    
+    var cari_alamat = $("#cari_alamat").val();
+    var cari_tlp = $("#cari_alamat").val();
 
-    var newURL = 'export.php?export=' + exports + '&file=' + file + parameter;
+    var newURL = 'export.php?export=' + exports + '&file=' + file + '&cari_alamat=' + cari_alamat + '&cari_tlp=' + cari_tlpt;
 
     newwindow = window.open(newURL);
     if (window.focus) {
