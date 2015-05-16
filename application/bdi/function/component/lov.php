@@ -36,7 +36,7 @@ function inputLovEdit($placeholderid=null, $placeholdername=null,$placeholder=nu
         $lovquery = mysql_query($manual);
 
 
-        echo '<div class="form-row control-group row-fluid">
+        echo '<div class="form-row control-group row-fluid" id="lovwithlabel'.$idinput.'">
              <label class="control-label span3">' . $title . '</label>
              <div class="controls span9">';
 
@@ -48,7 +48,7 @@ function inputLovEdit($placeholderid=null, $placeholdername=null,$placeholder=nu
     //    echo $listlov[$placeholderid];
             
              } else {
-            echo "<option value=". $listlov[$placeholderid] . ">" . $listlov[$placeholdername] . "</option>";
+            echo "<option value=". $listlov[$placeholderid] . " >" . $listlov[$placeholdername] . "</option>";
         }
             
           //  echo "<option value=" . $listlov[$placeholderid] . ">" . $listlov[$placeholdername] . "</option>";
