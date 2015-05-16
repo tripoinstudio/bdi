@@ -11,7 +11,7 @@ $content = ob_get_clean();
     {
         $html2pdf = new HTML2PDF($_GET['pages'], 'A4', 'fr');
         $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
-        $html2pdf->Output($_GET['file'].'.pdf');
+        $html2pdf->Output($_GET['file']."-".date('Ymd').'.pdf');
     }
     catch(HTML2PDF_exception $e) {
         echo $e;

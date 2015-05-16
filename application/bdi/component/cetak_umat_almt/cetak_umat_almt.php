@@ -52,7 +52,7 @@ include "../../function/functionaction.php";
 <?php
 
 $exportpdf = "exportPdf('pdf','pdf-umat-by-alamat','".$_SESSION['username']."');"; //TYPE EXPORT, FILE NAME EXPORT, PARAMETER ex  : 'pdf','pdf-country','&id=id'
-$exportexcel = "exportExcel('excel','excel-country','".$_SESSION['username']."');";
+$exportexcel = "exportExcel('excel','excel-umat-by-alamat','".$_SESSION['username']."');";
 
 include "../../function/contentmodul.html.php";
 ?>
