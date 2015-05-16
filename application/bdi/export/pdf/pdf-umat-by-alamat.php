@@ -4,7 +4,10 @@ $dblist->connect();
 
 $alamat = $_GET['cari_alamat'];
 $notlp = $_GET['cari_tlp'];
+$createdBy = $_GET['created_by'];
 
+$userFullname = mysql_query('SELECT user_fullname FROM tb_user WHERE user_username like "' . $createdBy . '"');
+$userFullname2 = mysql_fetch_array($userFullname);
 $manualQuery = 'SELECT * FROM tb_data_umat a JOIN tb_data_keumatan b ON a.tb_data_umat_id = b.tb_data_umat_id WHERE a.tb_data_umat_alamat_tinggal like "%' . $alamat . '%" AND a.tb_data_umat_no_tlp like "%' . $notlp . '%"';
 $list_query = mysql_query($manualQuery);
 
@@ -20,7 +23,6 @@ $_GET['pages'] = 'P';
 
     <?php
     $no = 0;
-//    foreach ( as ) {
     while ($array_list_query = mysql_fetch_array($list_query)) {
         $no++;
         $genderUmat = 'L';
@@ -33,9 +35,8 @@ $_GET['pages'] = 'P';
         if ($no == 1) {
             ?>
             <table>
-                <?php $username = $_SESSION['username']; ?>
                 <tr><td>Per Tanggal</td><td>:</td><td><?php print_r(date("d-M-Y")); ?></td></tr>
-                <tr><td>Dicetak Oleh</td><td>:</td><td><?php print_r($username); ?></td></tr>
+                <tr><td>Dicetak Oleh</td><td>:</td><td><?= $userFullname2['user_fullname'] ?></td></tr>
             </table>
             <br/>
             <table style="border-collapse: collapse; height: 40px; vertical-align: middle">
@@ -44,8 +45,8 @@ $_GET['pages'] = 'P';
             </table>
             <br/>
             <table style="border-collapse: collapse; height: 40px; vertical-align: middle">
-                <tr><th style="height: 30px; text-align: center; width: 200px; border-right: black; border-left: black; border-top: black; border-bottom: black">NAMA</th><th style="border-right: black; border-top: black; width: 70px; "></th><th style="border-bottom: black; border-top: black; width: 120px; border-right: black; text-align: center; width: 200px;">TGL GOJUKAI</th><th style="width: 205px; text-align: center; border-top: black; border-right: black;"></th></tr>
-                <tr><th style="height: 30px; text-align: center; border-right: black; border-left: black; border-bottom: black">TTL</th><th style="border-bottom: black; border-right: black; text-align: center;">L/P</th><th style="border-bottom: black; width: 120px; border-right: black; text-align: center">TGL KANKAI</th><th style="width: 120px; border-bottom: black; border-right: black; text-align: center">KETERANGAN</th></tr>
+                <tr><th style="height: 30px; text-align: center; width: 200px; border-right: black; border-left: black; border-top: black; border-bottom: black">NAMA</th><th style="border-right: black; border-top: black; width: 70px; "></th><th style="border-bottom: black; border-top: black; width: 120px; border-right: black; text-align: center; width: 200px;">TAHUN GOJUKAI</th><th style="width: 205px; text-align: center; border-top: black; border-right: black;"></th></tr>
+                <tr><th style="height: 30px; text-align: center; border-right: black; border-left: black; border-bottom: black">TTL</th><th style="border-bottom: black; border-right: black; text-align: center;">L/P</th><th style="border-bottom: black; width: 120px; border-right: black; text-align: center">TAHUN KANKAI</th><th style="width: 120px; border-bottom: black; border-right: black; text-align: center">KETERANGAN</th></tr>
             </table>
             <br/>
             <?php
