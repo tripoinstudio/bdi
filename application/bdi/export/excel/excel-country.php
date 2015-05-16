@@ -26,7 +26,7 @@ $length_list = count($list_query);
             <td style="border: black; padding: 10px; width: 200px">NAMA SESUAI KTP</td>
             <td style="border: black; padding: 10px; width: 50px">L/P</td>
             <td style="border: black; padding: 10px; width: 200px">TEMPAT TANGGAL LAHIR</td>
-            <td style="border: black; padding: 10px; width: 100px">TAHUN GUJOKAI</td>
+            <td style="border: black; padding: 10px; width: 100px">TAHUN GOJUKAI</td>
             <td style="border: black; padding: 10px; width: 100px">TAHUN KANKAI</td>
             <td style="border: black; padding: 10px; width: 200px">KETERANGAN</td>
         </tr>
@@ -55,4 +55,6 @@ $length_list = count($list_query);
 </table>
 <br/>
 <strong>Tanggal Cetak&nbsp;:</strong><?php print_r(date("d/M/Y")); ?><br/>
-<strong>Dicetak Oleh&nbsp;&nbsp;&nbsp;:</strong> Pak RT
+<strong>Dicetak Oleh&nbsp;&nbsp;&nbsp;:</strong><?php echo $_SESSION['user_id']; ?>
+
+
