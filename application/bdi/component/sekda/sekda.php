@@ -18,10 +18,7 @@ if($_GET['action'] == 'save'){
 	$db->insert('tb_user',array('user_username'=>''.$code.'','user_password'=>''.$password.'','user_fullname'=>$name,'tb_group_id'=>4,'user_status'=>1,'company_code'=>''.$_SESSION['company_code'].'')); 
 	$res = $db->getResult();  
 	$db->select('tb_user', '*', NULL, "user_username='".$code."'");
-    $user_id = $db->getResult()[0]['user_id'];  
-    echo "Username : ".$code;
-    echo "User ID : ".$user_id;
-    echo "Daerah : ".$daerah;
+    $user_id = $db->getResult()[0]['user_id']; 
         
     $db->insert('tb_user_province',array('user_id'=>''.$user_id.'','tb_province_id'=>''.$daerah.''));
     $res = $db->getResult();
