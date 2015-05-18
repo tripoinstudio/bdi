@@ -1,3 +1,4 @@
+
 <?php
 
 session_start();
@@ -60,6 +61,11 @@ if (!isset($_SESSION['username'])) {
     }
 }
 ?>
+
+<!--
+CREATED BY : SYAHRIAL FANDRIANAH
+COPYRIGHT 2015
+-->
 
 <!DOCTYPE html>
 <html lang="en"> 
