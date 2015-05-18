@@ -1,7 +1,7 @@
 
 <div id="loading"><img src="img/ajax-loader.gif"></div>
 <div id="responsive_part">
-  <div class="logo"> <a href="index.html"><span>MNSBDI</span><span class="icon"></span></a> </div>
+<div class="logo"> <a href="/"><span>MNSBDI</span><span class="icon"></span></a> </div>
   <ul class="nav responsive">
     <li>
       <button class="btn responsive_menu icon_item" data-toggle="collapse" data-target=".overview"> <i class="icon-reorder"></i> </button>

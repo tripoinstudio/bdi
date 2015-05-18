@@ -170,7 +170,9 @@
 <div class="row-fluid">
     <div class="row-fluid box color_2 title_medium height_medium2 bar_stats paint_hover ">
         <div class="title hidden-phone">
+            <a href="http://www.mnsbdi.org" target="_blank" >
             <h5><span>Website MNSBDI</span></h5>
+            </a>
         </div>
         <!-- End .title -->
 
@@ -185,7 +187,9 @@
 <div class="row-fluid">
     <div class="row-fluid box color_27 title_medium height_medium2 bar_stats paint_hover">
         <div class="title hidden-phone">
+             <a href="http://www.mnsbdi.org:2095/3rdparty/roundcube/index.php?_task=mail" target="_blank" >
             <h5><span>Webmail Login</span></h5>
+            </a>
         </div>
         <!-- End .title -->
         <div class="content row-fluid fluid numbers">   
