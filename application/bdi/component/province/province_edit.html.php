@@ -1,6 +1,6 @@
-<?= inputLovEdit('tb_country_id', 'tb_country_name',$query1['tb_country_id'], 'Pilih Negara','country','true', $_GET['action'], 'false', ''); ?>
-<?= inputGeneral($query1['tb_province_code'], 'Code Provinsi', 'code', 'true', $_GET['action']); ?>
-<?= inputGeneral($query1['tb_province_name'], 'Nama Provinsi', 'name', 'true', $_GET['action']); ?>
+<?php //= inputLovEdit('tb_country_id', 'tb_country_name',$query1['tb_country_id'], 'Pilih Negara','country','true', $_GET['action'], 'false', ''); ?>
+<?= inputGeneral($query1['tb_province_code'], 'Kode Daerah', 'code', 'true', $_GET['action']); ?>
+<?= inputGeneral($query1['tb_province_name'], 'Nama Daerah', 'name', 'true', $_GET['action']); ?>
 <?= inputGeneral($query1['tb_province_remarks'], 'Description', 'remarks', 'true', $_GET['action']); ?>
 
 <input type="hidden" id="idUp" value="<?= $_GET['id']; ?>" />

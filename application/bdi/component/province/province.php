@@ -11,14 +11,14 @@ if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
     $db->connect();
 //'created_date' => date('Y-m-d'),'created_by' => $_SESSION['user_id']
     if ($_GET['action'] == 'save') {
-        $db->sql("INSERT INTO `tb_province` (".$datas.",`created_date`,`created_by`,`tb_country_id`)VALUES (".$values.",".date('Y-m-d').",".$_SESSION['user_id'].",$countryid);");
+        $db->sql("INSERT INTO `tb_province` (".$datas.",`created_date`,`created_by`)VALUES (".$values.",".date('Y-m-d').",".$_SESSION['user_id'].");");
 
                 $res = $db->getResult();
 				 saveToLog($cekMenu['menu_function_name'], $_GET['action'], $_SESSION['username']);
     } else if ($_GET['action'] == 'update') {
         $id = $_GET['id'];
         
-        $db->sql("UPDATE `tb_province` SET ".$datas.",`update_date`=".date('Y-m-d').",`update_by`=".$_SESSION['user_id'].",`tb_country_id`=".$countryid." WHERE `tb_province_id` =".$id.";");
+        $db->sql("UPDATE `tb_province` SET ".$datas.",`update_date`=".date('Y-m-d').",`update_by`=".$_SESSION['user_id']." WHERE `tb_province_id` =".$id.";");
    //     $db->update('tb_country', array('tb_country_name' => "" . $name . "", 'tb_country_code' => "" . $code . ""), 'tb_country_id=' . $id . ''); // Table name, column names and values, WHERE conditions
         $res = $db->getResult();
 		 saveToLog($cekMenu['menu_function_name'], $_GET['action'], $_SESSION['username']);

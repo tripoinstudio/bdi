@@ -1,7 +1,7 @@
 <? // inputLov('Pilih Negara', 'lovcountry', 'lovcountrys','country', $_GET['action'], '', ''); ?>
-<?= inputLovNew('tb_country_id', 'tb_country_name','', 'Pilih Negara','country','true', $_GET['action'], 'false', '',''); ?>
-<?= inputGeneral('....', 'Code Provinsi', 'code', 'true', $_GET['action']); ?>
-<?= inputGeneral('....', 'Nama Provinsi', 'name', 'true', $_GET['action']); ?>
+<?php //= inputLovNew('tb_country_id', 'tb_country_name','', 'Pilih Negara','country','true', $_GET['action'], 'false', '',''); ?>
+<?= inputGeneral('....', 'Kode Daerah', 'code', 'true', $_GET['action']); ?>
+<?= inputGeneral('....', 'Nama Daerah', 'name', 'true', $_GET['action']); ?>
 <?= inputTextArea('....', 'Description', 'remarks', 'true', $_GET['action']); ?>
 
 
