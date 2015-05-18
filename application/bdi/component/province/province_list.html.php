@@ -20,7 +20,7 @@
                 <th style="width:5%;text-align:center;">No</th>
                 <th style="width:20%;" class="hidden-phone">Name</th>
                 <th style="width:20%;" class="hidden-phone" >Country</th>
-                <th style="width:20%;" class="hidden-phone">Action</th>
+                <th style="width:10%;text-align:center" class="hidden-phone">Action</th>
             </tr>
         </thead>
         <tbody>
