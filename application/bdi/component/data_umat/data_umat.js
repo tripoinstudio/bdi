@@ -65,6 +65,7 @@ selectNames2(no,idDataUmats);
 	addName();
 	addNames();
 	marriageStatus();
+	tdpStatus();
 	//optionHubungan(null);
 }
     

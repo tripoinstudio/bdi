@@ -66,7 +66,7 @@
 
         </label>
         <label class="radio ">
-            <input type="radio" id="me_gohifu"  value="2" name="me_gohifu" onclick="tdpStatus();">
+            <input type="radio" id="me_gohifu"  value="2" name="me_gohifu" checked="checked" onclick="tdpStatus();">
             <span style="padding-left: 10px;">Tidak </span>
 
         </label>
