@@ -119,6 +119,7 @@ function exportPdfUmat(type, filename, parameter) {
     var searchtype = $("#searchtype").val();
     var searchfield = $("#searchfield").val();
 	var cari_alamat = $("#cari_alamat").val();
+	var created_by = $("#created_by").val();
 	
 	var first_telp_rumah = $("#first_telp_rumah").val();
 	var last_telp_rumah = $("#last_telp_rumah").val();
@@ -142,7 +143,51 @@ function exportPdfUmat(type, filename, parameter) {
 		jumlahcount = jumlahcount + inp_check + coma;
 	}
 
-    var newURL = 'export.php?export=' + exports + '&file=' + file + '&alamat='+cari_alamat+ '&notlp='+ tlp+ '&jumlahcount='+ jumlahcount;
+    var newURL = 'export.php?export=' + exports + '&file=' + file + '&alamat='+cari_alamat+ '&notlp='+ tlp + '&created_by='+created_by+ '&jumlahcount='+ jumlahcount;
+;
+    newwindow = window.open(newURL);
+    if (window.focus) {
+        newwindow.focus();
+    }
+	}
+
+    return false;
+
+
+}
+
+function exportExcelUmat(type, filename, parameter) {
+    var exports = type;
+    var file = filename;
+    var jumlahlist = $("#jumlahlist").val();
+    var searchtype = $("#searchtype").val();
+    var searchfield = $("#searchfield").val();
+	var cari_alamat = $("#cari_alamat").val();
+	var created_by = $("#created_by").val();
+	
+	var first_telp_rumah = $("#first_telp_rumah").val();
+	var last_telp_rumah = $("#last_telp_rumah").val();
+	var tlp = first_telp_rumah+'-'+last_telp_rumah;
+	
+	var jumlahcount = '';
+	var countercheck = $("#countercheck").val();
+	if(countercheck == 0){
+		alert('Mohon checked data yang mau di export');
+	} else {
+	for(i=0; i<countercheck; i++){
+		var no = i + 1;
+		
+		var inp_check = $("#inp_check"+no).val();
+		 var coma;
+        if (no == countercheck) {
+            coma = '';
+        } else {
+            coma = ',';
+        }
+		jumlahcount = jumlahcount + inp_check + coma;
+	}
+
+    var newURL = 'export.php?export=' + exports + '&file=' + file + '&alamat='+cari_alamat+ '&notlp='+ tlp + '&created_by='+created_by+ '&jumlahcount='+ jumlahcount;
 ;
     newwindow = window.open(newURL);
     if (window.focus) {

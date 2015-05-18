@@ -43,6 +43,7 @@
 
 </div>
 <input type="hidden" id="countername" value="0" />
+<input type="hidden" id="created_by" value="<?=$_SESSION['username'];?>" />
 <input type="hidden" id="countercheck" value="0" />
 <input type="hidden" id="tableup" value="cetak_umat" />
 <input type="hidden" id="filename" value="cetak_umat_almt" />

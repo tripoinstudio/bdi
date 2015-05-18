@@ -1,5 +1,7 @@
 $(function () {
-    $('#create').hide();
+    $('#export-pdf').hide();
+	 $('#export-excel').hide();
+	 $('#create').hide();
     $('#successf').hide();
 
 });

@@ -10,7 +10,7 @@ $createdBy = $_GET['created_by'];
 $userFullname = mysql_query('SELECT user_fullname FROM tb_user WHERE user_username like "' . $createdBy . '"');
 $userFullname2 = mysql_fetch_array($userFullname);
 //$manualQuery = 'SELECT * FROM tb_data_umat a JOIN tb_data_keumatan b ON a.tb_data_umat_id = b.tb_data_umat_id WHERE a.tb_data_umat_alamat_tinggal like "%' . $alamat . '%" AND a.tb_data_umat_no_tlp like "%' . $notlp . '%"';
-$manualQuery = "select * from `tb_data_umat_pembagian` p INNER JOIN `tb_data_umat` d ON p.`tb_data_umat_id`=d.`tb_data_umat_id` where d.`tb_data_umat_alamat_tinggal` like '%".$alamat."%' and d.`tb_data_umat_no_tlp` like '%".$notlp."%' and d.tb_data_umat_id IN (".$jumlahcount.")";
+$manualQuery = "select * from `tb_data_umat_pembagian` p INNER JOIN `tb_data_umat` d ON p.`tb_data_umat_id`=d.`tb_data_umat_id` INNER JOIN tb_data_keumatan dk ON d.tb_data_umat_id = dk.tb_data_umat_id  where d.`tb_data_umat_alamat_tinggal` like '%".$alamat."%' and d.`tb_data_umat_no_tlp` like '%".$notlp."%' and d.tb_data_umat_id IN (".$jumlahcount.")";
 
 $list_query = mysql_query($manualQuery);
 
