@@ -44,7 +44,7 @@
 ?>
 
 
-<?= inputGeneral('....', NO_HANDPHONE, 'no_handphone', 'true', $_GET['action']); ?>
+<?= inputGeneral('628567332614', NO_HANDPHONE, 'no_handphone', 'true', $_GET['action'],'','onkeypress="return maxTenNumber(event,this)"'); ?>
 <?= inputGeneral('....', EMAIL, 'email', 'true', $_GET['action']); ?>
 
 

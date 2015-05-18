@@ -79,11 +79,11 @@ $last_no_handphone = $arrs[1];
                     <input type="text"  id="last_telp_rumah" name="truetitles[]" value="'.$last_telp_rumah.'" onkeyup="return maxEightNumber(event,this);" placeholder="12345678" class="span6" />
                     ');
 ?>
-<?//= inputGeneral($query1['tb_data_umat_no_hp'], NO_HANDPHONE, 'no_handphone', 'true', $_GET['action']); ?>
-<?= inputGeneralTemplate(NO_HANDPHONE, '
+<?= inputGeneral($query1['tb_data_umat_no_hp'], NO_HANDPHONE, 'no_handphone', 'true', $_GET['action'],'','onkeypress="return maxTenNumber(event,this)"'); ?>
+<?php /*= inputGeneralTemplate(NO_HANDPHONE, '
                     <input type="text"  id="first_no_handphone" name="truetitles[]" value="'.$first_no_handphone.'" onkeypress="return maxFourNumber(event,this)" placeholder="021" class="span2" /> - 
                     <input type="text"  id="last_no_handphone" name="truetitles[]" value="'.$last_no_handphone.'" onkeyup="return maxEightNumber(event,this);" placeholder="12345678" class="span6" />
-                    ');
+                    '); */
 ?>
 <?= inputGeneral($query1['tb_data_umat_email'], EMAIL, 'email', 'true', $_GET['action']); ?>
 

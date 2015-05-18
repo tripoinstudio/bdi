@@ -37,14 +37,34 @@ if (actions == 'edit') {
 	getCetyaLov(idDistrik,idCetya);
 	getDharmasalaLov(idCetya,idDharmasala);
 			
-	var idname1 = document.getElementById("idname1").value;
+/*	var idname1 = document.getElementById("idname1").value;
 	var idname2 = document.getElementById("idname2").value;
 	selectName(idname1);
-    selectNames2(idname2);
+    selectNames2(idname2);*/
+	
+	
+	var countername = document.getElementById("countername").value;
+	var counternames = document.getElementById("counternames").value;
+//	alert(counternames);
+	for(i=0; i<countername; i++){
+		var no = i+1;
+//		selectName(idname1);
+//	selectName(idname1);
+var idDataUmat = $('#idDataUmat'+no).val();
+selectName(no,idDataUmat);
+	}
+	for(i=0; i<counternames; i++){
+		var no = i+1;
+//		selectName(idname1);
+//	selectName(idname1);
+var idDataUmats = $('#idDataUmats'+no).val();
+//alert(no);
+selectNames2(no,idDataUmats);
+	}
 } else if (actions == 'new') {
 	addName();
 	addNames();
-	
+	marriageStatus();
 	//optionHubungan(null);
 }
     
@@ -133,12 +153,28 @@ function marriageStatus() {
     if (status == 1 || status == 3) {
 		
         $('#group_marriage_status').show();
+		upacaraShosu();
     } else {
         $('#group_marriage_status').hide();
 		$('#nichiren_shosu_year').val('-');
         $('#nichiren_shosu_place').val('-');
         $('#nichiren_shosu_leader').val('-');
         document.getElementById("upacarashosu").checked = true;
+    }
+}
+
+function upacaraShosu() {
+    var status = $('input[id="upacarashosu"]:checked').val();
+	//alert(status);
+    if (status == 1 || status == 3) {
+		
+        $('#group_upacarashosu').show();
+    } else {
+        $('#group_upacarashosu').hide();
+		$('#nichiren_shosu_year').val('-');
+        $('#nichiren_shosu_place').val('-');
+        $('#nichiren_shosu_leader').val('-');
+     //   document.getElementById("upacarashosu").checked = true;
     }
 }
 
@@ -275,7 +311,8 @@ function saveDataUmat(str, action) {
 
     var dataAktif = '&dtng_ke=' + dtng_ke + '&danaprmt=' + danaprmt + '&tngjwb=' + tngjwb;
     //DATA KELUARGA
-    var lovNameTr = $('#lovNameTr').val();
+    var idname1 = $('#idname1').val();
+	 var idname2 = $('#idname2').val();
 
 
     var countername = $('#countername').val();
@@ -298,8 +335,8 @@ function saveDataUmat(str, action) {
     }
     sendingKeluarga = sendingKeluarga + ']}';
 	
-	var countername = $('#countername').val();
-	var sendingKeluargas = '{"listitemkel":[';
+	var counternames = $('#counternames').val();
+	var sendingKeluargas = '{"listitemkels":[';
 //    sending = '{"code":"' + code + '","name":"' + name + '","item":[';
     for (var i = 0; i < counternames; i++) {
         var s = parseFloat(i) + 1;
@@ -308,7 +345,7 @@ function saveDataUmat(str, action) {
 		var nameIdKels = $('#nameIdKels' + s).val();
         var coma;
         
-        if (s == $("#countername").val()) {
+        if (s == $("#counternames").val()) {
             coma = '';
         } else {
             coma = ',';
@@ -324,7 +361,7 @@ function saveDataUmat(str, action) {
   //  var dataKel = '&lovNameTr=' + lovNameTr + '&lovNameTr2=' + lovNameTr2
  //           + '&nameIdKels=' + nameIdKels + '&nameKels=' + nameKels + '&nameHubs=' + nameHubs + '&sendingKeluarga=' + sendingKeluarga;
 
-  var dataKel = '&lovNameTr=' + lovNameTr + '&lovNameTr2=' + lovNameTr2
+  var dataKel = '&idname1=' + idname1 + '&idname2=' + idname2
             + '&sendingKeluargas=' + sendingKeluargas+ '&sendingKeluarga=' + sendingKeluarga;
     var required = validationRequired();
     var sending = beforeSave(action);

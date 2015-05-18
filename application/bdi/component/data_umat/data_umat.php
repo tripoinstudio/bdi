@@ -51,10 +51,10 @@ if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
     $tngjwb = $_GET['tngjwb'];
     
     //DATA KELUARGA
-    $lovNameTr = $_GET['lovNameTr'];
+    $idname1 = $_GET['idname1'];
     $sendingKeluarga= json_decode($_GET['sendingKeluarga']);
 	$sendingKeluargas= json_decode($_GET['sendingKeluargas']);
-    $lovNameTr2 = $_GET['lovNameTr2'];
+    $idname2 = $_GET['idname2'];
  //   $nameKels = $_GET['nameKels'];
 //	$nameIdKels = $_GET['nameIdKels'];
  //   $nameHubs = $_GET['nameHubs'];
@@ -63,8 +63,10 @@ if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
     $db->connect();
 
     if ($_GET['action'] == 'save') {
-        $manual= 'SELECT MAX(d.`tb_data_umat_code`) as code_umat FROM `tb_data_umat_pembagian` p INNER JOIN `tb_data_umat` d ON p.`tb_data_umat_id`=d.`tb_data_umat_id` where p.`tb_province_id`='.$lovsprovince;
-        $list_cek_code = mysql_query($manual);
+		$subnamess = strtoupper(substr($nama_sekarang, 0, 1));
+      //  $manual= 'SELECT MAX(d.`tb_data_umat_code`) as code_umat FROM `tb_data_umat_pembagian` p INNER JOIN `tb_data_umat` d ON p.`tb_data_umat_id`=d.`tb_data_umat_id` where p.`tb_province_id`='.$lovsprovince;
+ $manual= "SELECT MAX(d.`tb_data_umat_code`) as code_umat FROM `tb_data_umat_pembagian` p INNER JOIN `tb_data_umat` d ON p.`tb_data_umat_id`=d.`tb_data_umat_id` where `tb_data_umat_nama_ktp` like '".$subnamess."%'";       
+	   $list_cek_code = mysql_query($manual);
       //  $db->sql('SELECT MAX(d.`tb_data_umat_code`) FROM `tb_data_umat_pembagian` p INNER JOIN `tb_data_umat` d ON p.`tb_data_umat_id`=d.`tb_data_umat_id` where p.`tb_province_id`='.$lovsprovince); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
   //  $list_cek_code = $db->getResult();
 //        foreach ($list_cek_code as $array_cek_code) {
@@ -86,7 +88,7 @@ if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
         
        
         
-        $db->insert('tb_data_umat', array('tb_data_umat_alamat_ktp' => $alamat_ktp,'tb_data_umat_alamat_tinggal' => $alamat_tinggal,'tb_data_umat_no_tlp' => $telp_rumah,'tb_data_umat_code' => $hasilcode,'tb_data_umat_nama_ktp' => $nama_sekarang, 'tb_data_umat_nama_panggilan' => $nama_panggilan, 'tb_data_umat_pekerjaan' => $job, 'tb_data_umat_tempat' => $place_of_birth, 'tb_data_umat_tgl_lahir' => $birth_date, 'tb_data_umat_kewarganegaraan' => $country, 'tb_data_umat_gender' => $gender, 'tb_data_umat_no_id' => $no_iden, 'tb_data_umat_no_hp' => $no_handphone, 'tb_data_umat_email' => $email, 'tb_data_umat_keaktifan' => $dtng_ke, 'tb_data_umat_dana_goku' => $danaprmt, 'tb_data_umat_tanggung_jawab' => $tngjwb, 'tb_data_umat_hub1' => $idkeluarga1, 'tb_data_umat_hub2' => $idkeluarga2));  // Table name, column names and respective values
+        $db->insert('tb_data_umat', array('tb_data_umat_alamat_ktp' => $alamat_ktp,'tb_data_umat_alamat_tinggal' => $alamat_tinggal,'tb_data_umat_no_tlp' => $telp_rumah,'tb_data_umat_code' => $hasilcode,'tb_data_umat_nama_ktp' => $nama_sekarang, 'tb_data_umat_nama_panggilan' => $nama_panggilan, 'tb_data_umat_pekerjaan' => $job, 'tb_data_umat_tempat' => $place_of_birth, 'tb_data_umat_tgl_lahir' => $birth_date, 'tb_data_umat_kewarganegaraan' => $country, 'tb_data_umat_gender' => $gender, 'tb_data_umat_no_id' => $no_iden, 'tb_data_umat_no_hp' => $no_handphone, 'tb_data_umat_email' => $email, 'tb_data_umat_keaktifan' => $dtng_ke, 'tb_data_umat_dana_goku' => $danaprmt, 'tb_data_umat_tanggung_jawab' => $tngjwb, 'tb_data_umat_hub1' => $idkeluarga1, 'tb_data_umat_hub2' => $idkeluarga2, 'tb_data_umat_hub2' => $idkeluarga2, 'created_by' => $_SESSION['username'], 'created_date' => date('Y-m-d'), 'created_host' => get_client_ip()));  // Table name, column names and respective values
         $res3 = $db->getResult();
         $id_data_umat = $res3[0];
 		
@@ -153,7 +155,7 @@ if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
 		$id_name1 = $_GET['id_name1'];
 		$id_name2 = $_GET['id_name2'];
 
-		$db->update('tb_data_umat', array('tb_data_umat_code' =>  "" .$code_umat. "",'tb_data_umat_alamat_ktp' =>  "" .$alamat_ktp. "",'tb_data_umat_alamat_tinggal' =>  "" .$alamat_tinggal. "",'tb_data_umat_no_tlp' =>  "".$telp_rumah. "",'tb_data_umat_nama_ktp' =>  "" .$nama_sekarang. "", 'tb_data_umat_nama_panggilan' =>  "" .$nama_panggilan. "", 'tb_data_umat_pekerjaan' =>  "" .$job. "", 'tb_data_umat_tempat' =>  "" .$place_of_birth. "", 'tb_data_umat_tgl_lahir' =>  "" .$birth_date. "", 'tb_data_umat_kewarganegaraan' =>  "" .$country. "", 'tb_data_umat_gender' =>  "" .$gender. "", 'tb_data_umat_no_id' =>  "" .$no_iden. "", 'tb_data_umat_no_hp' =>  "" .$no_handphone. "", 'tb_data_umat_email' =>  "" .$email. "", 'tb_data_umat_keaktifan' =>  "" .$dtng_ke. "", 'tb_data_umat_dana_goku' =>  "" .$danaprmt. "", 'tb_data_umat_tanggung_jawab' => "".$tngjwb. "", 'tb_data_umat_hub1' =>  "" .$id_name1. "", 'tb_data_umat_hub2' =>  "" .$id_name2. ""), 'tb_data_umat_id=' . $code_umat_id . '');  // Table name, column names and respective values
+		$db->update('tb_data_umat', array('tb_data_umat_code' =>  "" .$code_umat. "",'tb_data_umat_alamat_ktp' =>  "" .$alamat_ktp. "",'tb_data_umat_alamat_tinggal' =>  "" .$alamat_tinggal. "",'tb_data_umat_no_tlp' =>  "".$telp_rumah. "",'tb_data_umat_nama_ktp' =>  "" .$nama_sekarang. "", 'tb_data_umat_nama_panggilan' =>  "" .$nama_panggilan. "", 'tb_data_umat_pekerjaan' =>  "" .$job. "", 'tb_data_umat_tempat' =>  "" .$place_of_birth. "", 'tb_data_umat_tgl_lahir' =>  "" .$birth_date. "", 'tb_data_umat_kewarganegaraan' =>  "" .$country. "", 'tb_data_umat_gender' =>  "" .$gender. "", 'tb_data_umat_no_id' =>  "" .$no_iden. "", 'tb_data_umat_no_hp' =>  "" .$no_handphone. "", 'tb_data_umat_email' =>  "" .$email. "", 'tb_data_umat_keaktifan' =>  "" .$dtng_ke. "", 'tb_data_umat_dana_goku' =>  "" .$danaprmt. "", 'tb_data_umat_tanggung_jawab' => "".$tngjwb. "", 'tb_data_umat_hub1' =>  "" .$idname1. "", 'tb_data_umat_hub2' =>  "" .$idname2. "", 'update_by' => "".$_SESSION['username']."", 'update_date' => "".date('Y-m-d')."", 'update_host' => get_client_ip()), 'tb_data_umat_id=' . $code_umat_id . '');  // Table name, column names and respective values
         $res = $db->getResult();
 		
 		 $db->update('tb_data_keumatan', array('tb_data_keumatan_marriage_status' => $marriage_status, 'tb_data_keumatan_nichiren_upacara' => $upacarashosu, 'tb_data_keumatan_nichiren_tahun' => $nichiren_shosu_year, 'tb_data_keumatan_nichiren_tempat' => $nichiren_shosu_place, 'tb_data_keumatan_nichiren_pemimpin' => $nichiren_shosu_leader, 'tb_data_keumatan_gojukai' => $gojukai_date, 'tb_data_keumatan_gohonzon_okatagi' => $okataki_gohozon, 'tb_data_keumatan_gohonzon_omamori' => $omamori_gohozon, 'tb_data_keumatan_gohonzon_tokubetsu' => $tokubetsu_gohozon, 'tb_data_keumatan_kankai' => $kankai_date, 'tb_data_keumatan_gohifu' => $me_gohifu, 'tb_data_keumatan_gohifu_tahun' => $t_tahun, 'tb_data_keumatan_gohifu_penyakit' => $t_penyakit), 'tb_data_umat_id=' . $code_umat_id . '');  // Table name, column names and respective values
@@ -174,25 +176,25 @@ if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
             $nameHub = $itemskel->nameHub;
        //     $group = $query1['tb_group_id'];
 	   if($nameIdKel == 0){
-		   $db->insert('tb_relationship', array('tb_relationship_relation_code' => $nameHub, 'tb_relationship_name' => $nameKel, 'tb_relationship_relationship_id' => $id_name1));  // Table name, column names and respective values
+		   $db->insert('tb_relationship', array('tb_relationship_relation_code' => "" .$nameHub. "", 'tb_data_umat_id' => $nameKel, 'tb_relationship_relationship_id' => $id_name1));  // Table name, column names and respective values
         $relationship = $db->getResult();
 	   } else {
-		   $db->update('tb_relationship', array('tb_relationship_relation_code' => $nameHub, 'tb_relationship_name' => $nameKel, 'tb_relationship_relationship_id' => $id_name1), 'tb_relationship_id=' . $nameIdKel . '');  // Table name, column names and respective values
+		   $db->update('tb_relationship', array('tb_relationship_relation_code' => "" .$nameHub. "", 'tb_data_umat_id' => $nameKel), 'tb_relationship_id=' . $nameIdKel);  // Table name, column names and respective values
         $relationship = $db->getResult();
 	   }
             
         }
 		
-		foreach ($sendingKeluargas->listitemkel as $itemskels) {
+		foreach ($sendingKeluargas->listitemkels as $itemskels) {
 			$nameIdKels = $itemskels->nameIdKels;
             $nameKels = $itemskels->nameKels;
             $nameHubs = $itemskels->nameHubs;
        //     $group = $query1['tb_group_id'];
 	   if($nameIdKel == 0){
-		   $db->insert('tb_relationship', array('tb_relationship_relation_code' => $nameHubs, 'tb_relationship_name' => $nameKels, 'tb_relationship_relationship_id' => $id_name2));  // Table name, column names and respective values
+		   $db->insert('tb_relationship', array('tb_relationship_relation_code' => "" .$nameHubs. "", 'tb_data_umat_id' => $nameKels, 'tb_relationship_relationship_id' => $id_name2));  // Table name, column names and respective values
         $relationship = $db->getResult();
 	   } else {
-		   $db->update('tb_relationship', array('tb_relationship_relation_code' => $nameHubs, 'tb_relationship_name' => $nameKels, 'tb_relationship_relationship_id' => $id_name2), 'tb_relationship_id=' . $nameIdKels . '');  // Table name, column names and respective values
+		   $db->update('tb_relationship', array('tb_relationship_relation_code' => "" .$nameHubs. "", 'tb_data_umat_id' => $nameKels), 'tb_relationship_id=' . $nameIdKels);  // Table name, column names and respective values
         $relationship = $db->getResult();
 	   }
             

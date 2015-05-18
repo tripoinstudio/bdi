@@ -10,7 +10,7 @@
 
         </label>
         <label class="radio inline">
-            <input type="radio" onclick="marriageStatus();" id="lovsstatus"  value="2" name="lovsstatus">
+            <input type="radio" onclick="marriageStatus();" id="lovsstatus"  checked="checked"  value="2" name="lovsstatus">
             <span style="padding-left: 10px;">Belum Kawin </span>
 
         </label>
@@ -32,7 +32,7 @@
 
         </label>
         <label class="radio inline">
-            <input type="radio" id="upacarashosu"  value="2" name="upacarashosu">
+            <input type="radio" id="upacarashosu"  value="2"  checked="checked" name="upacarashosu">
             <span style="padding-left: 10px;">Tidak </span>
 
         </label>

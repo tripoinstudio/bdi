@@ -29,4 +29,26 @@
         
 
     </div>
+	<div>
+	<?php
+	
+	if($query1['update_by'] == '' || $query1['update_by'] == ''){
+		$creupd = $query1['created_by'];
+		$creupddate = subMonth($query1['created_date']);
+		$creupdhost = $query1['created_host'];
+	} else {
+		$creupd = $query1['update_by'];
+		$creupddate = subMonth($query1['update_date']);
+		$creupdhost = $query1['update_host'];
+	
+	}
+	?>
+	<table style="font-size:12px;">
+	<tr>
+	<td>UPDATE TERAKHIR</td>
+	<td>:</td>
+	<td ><?=$creupddate;?>|<?=$creupdhost;?>|<?=$creupd;?></td>
+	</tr>
+	</table>
+	</div>
 </div>
