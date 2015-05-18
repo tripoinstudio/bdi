@@ -18,12 +18,11 @@
     <table id="datatable_example" class="responsive table table-striped table-bordered" style="width:100%;margin-bottom:0; ">
         <thead>
             <tr>
-                <th style="width:5%;text-align:center;"><input type="checkbox" id="checkedAll" class="group-checkable" onchange="checkedAll('<?= $length_list; ?>');" /></th>
                 <th style="width:5%;text-align:center;">No</th>
                 <th style="width:20%;" class="hidden-phone" >Code</th>
                 <th style="width:20%;" class="hidden-phone">Name</th>
                 <th style="width:20%;" class="hidden-phone">Group</th>
-                <th style="width:20%;" class="hidden-phone">Action</th>
+                <th style="width:10%;text-align:center" class="hidden-phone">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -34,8 +33,6 @@
             //	$array_num_query=mysql_num_rows($list_query);
                 ?>
                 <tr class="odd gradeX">
-                    <td style="text-align:center;">
-                        <input type="hidden" id="idItem<?= $no; ?>" value="<?=$array_list_query['user_id'];?>"/><input type="checkbox" class="checkboxes" onchange="checkedList('<?= $array_list_query['user_id']; ?>','<?= $no; ?>');" id="checkboxes<?= $no; ?>" value="0" />
                     <td style="text-align:center;"><?= $no; ?></td>
                     <td><?= $array_list_query['user_username']; ?></td>
                     <td><?= $array_list_query['user_fullname']; ?></td>
