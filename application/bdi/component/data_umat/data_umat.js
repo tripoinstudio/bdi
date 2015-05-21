@@ -5,6 +5,8 @@ $(function () {
     var str = queryString('content', ipconfig);
     var actions = queryString('action', ipconfig);
     $('#create').hide();
+	 $('#export-pdf').hide();
+	 $('#export-excel').hide();
 	
 if (actions == 'edit') {
 	var marriage_status = $('input[id="lovsstatus"]:checked').val();
