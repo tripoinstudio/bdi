@@ -19,30 +19,34 @@
                 <th style="width:5%;text-align:center;">
                     <!--<input type="checkbox" id="checkedAll" class="group-checkable" onchange="checkedAll('<?= $length_list; ?>');" />-->
                 </th>
-                <th style="width:5%;text-align:center;">No</th>
-                <th style="width:20%;" class="hidden-phone" >NIK Umat</th>
-                <th style="width:20%;" class="hidden-phone">Nama Sesuai KTP</th>
-                <th style="width:20%;" class="hidden-phone">Daerah</th>
-                <th style="width:20%;" class="hidden-phone">Sentra</th>
-                <th style="width:20%;" class="hidden-phone">Distrik</th>
-                <th style="width:20%;" class="hidden-phone">Cetya</th>
-                <th style="width:20%;" class="hidden-phone">Dharmasala</th>
-                <th style="width:20%;" class="hidden-phone">Action</th>
+             <!--   <th style="width:5%;text-align:center;">No</th> -->
+                <th style="width:5%;" class="hidden-phone" >NIK Umat</th>
+                <th style="width:15%;" class="hidden-phone">Nama Sesuai KTP</th>
+                <th style="width:10%;" class="hidden-phone">Daerah</th>
+                <th style="width:10%;" class="hidden-phone">Sentra</th>
+                <th style="width:10%;" class="hidden-phone">Distrik</th>
+                <th style="width:10%;" class="hidden-phone">Cetya</th>
+                <th style="width:10%;" class="hidden-phone">Dharmasala</th>
+                <th style="width:10%;" class="hidden-phone">Action</th>
             </tr>
         </thead>
         <tbody>
             <?php
             $no = 1;
 
-                foreach ($list_query as $array_list_query) {
-                
-                
-                    $daerahid = $array_list_query['tb_province_id'];
-                    $sentraid = $array_list_query['tb_sentra_id'];
-                    $distrikid = $array_list_query['tb_distrik_id'];
-                    $cetyaid = $array_list_query['tb_cetya_id'];
-                    $dharmasalaid = $array_list_query['tb_dharmasala_id'];
-                    
+            foreach ($list_query as $array_list_query) {
+                ?>
+
+                <?php
+                $dblist->select('tb_data_umat_pembagian', '*', NULL, 'tb_data_umat_id=' . $array_list_query['tb_data_umat_id']); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+                $list_umatbg = $dblist->getResult();
+                foreach ($list_umatbg as $array_list_umatbg) {
+                    $daerahid = $array_list_umatbg['tb_province_id'];
+                    $sentraid = $array_list_umatbg['tb_sentra_id'];
+                    $distrikid = $array_list_umatbg['tb_distrik_id'];
+                    $cetyaid = $array_list_umatbg['tb_cetya_id'];
+                    $dharmasalaid = $array_list_umatbg['tb_dharmasala_id'];
+                }
                 $provinceid = idListViewTarget($daerahid, "province", "tb_province_code");
                 $NIK = autoCodeUmat($provinceid, $array_list_query['tb_data_umat_nama_ktp'], $array_list_query['tb_data_umat_code']);
                 $province = idListViewTarget($daerahid, "province", "tb_province_name");
@@ -54,7 +58,7 @@
                 <tr class="odd gradeX" id="tr<?= $no; ?>" onclick="checkedList('<?= $array_list_query['tb_data_umat_id']; ?>', '<?= $no; ?>');">
                     <td style="text-align:center;">
                         <input type="hidden" id="idItem<?= $no; ?>" value="<?= $array_list_query['tb_data_umat_id']; ?>"/><input type="checkbox" class="checkboxes" onchange="checkedList('<?= $array_list_query['tb_data_umat_id']; ?>', '<?= $no; ?>');" id="checkboxes<?= $no; ?>" value="0" />
-                    <td style="text-align:center;"><?= $no; ?></td>
+                  
                     <td><?= $NIK; ?></td>
                     <td><?= $array_list_query['tb_data_umat_nama_ktp']; ?></td>
                     <td><?= $province; ?></td>
@@ -82,7 +86,6 @@
                 <?php
                 $no++;
             }
-            
             ?>	
         </tbody>
     </table>

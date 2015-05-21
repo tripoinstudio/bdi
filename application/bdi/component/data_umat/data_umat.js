@@ -5,8 +5,8 @@ $(function () {
     var str = queryString('content', ipconfig);
     var actions = queryString('action', ipconfig);
     $('#create').hide();
-	 $('#export-pdf').hide();
-	 $('#export-excel').hide();
+	 $('#export-pdf').show();
+	 $('#export-excel').show();
 	
 if (actions == 'edit') {
 	var marriage_status = $('input[id="lovsstatus"]:checked').val();
@@ -231,18 +231,18 @@ function saveDataUmat(str, action) {
     var alamat_ktp = $('#alamat_ktp').val();
 
     var alamat_tinggal = $('#alamat_tinggal').val();
-    var telp_rumah = $('#first_telp_rumah').val() + '-' + $('#last_telp_rumah').val();
+    var telp_rumah = $('#first_telp_rumah').val('000') + '-' + $('#last_telp_rumah').val('0000000');
 
     var alamat_tinggal1 = $('#alamat_tinggal1').val();
-    var telp_rumah1 = $('#first_telp_rumah1').val() + '-' + $('#last_telp_rumah1').val();
+    var telp_rumah1 = $('#first_telp_rumah1').val('000') + '-' + $('#last_telp_rumah1').val('0000000');
     var tgl_prbh_almt1 = $('#tgl_prbh_almt1').val();
 
     var alamat_tinggal2 = $('#alamat_tinggal2').val();
-    var telp_rumah2 = $('#first_telp_rumah2').val() + '-' + $('#last_telp_rumah2').val();
+    var telp_rumah2 = $('#first_telp_rumah2').val('000') + '-' + $('#last_telp_rumah2').val('0000000');
     var tgl_prbh_almt2 = $('#tgl_prbh_almt2').val();
 
     var no_handphone = $('#no_handphone').val();
-    var email = $('#email').val();
+    var email = $('#email').val('-');
 
     var dataUmat = '&nama_sekarang=' + nama_sekarang + '&nama_panggilan=' + nama_panggilan + '&place_of_birth=' + place_of_birth
             + '&birth_date=' + birth_date + '&gender=' + gender + '&country=' + country
@@ -274,10 +274,10 @@ function saveDataUmat(str, action) {
     }
 
     var gojukai_date = $('#gojukai_date').val();
-    var okataki_gohozon = $('#okataki_gohozon').val();
-    var omamori_gohozon = $('#omamori_gohozon').val();
-    var tokubetsu_gohozon = $('#tokubetsu_gohozon').val();
-    var kankai_date = $('#kankai_date').val();
+    var okataki_gohozon = $('#okataki_gohozon').val('-');
+    var omamori_gohozon = $('#omamori_gohozon').val('-');
+    var tokubetsu_gohozon = $('#tokubetsu_gohozon').val('-');
+    var kankai_date = $('#kankai_date').val('-');
     var me_gohifu = $('input[id="me_gohifu"]:checked').val();
     var t_tahun = '';
     var t_penyakit = '';
@@ -310,7 +310,7 @@ function saveDataUmat(str, action) {
     //DATA KEAKTIFAN
     var dtng_ke = $('input[id="dtng_ke"]:checked').val();
     var danaprmt = $('input[id="danaprmt"]:checked').val();
-    var tngjwb = $('#tngjwb').val();
+    var tngjwb = $('#tngjwb').val('-');
 
     var dataAktif = '&dtng_ke=' + dtng_ke + '&danaprmt=' + danaprmt + '&tngjwb=' + tngjwb;
     //DATA KELUARGA

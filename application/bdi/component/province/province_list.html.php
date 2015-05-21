@@ -17,8 +17,9 @@
         <thead>
             <tr>
                 <th style="width:5%;text-align:center;"><input type="checkbox" id="checkedAll" class="group-checkable" onchange="checkedAll('<?= $length_list; ?>');" /></th>
-                <th style="width:5%;text-align:center;">No</th>
-                <th style="width:20%;" class="hidden-phone">Name</th>
+                <!--<th style="width:5%;text-align:center;">No</th>-->
+                <th style="width:5%;text-align:center;">Kode Daerah</th>
+                <th style="width:30%;" class="hidden-phone">Nama Daerah</th>
                 <th style="width:10%;text-align:center" class="hidden-phone">Action</th>
             </tr>
         </thead>
@@ -30,9 +31,10 @@
             //	$array_num_query=mysql_num_rows($list_query);
                 ?>
                 <tr class="odd gradeX"  id="tr<?=$no;?>" onclick="checkedList('<?= $array_list_query['tb_province_id']; ?>','<?= $no; ?>');">
-                    <td style="text-align:center;">
-                        <input type="hidden" id="idItem<?= $no; ?>" value="<?=$array_list_query['tb_province_id'];?>"/><input type="checkbox" class="checkboxes" onchange="checkedList('<?= $array_list_query['tb_province_id']; ?>','<?= $no; ?>');"  id="checkboxes<?= $no; ?>" value="0" />
-                    <td style="text-align:center;"><?= $no; ?></td>
+                    <td style="text-align:center;">                     
+                    <input type="hidden" id="idItem<?= $no; ?>" value="<?=$array_list_query['tb_province_id'];?>"/><input type="checkbox" class="checkboxes" onchange="checkedList('<?= $array_list_query['tb_province_id']; ?>','<?= $no; ?>');"  id="checkboxes<?= $no; ?>" value="0" />
+                    <!--<td style="text-align:center;"><?= $no; ?></td>-->
+                    <td style="text-align:center;"><?= $array_list_query['tb_province_code']; ?></td>
                     <td><?= $array_list_query['tb_province_name']; ?></td>
         <?php include "../../function/actionlist.php"; ?>
                 </tr>

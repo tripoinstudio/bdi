@@ -93,7 +93,7 @@
     <div class="span8">
         <div class="box height_big paint">
             <div class="title">
-                <h4> <span>Jumlah umat terbanyak berdasarkan Daerah</span> </h4>
+                <h4> <span>Jumlah umat berdasarkan Daerah</span> </h4>
             </div>
             <!-- End .title -->
             <div class="content full">
@@ -125,7 +125,7 @@
                 </table>
             </div>
             <!-- End .content -->
-            <div class="description">Some explanation text here <i class="gicon-info-sign icon-white"></i></div>
+            <div class="description">Empat Daerah dengan jumlah umat terbanyak secara keseluruhan <i class="gicon-info-sign icon-white"></i></div>
         </div>
 
         <!-- End .box --> 
@@ -159,7 +159,7 @@
 				?>
             </ul>
             <!-- End .content -->
-            <div class="description">Some explanation text here <i class="gicon-info-sign icon-white"></i> </div>
+            <div class="description">Tiga Cetya dengan jumlah umat terbanyak pada Daerah Saya <i class="gicon-info-sign icon-white"></i> </div>
         </div>
         <!-- End .box --> 
     </div>

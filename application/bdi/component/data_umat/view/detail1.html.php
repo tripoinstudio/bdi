@@ -1,10 +1,10 @@
 
 
 <?= inputGeneralView($query1['tb_data_umat_nama_ktp'], NAMA_SEKARANG, 'nama_ktp', 'true', $_GET['action']); ?>
-<?= inputGeneralView($query1['tb_data_umat_nama_panggilan'], NAMA_PANGGILAN, 'nama_panggilan', 'true', $_GET['action']); ?>
-<?=
 
-inputGeneralTemplate(TTL, $query1['tb_data_umat_tempat'] . ' , ' . subMonth($query1['tb_data_umat_tgl_lahir']) . '');
+<br />
+<?= inputGeneralView($query1['tb_data_umat_nama_panggilan'], NAMA_PANGGILAN, 'nama_panggilan', 'true', $_GET['action']); ?>
+<?=inputGeneralTemplate(TTL, $query1['tb_data_umat_tempat'] . ' , ' . subMonth($query1['tb_data_umat_tgl_lahir']) . '');
 
 //= inputGeneralTemplate(TTL, '
 //                    <input type="text"  id="tempat" name="truetitles[]" value="'.$query1['tb_data_umat_tempat'].'" class="span4" />
@@ -13,7 +13,6 @@ inputGeneralTemplate(TTL, $query1['tb_data_umat_tempat'] . ' , ' . subMonth($que
 ?>
 
 <?php
-
 $js;
 if ($query1['tb_data_umat_gender'] == 1) {
     $js = 'Laki - Laki';
@@ -22,6 +21,10 @@ if ($query1['tb_data_umat_gender'] == 1) {
 }
 inputGeneralView($js, GENDER, 'gender', 'true', $_GET['action']);
 ?>
+
+<br />
+<hr />
+<br />
 <?php
 
 $warga;
@@ -34,6 +37,11 @@ inputGeneralView($warga, KEWARGANEGARAAN, 'gender', 'true', $_GET['action']);
 ?>
 <?= inputGeneralView($query1['tb_data_umat_pekerjaan'], PEKERJAAN, 'pekerjaan', 'true', $_GET['action']); ?>
 <?= inputGeneralView($query1['tb_data_umat_alamat_ktp'], ALAMAT_KTP, 'alamat_ktp', 'true', $_GET['action']); ?>
+
+<br />
+<hr />
+<br />
+
 <?php
 
 $dbumat = new Database();
@@ -78,5 +86,10 @@ inputGeneralView($ms, 'Status Pernikahan', 'marital_status', 'true', $_GET['acti
 
 //echo inputGeneralView('', 'Negara', 'marital_status', 'true', $_GET['action']);
 ?>
+
+<br />
+<hr />
+<br />
+
 <?= inputGeneralView($query1['tb_data_umat_no_hp'], NO_HANDPHONE, 'alamat_ktp', 'true', $_GET['action']); ?>
 <?= inputGeneralView($query1['tb_data_umat_email'], EMAIL, 'alamat_ktp', 'true', $_GET['action']); ?>

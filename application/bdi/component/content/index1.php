@@ -41,7 +41,6 @@ $db->select('tb_group', '*', NULL, 'tb_group_id= ' . $groupas . ''); // Table na
         <!-- End #container --> 
     </div>
     <div id="footer">
-        <p> &copy; MNSBDI - Aplikasi Database Umat BDI 2015 
-		<span style="font-size:10px;padding-left:600px;">powered by - <img src="img/tripoin.png" width="15" height="15"></img> tripoin.inc</span>
-       </p> <!--<span class="company_logo"><a href="https://www.tripoin.com"></a></span> </div>-->
+        <p> &copy; MNSBDI - Aplikasi Database Umat BDI 2015 <br /><span style="font-size:10px;padding-left:12px;">by - <img src="img/tripoin.png" width="12" height="12"></img> (tripoin.inc) Team</span> </p>
+        <span class="company_logo"><a href="https://www.desolution.net"></a></span> </div>		 
 </div>

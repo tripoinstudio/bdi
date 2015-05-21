@@ -12,8 +12,7 @@ if ($array_keumatan['tb_data_keumatan_marriage_status'] == 1) {
 } else if ($array_keumatan['tb_data_keumatan_marriage_status'] == 2) {
     $mariage = 'Belum Kawin';
 } else {
-   // $mariage = 'Cerai';
-	 $mariage = 'Belum Kawin';
+    $mariage = 'Cerai';
 }
 inputGeneralView($mariage, STATUS_MARRIAGE, 'marriage_status', 'true', $_GET['action']);
 ?>
@@ -26,15 +25,30 @@ inputGeneralView($mariage, STATUS_MARRIAGE, 'marriage_status', 'true', $_GET['ac
 	
 } ?>
 
+<br />
+<hr />
+<br />
+
 <?=inputGeneralView($array_keumatan['tb_data_keumatan_gojukai'], TAHUN_GOJUKAI, 'gojukai', 'true', $_GET['action']);?>
 
+<br />
+<hr />
+<br />
 
 <?= inputGeneralTemplate('<b>'.T_R_G.'</b>', ''); ?>
-<?= inputGeneralView($array_keumatan['tb_data_keumatan_gohonzon_okataki'], T_T_OK_GO, 'okataki_gohozon', 'true', $_GET['action']); ?>
+<?= inputGeneralView($array_keumatan['tb_data_keumatan_gohonzon_okatagi'], T_T_OK_GO, 'okataki_gohozon', 'true', $_GET['action']); ?>
 <?= inputGeneralView($array_keumatan['tb_data_keumatan_gohonzon_omamori'], T_T_OM_GO, 'omamori_gohozon', 'true', $_GET['action']); ?>
 <?= inputGeneralView($array_keumatan['tb_data_keumatan_gohonzon_tokubetsu'], T_T_TO_GO, 'tokubetsu_gohozon', 'true', $_GET['action']); ?>
 
+<br />
+<hr />
+<br />
+
 <?=inputGeneralView($array_keumatan['tb_data_keumatan_kankai'], TAHUN_KANKAI, 'kankai', 'true', $_GET['action']);?>
+
+<br />
+<hr />
+<br />
 
 <?php
 $gohifu_stat;

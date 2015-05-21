@@ -43,6 +43,11 @@ $dbumat->connect();
 
     </div>
 </div>
+
+<br />
+<hr />
+<br />
+
 <?php
 if ($query1['tb_data_umat_kewarganegaraan'] == 1) {
 	$select = '<option value="0">Select ...</option>
@@ -64,6 +69,11 @@ if ($query1['tb_data_umat_kewarganegaraan'] == 1) {
 <?= inputGeneral($query1['tb_data_umat_pekerjaan'], 'Pekerjaan', 'job', 'true', $_GET['action']); ?>
 <?= inputGeneral($query1['tb_data_umat_no_id'], NO_IDEN, 'no_iden', 'true', $_GET['action']); ?>
 <?= inputGeneral($query1['tb_data_umat_alamat_ktp'], ALAMAT_KTP, 'alamat_ktp', 'true', $_GET['action']); ?>
+
+<br />
+<hr />
+<br />
+
 <?= inputGeneral($query1['tb_data_umat_alamat_tinggal'], ALAMAT_TINGGAL, 'alamat_tinggal', 'true', $_GET['action']); ?>
 <?php
 $arr = explode("-", $query1['tb_data_umat_no_tlp'], 2);
@@ -79,6 +89,11 @@ $last_no_handphone = $arrs[1];
                     <input type="text"  id="last_telp_rumah" name="truetitles[]" value="'.$last_telp_rumah.'" onkeyup="return maxEightNumber(event,this);" placeholder="12345678" class="span6" />
                     ');
 ?>
+
+<br />
+<hr />
+<br />
+
 <?= inputGeneral($query1['tb_data_umat_no_hp'], NO_HANDPHONE, 'no_handphone', 'true', $_GET['action'],'','onkeypress="return maxTenNumber(event,this)"'); ?>
 <?php /*= inputGeneralTemplate(NO_HANDPHONE, '
                     <input type="text"  id="first_no_handphone" name="truetitles[]" value="'.$first_no_handphone.'" onkeypress="return maxFourNumber(event,this)" placeholder="021" class="span2" /> - 
