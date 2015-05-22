@@ -1,5 +1,6 @@
 <?php
 require_once('class/mysql_crud.php');
+require_once("function/function.php");
 require_once('class/pdf/html2pdf.class.php');
 ob_start();
 $namePage= 'MNSBDI';

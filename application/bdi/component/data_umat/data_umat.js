@@ -767,4 +767,41 @@ function getDharmasalaLov(obj,idR) {
 
 
     });
+}	
+	function exportPdfListUmat(type, filename, parameter) {
+    var exports = type;
+    var file = filename;
+    var jumlahlist = $("#jumlahlist").val();
+    var searchtype = $("#searchtype").val();
+    var searchfield = $("#searchfield").val();
+    
+    var cari_alamat = $("#cari_alamat").val();
+    var cari_tlp = $("#cari_tlp").val();
+
+    var newURL = 'export.php?export=' + exports + '&file=' + file ;
+
+    newwindow = window.open(newURL);
+    if (window.focus) {
+        newwindow.focus();
+    }
+    return false;
+}
+
+function exportExcelListUmat(type, filename, parameter) {
+    var exports = type;
+    var file = filename;
+    var jumlahlist = $("#jumlahlist").val();
+    var searchtype = $("#searchtype").val();
+    var searchfield = $("#searchfield").val();
+    
+    var cari_alamat = $("#cari_alamat").val();
+    var cari_tlp = $("#cari_tlp").val();
+
+    var newURL = 'export.php?export=' + exports + '&file=' + file ;
+
+    newwindow = window.open(newURL);
+    if (window.focus) {
+        newwindow.focus();
+    }
+    return false;
 }

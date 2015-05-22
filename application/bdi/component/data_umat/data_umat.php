@@ -265,8 +265,8 @@ $length_list = count($list_query);
 ?>
 <?php
 
-$exportpdf = "exportPdf('pdf','pdf-country','');"; //TYPE EXPORT, FILE NAME EXPORT, PARAMETER ex  : 'pdf','pdf-country','&id=id'
-$exportexcel = "exportExcel('excel','excel-country','');";
+$exportpdf = "exportPdfListUmat('pdf','pdf-list-data-umat','');"; //TYPE EXPORT, FILE NAME EXPORT, PARAMETER ex  : 'pdf','pdf-country','&id=id'
+$exportexcel = "exportExcelListUmat('excel','excel-list-data-umat','');";
 
 include "../../function/contentmodul.html.php";
 
