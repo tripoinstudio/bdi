@@ -138,7 +138,7 @@ selectNames2(no,idDataUmats);
         minViewMode: "years"
     });
 
-    $('#t_penyakit').datepicker({
+    $('#t_tahun').datepicker({
         //    format: 'yyyy-mm-dd',
         //   startDate: '-3d'
         format: " yyyy", // Notice the Extra space at the beginning
@@ -587,6 +587,7 @@ function optionHubungan(i,type) {
     frma = frma + '<option value="TANTE">TANTE</option>';
     frma = frma + '<option value="KEPONAKAN">KEPONAKAN</option>';
     frma = frma + '<option value="SEPUPU">SEPUPU</option>';
+	frma = frma + '<option value="LAIN-LAIN">LAIN-LAIN</option>';
     if (type == 2) {
         $("#nameHubs"+i).html(frma);
 

@@ -5,7 +5,7 @@ session_start();
 include("function/function.php");
 //	require_once("configuration.php");
 require_once("class/mysql_crud.php");
-
+date_default_timezone_set("Asia/Jakarta");
 if (!isset($_SESSION['username'])) {
 //	header('location:index.php');
     $cekSession = 1;

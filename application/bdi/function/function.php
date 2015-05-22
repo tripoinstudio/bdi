@@ -284,6 +284,7 @@ function get_client_ip() {
 }
 
 function saveToLog($content,$action,$user) {
+	date_default_timezone_set("Asia/Jakarta");
     $description = $content.' = '.$action;
     $db = new Database();
     $db->connect();
