@@ -82,6 +82,53 @@ function maxTenNumber(evt, obj) {
     }
     return true;
 }
+
+function maxElevenNumber(evt, obj) {
+
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    var value = obj.value;
+    var dotcontains = value.indexOf(".") != -1;
+    if (dotcontains)
+        if (charCode == 46)
+            return false;
+    if (charCode == 46)
+        return true;
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+
+    var subvalue = obj.value;
+    var res = subvalue.substring(0, 11);
+    if (obj.value.length > 11) {
+        obj.value = res;
+    } else {
+        obj.value = subvalue;
+    }
+    return true;
+}
+
+function maxTwelveNumber(evt, obj) {
+
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    var value = obj.value;
+    var dotcontains = value.indexOf(".") != -1;
+    if (dotcontains)
+        if (charCode == 46)
+            return false;
+    if (charCode == 46)
+        return true;
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+
+    var subvalue = obj.value;
+    var res = subvalue.substring(0, 12);
+    if (obj.value.length > 12) {
+        obj.value = res;
+    } else {
+        obj.value = subvalue;
+    }
+    return true;
+}
+
 function searchFields() {
     // alert("tes");
 }
