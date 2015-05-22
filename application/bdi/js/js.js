@@ -1056,7 +1056,7 @@ function validationRequired() {
         //  alert(inputval);
 
         if (inputval == "") {
-            $('#' + input).html('<label for="cname2" generated="true" class="error" style="display: block;">This field is required.</label>');
+            $('#' + input).html('<label for="cname2" generated="true" class="error" style="display: block;">Wajib Diisi</label>');
             required = "nulls";
         }
 

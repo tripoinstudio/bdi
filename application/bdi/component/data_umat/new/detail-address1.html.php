@@ -41,10 +41,11 @@
 
     </div>
 </div>
-
+<div id="group_upacarashosu">
 <?= inputGeneral('....', TAHUN, 'nichiren_shosu_year', 'true', $_GET['action'],null,'onkeydown="hideDatepicker(event,this);"'); ?>
 <?= inputGeneral('....', TEMPAT, 'nichiren_shosu_place', 'true', $_GET['action']); ?>
 <?= inputGeneral('....', PEMIMPIN, 'nichiren_shosu_leader', 'true', $_GET['action']); ?>
+</div>
 </div>
 
 <br />

@@ -162,7 +162,7 @@ function marriageStatus() {
 		$('#nichiren_shosu_year').val('-');
         $('#nichiren_shosu_place').val('-');
         $('#nichiren_shosu_leader').val('-');
-        document.getElementById("upacarashosu").checked = true;
+     //   document.getElementById("upacarashosu").checked = true;
     }
 }
 
@@ -223,7 +223,7 @@ function saveDataUmat(str, action) {
     var nama_panggilan = $('#nama_panggilan').val();
     var place_of_birth = $('#place_of_birth').val();
     var birth_dates = $('#birth_date').val();
-	var birth_date = birth_dates.split("/").reverse().join("-");
+	var birth_date = birth_dates.split("-").reverse().join("-");
     var gender = $('input[id="gender"]:checked').val();
     var country = $('#lovsstatuscountry').val();
     var job = $('#job').val();
@@ -242,7 +242,7 @@ function saveDataUmat(str, action) {
     var tgl_prbh_almt2 = $('#tgl_prbh_almt2').val();
 
     var no_handphone = $('#no_handphone').val();
-    var email = $('#email').val('-');
+    var email = $('#email').val();
 
     var dataUmat = '&nama_sekarang=' + nama_sekarang + '&nama_panggilan=' + nama_panggilan + '&place_of_birth=' + place_of_birth
             + '&birth_date=' + birth_date + '&gender=' + gender + '&country=' + country
@@ -440,6 +440,7 @@ function selectName(i,id) {
 //	alert(id);
     var str = 'data_umat';
     var frma = '<select id="nameKel'+i+'" class="span3 chosen" data-placeholder="Choose a Name" tabindex="1">';
+	frma = frma + '<option value="0"><b>Select ...</b></option>';
     $.ajax({
         type: 'get',
         url: 'controller.php',
@@ -469,7 +470,7 @@ function selectNames2(i,id) {
 	//alert(id);
     var str = 'data_umat';
     var frma = '<select id="nameKels'+i+'" class="span3 chosen" data-placeholder="Choose a Name" tabindex="1">';
-    
+    frma = frma + '<option value="0"><b>Select ...</b></option>';
 	$.ajax({
         type: 'get',
         url: 'controller.php',
@@ -571,6 +572,7 @@ function addNames() {
 }
 function optionHubungan(i,type) {
     var frma = '';
+	frma = frma + '<option value="0">Select ...</option>';
     frma = frma + '<option value="AYAH">AYAH</option>';
     frma = frma + '<option value="IBU">IBU</option>';
     frma = frma + '<option value="ANAK">ANAK</option>';
