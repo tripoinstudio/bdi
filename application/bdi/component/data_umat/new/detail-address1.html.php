@@ -27,12 +27,12 @@
     <label class="control-label span3"><?=U_N_S;?></label>
     <div class="controls span9">
         <label class="radio inline">
-            <input type="radio" id="upacarashosu" value="1" name="upacarashosu">
+            <input type="radio" onclick="upacaraShosu();" id="upacarashosu" value="1" name="upacarashosu">
             <span style="padding-left: 10px;">Ya </span>
 
         </label>
         <label class="radio inline">
-            <input type="radio" id="upacarashosu"  value="2"  checked="checked" name="upacarashosu">
+            <input type="radio" onclick="upacaraShosu();" id="upacarashosu"  value="2"  checked="checked" name="upacarashosu">
             <span style="padding-left: 10px;">Tidak </span>
 
         </label>
