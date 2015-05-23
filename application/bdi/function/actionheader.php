@@ -76,5 +76,6 @@ if ($cekaction[3] == 2) {
 
 
 <button id="cancel" onclick="showMenu('<?= $cekMenu['menu_function_link']; ?>');" class="btn btn-danger"><i class="icon-remove icon-white"></i> Cancel</button>
+<button id="back" onclick="showMenu('<?= $cekMenu['menu_function_link']; ?>');" class="btn btn-danger"><i class="icon-remove icon-white"></i> Back</button>
 <br/>
 <br/>
