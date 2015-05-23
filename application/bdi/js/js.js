@@ -360,6 +360,7 @@ function showSearch(str, name) {
             $('#deleteAll').hide();
             $('#edit').hide();
             $('#cancel').hide();
+            $('#back').hide();
 
 
         }
@@ -403,6 +404,7 @@ prosesLoading();
             $('#deleteAll').hide();
             $('#edit').hide();
             $('#cancel').hide();
+            $('#back').hide();
 
 
         }
@@ -449,6 +451,7 @@ prosesLoading();
             $('#deleteAll').hide();
             $('#edit').hide();
             $('#cancel').hide();
+            $('#back').hide();
             $('#create').hide();
 
 
@@ -493,6 +496,7 @@ function saveBack(str, name) {
             $('#deleteAll').hide();
             $('#edit').hide();
             $('#cancel').hide();
+            $('#back').hide();
 
 
 
@@ -532,6 +536,7 @@ prosesLoading();
             $('#deleteAll').hide();
             $('#create').hide();
             $('#edit').hide();
+            $('#cancel').hide();
             $('#cancel').hide();
             $('#searchSpan').hide();
             $('#searchButton').hide();
@@ -653,6 +658,7 @@ prosesLoading();
                 $('#export-excel').hide();
                 $('#edit').show();
                 $('#cancel').show();
+                $('#back').hide();
                 $('#searchSpan').hide();
                 $('#searchButton').hide();
             } else if (action == 'edit') {
@@ -660,6 +666,62 @@ prosesLoading();
                 $('#export-excel').hide();
                 $('#edit').hide();
                 $('#cancel').hide();
+                $('#back').hide();
+                $('#searchSpan').hide();
+                $('#searchButton').hide();
+            }
+            getJavascript(str);
+
+        }
+    }
+    xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + "&id=" + id, true);
+    xmlhttp.send();
+
+    return true;
+
+}
+
+function viewList(str, id, action) {
+    //  $('.btn').tooltip('disable');
+//alert(str);
+//var id = $('#id').val();
+//alert(id);
+//alert(action);
+//
+prosesLoading();
+//$("#loading").show();
+    if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    }
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else { // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+            //  sampleTable();
+
+            $('#deleteAll').hide();
+            $('#create').hide();
+            $('#contentTable').html('');
+            if (action == 'view') {
+                $('#export-pdf').hide();
+                $('#export-excel').hide();
+                $('#edit').hide();
+                $('#cancel').hide();
+                $('#back').show();
+                $('#searchSpan').hide();
+                $('#searchButton').hide();
+            } else if (action == 'edit') {
+                $('#export-pdf').hide();
+                $('#export-excel').hide();
+                $('#edit').hide();
+                $('#cancel').hide();
+                $('#back').hide();
                 $('#searchSpan').hide();
                 $('#searchButton').hide();
             }
@@ -712,6 +774,7 @@ function viewEditService(str, id, action, desc) {
             } else if (action == 'edit') {
                 $('#edit').hide();
                 $('#cancel').hide();
+                $('#back').hide();
                 $('#searchSpan').hide();
                 $('#searchButton').hide();
             }
@@ -815,6 +878,7 @@ function deleteAllfun(str, action) {
                 $('#edit').hide();
                 $('#searchSpan').hide();
                 $('#cancel').hide();
+                $('#back').hide();
                 $('#searchButton').hide();
                 //  $('#create').hide();
             }
@@ -1255,6 +1319,7 @@ prosesLoading();
             $('#edit').hide();
             $('#create').hide();
 			$('#cancel').hide();
+                        $('#back').hide();
 			selectDaerah(idP);
 			addSentra(idP,1);
         }
@@ -1320,6 +1385,7 @@ function hideAtNew(str) {
     $('#create').hide();
     $('#edit').hide();
     $('#cancel').hide();
+    $('#back').hide();
     $('#searchSpan').hide();
     $('#searchButton').hide();
 }
@@ -1391,6 +1457,7 @@ function showMenuManual(str, name, manual) {
             $('#deleteAll').hide();
             $('#edit').hide();
             $('#cancel').hide();
+            $('#back').hide();
 
 
         }
