@@ -56,7 +56,14 @@ while ($array_list_query = mysql_fetch_array($list_query)) {
                 <td style="border: black; padding: 10px; text-align: center" >&nbsp;<?=$array_list_query['tb_data_umat_no_id']?></td>
                 <td style="border: black; padding: 10px;"><?= $array_list_query['tb_data_umat_nama_ktp']; ?></td>
                 <td style="border: black; padding: 10px; text-align: center" ><?= $genderUmat; ?></td>
-                <td style="border: black; padding: 10px" ><?= $array_list_query['tb_data_umat_tempat']; ?>, <?= $array_list_query['tb_data_umat_tgl_lahir']; ?></td>
+                <?php
+                $ttl = $array_list_query['tb_data_umat_tgl_lahir'];
+                if(strlen($ttl) != NULL ){
+                    $ttl2=$ttl[8].$ttl[9].'-'.$ttl[5].$ttl[6].'-'.$ttl[0].$ttl[1].$ttl[2].$ttl[3];
+                    $ttl=$ttl2;
+                }
+                ?>
+                <td style="border: black; padding: 10px" ><?= $array_list_query['tb_data_umat_tempat']; ?>, <?= $ttl; ?></td>
                 <td style="border: black; padding: 10px; text-align: center" ><?= $array_list_query['tb_data_keumatan_gojukai']; ?></td>
                 <td style="border: black; padding: 10px; text-align: center" ><?= $array_list_query['tb_data_keumatan_kankai']; ?></td>
                 <td style="border: black; padding: 10px" ></td>
