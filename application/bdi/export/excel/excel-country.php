@@ -53,8 +53,7 @@ while ($array_list_query = mysql_fetch_array($list_query)) {
             <?php } ?>
             <tr>
                 <td style="border: black; padding: 10px; text-align: center" ><?= $no; ?></td>
-                <?php $nik = (string) $array_list_query['tb_data_umat_no_id']; ?>
-                <td style="border: black; padding: 10px; text-align: center" >&nbsp;<?=$nik?></td>
+                <td style="border: black; padding: 10px; text-align: center" >&nbsp;<?=$array_list_query['tb_data_umat_no_id']?></td>
                 <td style="border: black; padding: 10px;"><?= $array_list_query['tb_data_umat_nama_ktp']; ?></td>
                 <td style="border: black; padding: 10px; text-align: center" ><?= $genderUmat; ?></td>
                 <td style="border: black; padding: 10px" ><?= $array_list_query['tb_data_umat_tempat']; ?>, <?= $array_list_query['tb_data_umat_tgl_lahir']; ?></td>
