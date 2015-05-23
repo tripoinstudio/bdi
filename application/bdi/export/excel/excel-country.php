@@ -40,7 +40,7 @@ while ($array_list_query = mysql_fetch_array($list_query)) {
             <thead>
                 <tr>
                     <td style="border: black; padding: 20px; width: 40px; text-align: center">NO</td>
-                    <td style="border: black; padding: 20px; width: 100px; text-align: center">NIK UMAT</td>
+                    <td style="border: black; padding: 20px; width: 150px; text-align: center">NIK UMAT</td>
                     <td style="border: black; padding: 20px; width: 200px; text-align: center">NAMA SESUAI KTP</td>
                     <td style="border: black; padding: 20px; width: 50px; text-align: center">L/P</td>
                     <td style="border: black; padding: 20px; width: 200px; text-align: center">TEMPAT TANGGAL LAHIR</td>
@@ -53,7 +53,8 @@ while ($array_list_query = mysql_fetch_array($list_query)) {
             <?php } ?>
             <tr>
                 <td style="border: black; padding: 10px; text-align: center" ><?= $no; ?></td>
-                <td style="border: black; padding: 10px; text-align: center" ><?= $array_list_query['tb_data_umat_no_id']; ?></td>
+                <?php $nik = (string) $array_list_query['tb_data_umat_no_id']; ?>
+                <td style="border: black; padding: 10px; text-align: center" >&nbsp;<?=$nik?></td>
                 <td style="border: black; padding: 10px;"><?= $array_list_query['tb_data_umat_nama_ktp']; ?></td>
                 <td style="border: black; padding: 10px; text-align: center" ><?= $genderUmat; ?></td>
                 <td style="border: black; padding: 10px" ><?= $array_list_query['tb_data_umat_tempat']; ?>, <?= $array_list_query['tb_data_umat_tgl_lahir']; ?></td>
