@@ -51,8 +51,13 @@ include "../../function/functionaction.php";
 ?>
 <?php
 
+<<<<<<< .mine
+$exportpdf = "exportPdf('pdf','pdf-umat-by-alamat','".$_SESSION['username']."');"; //TYPE EXPORT, FILE NAME EXPORT, PARAMETER ex  : 'pdf','pdf-country','&id=id'
+$exportexcel = "exportExcel('excel','excel-umat-by-alamat','".$_SESSION['username']."');";
+=======
 $exportpdf = "exportPdfUmat('pdf','pdf-umat-by-alamat','".$_SESSION['username']."');"; //TYPE EXPORT, FILE NAME EXPORT, PARAMETER ex  : 'pdf','pdf-country','&id=id'
 $exportexcel = "exportExcelUmat('excel','excel-umat-by-alamat','".$_SESSION['username']."');";
+>>>>>>> .r138
 
 include "../../function/contentmodul.html.php";
 ?>
