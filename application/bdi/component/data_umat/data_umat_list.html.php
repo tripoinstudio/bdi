@@ -69,7 +69,7 @@
                     <td style="text-align:center;">
                         <div class="btn-group"> 
                             <?php if ($cekaction[0] == 2) { ?>
-                                <a href="javascript:void(0);" onclick="viewEdit('<?= $cekMenu['menu_function_link']; ?>', '<?= $array_list_query['tb_data_umat_id']; ?>', 'view');" data-toggle="tooltip" data-original-title="View" data-placement="top" rel="tooltip" class="btn btn-small"><i class="gicon-eye-open"></i></a>
+                                <a href="javascript:void(0);" onclick="viewList('<?= $cekMenu['menu_function_link']; ?>', '<?= $array_list_query['tb_data_umat_id']; ?>', 'view');" data-toggle="tooltip" data-original-title="View" data-placement="top" rel="tooltip" class="btn btn-small"><i class="gicon-eye-open"></i></a>
                             <?php } ?>
                             <?php if ($cekaction[2] == 2) { ?>
                                 <a href="javascript:void(0);" onclick="viewEdit('<?= $cekMenu['menu_function_link']; ?>', '<?= $array_list_query['tb_data_umat_id']; ?>', 'view');" data-toggle="tooltip" data-original-title=" Edit" data-placement="left" rel="tooltip" class="btn btn-small"><i class="gicon-edit"></i></a> 
