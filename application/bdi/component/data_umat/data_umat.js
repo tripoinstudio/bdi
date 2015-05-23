@@ -153,13 +153,13 @@ selectNames2(no,idDataUmats);
 function marriageStatus() {
     var status = $('input[id="lovsstatus"]:checked').val();
 	//alert(status);
-    if (status == 1 || status == 3) {
+    if (status == 1) {
 		
         $('#group_marriage_status').show();
 		upacaraShosu();
     } else {
         $('#group_marriage_status').hide();
-		$('#nichiren_shosu_year').val('-');
+	$('#nichiren_shosu_year').val('-');
         $('#nichiren_shosu_place').val('-');
         $('#nichiren_shosu_leader').val('-');
      //   document.getElementById("upacarashosu").checked = true;
@@ -169,12 +169,12 @@ function marriageStatus() {
 function upacaraShosu() {
     var status = $('input[id="upacarashosu"]:checked').val();
 	//alert(status);
-    if (status == 1 || status == 3) {
+    if (status == 1) {
 		
         $('#group_upacarashosu').show();
     } else {
         $('#group_upacarashosu').hide();
-		$('#nichiren_shosu_year').val('-');
+	$('#nichiren_shosu_year').val('-');
         $('#nichiren_shosu_place').val('-');
         $('#nichiren_shosu_leader').val('-');
      //   document.getElementById("upacarashosu").checked = true;
