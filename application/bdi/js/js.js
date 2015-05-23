@@ -1348,7 +1348,11 @@ function exportPdf(type, filename, parameter) {
     var cari_alamat = $("#cari_alamat").val();
     var cari_tlp = $("#cari_tlp").val();
 
-    var newURL = 'export.php?export=' + exports + '&file=' + file + '&cari_alamat=' + cari_alamat + '&cari_tlp=' + cari_tlp + '&created_by=' + parameter ;
+    if(cari_alamat==null){
+        var newURL = 'export.php?export=' + exports + '&file=' + file;
+    } else{
+        var newURL = 'export.php?export=' + exports + '&file=' + file + '&cari_alamat=' + cari_alamat + '&cari_tlp=' + cari_tlp + '&created_by=' + parameter ;        
+    }
 
     newwindow = window.open(newURL);
     if (window.focus) {
