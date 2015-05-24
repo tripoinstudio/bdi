@@ -8,7 +8,12 @@ $(function () {
 	 $('#export-pdf').show();
 	 $('#export-excel').show();
 	
+if (actions == 'view') {
+	 $('#export-pdf').hide();
+	 $('#export-excel').hide();
 if (actions == 'edit') {
+	 $('#export-pdf').hide();
+	 $('#export-excel').hide();
 	var marriage_status = $('input[id="lovsstatus"]:checked').val();
 	
     if (marriage_status == 1 || marriage_status == 3) {

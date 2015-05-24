@@ -51,4 +51,5 @@
 	</tr>
 	</table>
 	</div>
+	<a id="export-pdf" class="btn btn-info color_7" onclick="exportPdf('pdf','pdf-detail-data-umat','');" href="javascript:void(0)" data-original-title="" title=""><span class="icon-file"> EXPORT DETAIL UMAT PDF</span></a>
 </div>
