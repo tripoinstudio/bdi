@@ -36,13 +36,15 @@ include "../../function/functionaction.php";
 //        $texts = '';
 //    }
 //$parentuser = $texts." like '%".$_GET['searchfield']."%' and status=1";
-
+//if($_GET['listaction'] == 'search'){
 $dblist = new Database();
 $dblist->connect();
-$dblist->select('tb_log_activity', '*', NULL, ''); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+//$dblist->sql('select * from tb_log_activity limit '.$_GET['limit']); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+$dblist->sql('select * from tb_log_activity');
 $list_query = $dblist->getResult();
 
 $length_list = count($list_query);
+
 
 ?>
 <?php
@@ -51,5 +53,7 @@ $exportpdf = "exportPdf('pdf','pdf-country','');"; //TYPE EXPORT, FILE NAME EXPO
 $exportexcel = "exportExcel('excel','excel-country','');";
 
 include "../../function/contentmodul.html.php";
+
+//}
 ?>
 

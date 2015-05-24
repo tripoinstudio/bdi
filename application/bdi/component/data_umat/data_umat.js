@@ -11,7 +11,7 @@ $(function () {
 if (actions == 'view') {
 	 $('#export-pdf').hide();
 	 $('#export-excel').hide();
-if (actions == 'edit') {
+} else if (actions == 'edit') {
 	 $('#export-pdf').hide();
 	 $('#export-excel').hide();
 	var marriage_status = $('input[id="lovsstatus"]:checked').val();
@@ -516,7 +516,7 @@ function addName() {
 
     var frma = '';
 
-    frma = frma + '<div class="form-row control-group row-fluid">';
+    frma = frma + '<div class="form-row control-group row-fluid" id="tritem'+i+'">';
     frma = frma + '<label class="control-label span1">Nama ';
     frma = frma + ' </label>';
 	
@@ -850,4 +850,52 @@ function exportExcelUmat(type, filename, parameter) {
         newwindow.focus();
     }
     return false;
+}
+
+function delkel(line, values) {
+	var str = 'data_umat';
+	var countLine = $('#countername').val();
+	alert(countLine)
+;    if (confirm('Are you sure you want to remove this?')) {
+		if(values != null){
+		//prosesSaveADM(file, 'delitem','',values);	
+		
+		$.ajax({
+        type: 'get',
+        url: 'controller.php',
+        data: 'content=' + str + '&action=delitemkel&id=' + values,
+        success: function (result) {
+ $("#tritem" + line).remove();
+        $("#countername").val(parseFloat(counter) - 1);
+           
+        }
+
+
+    });
+	
+    }
+}
+
+function delkels(line, values) {
+	var str = 'data_umat';
+	var countLine = $('#counternames').val();
+	alert(countLine)
+;    if (confirm('Are you sure you want to remove this?')) {
+		if(values != null){
+		//prosesSaveADM(file, 'delitem','',values);	
+		
+		$.ajax({
+        type: 'get',
+        url: 'controller.php',
+        data: 'content=' + str + '&action=delitemkel&id=' + values,
+        success: function (result) {
+ $("#tritems" + line).remove();
+        $("#counternames").val(parseFloat(counter) - 1);
+           
+        }
+
+
+    });
+	
+    }
 }

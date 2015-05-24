@@ -13,6 +13,8 @@
 <br />
 
 <?php if ($_GET['content'] == 'log_activity') { ?>
+
+
     <table id="datatable_example" class="responsive table table-striped table-bordered" style="width:100%;margin-bottom:0; ">
         <thead>
             <tr>
@@ -27,10 +29,11 @@
         </thead>
         <tbody>
             <?php
-            $no = 1;
+            $no = 0;
 
             foreach ($list_query as $array_list_query) {
             //	$array_num_query=mysql_num_rows($list_query);
+			$no++;
                 ?>
                 <tr class="odd gradeX"  id="tr<?=$no;?>" onclick="checkedList('<?= $array_list_query['tb_log_activity_id']; ?>','<?= $no; ?>');">
                     <td style="text-align:center;">
@@ -42,16 +45,16 @@
                     <td><?= $array_list_query['tb_log_activity_created_date']; ?></td>
                 </tr>
                     <?php
-                    $no++;
+                    
                     //	$array_list_query++;
                 }
                 //	mysql_close($query);							
                 ?>	
         </tbody>
     </table>
-
+<!--<a class="btn btn-info color_7" onclick="nextLimit('log_activity','list','2');" href="javascript:void(0)" data-original-title="" title="">Next Limit</a>-->
 <?php } ?>
-
+<input type="hidden" id="checklimit" value="0"/>
 <input type="hidden" id="checkDelete" value="0"/>
 <input type="hidden" id="jumDel" value="0" />
 <input type="hidden" id="firstRowField" value="0" />

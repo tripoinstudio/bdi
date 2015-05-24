@@ -12,7 +12,7 @@ if ($array_keumatan['tb_data_keumatan_marriage_status'] == 1) {
 } else if ($array_keumatan['tb_data_keumatan_marriage_status'] == 2) {
     $mariage = 'Belum Kawin';
 } else {
-    $mariage = 'Cerai';
+    $mariage = 'Belum Kawin';
 }
 inputGeneralView($mariage, STATUS_MARRIAGE, 'marriage_status', 'true', $_GET['action']);
 ?>

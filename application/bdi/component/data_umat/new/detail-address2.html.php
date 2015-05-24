@@ -1,5 +1,21 @@
-<?= inputLovNew('tb_province_id', 'tb_province_name', '', DAERAH, 'province', 'true', $_GET['action'], 'false', '', '','onchange="getSentraLov(this,0);"'); ?>
 
+
+
+<?php 
+if($_SESSION['id_group'] == 4){
+		 $dblist->select('tb_user_province', '*', NULL, 'user_id=' . $_SESSION['user_id']); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+$detail = $dblist->getResult();
+foreach ($detail as $array_user) {
+	$provinceid = $array_user['tb_province_id'];
+}
+echo inputLovNew('tb_province_id', 'tb_province_name', '', DAERAH, 'province', 'true', $_GET['action'], 'true', '', 'select * from tb_province where tb_province_id IN ('.$provinceid.')','onchange="getSentraLov(this,0);"');
+
+	//echo inputLovEdit('tb_province_id', 'tb_province_name',$array_pembagian['tb_province_id'], DAERAH,'province','true', $_GET['action'], 'true', 'onchange="getSentraLov(this,0);"','select * from tb_province where tb_province_id IN ()');
+} else {
+	echo inputLovNew('tb_province_id', 'tb_province_name', '', DAERAH, 'province', 'true', $_GET['action'], 'false', '', '','onchange="getSentraLov(this,0);"');
+//	echo inputLovEdit('tb_province_id', 'tb_province_name',$array_pembagian['tb_province_id'], DAERAH,'province','true', $_GET['action'], 'false', 'onchange="getSentraLov(this,0);"');
+}
+?>
 <?= inputGeneralTemplate(SENTRA, '<div style="height:5px;" id="sentraLov">'
         . '<select id="lovssentra" class="input-large m-wrap">'
         . '<option value="0">Select ...</option>'

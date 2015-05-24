@@ -35,4 +35,7 @@ if ($_GET['action'] == 'lovname') {
     $db->select('tb_dharmasala', '*', NULL, 'tb_dharmasala_cetya_id='.$id); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
     $list_users = $db->getResult();
     echo json_encode($list_users);
+} else if ($_GET['action'] == 'delitemkel') {
+    $id = $_GET['id'];
+    $querydel = mysql_query("delete from tb_relationship where tb_relationship_id='$id'");
 }

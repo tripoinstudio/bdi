@@ -79,7 +79,8 @@ if ($query1['tb_personal_identity_marital_status'] == 1) {
 } else {
     $ms = 'Belum Menikah';
 }
-inputGeneralView($ms, 'Status Pernikahan', 'marital_status', 'true', $_GET['action']);
+inputGeneralView($query1['tb_data_umat_alamat_tinggal'], ALAMAT_TINGGAL, 'marital_status', 'true', $_GET['action']);
+inputGeneralView($query1['tb_data_umat_no_tlp'], TELP_RUMAH, 'marital_status', 'true', $_GET['action']);
 ?>
 
 <?php

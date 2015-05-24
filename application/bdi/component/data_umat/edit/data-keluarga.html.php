@@ -19,7 +19,7 @@ $list_keluarga = $dbumat->getResult();
 foreach ($list_keluarga as $array_keluarga) {
 	$no = $no + 1;
 	?>
-	<div class="form-row control-group row-fluid">
+	<div class="form-row control-group row-fluid" id="tritem<?=$no;?>">
     <label class="control-label span1 ">Nama 
 	
      </label>    
@@ -34,8 +34,10 @@ foreach ($list_keluarga as $array_keluarga) {
 	<select id="nameHub<?=$no;?>" class="input-large m-wrap" value="<?=$array_keluarga['tb_relationship_relation_code'];?>" data-placeholder="Choose a Name" tabindex="1">
 	<?=optionHubungan($array_keluarga['tb_relationship_relation_code']);?>
 	</select>
-
+<a href="javascript:void(0)" onclick="return delkel(<?=$no;?>,<?=$array_keluarga['tb_relationship_id'];?>)" data-original-title="Remove" data-placement="top" rel="tooltip" class="btn  btn-danger"><i class="gicon-remove "></i></a> 
     </div>
+	
+	
 	<?php
 //inputGeneralTemplate(Nama, $array_keluarga['tb_data_umat_nama_ktp'] . ' Hubungan ' . $array_keluarga['tb_relationship_relation_code'] . '');
 }
@@ -70,8 +72,8 @@ $list_keluargas = $dbumat->getResult();
 foreach ($list_keluargas as $array_keluarga2) {
 	$no = $no + 1;
 	?>
-	<div class="form-row control-group row-fluid">
-    <label class="control-label span1 ">Nama <?=$array_keluarga2['tb_relationship_id'];?>
+	<div class="form-row control-group row-fluid" id="tritems<?=$no;?>">
+    <label class="control-label span1 ">Nama
 	
      </label>    
 <input type="hidden"  id="nameIdKels<?=$no;?>" value="<?=$array_keluarga2['tb_relationship_id'];?>" name="name" placeholder="" class="span3" />
@@ -84,6 +86,7 @@ foreach ($list_keluargas as $array_keluarga2) {
 <select id="nameHubs<?=$no;?>" class="input-large m-wrap" data-placeholder="Choose a Name" tabindex="1">
 	<?=optionHubungan($array_keluarga2['tb_relationship_relation_code']);?>
 	</select>
+	<a href="javascript:void(0)" onclick="return delkels(<?=$no;?>,<?=$array_keluarga2['tb_relationship_id'];?>)" data-original-title="Remove" data-placement="top" rel="tooltip" class="btn  btn-danger"><i class="gicon-remove "></i></a> 
     </div>
 	<?php
 //inputGeneralTemplate(Nama, $array_keluarga['tb_data_umat_nama_ktp'] . ' Hubungan ' . $array_keluarga['tb_relationship_relation_code'] . '');

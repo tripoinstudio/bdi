@@ -1,7 +1,8 @@
 
 
 <?php
-
+$dbedit = new Database();
+$dbedit->connect();
 
 if($_GET['action'] == 'save' || $_GET['action'] == 'update'){
 
@@ -32,8 +33,22 @@ if($_GET['action'] == 'save'){
 //	$query1=mysql_query("insert into tb_".$cekMenu['menu_function_link']." values('','$code','$name','1')");
 } else if($_GET['action'] == 'update'){
 	$id = $_GET['id'];
+	$province = $_GET['province'];
 	$db->update('tb_user',array('user_username'=>"".$code."",'user_password'=>"".$password."",'tb_group_id'=>".$group.",'user_fullname'=>"".$name.""),'user_id='.$id.''); // Table name, column names and values, WHERE conditions
 	$res = $db->getResult();
+	if($group == 4){
+		$db->select('tb_user_province', '*', NULL, 'user_id=' . $id); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+$detail = $db->getResult();
+
+if(count($detail) == 0){
+	$db->insert('tb_user_province',array('user_id'=>''.$id.'','tb_province_id'=>''.$province.''));
+} else {
+	$db->update('tb_user_province',array('user_id'=>''.$id.'','tb_province_id'=>''.$province.''),'user_id='.$id.'');
+}
+		
+	}
+	
+		$res = $db->getResult();
 //	$query1=mysql_query("update tb_".$cekMenu['menu_function_link']." set tb_warehouse_name='$name', tb_warehouse_code='$code' where tb_warehouse_id='$id'");
 }
 

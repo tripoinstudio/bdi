@@ -11591,6 +11591,7 @@
 					nPaging.id = oSettings.sTableId+'_paginate';
 					nPrevious.id = oSettings.sTableId+'_previous';
 					nNext.id = oSettings.sTableId+'_next';
+				//	alert(nNext.id);
 	
 					nPrevious.setAttribute('aria-controls', oSettings.sTableId);
 					nNext.setAttribute('aria-controls', oSettings.sTableId);
