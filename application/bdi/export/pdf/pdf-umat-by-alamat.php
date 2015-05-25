@@ -1,4 +1,5 @@
 <?php
+ob_start();
 $dblist = new Database();
 $dblist->connect();
 
