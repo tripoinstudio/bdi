@@ -50,7 +50,7 @@
 	<td ><?=$creupddate;?>|<?=$creupdhost;?>|<?=$creupd;?></td>
 	</tr>
 	</table>
-	</div>
-	<a id="export-pdf" class="btn btn-info color_7" onclick="exportPdfUmat('pdf','pdf-detail-data-umat','&id=<?=$_GET['id']?>');" href="javascript:void(0)" data-original-title="" title=""><span class="icon-file"> EXPORT DETAIL UMAT PDF</span></a>
-<a id="export-excel" class="btn btn-info color_12" onclick="exportExcelUmat('excel','excel-detail-data-umat','&id=<?=$_GET['id']?>');" href="javascript:void(0)" data-original-title="" title=""><span class="icon-book"> Excel</span></a>
+	</div>    
+        <a id="export-pdf" class="btn btn-info color_7" onclick="exportPdfUmat('pdf','pdf-detail-data-umat','&id=<?=$_GET['id']?>');" href="javascript:void(0)" data-original-title="" title=""><span class="icon-file"> EXPORT DETAIL UMAT PDF</span></a>
+        <a id="export-excel" class="btn btn-info color_12" onclick="exportExcelUmat('excel','excel-detail-data-umat','&id=<?=$_GET['id']?>');" href="javascript:void(0)" data-original-title="" title=""><span class="icon-book"> Excel</span></a>
 	</div>

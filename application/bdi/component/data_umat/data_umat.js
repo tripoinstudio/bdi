@@ -817,12 +817,6 @@ function exportExcelListUmat(type, filename, parameter) {
 function exportPdfUmat(type, filename, parameter) {
     var exports = type;
     var file = filename;
-    var jumlahlist = $("#jumlahlist").val();
-    var searchtype = $("#searchtype").val();
-    var searchfield = $("#searchfield").val();
-    
-    var cari_alamat = $("#cari_alamat").val();
-    var cari_tlp = $("#cari_tlp").val();
 
     var newURL = 'export.php?export=' + exports + '&file=' + file+parameter ;
 
@@ -836,13 +830,7 @@ function exportPdfUmat(type, filename, parameter) {
 function exportExcelUmat(type, filename, parameter) {
     var exports = type;
     var file = filename;
-    var jumlahlist = $("#jumlahlist").val();
-    var searchtype = $("#searchtype").val();
-    var searchfield = $("#searchfield").val();
     
-    var cari_alamat = $("#cari_alamat").val();
-    var cari_tlp = $("#cari_tlp").val();
-
     var newURL = 'export.php?export=' + exports + '&file=' + file+parameter ;
 
     newwindow = window.open(newURL);
@@ -898,4 +886,4 @@ function delkels(line, values) {
     });
 	
     }
-}
+    }}}
