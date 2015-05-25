@@ -70,7 +70,7 @@ $message = '<label for="cname2" generated="true" class="error" style="display: b
                 <span class="subtitle">Database Umat BDI</span>
             </div>
             <form class="form-search row-fluid " onsubmit="return cekLogin();" action="." method="post">
-                <?= $message; ?>
+                
                 <div class="input-append row-fluid fluid">            
                     <input type="text" class="row-fluid search-query" id="input-username" name="username" placeholder="Username" />            
 
@@ -87,9 +87,10 @@ $message = '<label for="cname2" generated="true" class="error" style="display: b
 
                     <!--                    <a href="component/login/login1.php"  class="btn color_4"></a>-->
                 </div>
+                <?= $message; ?>
                 <div class="input-append row-fluid fluid"> 
 
-                    <input type="submit" id="submitlog" class="btn color_4 disabled" value="Go" />
+                    <input type="submit" id="submitlog" class="btn btn-danger btn-large" value="Login" />
                 </div>
             </form>
         </div>

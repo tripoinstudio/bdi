@@ -2,7 +2,7 @@
 require_once('class/mysql_crud.php');
 require_once("function/function.php");
 require_once('class/pdf/html2pdf.class.php');
-ob_start();
+
 $namePage= 'MNSBDI';
 
  include(dirname('__FILE__').'/export/pdf/'.$_GET['file'].'.php');
@@ -18,5 +18,7 @@ $content = ob_get_clean();
         echo $e;
         exit;
     }
-    
+	
+	ob_end_flush();
+ 
  

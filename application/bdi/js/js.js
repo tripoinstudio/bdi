@@ -183,6 +183,57 @@ function sampleTable() {
 
 }
 
+function sampleTableNoPaginate() {
+
+    //	  alert("masuksini");
+//    $('#sample_1').dataTable({
+//        "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+//        "sPaginationType": "bootstrap",
+//        "oLanguage": {
+//            "sLengthMenu": "_MENU_ records per page",
+//            "oPaginate": {
+//                "sPrevious": "Prev",
+//                "sNext": "Next"
+//            }
+//        },
+//        "aoColumnDefs": [{
+//                'bSortable': false,
+//                'aTargets': [0]
+//            }],
+//        "bDestroy": true
+//    });
+
+    var dontSort = [];
+    $('#datatable_example_no_pagi thead th').each(function () {
+        if ($(this).hasClass('no_sort')) {
+            dontSort.push({"bSortable": false});
+        } else {
+            dontSort.push(null);
+        }
+    });
+    $('#datatable_example_no_pagi').dataTable({
+        "sDom": "<'row-fluid table_top_bar'<'span12'<'span4 to_hide_tablet'l><'to_hide_phone' f>>>t<'row-fluid control-group full top'<'span4'><'span8 pagination'p>>",
+        "aaSorting": [[1, "asc"]],
+        "bPaginate": false,
+        "sPaginationType": "full_numbers",
+        "bJQueryUI": false,
+        "aoColumns": dontSort,
+    });
+    $.extend($.fn.dataTableExt.oStdClasses, {
+        "s`": "dataTables_wrapper form-inline"
+    });
+
+    $(".chzn-select, .dataTables_length select").chosen({
+        disable_search_threshold: 10
+
+    });
+
+
+
+
+}
+
+
 function checkedAll(length) {
     // alert(length);
     $('#jumDel').val(length);

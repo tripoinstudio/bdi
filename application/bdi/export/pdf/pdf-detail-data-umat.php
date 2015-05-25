@@ -8,8 +8,7 @@ $dblist = new Database();
 $dblist->connect();
 $dblist->select('tb_data_umat', '*', NULL, 'tb_data_umat_id=' . $id);
 $list_query = $dblist->getResult();
-?>
-<?php
+
 $no = 0;
 foreach ($list_query as $array_list_query) {
     $namaktp = $array_list_query['tb_data_umat_nama_ktp'];
@@ -43,8 +42,7 @@ foreach ($list_query as $array_list_query) {
     $tanggungjawab = $array_list_query['tb_data_umat_tanggung_jawab'];
     $hub1 = $array_list_query['tb_data_umat_hub1'];
     $hub2 = $array_list_query['tb_data_umat_hub2'];
-    ?>
-    <?php
+    
     $dblist->select('tb_data_umat_pembagian', '*', NULL, 'tb_data_umat_id=' . $array_list_query['tb_data_umat_id']); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
     $list_umatbg = $dblist->getResult();
     foreach ($list_umatbg as $array_list_umatbg) {
@@ -237,3 +235,6 @@ foreach ($list_query as $array_list_query) {
     </table>
 
 </div>
+<?php
+ob_end_flush();
+?>

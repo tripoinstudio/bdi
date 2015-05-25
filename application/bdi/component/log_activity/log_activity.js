@@ -1,5 +1,6 @@
 $(function () {
     //   alert("ipconfig");
+	
     var ipconfig = $('#ipConfig').val();
     $('#create').hide();
     $('#export-pdf').hide();
@@ -7,6 +8,7 @@ $(function () {
 
     var str = queryString('content', ipconfig);
     var actions = queryString('action', ipconfig);
+	$('#export-excel').hide();
 	//nextLimit('log_activity', 'LOG ACVITY','0');
 
 });

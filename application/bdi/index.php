@@ -1,11 +1,9 @@
-
 <?php
-
 session_start();
-include("function/function.php");
-//	require_once("configuration.php");
 require_once("class/mysql_crud.php");
-date_default_timezone_set("Asia/Jakarta");
+include("function/function.php");
+//require_once("configuration.php");
+//date_default_timezone_set("Asia/Jakarta");
 if (!isset($_SESSION['username'])) {
 //	header('location:index.php');
     $cekSession = 1;
@@ -61,12 +59,6 @@ if (!isset($_SESSION['username'])) {
     }
 }
 ?>
-
-<!--
-CREATED BY : SYAHRIAL FANDRIANAH
-COPYRIGHT 2015
--->
-
 <!DOCTYPE html>
 <html lang="en"> 
     <head>
@@ -118,6 +110,7 @@ COPYRIGHT 2015
         <?php } ?>
 
         <?php
+		//echo $cekSession;
         if ($cekSession == 1) {
 
             include "component/login/login1.php";

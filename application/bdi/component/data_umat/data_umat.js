@@ -11,6 +11,9 @@ $(function () {
 if (actions == 'view') {
 	 $('#export-pdf').hide();
 	 $('#export-excel').hide();
+} else if (actions == 'new') {
+	 $('#export-pdf').hide();
+	 $('#export-excel').hide();
 } else if (actions == 'edit') {
 	 $('#export-pdf').hide();
 	 $('#export-excel').hide();
