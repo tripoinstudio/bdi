@@ -32,4 +32,4 @@
 
     </div>
 </div>
-<?= inputGeneral('....', TNGJWB, 'tngjwb', 'true', $_GET['action']); ?>
+<?= inputGeneral('....', TNGJWB, 'tngjwb', 'false', $_GET['action']); ?>

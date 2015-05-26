@@ -25,8 +25,8 @@
         <thead>
             <tr>
                 
-                <th style="width:5%;text-align:center;">No</th>
-				<th style="width:5%;text-align:center;">NIK</th>
+                <th style="width:5%;text-align:center;" class="hidden-phone">No</th>
+				<th style="width:5%;text-align:center;" class="hidden-phone">NIK</th>
                 <th style="width:25%;" class="hidden-phone">Nama Sesuai KTP</th>
 				 <th style="width:45%;" class="hidden-phone">Alamat Tinggal Sekarang</th>
 				  <th style="width:25%;" class="hidden-phone">No Telp</th>

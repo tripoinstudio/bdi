@@ -91,6 +91,12 @@
     </table>
 
 <?php } ?>
+
+<div id="frmCheck">
+
+</div>
+<input type="hidden" id="countername" value="0" />
+<input type="hidden" id="countercheck" value="0" />
 <input type="hidden" id="checkDelete" value="0"/>
 <input type="hidden" id="jumDel" value="0" />
 <input type="hidden" id="firstRowField" value="0" />

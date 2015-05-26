@@ -12,15 +12,18 @@ if ($array_keumatan['tb_data_keumatan_marriage_status'] == 1) {
 } else if ($array_keumatan['tb_data_keumatan_marriage_status'] == 2) {
     $mariage = 'Belum Kawin';
 } else {
-    $mariage = 'Belum Kawin';
+//$mariage = 'Belum Kawin';
+   $mariage = 'Cerai';
 }
 inputGeneralView($mariage, STATUS_MARRIAGE, 'marriage_status', 'true', $_GET['action']);
 ?>
-<?php if ($array_keumatan['tb_data_keumatan_marriage_status'] == 1 || $array_keumatan['tb_data_keumatan_marriage_status'] == 3) { ?>
+<?php if ($array_keumatan['tb_data_keumatan_marriage_status'] == 1) { ?>
 <?=inputGeneralView($array_keumatan['tb_data_keumatan_nichiren_upacara'], U_N_S, 'nichiren_upacara', 'true', $_GET['action']);?>
+<?php if ($array_keumatan['tb_data_keumatan_nichiren_upacara'] == 1) { ?>
 <?=inputGeneralView($array_keumatan['tb_data_keumatan_nichiren_tahun'], TAHUN, 'nichiren_tahun', 'true', $_GET['action']);?>
 <?=inputGeneralView($array_keumatan['tb_data_keumatan_nichiren_tempat'], TEMPAT, 'nichiren_tempat', 'true', $_GET['action']);?>
 <?=inputGeneralView($array_keumatan['tb_data_keumatan_nichiren_pemimpin'], PEMIMPIN, 'nichiren_pemimpin', 'true', $_GET['action']);?>
+<?php } ?>
 <?php } else {
 	
 } ?>

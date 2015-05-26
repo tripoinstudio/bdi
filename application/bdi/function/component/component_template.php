@@ -20,12 +20,20 @@ function abjadToNumber($dest) {
         return 0;
 }
 
+
+function checkDataKelu($data) {
+    if ($data == 0)
+		return '';
+    else
+        return $data;
+}
+
 function autoCodeUmat($daerah, $nama, $id) {
     $subname = strtoupper(substr($nama, 0, 1));
     $subcenter = '';
 
     $number = abjadToNumber($subname);
-    if($number <=10){
+    if($number <=9){
         $subcenter = '0'.$number;
     } else {
         $subcenter = $number;
@@ -115,12 +123,18 @@ function optionHubungan($id){
 	case 'SEPUPU':
         $selected14 = 'selected="selected"';
         break;
+	case 'LAIN-LAIN':
+        $selected15 = 'selected="selected"';
+        break;
+	case '0':
+        $selected16 = 'selected="selected"';
+        break;
 	
     default:
        // code to be executed if n is different from all labels;
 } 
 
-	echo '<option value="AYAH" '.$selected1.'>AYAH</option>
+	echo '<option value="0" '.$selected16.'>Select ...</option><option value="AYAH" '.$selected1.'>AYAH</option>
 	<option value="IBU" '.$selected2.'>IBU</option>
 	<option value="ANAK" '.$selected3.'>ANAK</option>
 	<option value="KAKAK" '.$selected4.'>KAKAK</option>
@@ -133,7 +147,8 @@ function optionHubungan($id){
 	<option value="PAMAN" '.$selected11.'>PAMAN</option>
 	<option value="TANTE" '.$selected12.'>TANTE</option>
 	<option value="KEPONAKAN" '.$selected13.'>KEPONAKAN</option>
-	<option value="SEPUPU" '.$selected14.'>SEPUPU</option>';
+	<option value="SEPUPU" '.$selected14.'>SEPUPU</option>
+	<option value="LAIN-LAIN" '.$selected15.'>LAIN-LAIN</option>';
 	
 }
 

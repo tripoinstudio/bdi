@@ -20,9 +20,10 @@ $_GET['pages'] = 'P';
 ?>
 
 <link type="text/css" href="css/pdf-style.css" rel="stylesheet" />
-<div class="page">
+
+<page backtop="14mm" backbottom="14mm" backleft="10mm" backright="10mm" style="font-size: 12pt">
     <div class="title"><?= $namePage; ?> </div>
-    <div class="subtitle" style="text-align: center">UMAT NICHIREN SHOSHU</div>
+    <div class="subtitle" style="text-align: center;font-weight:bold;">UMAT NICHIREN SHOSHU</div>
     <br/>
 
     <?php
@@ -58,7 +59,7 @@ $_GET['pages'] = 'P';
         ?>
         <table style="border-collapse: collapse; height: 40px; vertical-align: middle">
             <tr><td style="height: 20px; text-align: center; width: 196px; border-right: black; border-left: black; border-top: black; border-bottom: black"><?= $array_list_query['tb_data_umat_nama_ktp']; ?></td><td style="border-right: black; border-top: black; width: 66px; "></td><td style="border-bottom: black; border-top: black; border-right: black; text-align: center; width: 196px;"><?= $array_list_query['tb_data_keumatan_gojukai']; ?></td><td style="width: 201px; text-align: center; border-top: black; border-right: black;"></td></tr>
-            <tr><td style="height: 20px; text-align: center; border-right: black; border-left: black; border-bottom: black"><?= $array_list_query['tb_data_umat_tempat']; ?>, <?= $array_list_query['tb_data_umat_tgl_lahir']; ?></td><td style="border-bottom: black; border-right: black; text-align: center;"><?= $genderUmat ?></td><td style="border-bottom: black; border-right: black; text-align: center"><?= $array_list_query['tb_data_keumatan_kankai']; ?></td><td style="border-bottom: black; border-right: black; text-align: center"></td></tr>
+            <tr><td style="height: 20px; text-align: center; border-right: black; border-left: black; border-bottom: black"><?= $array_list_query['tb_data_umat_tempat']; ?>, <?= subMonth($array_list_query['tb_data_umat_tgl_lahir']); ?></td><td style="border-bottom: black; border-right: black; text-align: center;"><?= $genderUmat ?></td><td style="border-bottom: black; border-right: black; text-align: center"><?= $array_list_query['tb_data_keumatan_kankai']; ?></td><td style="border-bottom: black; border-right: black; text-align: center"></td></tr>
         </table>
         <br/>
         <?php
@@ -71,4 +72,4 @@ $_GET['pages'] = 'P';
 //        
         ?>
     <?php } ?>
-</div>
+</page>

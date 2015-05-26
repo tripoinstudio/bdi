@@ -162,7 +162,7 @@ function sampleTable() {
         }
     });
     $('#datatable_example').dataTable({
-        "sDom": "<'row-fluid table_top_bar'<'span12'<'span4 to_hide_tablet'l><'to_hide_phone' f>>>t<'row-fluid control-group full top'<'span4'><'span8 pagination'p>>",
+        "sDom": "<'row-fluid table_top_bar'<'span12'<'to_hide_phone' f>>>t<'row-fluid control-group full top' <'span4 to_hide_tablet'l><'span8 pagination'p>>",
         "aaSorting": [[1, "asc"]],
         "bPaginate": true,
         "sPaginationType": "full_numbers",
@@ -274,12 +274,16 @@ function checkedAll(length) {
     //	return false;
 }
 
+
+
 function checkedList(id, urut) {
     //  alert(id);
     //  alert(id);
     var somecek = $('#checkboxes' + urut);
     var jumdel = $('#jumDel').val();
     var checked = document.getElementById("checkboxes" + urut).checked;
+	var checkeds = document.getElementById("checkboxes" + urut);
+	var countercheck = $('#countercheck').val();
     //   var stringId = '';
 //alert(checked);
     if (checked == false) {
@@ -289,6 +293,11 @@ function checkedList(id, urut) {
         $('#checkedAll').attr('checked', false);
 
         checks(id, jumdel);
+		if(countercheck == null){
+			
+		} else {
+			frmAddCheck2(1,id,urut);
+		}
 
     } else {
         document.getElementById('checkboxes' + urut).checked = false;
@@ -297,6 +306,13 @@ function checkedList(id, urut) {
         jumdel = parseFloat(jumdel) - 1;
         $('#checkedAll').attr('checked', false);
         unchecks(id, jumdel);
+		if(countercheck == null){
+			
+		} else {
+			
+			frmAddCheck2(2,id,urut);
+		}
+
 
     }
     /*
@@ -314,6 +330,31 @@ function checkedList(id, urut) {
      */
 
 }
+
+function frmAddCheck2(type,id,n){
+	//alert("masuk");
+	 var i = $("#countercheck").val();
+	 if(type == 1){
+		if (i == '' || i == null) {
+        $("#countercheck").val(0);
+        i = 0;
+        //   alert(i);
+    }
+
+    i = parseFloat(i) + 1;
+	frmCheck = '<input type="hidden" id="inp_check'+i+'" value="0" />';
+	 $('#frmCheck').append(frmCheck);
+	 $("#inp_check"+i).val(id);	
+    $("#countercheck").val(i);	 
+	 } else {
+		  i = parseFloat(i) - 1;
+		$("#inp_check"+n).remove();	
+		$("#countercheck").val(i);	
+	 }
+    // alert(i);
+    
+}
+
 function checks(id, jumdel) {
     var sending = $('#checkDelete').val();
 

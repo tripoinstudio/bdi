@@ -50,22 +50,23 @@ if ($array_keumatan['tb_data_keumatan_nichiren_upacara'] == 1) {
     <label class="control-label span3"><?=U_N_S;?></label>
     <div class="controls span9">
         <label class="radio inline">
-            <input type="radio" id="upacarashosu" <?=$upacarashosu1;?> value="1" name="upacarashosu">
+            <input type="radio" id="upacarashosu" <?=$upacarashosu1;?> value="1" name="upacarashosu" onclick="upacaraShosu();">
             <span style="padding-left: 10px;">Ya </span>
 
         </label>
         <label class="radio inline">
-            <input type="radio" id="upacarashosu" <?=$upacarashosu2;?>  value="2" name="upacarashosu">
+            <input type="radio" id="upacarashosu" <?=$upacarashosu2;?>  value="2" name="upacarashosu" onclick="upacaraShosu();">
             <span style="padding-left: 10px;">Tidak </span>
 
         </label>
 
     </div>
 </div>
-
+<div id="group_upacarashosu">
 <?= inputGeneral($array_keumatan['tb_data_keumatan_nichiren_tahun'], TAHUN, 'nichiren_shosu_year', 'true', $_GET['action'],null,'onkeydown="hideDatepicker(event,this);"'); ?>
 <?= inputGeneral($array_keumatan['tb_data_keumatan_nichiren_tempat'], TEMPAT, 'nichiren_shosu_place', 'true', $_GET['action']); ?>
 <?= inputGeneral($array_keumatan['tb_data_keumatan_nichiren_pemimpin'], PEMIMPIN, 'nichiren_shosu_leader', 'true', $_GET['action']); ?>
+</div>
 </div>
 
 <br />
@@ -113,7 +114,7 @@ if ($array_keumatan['tb_data_keumatan_gohifu'] == 1) {
 
         </label>
         <label class="radio ">
-            <input type="radio" id="me_gohifu"  value="2"  <?=$me_gohifu2;?> name="me_gohifu" onclick="tdpStatus();">
+            <input type="radio" id="me_gohifu"  value="2"   <?=$me_gohifu2;?> name="me_gohifu" onclick="tdpStatus();">
             <span style="padding-left: 10px;">Tidak </span>
 
         </label>

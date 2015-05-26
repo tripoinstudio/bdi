@@ -25,6 +25,14 @@ while ($array_list_query = mysql_fetch_array($list_query)) {
     if ($array_list_query['tb_data_umat_gender'] == 2) {
         $genderUmat = 'P';
     }
+	
+	 $dblist->select('tb_data_umat_pembagian', '*', NULL, 'tb_data_umat_id=' . $array_list_query['tb_data_umat_id']); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+                $list_umatbg = $dblist->getResult();
+                foreach ($list_umatbg as $array_list_umatbg) {
+                    $daerahid = $array_list_umatbg['tb_province_id'];
+                }
+                $provinceid = idListViewTarget($daerahid, "province", "tb_province_code");
+	 $NIK = autoCodeUmat($provinceid, $array_list_query['tb_data_umat_nama_ktp'], $array_list_query['tb_data_umat_code']);
     if ($no == 1) {
         ?>
 
@@ -53,7 +61,7 @@ while ($array_list_query = mysql_fetch_array($list_query)) {
             <?php } ?>
             <tr>
                 <td style="border: black; padding: 10px; text-align: center" ><?= $no; ?></td>
-                <td style="border: black; padding: 10px; text-align: center" >&nbsp;<?=$array_list_query['tb_data_umat_no_id']?></td>
+                <td style="border: black; padding: 10px; text-align: center" >&nbsp;<?=$NIK?></td>
                 <td style="border: black; padding: 10px;"><?= $array_list_query['tb_data_umat_nama_ktp']; ?></td>
                 <td style="border: black; padding: 10px; text-align: center" ><?= $genderUmat; ?></td>
                 <?php

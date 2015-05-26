@@ -11,21 +11,31 @@ $(function () {
 if (actions == 'view') {
 	 $('#export-pdf').hide();
 	 $('#export-excel').hide();
-} else if (actions == 'new') {
-	 $('#export-pdf').hide();
-	 $('#export-excel').hide();
 } else if (actions == 'edit') {
 	 $('#export-pdf').hide();
 	 $('#export-excel').hide();
 	var marriage_status = $('input[id="lovsstatus"]:checked').val();
 	
-    if (marriage_status == 1 || marriage_status == 3) {
+    if (marriage_status == 1) {
 		
         $('#group_marriage_status').show();
     } else {
         $('#group_marriage_status').hide();
         document.getElementById("upacarashosu").checked = true;
     }
+	
+	 var status = $('input[id="upacarashosu"]:checked').val();
+	if (status == 1) {
+		
+        $('#group_upacarashosu').show();
+    } else {
+        $('#group_upacarashosu').hide();
+	$('#nichiren_shosu_year').val('0');
+        $('#nichiren_shosu_place').val('-');
+        $('#nichiren_shosu_leader').val('-');
+     //   document.getElementById("upacarashosu").checked = true;
+    }
+	
 	var me_gohifu = $('input[id="me_gohifu"]:checked').val();
 //	alert(status);
     if (me_gohifu == 1 || me_gohifu == 3) {
@@ -76,6 +86,10 @@ selectNames2(no,idDataUmats);
 	addNames();
 	marriageStatus();
 	tdpStatus();
+	$('#export-pdf').hide();
+	 $('#export-excel').hide();
+	 $('#tngjwb').val('-');
+	 $('#email').val('-');
 	//optionHubungan(null);
 }
     
@@ -192,7 +206,7 @@ function upacaraShosu() {
 function tdpStatus() {
     var status = $('input[id="me_gohifu"]:checked').val();
 //	alert(status);
-    if (status == 1 || status == 3) {
+    if (status == 1) {
         $('#group-tdp').show();
        
     } else {
@@ -239,7 +253,7 @@ function saveDataUmat(str, action) {
     var alamat_ktp = $('#alamat_ktp').val();
 
     var alamat_tinggal = $('#alamat_tinggal').val();
-    var telp_rumah = $('#first_telp_rumah').val('000') + '-' + $('#last_telp_rumah').val('0000000');
+    var telp_rumah = $('#first_telp_rumah').val() + '-' + $('#last_telp_rumah').val();
 
     var alamat_tinggal1 = $('#alamat_tinggal1').val();
     var telp_rumah1 = $('#first_telp_rumah1').val('000') + '-' + $('#last_telp_rumah1').val('0000000');
@@ -318,7 +332,13 @@ function saveDataUmat(str, action) {
     //DATA KEAKTIFAN
     var dtng_ke = $('input[id="dtng_ke"]:checked').val();
     var danaprmt = $('input[id="danaprmt"]:checked').val();
-    var tngjwb = $('#tngjwb').val('-');
+	var tngjwb = '';
+	if($('#tngjwb').val() == ''){
+		tngjwb = '-';
+	} else {
+		tngjwb = $('#tngjwb').val();
+	}
+    
 
     var dataAktif = '&dtng_ke=' + dtng_ke + '&danaprmt=' + danaprmt + '&tngjwb=' + tngjwb;
     //DATA KELUARGA
@@ -341,11 +361,17 @@ function saveDataUmat(str, action) {
         } else {
             coma = ',';
         }
-        sendingKeluarga = sendingKeluarga + '{"nameIdKel":"' + nameIdKel + '","nameKel":"' + nameKel + '","nameHub":"' + nameHub + '"}' + coma;
+		var tritema = $("#tritem"+s).val();
+		if(tritema == null){
+			//sendingKeluarga = sendingKeluarga + '{"nameIdKel":"' + nameIdKel + '","nameKel":"' + nameKel + '","nameHub":"' + nameHub + '"}' + coma;
+		} else {
+			sendingKeluarga = sendingKeluarga + '{"nameIdKel":"' + nameIdKel + '","nameKel":"' + nameKel + '","nameHub":"' + nameHub + '"}' + coma;
+		}
+        
 //    sendingKeluarga = '&nameKel=' + nameKel + '&lovNameTr2=' + lovNameTr2;
     }
     sendingKeluarga = sendingKeluarga + ']}';
-	
+	//alert(sendingKeluarga);
 	var counternames = $('#counternames').val();
 	var sendingKeluargas = '{"listitemkels":[';
 //    sending = '{"code":"' + code + '","name":"' + name + '","item":[';
@@ -361,7 +387,13 @@ function saveDataUmat(str, action) {
         } else {
             coma = ',';
         }
-        sendingKeluargas = sendingKeluargas + '{"nameIdKels":"' + nameIdKels + '","nameKels":"' + nameKels + '","nameHubs":"' + nameHubs + '"}' + coma;
+		var tritemas = $("#tritems"+s).val();
+		if(tritemas == null){
+			
+		} else {
+			sendingKeluargas = sendingKeluargas + '{"nameIdKels":"' + nameIdKels + '","nameKels":"' + nameKels + '","nameHubs":"' + nameHubs + '"}' + coma;
+		}
+        
 //    sendingKeluarga = '&nameKel=' + nameKel + '&lovNameTr2=' + lovNameTr2;
     }
     sendingKeluargas = sendingKeluargas + ']}';
@@ -531,6 +563,7 @@ function addName() {
     //  frma = frma + '<input type="text"  id="nameHub' + i + '" name="name" placeholder="" class="span3" />';
     frma = frma + '<select id="nameHub' + i + '" class="input-large m-wrap" data-placeholder="Choose a Name" tabindex="1">';
     frma = frma + '</select>';
+	frma = frma + '<a href="javascript:void(0)" onclick="return delkel('+i+',0)" data-original-title="Remove" data-placement="top" rel="tooltip" class="btn  btn-danger"><i class="gicon-remove "></i></a> ';
 
     frma = frma + '</div>';
 
@@ -556,7 +589,7 @@ function addNames() {
 
     var frma = '';
 
-    frma = frma + '<div class="form-row control-group row-fluid">';
+    frma = frma + '<div class="form-row control-group row-fluid" id="tritems'+i+'">';
     frma = frma + '<label class="control-label span1">Nama ';
     frma = frma + ' </label>';
 	
@@ -568,7 +601,7 @@ function addNames() {
     //  frma = frma + '<input type="text"  id="nameHub' + i + '" name="name" placeholder="" class="span3" />';
     frma = frma + '<select id="nameHubs' + i + '" class="input-large m-wrap" data-placeholder="Choose a Name" tabindex="1">';
     frma = frma + '</select>';
-
+frma = frma + '<a href="javascript:void(0)" onclick="return delkels('+i+',0)" data-original-title="Remove" data-placement="top" rel="tooltip" class="btn  btn-danger"><i class="gicon-remove "></i></a> ';
     frma = frma + '</div>';
 
     $('#frmItems').append(frma);
@@ -788,8 +821,26 @@ function exportPdfListUmat(type, filename, parameter) {
     
     var cari_alamat = $("#cari_alamat").val();
     var cari_tlp = $("#cari_tlp").val();
-
-    var newURL = 'export.php?export=' + exports + '&file=' + file ;
+	 var jumlahcount = '';
+	var countercheck = $("#countercheck").val();
+	if(countercheck == 0){
+		alert('Mohon checked data yang mau di export');
+		return false;
+	} else {
+	for(i=0; i<countercheck; i++){
+		var no = i + 1;
+		
+		var inp_check = $("#inp_check"+no).val();
+		 var coma;
+        if (no == countercheck) {
+            coma = '';
+        } else {
+            coma = ',';
+        }
+		jumlahcount = jumlahcount + inp_check + coma;
+	}
+	}
+    var newURL = 'export.php?export=' + exports + '&file=' + file+ '&jumlahcount='+ jumlahcount  ;
 
     newwindow = window.open(newURL);
     if (window.focus) {
@@ -807,8 +858,28 @@ function exportExcelListUmat(type, filename, parameter) {
     
     var cari_alamat = $("#cari_alamat").val();
     var cari_tlp = $("#cari_tlp").val();
+	var jumlahcount = '';
+	var countercheck = $("#countercheck").val();
+	if(countercheck == 0){
+		alert('Mohon checked data yang mau di export');
+		return false;
+	} else {
+	for(i=0; i<countercheck; i++){
+		var no = i + 1;
+		
+		var inp_check = $("#inp_check"+no).val();
+		 var coma;
+        if (no == countercheck) {
+            coma = '';
+        } else {
+            coma = ',';
+        }
+		jumlahcount = jumlahcount + inp_check + coma;
+	}
+	}
 
-    var newURL = 'export.php?export=' + exports + '&file=' + file ;
+
+    var newURL = 'export.php?export=' + exports + '&file=' + file+ '&jumlahcount='+ jumlahcount ;
 
     newwindow = window.open(newURL);
     if (window.focus) {
@@ -817,10 +888,45 @@ function exportExcelListUmat(type, filename, parameter) {
     return false;
 }
 
+function addCheck(obj,i){
+//	alert(obj.checked);
+
+if(obj.checked == true){
+	frmAddCheck(1,obj.value,i);	
+} else {
+	frmAddCheck(2,obj.value,i);
+}
+	
+}
+
+function frmAddCheck(type,id,n){
+
+	 var i = $("#countercheck").val();
+	 if(type == 1){
+		if (i == '' || i == null) {
+        $("#countercheck").val(0);
+        i = 0;
+        //   alert(i);
+    }
+
+    i = parseFloat(i) + 1;
+	frmCheck = '<input type="hidden" id="inp_check'+i+'" value="0" />';
+	 $('#frmCheck').append(frmCheck);
+	 $("#inp_check"+i).val(id);	
+    $("#countercheck").val(i);	 
+	 } else {
+		  i = parseFloat(i) - 1;
+		$("#inp_check"+n).remove();	
+		$("#countercheck").val(i);	
+	 }
+    // alert(i);
+    
+}
+
 function exportPdfUmat(type, filename, parameter) {
     var exports = type;
     var file = filename;
-
+	
     var newURL = 'export.php?export=' + exports + '&file=' + file+parameter ;
 
     newwindow = window.open(newURL);
@@ -833,7 +939,7 @@ function exportPdfUmat(type, filename, parameter) {
 function exportExcelUmat(type, filename, parameter) {
     var exports = type;
     var file = filename;
-    
+   
     var newURL = 'export.php?export=' + exports + '&file=' + file+parameter ;
 
     newwindow = window.open(newURL);
@@ -844,11 +950,19 @@ function exportExcelUmat(type, filename, parameter) {
 }
 
 function delkel(line, values) {
+	
 	var str = 'data_umat';
-	var countLine = $('#countername').val();
-	alert(countLine)
+//	var countLine = $('#countername').val();
+	var countLine = Object($('#frmItem tr')).length;
+        var counter = $("#countername").val();
+		/*alert(counter);
+		alert($("#tritem2").val());
+		if($("#tritem2").val() == null){
+			alert("masuk null");
+		}*/
+	//alert(countLine)
 ;    if (confirm('Are you sure you want to remove this?')) {
-		if(values != null){
+		if(values != 0){
 		//prosesSaveADM(file, 'delitem','',values);	
 		
 		$.ajax({
@@ -857,22 +971,29 @@ function delkel(line, values) {
         data: 'content=' + str + '&action=delitemkel&id=' + values,
         success: function (result) {
  $("#tritem" + line).remove();
-        $("#countername").val(parseFloat(counter) - 1);
+     //   $("#countername").val(parseFloat(counter) - 1);
            
         }
 
 
     });
 	
-    }
+    }  else {
+		for(var s=0; s<countLine; s++){
+			var n = s + 1;
+			
+		}
+		$("#tritem" + line).remove();
+     //   $("#countername").val(parseFloat(counter) - 1);
+	}
 }
 
 function delkels(line, values) {
 	var str = 'data_umat';
 	var countLine = $('#counternames').val();
-	alert(countLine)
+	//alert(countLine)
 ;    if (confirm('Are you sure you want to remove this?')) {
-		if(values != null){
+		if(values != 0){
 		//prosesSaveADM(file, 'delitem','',values);	
 		
 		$.ajax({
@@ -881,12 +1002,15 @@ function delkels(line, values) {
         data: 'content=' + str + '&action=delitemkel&id=' + values,
         success: function (result) {
  $("#tritems" + line).remove();
-        $("#counternames").val(parseFloat(counter) - 1);
+     //   $("#counternames").val(parseFloat(countLine) - 1);
            
         }
 
 
     });
 	
-    }
+    } else {
+		$("#tritems" + line).remove();
+      //  $("#counternames").val(parseFloat(countLine) - 1);
+	}
     }}}

@@ -1,6 +1,6 @@
 <?php
+//ob_start();
 //$item = json_decode($_GET['item']);
-ob_start();
 $parentuser = "";
 $id = $_GET['id'];
 
@@ -59,9 +59,7 @@ foreach ($list_query as $array_list_query) {
     $distrik = idListViewTarget($distrikid, "distrik", "tb_distrik_name");
     $cetya = idListViewTarget($cetyaid, "cetya", "tb_cetya_name");
     $dharmasala = idListViewTarget($dharmasalaid, "dharmasala", "tb_dharmasala_name");
-    ?>
-
-<?php } ?>
+     } ?>
 
 
 <style>
@@ -170,7 +168,7 @@ foreach ($list_query as $array_list_query) {
     <br/>
 
     <div>DATA UMAT PEMBAGIAN</div>
-    <BR/>
+    <br/>
     <table class="table" style="border:1px; padding: 10px;">
         <tr>
             <th style="width:30%; padding: 5px;" class="hidden-phone" >Daerah</th>
@@ -196,7 +194,7 @@ foreach ($list_query as $array_list_query) {
     <br/>
     <br/>
 
-    <div>HUBUNGAN KELUARGA 1</div>
+    <div>KELUARGA UMAT BDI YG TINGGAL SERUMAH</div>
     <BR/>
     <table class="table" style="border:1px; padding: 10px;">
         <?php
@@ -204,19 +202,18 @@ foreach ($list_query as $array_list_query) {
         while ($array_keluarga = mysql_fetch_array($list_keluarga)) {
             ?>
             <tr>
-                <th style="width:30%; padding: 5px;" class="hidden-phone">Nama</th>
-                <td style="width:60%;" class="hidden-phone"><?= idListViewTarget($array_keluarga['tb_data_umat_id'], 'data_umat', 'tb_data_umat_nama_ktp'); ?></td>
-            </tr>
-            <tr>
-                <th style="width:30%; padding: 5px;" class="hidden-phone">Hubungan</th>
-                <td style="width:60%;" class="hidden-phone"><?= $array_keluarga['tb_relationship_relation_code']; ?></td>
+                <th style="width:15%; padding: 5px;" class="hidden-phone">Nama</th>
+                <td style="width:35%;" class="hidden-phone"><?= idListViewTarget($array_keluarga['tb_data_umat_id'], 'data_umat', 'tb_data_umat_nama_ktp'); ?></td>
+            
+                <th style="width:15%; padding: 5px;" class="hidden-phone">Hubungan</th>
+                <td style="width:35%;" class="hidden-phone"><?= checkDataKelu($array_keluarga['tb_relationship_relation_code']); ?></td>
             </tr>
         <?php } ?>
     </table>
     <br/>
     <br/>
 
-    <div>HUBUNGAN KELUARGA 2</div>
+    <div>KELUARGA TERDEKAT YG UMAT BDI</div>
     <BR/>
     <table class="table" style="border:1px; padding: 10px;">
         <?php
@@ -224,17 +221,13 @@ foreach ($list_query as $array_list_query) {
         while ($array_keluarga = mysql_fetch_array($list_keluarga)) {
             ?>
             <tr>
-                <th style="width:30%; padding: 5px;" class="hidden-phone">Nama</th>
-                <td style="width:60%;" class="hidden-phone"><?= idListViewTarget($array_keluarga['tb_data_umat_id'], 'data_umat', 'tb_data_umat_nama_ktp'); ?></td>
-            </tr>
-            <tr>
-                <th style="width:30%; padding: 5px;" class="hidden-phone">Hubungan</th>
-                <td style="width:60%;" class="hidden-phone"><?= $array_keluarga['tb_relationship_relation_code']; ?></td>
+                <th style="width:15%; padding: 5px;" class="hidden-phone">Nama</th>
+                <td style="width:35%;" class="hidden-phone"><?= idListViewTarget($array_keluarga['tb_data_umat_id'], 'data_umat', 'tb_data_umat_nama_ktp'); ?></td>
+            
+                <th style="width:15%; padding: 5px;" class="hidden-phone">Hubungan</th>
+                <td style="width:35%;" class="hidden-phone"><?= checkDataKelu($array_keluarga['tb_relationship_relation_code']); ?></td>
             </tr>
         <?php } ?>
     </table>
 
 </div>
-<?php
-ob_end_flush();
-?>

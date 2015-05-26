@@ -5,17 +5,17 @@ $parentuser = "";
 
 $dblist = new Database();
 $dblist->connect();
-
+ $jumlahcount = $_GET['jumlahcount'];
 $user_id_sekda = $_SESSION['user_id'];
 $dblist->select('tb_group', 'tb_group_name', null, 'tb_group_id='.$_SESSION['id_group'] );
 $namesekdas = $dblist->getResult();
 $dblist->select('tb_user_province', 'tb_province_id', null, 'user_id='.$user_id_sekda );
 $provincesekdas = $dblist->getResult();
 if ($namesekdas[0]['tb_group_name'] == 'sekda'){
-    $dblist->select('tb_data_umat_pembagian', '*', 'tb_data_umat', 'tb_data_umat_pembagian.tb_data_umat_id=tb_data_umat.tb_data_umat_id AND tb_data_umat_pembagian.tb_province_id='.$provincesekdas[0]['tb_province_id']);
+    $dblist->select('tb_data_umat_pembagian', '*', 'tb_data_umat', 'tb_data_umat_pembagian.tb_data_umat_id=tb_data_umat.tb_data_umat_id AND tb_data_umat_pembagian.tb_province_id='.$provincesekdas[0]['tb_province_id'].' AND tb_data_umat.tb_data_umat_id IN ('.$jumlahcount.')');
     $list_query = $dblist->getResult();
 }else{
-    $dblist->select('tb_data_umat', '*', 'tb_data_umat_pembagian', 'tb_data_umat_pembagian.tb_data_umat_id=tb_data_umat.tb_data_umat_id'); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
+    $dblist->select('tb_data_umat', '*', 'tb_data_umat_pembagian', 'tb_data_umat_pembagian.tb_data_umat_id=tb_data_umat.tb_data_umat_id  AND tb_data_umat.tb_data_umat_id IN ('.$jumlahcount.')'); // Table name, Column Names, JOIN, WHERE conditions, ORDER BY conditions
     $list_query = $dblist->getResult();    
 }
 $length_list = count($list_query);

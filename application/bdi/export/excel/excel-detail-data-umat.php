@@ -198,7 +198,7 @@ foreach ($list_query as $array_list_query) {
     <br/>
     <br/>
 
-    <div>HUBUNGAN KELUARGA 1</div>
+    <div>KELUARGA UMAT BDI YG TINGGAL SERUMAH</div>
     <BR/>
     <table class="table" style="padding: 10px;" border="1">
         <?php
@@ -206,19 +206,18 @@ foreach ($list_query as $array_list_query) {
         while ($array_keluarga = mysql_fetch_array($list_keluarga)) {
             ?>
             <tr>
-                <th style="width:30%; padding: 5px;" class="hidden-phone">Nama</th>
-                <td style="width:60%;" class="hidden-phone"><?= idListViewTarget($array_keluarga['tb_data_umat_id'], 'data_umat', 'tb_data_umat_nama_ktp'); ?></td>
-            </tr>
-            <tr>
-                <th style="width:30%; padding: 5px;" class="hidden-phone">Hubungan</th>
-                <td style="width:60%;" class="hidden-phone"><?= $array_keluarga['tb_relationship_relation_code']; ?></td>
+                <th style="width:15%; padding: 5px;" class="hidden-phone">Nama</th>
+                <td style="width:35%;" class="hidden-phone"><?= idListViewTarget($array_keluarga['tb_data_umat_id'], 'data_umat', 'tb_data_umat_nama_ktp'); ?></td>
+           
+                <th style="width:15%; padding: 5px;" class="hidden-phone">Hubungan</th>
+                <td style="width:35%;" class="hidden-phone"><?= checkDataKelu($array_keluarga['tb_relationship_relation_code']); ?></td>
             </tr>
         <?php } ?>
     </table>
     <br/>
     <br/>
 
-    <div>HUBUNGAN KELUARGA 2</div>
+    <div>KELUARGA TERDEKAT YG UMAT BDI </div>
     <BR/>
     <table class="table" style="padding: 10px;" border="1">
         <?php
@@ -226,12 +225,11 @@ foreach ($list_query as $array_list_query) {
         while ($array_keluarga = mysql_fetch_array($list_keluarga)) {
             ?>
             <tr>
-                <th style="width:30%; padding: 5px;" class="hidden-phone">Nama</th>
-                <td style="width:60%;" class="hidden-phone"><?= idListViewTarget($array_keluarga['tb_data_umat_id'], 'data_umat', 'tb_data_umat_nama_ktp'); ?></td>
-            </tr>
-            <tr>
-                <th style="width:30%; padding: 5px;" class="hidden-phone">Hubungan</th>
-                <td style="width:60%;" class="hidden-phone"><?= $array_keluarga['tb_relationship_relation_code']; ?></td>
+                <th style="width:15%; padding: 5px;" class="hidden-phone">Nama</th>
+                <td style="width:35%;" class="hidden-phone"><?= idListViewTarget($array_keluarga['tb_data_umat_id'], 'data_umat', 'tb_data_umat_nama_ktp'); ?></td>
+           
+                <th style="width:15%; padding: 5px;" class="hidden-phone">Hubungan</th>
+                <td style="width:35%;" class="hidden-phone"><?= checkDataKelu($array_keluarga['tb_relationship_relation_code']); ?></td>
             </tr>
         <?php } ?>
     </table>

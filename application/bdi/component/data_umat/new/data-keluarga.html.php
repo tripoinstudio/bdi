@@ -8,6 +8,10 @@
 
 
 <div class="control-group" id="frmItem"></div>
+<!--<table>
+<tbody id="frmItem">
+</tbody>
+</table> -->
 <button onclick="return addName();" id="addNameButton" class="btn btn-primary" data-original-title="" title=""><i class="icon-plus icon-white"></i> Tambah Nama</button>
 <br/>
 <br/>
