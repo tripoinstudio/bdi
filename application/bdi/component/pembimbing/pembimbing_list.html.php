@@ -1,52 +1,34 @@
 
-<?php if ($_GET['action'] == 'save') { ?>
-    <div class="alert alert-success">
-        <button class="close" data-dismiss="alert">×</button>
-        Data Has been added<strong> Successfully</strong> 
-    </div>
-<?php } else if ($_GET['action'] == 'delete') { ?>
-    <div class="alert alert-success">
-        <button class="close" data-dismiss="alert">×</button>
-        Data Has been Delete<strong> Successfully</strong> 
-    </div>
-<?php } ?>								
-<br />
 
 <?php if ($_GET['content'] == 'pembimbing') { ?>
-    <table id="datatable_example" class="responsive table table-striped table-bordered" style="width:100%;margin-bottom:0; ">
+    <div class="inline"><button onclick="return addPembimbing(0,2);" id="createitem" class="btn btn-primary" data-original-title="" title=""><i class="gicon-plus"></i> Tambah Data Pembimbing</button>
+</div><div class="inline" id="proses_loading_item"></div>
+
+<br/>
+<br/>
+    <table id="table-item" class="responsive table table-striped table-bordered" style="width:100%;margin-bottom:0; ">
         <thead>
             <tr>
-                <th style="width:5%;text-align:center;"><input type="checkbox" id="checkedAll" class="group-checkable" onchange="checkedAll('<?= $length_list; ?>');" /></th>
-                <th style="width:5%;text-align:center;">No</th>
-                <th style="width:20%;" class="hidden-phone">Adviser Name</th>
-                <th style="width:20%;" class="hidden-phone">Description</th>
-                <th style="width:10%;text-align:center" class="hidden-phone">Action</th>
+                
+                <th style="width:10%;text-align:center;">#</th>
+                <th style="width:90%;" class="hidden-phone">Name</th>
             </tr>
         </thead>
-        <tbody>
-            <?php
-            $no = 1;
-
-            foreach ($list_query as $array_list_query) {
-                ?>
-                <tr class="odd gradeX"  id="tr<?=$no;?>" onclick="checkedList('<?= $array_list_query['tb_pembimbing_id']; ?>','<?= $no; ?>');">
-                    <td style="text-align:center;">
-                        <input type="hidden" id="idItem<?= $no; ?>" value="<?=$array_list_query['tb_pembimbing_id'];?>"/><input type="checkbox" class="checkboxes" onchange="checkedList('<?= $array_list_query['tb_pembimbing_id']; ?>','<?= $no; ?>');"  id="checkboxes<?= $no; ?>" value="0" />
-                    <td style="text-align:center;"><?= $no; ?></td>
-                    <td><?= $array_list_query['tb_pembimbing_name']; ?></td>
-                    <td><?= $array_list_query['tb_pembimbing_remarks']; ?></td>
-					<?php include "../../function/actionlist.php"; ?>
-                </tr>
-                    <?php
-                    $no++;
-                }
-                ?>	
+        <tbody id="frmItem">
+            
         </tbody>
     </table>
 
-<?php } ?>
 
-<input type="hidden" id="checkDelete" value="0"/>
-<input type="hidden" id="jumDel" value="0" />
-<input type="hidden" id="firstRowField" value="0" />
-<input type="hidden" id="jumlahlist" value="<?=count($list_query);?>" />
+<?php } ?>
+<br/>
+<br/>
+<div class="span7">
+    <button id="buttonsaveitem" type="button" onclick="savePembimbing2('<?= $cekMenu['menu_function_link']; ?>', 'save');" class="btn btn-primary"><i class="icon-ok"></i> Save</button>
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<input type="hidden" id="countername" value="0" />

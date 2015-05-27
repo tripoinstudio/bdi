@@ -44,12 +44,12 @@ $_GET['pages'] = 'P';
                 <tr><td>Dicetak Oleh</td><td>:</td><td><?= $userFullname2['user_fullname'] ?></td></tr>
             </table>
             <br/>
-            <table style="border-collapse: collapse; height: 40px; vertical-align: middle">
+            <table style="border-collapse: collapse; height: 40px; vertical-align: middle;width:100%;">
                 <tr><td style="height: 30px; text-align: center; width: 80px; border-right: black; border-left: black; border-top: black"></td><td style="border-right: black; border-top: black; width: 450px; "></td><th style="width: 140px; text-align: center; border-top: black; border-right: black; border-bottom: black">Telp Rumah</th></tr>
                 <tr><th style="height: 30px; text-align: center; width: 80px; border-right: black; border-left: black; border-bottom: black" rowspan="2">ALAMAT</th><td style="border-bottom: black; border-right: black; text-align: center; width: 450px;"><?= $array_list_query['tb_data_umat_alamat_tinggal']; ?></td><td style="width: 120px; border-bottom: black; border-right: black; text-align: center;"><?= $array_list_query['tb_data_umat_no_tlp']; ?></td></tr>
             </table>
             <br/>
-            <table style="border-collapse: collapse; height: 40px; vertical-align: middle">
+            <table style="border-collapse: collapse; height: 40px; vertical-align: middle;width:100%;">
                 <tr><th style="height: 30px; text-align: center; width: 200px; border-right: black; border-left: black; border-top: black; border-bottom: black">NAMA</th><th style="border-right: black; border-top: black; width: 70px; "></th><th style="border-bottom: black; border-top: black; width: 120px; border-right: black; text-align: center; width: 200px;">TAHUN GOJUKAI</th><th style="width: 205px; text-align: center; border-top: black; border-right: black;"></th></tr>
                 <tr><th style="height: 30px; text-align: center; border-right: black; border-left: black; border-bottom: black">TTL</th><th style="border-bottom: black; border-right: black; text-align: center;">L/P</th><th style="border-bottom: black; width: 120px; border-right: black; text-align: center">TAHUN KANKAI</th><th style="width: 120px; border-bottom: black; border-right: black; text-align: center">KETERANGAN</th></tr>
             </table>
@@ -57,9 +57,9 @@ $_GET['pages'] = 'P';
             <?php
         }
         ?>
-        <table style="border-collapse: collapse; height: 40px; vertical-align: middle">
+        <table style="border-collapse: collapse; height: 40px; vertical-align: middle;width:100%;">
             <tr><td style="height: 20px; text-align: center; width: 196px; border-right: black; border-left: black; border-top: black; border-bottom: black"><?= $array_list_query['tb_data_umat_nama_ktp']; ?></td><td style="border-right: black; border-top: black; width: 66px; "></td><td style="border-bottom: black; border-top: black; border-right: black; text-align: center; width: 196px;"><?= $array_list_query['tb_data_keumatan_gojukai']; ?></td><td style="width: 201px; text-align: center; border-top: black; border-right: black;"></td></tr>
-            <tr><td style="height: 20px; text-align: center; border-right: black; border-left: black; border-bottom: black"><?= $array_list_query['tb_data_umat_tempat']; ?>, <?= subMonth($array_list_query['tb_data_umat_tgl_lahir']); ?></td><td style="border-bottom: black; border-right: black; text-align: center;"><?= $genderUmat ?></td><td style="border-bottom: black; border-right: black; text-align: center"><?= $array_list_query['tb_data_keumatan_kankai']; ?></td><td style="border-bottom: black; border-right: black; text-align: center"></td></tr>
+            <tr><td style="height: 20px; text-align: center; width: 196px; border-right: black; border-left: black; border-bottom: black"><?= $array_list_query['tb_data_umat_tempat']; ?>, <?= subMonth($array_list_query['tb_data_umat_tgl_lahir']); ?></td><td style="border-bottom: black; border-right: black; text-align: center;"><?= $genderUmat ?></td><td style="border-bottom: black; border-right: black; text-align: center"><?= $array_list_query['tb_data_keumatan_kankai']; ?></td><td style="border-bottom: black; border-right: black; text-align: center"></td></tr>
         </table>
         <br/>
         <?php

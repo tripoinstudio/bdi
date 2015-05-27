@@ -55,9 +55,9 @@
                 $cetya = idListViewTarget($cetyaid, "cetya", "tb_cetya_name");
                 $dharmasala = idListViewTarget($dharmasalaid, "dharmasala", "tb_dharmasala_name");
                 ?>
-                <tr class="odd gradeX" id="tr<?= $no; ?>" onclick="checkedList('<?= $array_list_query['tb_data_umat_id']; ?>', '<?= $no; ?>');">
+                <tr class="odd gradeX" id="tr<?= $no; ?>" onclick="return checkedList('<?= $array_list_query['tb_data_umat_id']; ?>', '<?= $no; ?>');">
                     <td style="text-align:center;">
-                        <input type="hidden" id="idItem<?= $no; ?>" value="<?= $array_list_query['tb_data_umat_id']; ?>"/><input type="checkbox" class="checkboxes" onchange="checkedList('<?= $array_list_query['tb_data_umat_id']; ?>', '<?= $no; ?>');" id="checkboxes<?= $no; ?>" value="0" />
+                        <input type="hidden" id="idItem<?= $no; ?>" value="<?= $array_list_query['tb_data_umat_id']; ?>"/><input type="checkbox" class="checkboxes" disabled="disabled" id="checkboxes<?= $no; ?>" value="0" />
                   
                     <td><?= $NIK; ?></td>
                     <td><?= $array_list_query['tb_data_umat_nama_ktp']; ?></td>

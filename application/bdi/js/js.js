@@ -273,10 +273,7 @@ function checkedAll(length) {
  //   alert(sending);
     //	return false;
 }
-
-
-
-function checkedList(id, urut) {
+function checkedList2(id, urut) {
     //  alert(id);
     //  alert(id);
     var somecek = $('#checkboxes' + urut);
@@ -284,6 +281,7 @@ function checkedList(id, urut) {
     var checked = document.getElementById("checkboxes" + urut).checked;
 	var checkeds = document.getElementById("checkboxes" + urut);
 	var countercheck = $('#countercheck').val();
+	alert(checked);
     //   var stringId = '';
 //alert(checked);
     if (checked == false) {
@@ -293,11 +291,7 @@ function checkedList(id, urut) {
         $('#checkedAll').attr('checked', false);
 
         checks(id, jumdel);
-		if(countercheck == null){
-			
-		} else {
-			frmAddCheck2(1,id,urut);
-		}
+		
 
     } else {
         document.getElementById('checkboxes' + urut).checked = false;
@@ -306,15 +300,67 @@ function checkedList(id, urut) {
         jumdel = parseFloat(jumdel) - 1;
         $('#checkedAll').attr('checked', false);
         unchecks(id, jumdel);
-		if(countercheck == null){
-			
-		} else {
-			
-			frmAddCheck2(2,id,urut);
-		}
+		
 
 
     }
+	
+	if(countercheck == null){
+			
+		} else {
+			if(document.getElementById('checkboxes' + urut).checked == true){
+				frmAddCheck2(1,id,urut);
+			} else {
+				frmAddCheck2(2,id,urut);
+			}
+			
+		}
+
+
+}
+function checkedList(id, urut) {
+    //  alert(id);
+    //  alert(id);
+    var somecek = $('#checkboxes' + urut);
+    var jumdel = $('#jumDel').val();
+    var checked = document.getElementById("checkboxes" + urut).checked;
+	var checkeds = document.getElementById("checkboxes" + urut);
+	var countercheck = $('#countercheck').val();
+	//alert(checked);
+    //   var stringId = '';
+//alert(checked);
+    if (checked == false) {
+        $("#tr" + urut).css("background", "#599BC8");
+        document.getElementById('checkboxes' + urut).checked = true;
+        jumdel = parseFloat(jumdel) + 1;
+        $('#checkedAll').attr('checked', false);
+
+        checks(id, jumdel);
+		
+
+    } else {
+        document.getElementById('checkboxes' + urut).checked = false;
+        $("#tr" + urut).css("background", "");
+
+        jumdel = parseFloat(jumdel) - 1;
+        $('#checkedAll').attr('checked', false);
+        unchecks(id, jumdel);
+		
+
+
+    }
+	
+	if(countercheck == null){
+			
+		} else {
+		//	alert(document.getElementById('checkboxes' + urut).checked);
+			if(document.getElementById('checkboxes' + urut).checked == true){
+				frmAddCheck2(1,id,urut);
+			} else {
+				frmAddCheck2(2,id,urut);
+			}
+			
+		}
     /*
      if (somecek.attr('checked')) {
      jumdel = parseFloat(jumdel) + 1;
@@ -342,16 +388,19 @@ function frmAddCheck2(type,id,n){
     }
 
     i = parseFloat(i) + 1;
-	frmCheck = '<input type="hidden" id="inp_check'+i+'" value="0" />';
+	frmCheck = '<input type="hidden" id="inp_check'+n+'" value="0" />';
 	 $('#frmCheck').append(frmCheck);
-	 $("#inp_check"+i).val(id);	
+	 $("#inp_check"+n).val(id);	
     $("#countercheck").val(i);	 
 	 } else {
+		// alert("masuk "+n);
 		  i = parseFloat(i) - 1;
 		$("#inp_check"+n).remove();	
 		$("#countercheck").val(i);	
 	 }
     // alert(i);
+	
+	return false;
     
 }
 
