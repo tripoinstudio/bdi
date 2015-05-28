@@ -28,7 +28,7 @@ $menuListUmat = '';
 		
 		$menuListUmat = $cekMenu['menu_function_name'];
 	}  else {
-		$menuListUmat = 'List Data Umat';
+		$menuListUmat = $_GET['namemenu'];
 	}
 if ($_SESSION['timeout'] + (30*60)< time()) {
 		 logout();

@@ -3,21 +3,33 @@
 <?php
 
 if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
-    include "../../function/saveautomatic.php";
+//    include "../../function/saveautomatic.php";
 
-    $countryid = $_GET['country'];
     $db = new Database();
     $db->connect();
+	$sending= json_decode($_GET['data']);
     if ($_GET['action'] == 'save') {
-        $db->sql("INSERT INTO `tb_pembimbing` (".$datas.")VALUES (".$values.")");
-		$res = $db->getResult();
+        foreach ($sending->items as $items) {
+			$idItem = $items->idItem;
+            $name = $items->name;
+			if($idItem == 0){
+				$db->insert('tb_pembimbing', array('tb_pembimbing_name' => $name));  // Table name, column names and respective values
+			} else {
+				$db->update('tb_pembimbing', array('tb_pembimbing_name' => $name),'tb_pembimbing_id='.$idItem);  // Table name, column names and respective values
+			}
+		
+        $relationship2 = $db->getResult();
 		saveToLog($cekMenu['menu_function_name'], $_GET['action'], $_SESSION['username']);
-    } else if ($_GET['action'] == 'update') {
-        $id = $_GET['id'];        
-        $db->sql("UPDATE `tb_pembimbing` SET ".$datas." WHERE `tb_pembimbing_id` = ".$id.";");
-        $res = $db->getResult();
-		saveToLog($cekMenu['menu_function_name'], $_GET['action'], $_SESSION['username']);
+		 }
+		
     }
+}
+if ($_GET['action'] == 'save') {
+	$id = $_GET['id'];
+	$db = new Database();
+    $db->connect();
+	$db->sql('DELETE FROM tb_pembimbing where tb_pembimbing_id='.$id);
+	$relationship2 = $db->getResult();
 }
 
 include "../../function/functionaction.php";

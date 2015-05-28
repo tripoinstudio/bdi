@@ -1,4 +1,9 @@
-
+<?php if ($_GET['action'] == 'save') { ?>
+    <div class="alert alert-success">
+        <button class="close" data-dismiss="alert">×</button>
+        Data Has been added<strong> Successfully</strong> 
+    </div>
+<?php } ?>
 
 <?php if ($_GET['content'] == 'pembimbing') { ?>
     <div class="inline"><button onclick="return addPembimbing(0,2);" id="createitem" class="btn btn-primary" data-original-title="" title=""><i class="gicon-plus"></i> Tambah Data Pembimbing</button>
@@ -15,6 +20,23 @@
             </tr>
         </thead>
         <tbody id="frmItem">
+		 <?php
+            $no = 0;
+
+            foreach ($list_query as $array_list_query) {
+				$no++
+            ?>
+			<tr id="tritem<?=$no;?>"><td style="text-align:center;">
+				<a href="javascript:void(0)" onclick="return delitempem(<?=$no;?>,<?=$array_list_query['tb_pembimbing_id'];?>)" data-original-title="Remove" data-placement="bottom" rel="tooltip" class="btn  btn-small"><i class="gicon-remove "></i></a> 
+				</td>
+				<td><input type="hidden"  id="idItem<?=$no;?>"  value="<?=$array_list_query['tb_pembimbing_id'];?>" name="name" placeholder="" class="span3" />
+				<input type="text"  id="name<?=$no;?>" value="<?=$array_list_query['tb_pembimbing_name'];?>" name="name" placeholder="" class="span6" /></td>
+				</tr>
+			
+			<?php
+			
+			}
+			?>
             
         </tbody>
     </table>
@@ -31,4 +53,4 @@
 <br/>
 <br/>
 <br/>
-<input type="hidden" id="countername" value="0" />
+<input type="hidden" id="countername" value="<?=count($list_query);?>" />

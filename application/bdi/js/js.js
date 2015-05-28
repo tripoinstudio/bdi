@@ -168,6 +168,40 @@ function sampleTable() {
         "sPaginationType": "full_numbers",
         "bJQueryUI": false,
         "aoColumns": dontSort,
+//	"bServerSide": true,
+    "bDestroy": true,
+    });
+    $.extend($.fn.dataTableExt.oStdClasses, {
+        "s`": "dataTables_wrapper form-inline"
+    });
+
+    $(".chzn-select, .dataTables_length select").chosen({
+        disable_search_threshold: 10
+
+    });
+
+
+
+
+}
+function sampleTables() {
+    var dontSort = [];
+    $('#datatable_examples thead th').each(function () {
+        if ($(this).hasClass('no_sort')) {
+            dontSort.push({"bSortable": false});
+        } else {
+            dontSort.push(null);
+        }
+    });
+    $('#datatable_examples').dataTable({
+        "sDom": "<'row-fluid table_top_bar'<'span12'<'to_hide_phone' f>>>t<'row-fluid control-group full top' <'span4 to_hide_tablet'l><'span8 pagination'p>>",
+        "aaSorting": [[1, "asc"]],
+        "bPaginate": true,
+        "sPaginationType": "full_numbers",
+        "bJQueryUI": false,
+        "aoColumns": dontSort,
+		"bServerSide": true,
+    "bDestroy": true,
     });
     $.extend($.fn.dataTableExt.oStdClasses, {
         "s`": "dataTables_wrapper form-inline"
@@ -388,14 +422,14 @@ function frmAddCheck2(type,id,n){
     }
 
     i = parseFloat(i) + 1;
-	frmCheck = '<input type="hidden" id="inp_check'+n+'" value="0" />';
+	frmCheck = '<input type="hidden" id="inp_check'+i+'" value="0" />';
 	 $('#frmCheck').append(frmCheck);
-	 $("#inp_check"+n).val(id);	
+	 $("#inp_check"+i).val(id);	
     $("#countercheck").val(i);	 
 	 } else {
 		// alert("masuk "+n);
 		  i = parseFloat(i) - 1;
-		$("#inp_check"+n).remove();	
+		$("#inp_check"+i).remove();	
 		$("#countercheck").val(i);	
 	 }
     // alert(i);
@@ -554,6 +588,10 @@ prosesLoading();
         xmlhttp.open("GET", "component/content/index2.php?content=data_umat&action=new", true);
     } else if (name == 'List Data Umat') {
         xmlhttp.open("GET", "component/content/index2.php?content=data_umat&namemenu=List Data Umat", true);
+    } else if (name == 'BUAT DATA BIMBINGAN') {
+        xmlhttp.open("GET", "component/content/index2.php?content=data_pembimbing&action=new&namemenu=BUAT DATA BIMBINGAN", true);
+    } else if (name == 'CARI ARSIP BIMBINGAN') {
+        xmlhttp.open("GET", "component/content/index2.php?content=data_pembimbing&namemenu=CARI ARSIP BIMBINGAN", true);
     } else {
         xmlhttp.open("GET", "component/content/index2.php?content=" + str, true);
 
@@ -1612,4 +1650,30 @@ function showMenuManual(str, name, manual) {
 
     return true;
 
+}
+
+ function colName(n) {
+        var ordA = 'a'.charCodeAt(0);
+        var ordZ = 'z'.charCodeAt(0);
+        var len = ordZ - ordA + 1;
+      
+        var s = "";
+        while(n >= 0) {
+            s = String.fromCharCode(n % len + ordA) + s;
+            n = Math.floor(n / len) - 1;
+        }
+        return s;
+    }
+
+	
+function autoCodeNumber(daerah,name,code){
+	
+	var subname = name.substring(0,1);
+	//alert(subname);
+	var convertname = subname.toLowerCase().charCodeAt(0) - 96;
+	if(convertname <= 9){
+		convertname = '0'+convertname;
+	}
+	//alert(convertname);
+	return daerah+'-'+convertname+'-'+code;
 }

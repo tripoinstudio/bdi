@@ -21,7 +21,7 @@ foreach ($list_keluarga as $array_keluarga) {
      </label>    
 
     <label class="control-label span4">Hubungan 
-	<span style="padding-left: 30px;"><?=checkDataKelu($array_keluarga['tb_relationship_relation_code']);?></span>
+	<span style="padding-left: 30px;"><?=$array_keluarga['tb_relationship_relation_code'];?></span>
      </label>
 	
 
@@ -63,7 +63,7 @@ foreach ($list_keluarga as $array_keluarga) {
      </label>    
 
     <label class="control-label span4">Hubungan 
-	<span style="padding-left: 30px;"><?=checkDataKelu($array_keluarga['tb_relationship_relation_code']);?></span>
+	<span style="padding-left: 30px;"><?=$array_keluarga['tb_relationship_relation_code'];?></span>
      </label>
 	
 

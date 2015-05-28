@@ -3,7 +3,8 @@
 <?= inputGeneralTemplate(TTL, '
                     <input type="text"  id="place_of_birth" name="truetitles[]" placeholder="Tempat" class="span4" />
                     <input type="text"  id="birth_date" name="truetitles[]" value="' . date('d-m-Y') . '" class="span2" onkeydown="hideDatepicker(event,this);"/>
-                    ');
+                    
+					');
 ?>
 <div class="form-row control-group row-fluid" >
     <label class="control-label span3"><?=GENDER;?></label>

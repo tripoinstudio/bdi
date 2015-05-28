@@ -823,7 +823,8 @@ function exportPdfListUmat(type, filename, parameter) {
     var cari_tlp = $("#cari_tlp").val();
 	 var jumlahcount = '';
 	var countercheck = $("#countercheck").val();
-	if(countercheck == 0){
+	var checkedDelete = $("#checkDelete").val();
+	if(checkedDelete == 0){
 		alert('Mohon checked data yang mau di export');
 		return false;
 	} else {
@@ -840,7 +841,7 @@ function exportPdfListUmat(type, filename, parameter) {
 		jumlahcount = jumlahcount + inp_check + coma;
 	}
 	}
-    var newURL = 'export.php?export=' + exports + '&file=' + file+ '&jumlahcount='+ jumlahcount  ;
+    var newURL = 'export.php?export=' + exports + '&file=' + file+ '&jumlahcount='+ checkedDelete  ;
 
     newwindow = window.open(newURL);
     if (window.focus) {
@@ -860,7 +861,8 @@ function exportExcelListUmat(type, filename, parameter) {
     var cari_tlp = $("#cari_tlp").val();
 	var jumlahcount = '';
 	var countercheck = $("#countercheck").val();
-	if(countercheck == 0){
+	var checkedDelete = $("#checkDelete").val();
+	if(checkedDelete == 0){
 		alert('Mohon checked data yang mau di export');
 		return false;
 	} else {
@@ -879,7 +881,7 @@ function exportExcelListUmat(type, filename, parameter) {
 	}
 
 
-    var newURL = 'export.php?export=' + exports + '&file=' + file+ '&jumlahcount='+ jumlahcount ;
+    var newURL = 'export.php?export=' + exports + '&file=' + file+ '&jumlahcount='+ checkedDelete ;
 
     newwindow = window.open(newURL);
     if (window.focus) {

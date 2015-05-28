@@ -221,9 +221,9 @@ function frmAddCheck(type,id,n){
     }
 
     i = parseFloat(i) + 1;
-	frmCheck = '<input type="hidden" id="inp_check'+i+'" value="0" />';
+	frmCheck = '<input type="hidden" id="inp_check'+n+'" value="0" />';
 	 $('#frmCheck').append(frmCheck);
-	 $("#inp_check"+i).val(id);	
+	 $("#inp_check"+n).val(id);	
     $("#countercheck").val(i);	 
 	 } else {
 		  i = parseFloat(i) - 1;
