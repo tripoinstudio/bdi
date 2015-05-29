@@ -29,9 +29,9 @@ foreach ($listdataumat as $arraylistdataumat) {
 <? // inputLov('Pilih Negara', 'lovcountry', 'lovcountrys','country', $_GET['action'], '', ''); ?>
 <?php //= inputLovNew('tb_country_id', 'tb_country_name','', 'Pilih Negara','country','true', $_GET['action'], 'false', '',''); ?>
 <?= inputGeneral(date("d-m-Y", strtotime($query1['tb_data_pembimbing_tanggal'])) , 'Tanggal', 'tanggal', 'false', $_GET['action']); ?>
-<?= inputGeneral($query1['tb_data_pembimbing_judul'], 'Judul Bimbingan', 'judul', 'true', $_GET['action']); ?>
-<?= inputTextArea($query1['tb_data_pembimbing_pertanyaan'], 'Pertanyaan', 'pertanyaan', 'true', $_GET['action']); ?>
-<?= inputTextArea($query1['tb_data_pembimbing_jawaban'], 'Jawaban', 'jawaban', 'true', $_GET['action']); ?>
+<?= inputGeneral($query1['tb_data_pembimbing_judul'], 'Judul Bimbingan', 'judul', 'false', $_GET['action']); ?>
+<?= inputTextArea($query1['tb_data_pembimbing_pertanyaan'], 'Pertanyaan', 'pertanyaan', 'false', $_GET['action']); ?>
+<?= inputTextArea($query1['tb_data_pembimbing_jawaban'], 'Jawaban', 'jawaban', 'false', $_GET['action']); ?>
 
 <div id="myModal" class="modal fade bs-example-modal-lg" role="dialog" style="width:600px;">
   <div class="modal-dialog modal-lg">
@@ -64,8 +64,8 @@ foreach ($listdataumat as $arraylistdataumat) {
 
 <div class="form-actions row-fluid">
 <div class="span7 offset3">
-    <button type="button" onclick="saveDataPembimbing('<?= $cekMenu['menu_function_link']; ?>', 'update');" class="btn btn-primary"><i class="icon-ok"></i> Simpan</button>
-	<button type="button" onclick="saveDataPembimbing('<?= $cekMenu['menu_function_link']; ?>', 'update');" class="btn btn-primary"><i class="icon-ok"></i> Simpan dan Keluar</button>
+    <button type="button" onclick="saveDataPembimbing('<?= $cekMenu['menu_function_link']; ?>', 'update',1);" class="btn btn-primary"><i class="icon-ok"></i> Simpan</button>
+	<button type="button" onclick="saveDataPembimbing('<?= $cekMenu['menu_function_link']; ?>', 'update',2);" class="btn btn-primary"><i class="icon-ok"></i> Simpan dan Keluar</button>
     <button type="button" onclick="showMenu('<?= $cekMenu['menu_function_link']; ?>');" class="btn btn-secondary"><i class=" icon-remove"></i> Batal</button>
 </div>
 </div>

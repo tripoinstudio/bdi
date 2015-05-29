@@ -5,6 +5,31 @@ $(function () {
    $('#pageFind').hide();
     var str = queryString('content', ipconfig);
     var actions = queryString('action', ipconfig);
+	var timeSave;
+	var timer = 4000;
+	//timeSave = setInterval(function () {saveDataPembimbing('data_pembimbing', 'save',1)}, timer);
+	//setTimeout(function () {clearInterval(timeSave);}, 4000);
+	if(actions == 'new'){
+//	timeSave = setInterval(function () {saveDataPembimbing('data_pembimbing', 'save',1)}, timer);
+//	clearInterval(timeSave);	
+	}
+	//stopTiming(timeSave,actions);
+
+	
+	//alert(actions);
+	//setTimeout(function(){saveDataPembimbing('data_pembimbing', 'save',1)},4000);
+	 if(actions == 'edit'){
+		//timeSave = setInterval(function () {saveDataPembimbing('data_pembimbing', 'update',1)}, timer);
+	} 
+	if(actions == 'new'){
+			
+		$('#tanggal').val(formatDate(new Date));
+		
+	}  if(actions != 'new'){
+//alert('tes');		
+//
+	//		clearInterval(timeSave);
+	}
 	
 	$('#create').hide();
 	
@@ -25,18 +50,91 @@ $(function () {
     });
 
 });
-function saveDataPembimbing(str, action) {
+
+function stopTiming(timeSave,actions){
+	//alert(timeSave);
+	//alert(actions);
+	if(actions != 'new'){
+		
+	}
+	
+}
+
+function saveDataPembimbing(str, action,type) {
     var itemUmatId = $('#itemUmatId').val();
 	var pembimbing = $('#lovspembimbing').val();
 	var birth_dates = $('#tanggal').val();
+	
+	if(pembimbing == ''){
+		pembimbing = '0';
+	} else if(itemUmatId == ''){
+		itemUmatId = '0';
+	} else if(birth_dates == ''){
+		itemUmatId = '0';
+	} 
+	
 	var tanggal = birth_dates.split("-").reverse().join("-");
-
+	
+	
+	var judul = $('#judul').val();
+	var pertanyaan = $('#pertanyaan').val();
+	var jawaban = $('#jawaban').val();
+	
+	
     var required = validationRequired();
     var sending = beforeSave(action);
+	var sendingitem = '&judul='+judul+'&pertanyaan='+pertanyaan+'&jawaban='+jawaban+'&itemUmatId='+itemUmatId+'&pembimbing='+pembimbing+'&tanggal='+tanggal;
+	var id = $('#idUp').val();
     if (required == "nulls") {
 
     } else {
-        prosesSave(str, action, sending,'&itemUmatId='+itemUmatId+'&pembimbing='+pembimbing+'&tanggal='+tanggal);
+     //   prosesSave(str, action, sending,'&itemUmatId='+itemUmatId+'&pembimbing='+pembimbing+'&tanggal='+tanggal);
+		prosesLoading();
+	  
+    if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    }
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else { // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+         //  sampleTable();
+            $('#deleteAll').hide();
+            $('#edit').hide();
+			$('#create').hide();
+            $('#back').hide();
+			$('#cancel').hide();
+			var idUpdate = $('#idUpdate').val();
+			 
+		//	 alert(id);
+			if(action == 'save'){
+				
+				if(idUpdate != null && type == 1){
+				viewEdit('data_pembimbing', idUpdate, 'edit');
+				}
+			} else if(action == 'update'){
+			//	alert(id);
+				if(id != null && type == 1){
+				viewEdit('data_pembimbing', id, 'edit');
+			}
+			}
+getJavascript(str);			
+        }
+    }
+	
+    if (action == 'save') {
+        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=save"+sendingitem, true);
+    } else if (action == 'update') {
+        xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=update&id="+id +sendingitem, true);
+    }
+
+    xmlhttp.send();
     }
 
 }

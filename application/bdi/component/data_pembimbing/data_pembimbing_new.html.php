@@ -15,9 +15,9 @@
 <? // inputLov('Pilih Negara', 'lovcountry', 'lovcountrys','country', $_GET['action'], '', ''); ?>
 <?php //= inputLovNew('tb_country_id', 'tb_country_name','', 'Pilih Negara','country','true', $_GET['action'], 'false', '',''); ?>
 <?= inputGeneral('....', 'Tanggal', 'tanggal', 'false', $_GET['action']); ?>
-<?= inputGeneral('....', 'Judul Bimbingan', 'judul', 'true', $_GET['action']); ?>
-<?= inputTextArea('....', 'Pertanyaan', 'pertanyaan', 'true', $_GET['action']); ?>
-<?= inputTextArea('....', 'Jawaban', 'jawaban', 'true', $_GET['action']); ?>
+<?= inputGeneral('....', 'Judul Bimbingan', 'judul', 'false', $_GET['action']); ?>
+<?= inputTextArea('....', 'Pertanyaan', 'pertanyaan', 'false', $_GET['action']); ?>
+<?= inputTextArea('....', 'Jawaban', 'jawaban', 'false', $_GET['action']); ?>
 
 <div id="myModal" class="modal fade bs-example-modal-lg" role="dialog" style="width:600px;">
   <div class="modal-dialog modal-lg">
@@ -50,8 +50,8 @@
 
 <div class="form-actions row-fluid">
 <div class="span7 offset3">
-    <button type="button" onclick="saveDataPembimbing('<?= $cekMenu['menu_function_link']; ?>', 'save');" class="btn btn-primary"><i class="icon-ok"></i> Simpan</button>
-	<button type="button" onclick="saveDataPembimbing('<?= $cekMenu['menu_function_link']; ?>', 'save');" class="btn btn-primary"><i class="icon-ok"></i> Simpan dan Keluar</button>
+    <button type="button" onclick="saveDataPembimbing('<?= $cekMenu['menu_function_link']; ?>', 'save',1);" class="btn btn-primary"><i class="icon-ok"></i> Simpan</button>
+	<button type="button" onclick="saveDataPembimbing('<?= $cekMenu['menu_function_link']; ?>', 'save',2);" class="btn btn-primary"><i class="icon-ok"></i> Simpan dan Keluar</button>
     <button type="button" onclick="showMenu('<?= $cekMenu['menu_function_link']; ?>');" class="btn btn-secondary"><i class=" icon-remove"></i> Batal</button>
 </div>
 </div>
