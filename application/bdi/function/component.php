@@ -143,9 +143,9 @@ function inputTextArea($placeholder=null, $title=null, $idinput=null, $keteranga
              <label class="control-label span3">' . $title . ' <span class="help-block">Type your ' . $idinput . ' here</span></label>
              <div class="controls span9">';
         if ($action == 'edit') {
-            echo'<textarea type="text" id="' . $idinput . '" name="' . $keterangan . 'titles[]"   style="' . $style . '"  value="' . $placeholder . '" class="span12" />';
+            echo'<textarea type="text" id="' . $idinput . '" name="' . $keterangan . 'titles[]"   style="' . $style . '"  class="span12" />' . $placeholder . '</textarea>';
         } else if ($action == 'view') {
-            echo'<textarea type="text" id="' . $idinput . '" name="' . $keterangan . 'titles[]"  style="' . $style . '"  value="' . $placeholder . '" class="span12" disabled/>';
+            echo'<textarea type="text" id="' . $idinput . '" name="' . $keterangan . 'titles[]"  style="' . $style . '"  class="span12" disabled>' . $placeholder . '</textarea>';
         }
         echo'<span class="help-inline" name="namens[]" id="' . $idinput . 'ns"></span>
              </div>

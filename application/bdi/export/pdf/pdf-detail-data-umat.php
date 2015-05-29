@@ -17,9 +17,9 @@ foreach ($list_query as $array_list_query) {
     $tgl_lahir = $array_list_query['tb_data_umat_tgl_lahir'];
 
     if ($array_list_query['tb_data_umat_gender'] == 2)
-        $gender = 'P';
+        $gender = 'Perempuan';
     else
-        $gender = 'L';
+        $gender = 'Laki-Laki';
 
     $notlp = $array_list_query['tb_data_umat_no_tlp'];
     $nohp = $array_list_query['tb_data_umat_no_hp'];
@@ -167,7 +167,7 @@ foreach ($list_query as $array_list_query) {
     <br/>
     <br/>
 
-    <div>DATA UMAT PEMBAGIAN</div>
+    <div>DATA DAERAH</div>
     <br/>
     <table class="table" style="border:1px; padding: 10px;">
         <tr>
@@ -206,7 +206,7 @@ foreach ($list_query as $array_list_query) {
                 <td style="width:35%;" class="hidden-phone"><?= idListViewTarget($array_keluarga['tb_data_umat_id'], 'data_umat', 'tb_data_umat_nama_ktp'); ?></td>
             
                 <th style="width:15%; padding: 5px;" class="hidden-phone">Hubungan</th>
-                <td style="width:35%;" class="hidden-phone"><?= checkDataKelu($array_keluarga['tb_relationship_relation_code']); ?></td>
+                <td style="width:35%;" class="hidden-phone"><?= $array_keluarga['tb_relationship_relation_code']; ?></td>
             </tr>
         <?php } ?>
     </table>
@@ -225,7 +225,7 @@ foreach ($list_query as $array_list_query) {
                 <td style="width:35%;" class="hidden-phone"><?= idListViewTarget($array_keluarga['tb_data_umat_id'], 'data_umat', 'tb_data_umat_nama_ktp'); ?></td>
             
                 <th style="width:15%; padding: 5px;" class="hidden-phone">Hubungan</th>
-                <td style="width:35%;" class="hidden-phone"><?= checkDataKelu($array_keluarga['tb_relationship_relation_code']); ?></td>
+                <td style="width:35%;" class="hidden-phone"><?= $array_keluarga['tb_relationship_relation_code']; ?></td>
             </tr>
         <?php } ?>
     </table>

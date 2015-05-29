@@ -9,6 +9,11 @@
         <button class="close" data-dismiss="alert">×</button>
         Data Has been Delete<strong> Successfully</strong> 
     </div>
+<?php } else if ($_GET['action'] == 'update') { ?>
+    <div class="alert alert-success">
+        <button class="close" data-dismiss="alert">×</button>
+        Data Has been Update<strong> Successfully</strong> 
+    </div>
 <?php } ?>	
 <?php if ($_GET['content'] == 'data_pembimbing') { ?>
 <?=inputGeneral('....', 'Nama', 'nama', 'true', 'new'); ?>

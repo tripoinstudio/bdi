@@ -210,7 +210,7 @@ foreach ($list_query as $array_list_query) {
                 <td style="width:35%;" class="hidden-phone"><?= idListViewTarget($array_keluarga['tb_data_umat_id'], 'data_umat', 'tb_data_umat_nama_ktp'); ?></td>
            
                 <th style="width:15%; padding: 5px;" class="hidden-phone">Hubungan</th>
-                <td style="width:35%;" class="hidden-phone"><?= checkDataKelu($array_keluarga['tb_relationship_relation_code']); ?></td>
+                <td style="width:35%;" class="hidden-phone"><?= $array_keluarga['tb_relationship_relation_code']; ?></td>
             </tr>
         <?php } ?>
     </table>
@@ -229,7 +229,7 @@ foreach ($list_query as $array_list_query) {
                 <td style="width:35%;" class="hidden-phone"><?= idListViewTarget($array_keluarga['tb_data_umat_id'], 'data_umat', 'tb_data_umat_nama_ktp'); ?></td>
            
                 <th style="width:15%; padding: 5px;" class="hidden-phone">Hubungan</th>
-                <td style="width:35%;" class="hidden-phone"><?= checkDataKelu($array_keluarga['tb_relationship_relation_code']); ?></td>
+                <td style="width:35%;" class="hidden-phone"><?= $array_keluarga['tb_relationship_relation_code']; ?></td>
             </tr>
         <?php } ?>
     </table>

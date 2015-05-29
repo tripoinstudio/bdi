@@ -5,6 +5,9 @@ $(function () {
    $('#pageFind').hide();
     var str = queryString('content', ipconfig);
     var actions = queryString('action', ipconfig);
+	
+	$('#create').hide();
+	
    $('#tanggal').datepicker({
     //    format: 'yyyy-mm-dd'
 	    format: 'dd-mm-yyyy'
@@ -98,23 +101,28 @@ function findumatPop(){
 		var code_name = colName(parseInt(code_name2)-1);
 	}
 	
-	var str = 'data-pembimbing';
+	var str = 'data_pembimbing';
 	$('#myModal').modal('show');
 	$.ajax( {
 		type: 'get',
 		        url: 'controller.php',
+			/*  url: ' http://192.168.1.133:8080/materialapi/materials',
+			  dataType: 'json',
+			  contentType: 'application/json; charse=utf-8',
+		*/
 		        data: 'content=' + str + '&action=list&name='+name+'&code_daerah='+code_daerah+'&code_name='+code_name+'&code_nik='+code_nik,
 		        success: function (result) {
-			//		alert(result);
+				//	alert(result);
 		//	$('#proses_loading_item').html('');
 			var jsons = JSON.parse(result);
-			
+		//	var jsons = JSON.parse(result);
+//alert(jsons);
 			var frma = '';
 		
 			for (var n = 0; n < jsons.length; n++) {
 				var items = jsons[n];
 				i = n + 1;
-				var province = items.tb_province_code;
+			var province = items.tb_province_code;
 				var nama = items.tb_data_umat_nama_ktp;
 				var namas = "'"+items.tb_data_umat_nama_ktp+"'";
 				var code = items.tb_data_umat_code;
@@ -124,16 +132,77 @@ function findumatPop(){
 				frma = frma + '<td>'+items.tb_data_umat_nama_ktp+ '</td>';
 				frma = frma + '</tr>';
 				
-				
+		/*			
+			 frma = frma + '<tr id="tritem'+i+'">';
+				frma = frma + '<td>'+items.name+ '</td>';
+				frma = frma + '<td>'+items.pcs+ '</td>';
+				frma = frma + '</tr>'
+				$('#frmItem').html(frma);*/
 			}
 			$('#frmItem').html(frma);
 		//	sampleTable();
 			return false;
 		}
 	}
-	);
+	); 
+	/*
+	if (str == "") {
+        document.getElementById("isiBodyUmat").innerHTML = "";
+        return;
+    }
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else { // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+	 xmlhttp.withCredentials = true;
+	 
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            document.getElementById("isiBodyUmat").innerHTML = xmlhttp.responseText;
+            //  sampleTable();
+
+                var frma = '';
+           frma = frma + '<tr id="tritem'+i+'">';
+				frma = frma + '<td>'+items.name+ + '</td>';
+				frma = frma + '<td>'+items.pcs+ '</td>';
+				frma = frma + '</tr>'
+				$('#frmItem').html(frma);
+          //  getJavascript(str); 
+
+        }
+    }
+	
+ //   xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + "&id=" + id, true);
+ 
+ xmlhttp.open("GET", "http://192.168.1.133:8080/materialapi/materials", true);
+ //xmlhttpcreateCORSRequest("GET", "http://192.168.1.133:8080/materialapi/materials");
+ /*xmlhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
+    xmlhttp.setRequestHeader('Content-type', 'application/json');
+    xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+	
+    xmlhttp.send();
+
+    return true;
+*/
+	
 	
 }
+
+function createCORSRequest(method, url){
+    var xhr = new XMLHttpRequest();
+    if ("withCredentials" in xhr){
+        xhr.open(method, url, true);
+    } else if (typeof XDomainRequest != "undefined"){
+        xhr = new XDomainRequest();
+        xhr.open(method, url);
+    } else {
+        xhr = null;
+    }
+    return xhr;
+}
+
 function pilihDataUmat(id,name){
 	$('#myModal').modal('hide');
 	$('#itemUmatId').val(id);
@@ -186,4 +255,59 @@ $('#loadingser').html('<div style="vertical-align: middle;padding-left: 500px;">
 	}
 	);
 	
+}
+
+function viewListDataUmat(str, id, action) {
+    //  $('.btn').tooltip('disable');
+//alert(str);
+//var id = $('#id').val();
+//alert(id);
+//alert(action);
+//
+//prosesLoading();
+//$("#loading").show();
+$('#myModals').modal('show');
+var exports = 'html';
+var file = 'pdf-detail-data-umat';
+    if (str == "") {
+        document.getElementById("isiBodyUmat").innerHTML = "";
+        return;
+    }
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else { // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            document.getElementById("isiBodyUmat").innerHTML = xmlhttp.responseText;
+            //  sampleTable();
+
+                
+           
+          //  getJavascript(str); 
+
+        }
+    }
+	
+ //   xmlhttp.open("GET", "component/content/index2.php?content=" + str + "&action=" + action + "&id=" + id, true);
+ xmlhttp.open("GET", "export.php?export=" + exports + "&file=" + file+"&id="+id, true);
+    xmlhttp.send();
+
+    return true;
+
+}
+
+function exportPdfDetailPembimbing(type, filename, parameter) {
+    var exports = type;
+    var file = filename;
+	
+    var newURL = 'export.php?export=' + exports + '&file=' + file+parameter ;
+
+    newwindow = window.open(newURL);
+    if (window.focus) {
+        newwindow.focus();
+    }
+    return false;
 }

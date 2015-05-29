@@ -1461,6 +1461,7 @@ prosesLoading();
             $('#deleteAll').hide();
             $('#edit').hide();
             //  $('#create').hide();
+			getJavascript(str);
         }
     }
     if (action == 'save') {
