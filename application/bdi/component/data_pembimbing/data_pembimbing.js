@@ -85,6 +85,9 @@ function saveDataPembimbing(str, action,type) {
     var sending = beforeSave(action);
 	var sendingitem = '&judul='+judul+'&pertanyaan='+pertanyaan+'&jawaban='+jawaban+'&itemUmatId='+itemUmatId+'&pembimbing='+pembimbing+'&tanggal='+tanggal;
 	var id = $('#idUp').val();
+	if(itemUmatId == null || itemUmatId == 0) {
+		alert('Mohon Pilih Data Umat');
+	} else {
     if (required == "nulls") {
 
     } else {
@@ -136,9 +139,10 @@ getJavascript(str);
 
     xmlhttp.send();
     }
+	}
 
 }
-
+/*
 
 function findumatPop(){
 	var name = $('#name').val();
@@ -151,7 +155,7 @@ function findumatPop(){
 		var code_name = colName(parseInt(code_name2)-1);
 	}
 	
-	var str = 'data-pembimbing';
+	var str = 'data_pembimbing';
 	$('#myModal').modal('show');
 	$.ajax( {
 		type: 'get',
@@ -186,7 +190,7 @@ function findumatPop(){
 	}
 	);
 	
-}
+} */
 
 function findumatPop(){
 	var name = $('#name').val();
@@ -318,8 +322,10 @@ function resetClear(){
 
 function findDataBimbingan(){
 	var name = $('#nama').val();
-	var startDate = $('#startDate').val();
-	var endDate = $('#endDate').val();
+	var startDates = $('#startDate').val();
+	var endDates = $('#endDate').val();
+	var startDate = startDates.split("-").reverse().join("-");
+	var endDate = endDates.split("-").reverse().join("-");
 	var lovspembimbing = $('#lovspembimbing').val();
 	
 	var str = 'data_pembimbing';
@@ -331,7 +337,7 @@ $('#loadingser').html('<div style="vertical-align: middle;padding-left: 500px;">
 		        url: 'controller.php',
 		        data: 'content=' + str + '&action=search&name='+name+'&startDate='+startDate+'&endDate='+endDate+'&pembimbing='+lovspembimbing,
 		        success: function (result) {
-		//			alert(result);
+			//		alert(result);
 					
 		//	$('#proses_loading_item').html('');
 		//	var jsons = JSON.parse(result);

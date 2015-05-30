@@ -11,11 +11,11 @@ $db->sql("select u.tb_data_umat_id,tb_data_umat_code, tb_data_umat_nama_ktp, tb_
 	$list_users = $db->getResult();
     echo json_encode($list_users);
 } else if ($_GET['action'] == 'search') {
-	//$startDate = $_GET['startDate'];
-	//$endDate = $_GET['endDate'];
+	$startDate = $_GET['startDate'];
+	$endDate = $_GET['endDate'];
 	// $startDate = date('Y-m-d', strtotime(str_replace('-', '/', $_GET['startDate'])));
-    $startDate = date('Y-m-d', strtotime($_GET['startDate']));
-	$endDate = date('Y-m-d', strtotime($_GET['endDate']));
+   // $startDate = date('Y-m-d', strtotime($_GET['startDate']));
+//	$endDate = date('Y-m-d', strtotime($_GET['endDate']));
 	$pembimbing = $_GET['pembimbing'];
 	$name = $_GET['name'];
 	$dblist = new Database();
