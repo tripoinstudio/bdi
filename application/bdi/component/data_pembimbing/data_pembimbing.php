@@ -31,7 +31,7 @@ if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
 				 saveToLog($cekMenu['menu_function_name'], $_GET['action'], $_SESSION['username']);
 		//		 echo $res[0];
 		//		 echo $res[1];
-				 echo '<input type="text" id="idUpdate" value="'.$ids.'" />';
+				 echo '<input type="hidden" id="idUpdate" value="'.$ids.'" />';
     } else if ($_GET['action'] == 'update') {
         $id = $_GET['id'];
         $query1 = mysql_query("UPDATE `tb_data_pembimbing` SET `tb_data_pembimbing_tanggal`='".$tanggal."',`tb_pembimbing_id`=".$pembimbing.",`tb_data_umat_id`=".$itemUmatId.",`tb_data_pembimbing_tanggal`='".$tanggal."',`tb_data_pembimbing_judul`='".$judul."',`tb_data_pembimbing_pertanyaan`='".$pertanyaan."',`tb_data_pembimbing_jawaban`='".$jawaban."', `update_by` = '".$_SESSION['username']."', `update_date` = '".date('Y-m-d')."', `update_host` = '".get_client_ip()."' WHERE `tb_data_pembimbing_id`=".$id.";");

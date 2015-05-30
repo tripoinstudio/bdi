@@ -134,7 +134,7 @@ function inputTextArea($placeholder=null, $title=null, $idinput=null, $keteranga
         echo '<div class="form-row control-group row-fluid">
              <label class="control-label span3">' . $title . ' <span class="help-block">Type your ' . $idinput . ' here</span></label>
              <div class="controls span9">
-             <textarea  style="' . $style . '" name="' . $keterangan . 'titles[]"  id="' . $idinput . '" placeholder="' . $placeholder . '" class="span12" ></textarea>
+             <textarea  ' . $style . ' name="' . $keterangan . 'titles[]"  id="' . $idinput . '" placeholder="' . $placeholder . '" class="span12" ></textarea>
              <span class="help-inline" name="namens[]" id="' . $idinput . 'ns"></span>
              </div>
              </div>';
@@ -143,9 +143,9 @@ function inputTextArea($placeholder=null, $title=null, $idinput=null, $keteranga
              <label class="control-label span3">' . $title . ' <span class="help-block">Type your ' . $idinput . ' here</span></label>
              <div class="controls span9">';
         if ($action == 'edit') {
-            echo'<textarea type="text" id="' . $idinput . '" name="' . $keterangan . 'titles[]"   style="' . $style . '"  class="span12" />' . $placeholder . '</textarea>';
+            echo'<textarea type="text" id="' . $idinput . '" name="' . $keterangan . 'titles[]"   ' . $style . '  class="span12" />' . $placeholder . '</textarea>';
         } else if ($action == 'view') {
-            echo'<textarea type="text" id="' . $idinput . '" name="' . $keterangan . 'titles[]"  style="' . $style . '"  class="span12" disabled>' . $placeholder . '</textarea>';
+            echo'<textarea type="text" id="' . $idinput . '" name="' . $keterangan . 'titles[]" ' . $style . '  class="span12" disabled>' . $placeholder . '</textarea>';
         }
         echo'<span class="help-inline" name="namens[]" id="' . $idinput . 'ns"></span>
              </div>

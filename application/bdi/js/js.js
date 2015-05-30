@@ -787,12 +787,16 @@ function getJavascript(str) {
 //	alert("tes");
         $.getScript("js/js.js", function () {
         });
+		 $.getScript("js/app.js", function () {
+        });
 
     } else {
         $.getScript("component/" + str + "/" + str + ".js", function () {
         });
 //	alert("tes");
         $.getScript("js/js.js", function () {
+        });
+		  $.getScript("js/app.js", function () {
         });
     }
 

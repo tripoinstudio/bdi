@@ -31,7 +31,7 @@ $(function () {
 	//		clearInterval(timeSave);
 	}
 	
-	$('#create').hide();
+	//$('#create').hide();
 	
    $('#tanggal').datepicker({
     //    format: 'yyyy-mm-dd'
@@ -227,9 +227,11 @@ function findumatPop(){
 			var province = items.tb_province_code;
 				var nama = items.tb_data_umat_nama_ktp;
 				var namas = "'"+items.tb_data_umat_nama_ktp+"'";
+				var nikcodes = "'"+autoCodeNumber(province,nama,code)+"'";
+
 				var code = items.tb_data_umat_code;
 				//var nama = 
-				frma = frma + '<tr id="tritem'+i+'" onclick="pilihDataUmat('+items.tb_data_umat_id+','+namas+');">';
+				frma = frma + '<tr id="tritem'+i+'" onclick="pilihDataUmat('+items.tb_data_umat_id+','+namas+','+nikcodes+');">';
 				frma = frma + '<td>'+autoCodeNumber(province,nama,code) + '</td>';
 				frma = frma + '<td>'+items.tb_data_umat_nama_ktp+ '</td>';
 				frma = frma + '</tr>';
@@ -305,10 +307,11 @@ function createCORSRequest(method, url){
     return xhr;
 }
 
-function pilihDataUmat(id,name){
+function pilihDataUmat(id,name,nikcodes){
+	//alert(nikcodes);
 	$('#myModal').modal('hide');
 	$('#itemUmatId').val(id);
-	$('#itemUmatName').html(name);
+	$('#itemUmatName').html(nikcodes+' / '+name);
 }
 function resetClear(){
 	$('#itemUmatId').val('');
@@ -372,7 +375,9 @@ function viewListDataUmat(str, id, action) {
 //$("#loading").show();
 $('#myModals').modal('show');
 var exports = 'html';
+
 var file = 'pdf-detail-data-umat';
+$('#loadingpop').html('<div style="vertical-align: middle;padding-left: 300px;"><img src="img/ajax-loader.gif"><br/><br/><p style="padding-right:50px;"></p></div>');
     if (str == "") {
         document.getElementById("isiBodyUmat").innerHTML = "";
         return;
@@ -388,7 +393,7 @@ var file = 'pdf-detail-data-umat';
             document.getElementById("isiBodyUmat").innerHTML = xmlhttp.responseText;
             //  sampleTable();
 
-                
+                $('#loadingpop').html('');
            
           //  getJavascript(str); 
 

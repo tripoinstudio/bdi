@@ -16,8 +16,8 @@
 <?php //= inputLovNew('tb_country_id', 'tb_country_name','', 'Pilih Negara','country','true', $_GET['action'], 'false', '',''); ?>
 <?= inputGeneral('....', 'Tanggal', 'tanggal', 'false', $_GET['action']); ?>
 <?= inputGeneral('....', 'Judul Bimbingan', 'judul', 'false', $_GET['action']); ?>
-<?= inputTextArea('....', 'Pertanyaan', 'pertanyaan', 'false', $_GET['action']); ?>
-<?= inputTextArea('....', 'Jawaban', 'jawaban', 'false', $_GET['action']); ?>
+<?= inputTextArea('....', 'Pertanyaan', 'pertanyaan', 'false', $_GET['action'],'rows="10" cols="50"'); ?>
+<?= inputTextArea('....', 'Jawaban', 'jawaban', 'false', $_GET['action'],'rows="10" cols="50"'); ?>
 
 <div id="myModal" class="modal fade bs-example-modal-lg" role="dialog" style="width:600px;">
   <div class="modal-dialog modal-lg">

@@ -26,14 +26,15 @@ foreach ($listdataumat as $arraylistdataumat) {
  ?>
  
  <link type="text/css" href="css/pdf-style.css" rel="stylesheet" />
-<div class="page">
+ <page backtop="14mm" backbottom="14mm" backleft="10mm" backright="10mm" style="font-size: 12pt">
+
     <div class="title"><?= $namePage; ?> </div>
-    <div class="subtitle">DATA PEMBIMBING</div>
+    <div class="subtitle">DATA BIMBINGAN</div>
     <br/>
-    <table>
+    <table style="width: 100%;" >
             <tr>
-                <th style="height: 30px;width: 150px;">NIK</th>
-				  <td> <?=autoCodeUmat($codedaerah, $namaumat, $codeumat);?></td>
+                <th style="height: 30px;width: 30%;">NIK</th>
+				<td style="width: 70%;"> <?=autoCodeUmat($codedaerah, $namaumat, $codeumat);?></td>
             </tr>
 			 <tr>
                 <th style="height: 30px;">Nama</th>
@@ -47,17 +48,19 @@ foreach ($listdataumat as $arraylistdataumat) {
                 <th style="height: 30px;">Judul</th>
 				  <td> <?=$query1['tb_data_pembimbing_judul'];?></td>
             </tr>
-			<tr>
-                <th style="height: 30px;">Pertanyaan</th>
-				  <td> <?=$query1['tb_data_pembimbing_pertanyaan'];?></td>
-            </tr>
-			<tr>
-                <th style="height: 30px;">Jawaban</th>
-				  <td> <?=$query1['tb_data_pembimbing_jawaban'];?></td>
-            </tr>
+			
 
     </table>
-	
+	 <div style="text-align: justify;
+    text-justify: inter-word;"><br/><b>Pertanyaan</b><br/>
+				<?=$query1['tb_data_pembimbing_pertanyaan'];?>
+				<br/><br/>
+				<b>Jawaban</b><br/>
+				<?=$query1['tb_data_pembimbing_jawaban'];?>
+				
+				</div>
+	<br/>
+	<br/>
 	<?php
 	
 	if($query1['update_by'] == '' || $query1['update_by'] == ''){
@@ -78,6 +81,7 @@ foreach ($listdataumat as $arraylistdataumat) {
 	<td ><?=$creupddate;?>|<?=$creupdhost;?>|<?=$creupd;?></td>
 	</tr>
 	</table>
-</div>
+
  
 			<?php } ?>
+			</page>

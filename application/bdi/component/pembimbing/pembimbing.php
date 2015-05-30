@@ -24,12 +24,13 @@ if ($_GET['action'] == 'save' || $_GET['action'] == 'update') {
 		
     }
 }
-if ($_GET['action'] == 'save') {
+if ($_GET['action'] == 'delete') {
 	$id = $_GET['id'];
 	$db = new Database();
     $db->connect();
 	$db->sql('DELETE FROM tb_pembimbing where tb_pembimbing_id='.$id);
 	$relationship2 = $db->getResult();
+	saveToLog($cekMenu['menu_function_name'], $_GET['action'], $_SESSION['username']);
 }
 
 include "../../function/functionaction.php";

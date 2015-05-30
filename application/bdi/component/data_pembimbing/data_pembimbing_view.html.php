@@ -30,8 +30,13 @@ foreach ($listdataumat as $arraylistdataumat) {
 
 <?= inputGeneralViewLov($query1['tb_pembimbing_id'], 'Pembimbing', 'pembimbing', 'true', $_GET['action']); ?>
 <?= inputGeneralView($query1['tb_data_pembimbing_judul'], 'Judul', '', 'true', $_GET['action']); ?>
+<div class="self-border-white">
 <?= inputGeneralView($query1['tb_data_pembimbing_pertanyaan'], 'Pertanyaan', '', 'true', $_GET['action']); ?>
+</div>
+<br/>
+<div class="self-border-white">
 <?= inputGeneralView($query1['tb_data_pembimbing_jawaban'], 'Jawaban', 'true', $_GET['action']); ?>
+</div>
 <?php
 	
 	if($query1['update_by'] == '' || $query1['update_by'] == ''){
@@ -67,6 +72,7 @@ foreach ($listdataumat as $arraylistdataumat) {
         <h4 class="modal-title">DATA UMAT</h4>
       </div>
       <div class="modal-body">
+	  <div id="loadingpop"></div>
        <div id="isiBodyUmat">
 	   </div>
       </div>
